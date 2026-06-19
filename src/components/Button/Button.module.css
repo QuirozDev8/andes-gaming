@@ -1,0 +1,251 @@
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 13rem;
+  max-width: 100%;
+  height: 2.6rem;
+  border: double 3px transparent;
+  border-radius: var(--radius-pill);
+  background-image:
+    linear-gradient(
+      rgba(var(--andes-blue-deep-rgb), 0.96),
+      rgba(var(--andes-blue-midnight-rgb), 0.96)
+    ),
+    linear-gradient(
+      137.48deg,
+      rgba(var(--andes-cyan-rgb), 1) 10%,
+      rgba(var(--andes-violet-rgb), 1) 45%,
+      rgba(var(--andes-violet-alt-rgb), 0.95) 67%,
+      rgba(var(--andes-cyan-rgb), 0.86) 87%
+    );
+  background-size: 300% 300%;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  color: var(--andes-white);
+  font-family: var(--font-body);
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  backdrop-filter: blur(1rem);
+  box-shadow:
+    0 12px 28px rgba(var(--andes-blue-deep-rgb), 0.34),
+    0 0 18px rgba(var(--andes-violet-rgb), 0.16);
+  animation: buttonGradient 5s ease infinite;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 14px 34px rgba(var(--andes-blue-deep-rgb), 0.36),
+    0 0 22px rgba(var(--andes-cyan-rgb), 0.18),
+    0 0 30px rgba(var(--andes-violet-rgb), 0.2);
+}
+
+.button:active {
+  border-color: rgba(var(--andes-violet-rgb), 0.86);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  animation: none;
+  transform: scale(0.98);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.58;
+  transform: none;
+}
+
+.button:disabled,
+.button[aria-disabled="true"],
+.button:disabled .circle,
+.button[aria-disabled="true"] .circle,
+.button:disabled .stars::before,
+.button[aria-disabled="true"] .stars::before,
+.button:disabled .stars::after,
+.button[aria-disabled="true"] .stars::after {
+  animation-play-state: paused;
+}
+
+.text {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-4);
+  color: var(--andes-white);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-black);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  text-shadow:
+    0 0 4px rgba(var(--andes-white-rgb), 0.62),
+    0 0 12px rgba(var(--andes-cyan-rgb), 0.24);
+}
+
+.containerStars {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  border-radius: inherit;
+  background-color: rgba(var(--andes-blue-deep-rgb), 0.18);
+  backdrop-filter: blur(1rem);
+  transition:
+    background-color var(--transition-base),
+    z-index var(--transition-fast);
+}
+
+.button:hover .containerStars {
+  z-index: 1;
+  background-color: rgba(var(--andes-blue-deep-rgb), 0.9);
+}
+
+.glow {
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  width: 12rem;
+  pointer-events: none;
+}
+
+.circle {
+  z-index: -1;
+  width: 100%;
+  height: 30px;
+  filter: blur(2rem);
+  animation: buttonPulse 4s infinite;
+}
+
+.circle:nth-of-type(1) {
+  background: rgba(var(--andes-violet-rgb), 0.64);
+}
+
+.circle:nth-of-type(2) {
+  background: rgba(var(--andes-cyan-rgb), 0.5);
+}
+
+.button:active .circle {
+  background: rgba(var(--andes-violet-rgb), 0.86);
+}
+
+.stars {
+  position: relative;
+  display: block;
+  width: 200rem;
+  height: 200rem;
+  background: transparent;
+}
+
+.stars::before,
+.stars::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(var(--andes-white-rgb), 0.9) 1px, transparent 1%);
+  background-size: 50px 50px;
+  content: "";
+}
+
+.stars::before {
+  top: 0;
+  left: -50%;
+  width: 170%;
+  height: 500%;
+  opacity: 0.48;
+  animation: animStar 60s linear infinite;
+}
+
+.stars::after {
+  top: -10rem;
+  left: -100rem;
+  animation: animStarRotate 90s linear infinite;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-135rem);
+  }
+}
+
+@keyframes animStarRotate {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}
+
+@keyframes buttonGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes buttonPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--andes-blue-deep-rgb), 0.7);
+    transform: scale(0.75);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--andes-blue-deep-rgb), 0);
+    transform: scale(1);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--andes-blue-deep-rgb), 0);
+    transform: scale(0.75);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .circle,
+  .stars::before,
+  .stars::after {
+    animation: none;
+  }
+
+  .button,
+  .containerStars {
+    transition: none;
+  }
+}
