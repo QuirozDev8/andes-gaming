@@ -3,31 +3,44 @@ import type {
   ButtonHTMLAttributes,
   MouseEventHandler,
 } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Button.module.css";
 
 type ButtonBaseProps = {
   ariaLabel?: string;
   disabled?: boolean;
   text: string;
-}; 
+};
 
 type ButtonAsAnchorProps = ButtonBaseProps & {
   href: string;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
   target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
   rel?: AnchorHTMLAttributes<HTMLAnchorElement>["rel"];
+  to?: never;
+};
+
+type ButtonAsLinkProps = ButtonBaseProps & {
+  href?: never;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+  to: string;
 };
 
 type ButtonAsButtonProps = ButtonBaseProps & {
   href?: never;
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  to?: never;
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
 };
 
-type ButtonProps = ButtonAsAnchorProps | ButtonAsButtonProps;
+type ButtonProps = ButtonAsAnchorProps | ButtonAsLinkProps | ButtonAsButtonProps;
 
 function isAnchorButton(props: ButtonProps): props is ButtonAsAnchorProps {
   return "href" in props;
+}
+
+function isLinkButton(props: ButtonProps): props is ButtonAsLinkProps {
+  return "to" in props;
 }
 
 function ButtonContent({ text }: { text: string }) {
@@ -47,6 +60,31 @@ function ButtonContent({ text }: { text: string }) {
 
 export function Button(props: ButtonProps) {
   const { ariaLabel, disabled, text } = props;
+
+  if (isLinkButton(props)) {
+    const { onClick, to } = props;
+
+    const handleClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
+      if (disabled) {
+        event.preventDefault();
+        return;
+      }
+
+      onClick?.(event);
+    };
+
+    return (
+      <Link
+        aria-disabled={disabled}
+        aria-label={ariaLabel}
+        className={styles.button}
+        onClick={handleClick}
+        to={to}
+      >
+        <ButtonContent text={text} />
+      </Link>
+    );
+  }
 
   if (isAnchorButton(props)) {
     const { href, onClick, rel, target } = props;

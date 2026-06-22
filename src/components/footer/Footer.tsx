@@ -1,38 +1,88 @@
+import { Link } from "react-router-dom";
 import footerLogo from "../../assets/logos/logo_blanco.png";
+import { ROUTES } from "../../routes/routePaths";
 import styles from "./Footer.module.css";
+
+type FooterLink =
+  | {
+      label: string;
+      to: string;
+      href?: never;
+    }
+  | {
+      href: string;
+      label: string;
+      to?: never;
+    };
 
 const footerColumns = [
   {
     title: "PLATAFORMA",
-    links: ["BackOffice", "Integraciones", "Reporteria", "Soporte"],
+    links: [
+      { label: "BackOffice", href: "#" },
+      { label: "Integraciones", href: "#" },
+      { label: "Reporteria", href: "#" },
+      { label: "Soporte", href: "#" },
+    ],
   },
   {
     title: "PRODUCTOS",
-    links: ["Casino Aggregation", "Game Studio", "Game Providers"],
+    links: [
+      { label: "Casino Aggregation", to: ROUTES.casinoAggregation },
+      { label: "Game Studio", to: ROUTES.gameStudio },
+      { label: "Game Providers", to: ROUTES.gameProviders },
+    ],
   },
   {
     title: "EMPRESA",
-    links: ["Nosotros", "Recursos", "Contacto", "Politicas legales"],
+    links: [
+      { label: "Nosotros", to: ROUTES.about },
+      { label: "Recursos", href: "#" },
+      { label: "Contacto", to: ROUTES.contact },
+      { label: "Politicas legales", href: "#" },
+    ],
   },
-] as const;
+] as const satisfies ReadonlyArray<{
+  links: ReadonlyArray<FooterLink>;
+  title: string;
+}>;
 
 const socialLinks = [
-  { label: "LinkedIn", text: "in" },
-  { label: "X", text: "X" },
-  { label: "YouTube", text: "\u25B6" },
-  { label: "Email", text: "\u2709" },
+  { label: "LinkedIn", text: "in", to: ROUTES.contact },
+  { label: "X", text: "X", to: ROUTES.contact },
+  { label: "YouTube", text: "\u25B6", to: ROUTES.contact },
+  { label: "Email", text: "\u2709", to: ROUTES.contact },
 ] as const;
 
+function FooterNavLink({ link }: { link: FooterLink }) {
+  if (link.to) {
+    return (
+      <Link className={styles.footerLink} to={link.to}>
+        {link.label}
+      </Link>
+    );
+  }
+
+  return (
+    <a className={styles.footerLink} href={link.href}>
+      {link.label}
+    </a>
+  );
+}
+
 function Footer() {
-  
   return (
     <footer className={styles.footer}>
       <div className={styles.shell}>
         <div className={styles.main}>
           <section className={styles.brandColumn} aria-label="Andes Gaming">
-            <a className={styles.logoLink} href="#home" aria-label="Andes Gaming home">
+            <Link
+              className={styles.logoLink}
+              to={ROUTES.home}
+              aria-label="Andes Gaming home"
+            >
               <img className={styles.logo} src={footerLogo} alt="Andes Gaming" />
-            </a>
+            </Link>
 
             <p className={styles.description}>
               Plataforma tecnologica B2B para integracion, operacion y
@@ -44,9 +94,13 @@ function Footer() {
             >
               {socialLinks.map((item) => (
                 <li key={item.label}>
-                  <a className={styles.socialLink} href="#contacto" aria-label={item.label}>
+                  <Link
+                    className={styles.socialLink}
+                    to={item.to}
+                    aria-label={item.label}
+                  >
                     {item.text}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -56,18 +110,18 @@ function Footer() {
             {footerColumns.map((column) => (
               <section className={styles.linkColumn} key={column.title}>
                 <h2 className={styles.columnTitle}>{column.title}</h2>
-                <ul className={`list-unstyled m-0 p-0 d-grid ${styles.columnList}`}>
+                <ul
+                  className={`list-unstyled m-0 p-0 d-grid ${styles.columnList}`}
+                >
                   {column.links.map((link) => (
-                    <li key={link}>
-                      <a className={styles.footerLink} href="#home">
-                        {link}
-                      </a>
+                    <li key={link.label}>
+                      <FooterNavLink link={link} />
                     </li>
                   ))}
                 </ul>
               </section>
             ))}
- 
+
             <section className={styles.contactColumn} aria-label="Contacto">
               <h2 className={styles.columnTitle}>CONTACTO</h2>
 

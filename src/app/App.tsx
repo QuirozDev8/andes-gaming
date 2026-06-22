@@ -1,11 +1,15 @@
+import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout/MainLayout";
-import Home from "../pages/home/Home";
+import { appRoutes } from "../routes/appRoutes";
 
 function App() {
   return (
-    
     <MainLayout>
-       <Home />
+      <Routes>
+        {appRoutes.map((route) => (
+          <Route key={route.path} path={route.path} element={route.element} />
+        ))}
+      </Routes>
     </MainLayout>
   );
 }
