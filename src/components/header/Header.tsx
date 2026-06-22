@@ -1,7 +1,7 @@
 import { type FocusEvent, useEffect, useId, useState } from "react";
 import { ArrowBigRightDash, Gamepad2, Network, Puzzle } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import andesLogo from "../../assets/logos/logo_color.png";
+import andesLogo from "../../assets/logos/logo-header.png";
 import { ROUTES } from "../../routes/routePaths";
 import Button from "../Button/Button";
 import styles from "./Header.module.css";
@@ -215,7 +215,7 @@ function Header() {
         aria-label="Main navigation"
       >
         <Link
-          className={`ps-2 ${styles.brand}`}
+          className={`ps-3 ${styles.brand}`}
           to={ROUTES.home}
           aria-label="Andes Gaming home"
         >
