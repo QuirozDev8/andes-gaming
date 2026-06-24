@@ -17,6 +17,7 @@ export type SliderGameParticleType =
   | 'sparks'
   | 'dice'
   | 'energyCoins'
+  | 'wizardMagic'
   | 'none';
 
 export type SliderGameSlide = {
@@ -68,6 +69,7 @@ const particleClassByType: Record<Exclude<SliderGameParticleType, 'none'>, strin
   sparks: styles.sparkRise,
   dice: styles.diceTumble,
   energyCoins: styles.energyCoin,
+  wizardMagic: styles.wizardMagic,
 };
 
 function clampIndex(index: number, total: number) {
@@ -180,6 +182,39 @@ function createParticles(type: SliderGameParticleType): ParticleModel[] {
         '--size': `${randomBetween(20, 34).toFixed(0)}px`,
         '--drift': `${randomBetween(-26, 26).toFixed(0)}px`,
         '--jolt': `${randomBetween(-10, 10).toFixed(0)}px`,
+      },
+    }));
+  }
+
+  if (type === 'wizardMagic') {
+    const wizardMagicPositions = [
+      { x: 15, y: 28 },
+      { x: 30, y: 18 },
+      { x: 50, y: 16 },
+      { x: 70, y: 18 },
+      { x: 85, y: 28 },
+      { x: 20, y: 48 },
+      { x: 38, y: 36 },
+      { x: 62, y: 36 },
+      { x: 80, y: 48 },
+      { x: 28, y: 70 },
+      { x: 50, y: 74 },
+      { x: 72, y: 70 },
+    ];
+    const magicColors = ['#5ee7ff', '#8a7cff', '#b8faff', '#c78bff'] as const;
+
+    return wizardMagicPositions.map((position, index) => ({
+      id: `wizard-magic-${index}`,
+      type,
+      style: {
+        '--x': `${(position.x + randomBetween(-3.2, 3.2)).toFixed(1)}%`,
+        '--y': `${(position.y + randomBetween(-3.4, 3.4)).toFixed(1)}%`,
+        '--delay': formatSeconds(randomBetween(0, 4.2)),
+        '--dur': formatSeconds(randomBetween(5.4, 7.4)),
+        '--size': `${randomBetween(8, 18).toFixed(0)}px`,
+        '--drift': `${randomBetween(-22, 22).toFixed(0)}px`,
+        '--rise': `${randomBetween(-22, 18).toFixed(0)}px`,
+        '--magic-color': magicColors[index % magicColors.length],
       },
     }));
   }

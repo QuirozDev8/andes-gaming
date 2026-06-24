@@ -2,6 +2,7 @@ import type { SliderGameSlide } from './SliderGames';
 import SharkFeastImg from '../../../../assets/img/img-shark-feast.webp';
 import OlympusImg from '../../../../assets/img/img-olympus.webp';
 import EnergyCoinsImg from '../../../../assets/img/img-energy-coins.webp';
+import BlueWizardImg from '../../../../assets/img/img-blue-wizard.webp';
 
 export const defaultSliderGames: SliderGameSlide[] = [
   {
@@ -42,13 +43,14 @@ export const defaultSliderGames: SliderGameSlide[] = [
     particleType: 'energyCoins',
   },
   {
-    id: 'live-casino',
-    title: 'LIVE CASINO',
-    description: 'Dealers en espanol - 24/7 - Streaming HD',
-    imageSrc: 'https://d8j0ntlcm91z4.cloudfront.net/user_3DSFxZu8uDjHlOKZEo87WYHr2qH/hf_20260528_135949_97fb0234-dd52-419f-a605-79ce904e8b86.png',
-    imageAlt: 'Roulette wheel 3D',
-    accent: '#a45bff',
-    particleType: 'orbit',
+    id: 'blue-wizard',
+    title: 'BLUE WIZARD',
+    description: 'PlayTech - Bosque encantado con hechizos, calderos y giros gratis',
+    imageSrc: BlueWizardImg,
+    imageAlt: 'Blue Wizard slot game',
+    accent: '#5ee7ff',
+    glowColor: '#8a7cff',
+    particleType: 'wizardMagic',
   },
   {
     id: 'instant',

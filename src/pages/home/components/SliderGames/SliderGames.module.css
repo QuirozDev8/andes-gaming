@@ -279,7 +279,8 @@
 .isIdle .ballOrbit,
 .isIdle .sparkRise,
 .isIdle .diceTumble,
-.isIdle .energyCoin {
+.isIdle .energyCoin,
+.isIdle .wizardMagic {
   animation-play-state: paused;
 }
 
@@ -289,7 +290,8 @@
 .isTransitioning .ballOrbit,
 .isTransitioning .sparkRise,
 .isTransitioning .diceTumble,
-.isTransitioning .energyCoin {
+.isTransitioning .energyCoin,
+.isTransitioning .wizardMagic {
   animation-play-state: paused;
 }
 
@@ -431,6 +433,47 @@
   box-shadow: inset 0 0 8px rgba(57, 255, 191, 0.35);
 }
 
+.wizardMagic {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--size, 12px);
+  height: var(--size, 12px);
+  color: var(--magic-color, #5ee7ff);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.95) 0 12%, transparent 13%),
+    radial-gradient(circle, currentColor 0 34%, transparent 68%);
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  box-shadow:
+    0 0 10px currentColor,
+    0 0 22px rgba(164, 91, 255, 0.22);
+  opacity: 0;
+  animation: wizardMagicFloat var(--dur) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.wizardMagic::before {
+  position: absolute;
+  inset: -65%;
+  content: "";
+  background:
+    linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat,
+    linear-gradient(90deg, currentColor, currentColor) center / 1px 100% no-repeat;
+  opacity: 0.76;
+  transform: rotate(45deg);
+}
+
+.wizardMagic::after {
+  position: absolute;
+  inset: 22%;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 2px;
+  box-shadow: 0 0 8px currentColor;
+  transform: rotate(45deg);
+}
+
 @keyframes iconBreathe {
   0%,
   100% {
@@ -558,6 +601,27 @@
   }
 }
 
+@keyframes wizardMagicFloat {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) rotate(0deg) scale(0.72);
+  }
+
+  16%,
+  78% {
+    opacity: 0.86;
+  }
+
+  46% {
+    transform: translate3d(calc(var(--drift, 0px) - 50%), calc(var(--rise, 0px) - 50%), 0) rotate(150deg) scale(1.12);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, calc(-50% - 18px), 0) rotate(300deg) scale(0.78);
+  }
+}
+
 @media (min-width: 901px) and (max-width: 1199px) {
   .bigText {
     font-size: clamp(84px, 16vw, 190px);
@@ -679,7 +743,8 @@
   .ballOrbit,
   .sparkRise,
   .diceTumble,
-  .energyCoin {
+  .energyCoin,
+  .wizardMagic {
     animation: none !important;
   }
 }
