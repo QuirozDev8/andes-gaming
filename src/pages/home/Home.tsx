@@ -246,7 +246,7 @@ function Home() {
       ariaLabel="Slider de juegos principales de proveedores"
     />
 
-    <div style={{ height: '100px' }}> separacion temporal</div>
+    <div style={{ height: '300px' }}> separacion temporal</div>
      
     </> 
   );

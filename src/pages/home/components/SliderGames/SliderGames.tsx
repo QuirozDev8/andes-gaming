@@ -10,7 +10,14 @@ import {
 } from 'react';
 import styles from './SliderGames.module.css';
 
-export type SliderGameParticleType = 'bubbles' | 'cards' | 'orbit' | 'sparks' | 'dice' | 'none';
+export type SliderGameParticleType =
+  | 'bubbles'
+  | 'cards'
+  | 'orbit'
+  | 'sparks'
+  | 'dice'
+  | 'energyCoins'
+  | 'none';
 
 export type SliderGameSlide = {
   id: string;
@@ -60,6 +67,7 @@ const particleClassByType: Record<Exclude<SliderGameParticleType, 'none'>, strin
   orbit: styles.ballOrbit,
   sparks: styles.sparkRise,
   dice: styles.diceTumble,
+  energyCoins: styles.energyCoin,
 };
 
 function clampIndex(index: number, total: number) {
@@ -156,6 +164,22 @@ function createParticles(type: SliderGameParticleType): ParticleModel[] {
         '--x': `${(index / 16 * 100 + randomBetween(-3, 3)).toFixed(1)}%`,
         '--delay': formatSeconds(randomBetween(0, 3)),
         '--dur': formatSeconds(randomBetween(2, 3.5)),
+      },
+    }));
+  }
+
+  if (type === 'energyCoins') {
+    return Array.from({ length: 10 }, (_, index) => ({
+      id: `energy-coin-${index}`,
+      type,
+      style: {
+        '--x': `${(index / 10 * 100 + randomBetween(-4, 4)).toFixed(1)}%`,
+        '--y': `${randomBetween(18, 78).toFixed(1)}%`,
+        '--delay': formatSeconds(randomBetween(0, 3.8)),
+        '--dur': formatSeconds(randomBetween(4.8, 6.6)),
+        '--size': `${randomBetween(20, 34).toFixed(0)}px`,
+        '--drift': `${randomBetween(-26, 26).toFixed(0)}px`,
+        '--jolt': `${randomBetween(-10, 10).toFixed(0)}px`,
       },
     }));
   }

@@ -1,6 +1,7 @@
 import type { SliderGameSlide } from './SliderGames';
 import SharkFeastImg from '../../../../assets/img/img-shark-feast.webp';
 import OlympusImg from '../../../../assets/img/img-olympus.webp';
+import EnergyCoinsImg from '../../../../assets/img/img-energy-coins.webp';
 
 export const defaultSliderGames: SliderGameSlide[] = [
   {
@@ -29,6 +30,16 @@ export const defaultSliderGames: SliderGameSlide[] = [
     imageAlt: 'Olympus slot game',
     accent: '#ffd24a',
     particleType: 'sparks',
+  },
+  {
+    id: 'energy-coins',
+    title: 'ENERGY COINS',
+    description: 'Playson - Hold and Win con monedas energeticas y multiplicadores',
+    imageSrc: EnergyCoinsImg,
+    imageAlt: 'Energy Coins slot game',
+    accent: '#ffd24a',
+    glowColor: '#39ffbf',
+    particleType: 'energyCoins',
   },
   {
     id: 'live-casino',
