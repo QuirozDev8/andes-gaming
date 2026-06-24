@@ -43,7 +43,9 @@ const AnimationText: React.FC<AnimationTextProps> = ({
   const ref = useRef<HTMLParagraphElement>(null);
   const animationCompletedRef = useRef(false);
   const onCompleteRef = useRef(onLetterAnimationComplete);
-  const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
+  const [fontsLoaded, setFontsLoaded] = useState<boolean>(
+    () => document.fonts.status === 'loaded'
+  );
 
   // Keep callback ref updated
   useEffect(() => {
@@ -51,14 +53,12 @@ const AnimationText: React.FC<AnimationTextProps> = ({
   }, [onLetterAnimationComplete]);
 
   useEffect(() => {
-    if (document.fonts.status === 'loaded') {
+    if (fontsLoaded) return;
+
+    document.fonts.ready.then(() => {
       setFontsLoaded(true);
-    } else {
-      document.fonts.ready.then(() => {
-        setFontsLoaded(true);
-      });
-    }
-  }, []);
+    });
+  }, [fontsLoaded]);
 
   useGSAP(
     () => {
@@ -73,7 +73,9 @@ const AnimationText: React.FC<AnimationTextProps> = ({
       if (el._animationTextInstance) {
         try {
           el._animationTextInstance.revert();
-        } catch (_) {}
+        } catch {
+          // GSAP can no-op if the instance was already reverted.
+        }
         el._animationTextInstance = undefined;
       }
 
@@ -137,7 +139,9 @@ const AnimationText: React.FC<AnimationTextProps> = ({
         });
         try {
           splitInstance.revert();
-        } catch (_) {}
+        } catch {
+          // GSAP can no-op if the instance was already reverted.
+        }
         el._animationTextInstance = undefined;
       };
     },
