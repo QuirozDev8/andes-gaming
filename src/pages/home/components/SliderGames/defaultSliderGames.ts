@@ -3,6 +3,7 @@ import SharkFeastImg from '../../../../assets/img/img-shark-feast.webp';
 import OlympusImg from '../../../../assets/img/img-olympus.webp';
 import EnergyCoinsImg from '../../../../assets/img/img-energy-coins.webp';
 import BlueWizardImg from '../../../../assets/img/img-blue-wizard.webp';
+import GrandExpressImg from '../../../../assets/img/img-grand-express.webp';
 
 export const defaultSliderGames: SliderGameSlide[] = [
   {
@@ -15,13 +16,14 @@ export const defaultSliderGames: SliderGameSlide[] = [
     particleType: 'bubbles',
   },
   {
-    id: 'poker',
-    title: 'POKER',
-    description: 'Cash - MTT - Sit & Go - Multimesa',
-    imageSrc: 'https://d8j0ntlcm91z4.cloudfront.net/user_3DSFxZu8uDjHlOKZEo87WYHr2qH/hf_20260528_135900_a86c2b3a-15ce-4bf0-a5bd-bee342704125.png',
-    imageAlt: 'Poker chips and cards 3D',
+    id: 'grand-express',
+    title: 'GRAND EXPRESS',
+    description: 'RubyPlay - First Class, Express Respins y premios instantaneos',
+    imageSrc: GrandExpressImg,
+    imageAlt: 'Grand Express slot game',
     accent: '#ff2bd6',
-    particleType: 'cards',
+    glowColor: '#ff64e8',
+    particleType: 'expressTiles',
   },
   {
     id: 'crash',

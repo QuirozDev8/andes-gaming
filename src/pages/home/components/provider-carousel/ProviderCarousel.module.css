@@ -1,22 +1,141 @@
-.provider-carousel {
+.carousel {
+  --logo-width: 164px;
+  --logo-height: 88px;
+  --logo-gap: 24px;
+  --duration: 28s;
+  --scroll-distance: -25%;
+
+  display: grid;
+  gap: clamp(0.85rem, 1.8vw, 1.25rem);
   width: 100%;
-  height: 100%;
-  min-height: 10rem;
   overflow: hidden;
-  cursor: grab;
+  padding-block: 0.35rem;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 9%,
+    #000 91%,
+    transparent
+  );
 }
 
-.provider-carousel canvas {
-  display: block;
+.row {
   width: 100%;
-  height: 100%;
+  overflow: hidden;
 }
 
-.provider-carousel:active {
-  cursor: grabbing;
+.track {
+  display: flex;
+  width: max-content;
+  animation: scrollLeft var(--duration) linear infinite;
+  will-change: transform;
 }
 
-.provider-carousel:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 4px;
+.row[data-direction="right"] .track {
+  animation-name: scrollRight;
+}
+
+.carousel[data-pause-on-hover="true"]:hover .track {
+  animation-play-state: paused;
+}
+
+.group {
+  display: flex;
+  flex: 0 0 auto;
+  gap: var(--logo-gap);
+  padding-right: var(--logo-gap);
+}
+
+.logoLink,
+.logoTile {
+  width: var(--logo-width);
+  height: var(--logo-height);
+}
+
+.logoLink {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.logoTile {
+  display: grid;
+  place-items: center;
+  padding: clamp(0.85rem, 1.8vw, 1.15rem);
+  border: 1px solid rgba(var(--andes-cyan-rgb), 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(var(--andes-white-rgb), 0.42), rgba(var(--andes-white-rgb), 0.24)),
+    rgba(var(--andes-blue-midnight-rgb), 0.9);
+  box-shadow:
+    0 16px 34px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition:
+    border-color var(--transition-base),
+    filter var(--transition-base),
+    transform var(--transition-base);
+}
+
+.logoLink:hover .logoTile,
+.logoLink:focus-visible .logoTile,
+.logoTile:hover {
+  border-color: rgba(var(--andes-cyan-rgb), 0.46);
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+.logoLink:focus-visible {
+  border-radius: 8px;
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.logoImage {
+  display: block;
+  width: min(78%, 132px);
+  height: 42px;
+  object-fit: contain;
+  object-position: center;
+  transform: translateY(var(--item-logo-offset-y, 0)) scale(var(--item-logo-scale, 1));
+  transform-origin: center;
+}
+
+@keyframes scrollLeft {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(var(--scroll-distance));
+  }
+}
+
+@keyframes scrollRight {
+  from {
+    transform: translateX(var(--scroll-distance));
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .carousel {
+    --logo-width: 132px;
+    --logo-height: 72px;
+    --logo-gap: 14px;
+  }
+
+  .logoImage {
+    width: min(78%, 104px);
+    height: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation-duration: 1ms;
+    animation-play-state: paused;
+  }
 }

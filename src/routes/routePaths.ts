@@ -4,7 +4,7 @@ export const ROUTES = {
   home: "/",
   casinoAggregation: "/productos/casino-aggregation",
   gameStudio: "/productos/game-studio",
-  gameProviders: "/productos/game-providers",
+  gameProviders: "/game-provider",
   about: "/nosotros",
   blog: "/blog",
   contact: "/contacto",

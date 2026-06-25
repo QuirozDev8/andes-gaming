@@ -148,63 +148,33 @@
 
 .heroMedia {
   position: relative;
-  width: min(100%, 560px);
+  width: min(138%, 920px);
+  transform: translateX(clamp(-3.75rem, -4vw, -1.5rem));
 }
 
-.imagePlaceholder {
+.heroVisualStage {
   position: relative;
-  display: flex;
-  min-height: 360px;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(var(--andes-cyan-rgb), 0.26);
-  border-radius: var(--radius-xl);
-  background:
-    linear-gradient(
-      135deg,
-      rgba(var(--andes-blue-midnight-rgb), 0.72) 0%,
-      rgba(var(--andes-blue-deep-rgb), 0.52) 100%
-    ),
-    radial-gradient(
-      circle at 62% 28%,
-      rgba(var(--andes-violet-rgb), 0.2),
-      transparent 36%
-    );
-  box-shadow:
-    var(--shadow-surface),
-    inset 0 0 0 1px rgba(var(--andes-cyan-rgb), 0.08);
+  isolation: isolate;
+  width: 100%;
+  height: clamp(330px, 30vw, 430px);
 }
 
-.imagePlaceholder::before,
-.imagePlaceholder::after {
-  position: absolute;
-  content: "";
-  pointer-events: none;
+.heroVisualFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  padding-right: 5rem;
 }
 
-.imagePlaceholder::before {
-  inset: 18px;
-  border: 1px solid rgba(var(--andes-gray-tech-rgb), 0.12);
-  border-radius: calc(var(--radius-xl) - 8px);
-}
-
-.imagePlaceholder::after {
-  right: 12%;
-  bottom: 16%;
-  left: 18%;
-  height: 1px;
-  background: var(--andes-gradient-line);
-  opacity: 0.86;
-}
-
-.imagePlaceholderLabel {
-  color: rgba(var(--andes-gray-tech-rgb), 0.72);
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-wide);
-  text-transform: uppercase;
+.heroVisualImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform: scale(1.36) translateX(2%);
+  transform-origin: center;
 }
 
 @media (max-width: 767.98px) {
@@ -244,11 +214,17 @@
 
   .heroMedia {
     width: 100%;
+    transform: none;
   }
 
-  .imagePlaceholder {
-    min-height: 220px;
+  .heroVisualStage {
+    height: clamp(250px, 62vw, 330px);
   }
+
+  .heroVisualImage {
+    transform: scale(1.16);
+  }
+
 }
 
 @media (min-width: 1200px) {
@@ -502,7 +478,16 @@
 }
 
 .providerCarouselFrame {
+  display: grid;
+  align-items: center;
   height: clamp(14rem, 22vw, 18rem);
+}
+
+.providerActions {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(0.75rem, 2vw, 1.5rem);
+  padding-inline: var(--space-4);
 }
 
 .sliderGames {
@@ -575,6 +560,11 @@
 
   .providerCarouselFrame {
     height: 11rem;
+  }
+
+  .providerActions {
+    width: min(100%, 18rem);
+    margin-inline: auto;
   }
 
   .sliderGames {

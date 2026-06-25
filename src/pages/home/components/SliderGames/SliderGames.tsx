@@ -18,6 +18,7 @@ export type SliderGameParticleType =
   | 'dice'
   | 'energyCoins'
   | 'wizardMagic'
+  | 'expressTiles'
   | 'none';
 
 export type SliderGameSlide = {
@@ -45,10 +46,11 @@ export type SliderGamesProps = {
 };
 
 type CSSVariableStyle = CSSProperties & Record<`--${string}`, string | number>;
+type ActiveParticleType = Exclude<SliderGameParticleType, 'none'>;
 
 type ParticleModel = {
   id: string;
-  type: Exclude<SliderGameParticleType, 'none'>;
+  type: ActiveParticleType;
   style: CSSVariableStyle;
 };
 
@@ -62,7 +64,49 @@ const SWIPE_THRESHOLD = 50;
 const DEFAULT_AUTOPLAY_MS = 2200;
 const TRANSITION_FALLBACK_MS = 1100;
 
-const particleClassByType: Record<Exclude<SliderGameParticleType, 'none'>, string> = {
+const WIZARD_MAGIC_POSITIONS = [
+  { x: 15, y: 28 },
+  { x: 30, y: 18 },
+  { x: 50, y: 16 },
+  { x: 70, y: 18 },
+  { x: 85, y: 28 },
+  { x: 20, y: 48 },
+  { x: 38, y: 36 },
+  { x: 62, y: 36 },
+  { x: 80, y: 48 },
+  { x: 28, y: 70 },
+  { x: 50, y: 74 },
+  { x: 72, y: 70 },
+] as const;
+
+const WIZARD_MAGIC_COLORS = ['#5ee7ff', '#8a7cff', '#b8faff', '#c78bff'] as const;
+
+const EXPRESS_TILE_POSITIONS = [
+  { x: 14, y: 30 },
+  { x: 29, y: 22 },
+  { x: 46, y: 28 },
+  { x: 63, y: 22 },
+  { x: 82, y: 30 },
+  { x: 20, y: 52 },
+  { x: 38, y: 45 },
+  { x: 58, y: 46 },
+  { x: 78, y: 52 },
+  { x: 33, y: 70 },
+  { x: 66, y: 70 },
+] as const;
+
+const DICE_POSITIONS = [
+  { x: '15%', y: '25%' },
+  { x: '78%', y: '22%' },
+  { x: '20%', y: '70%' },
+  { x: '75%', y: '68%' },
+  { x: '50%', y: '15%' },
+  { x: '10%', y: '50%' },
+  { x: '88%', y: '50%' },
+  { x: '50%', y: '82%' },
+] as const;
+
+const particleClassByType: Record<ActiveParticleType, string> = {
   bubbles: styles.bubbleRise,
   cards: styles.cardFloat,
   orbit: styles.ballOrbit,
@@ -70,6 +114,7 @@ const particleClassByType: Record<Exclude<SliderGameParticleType, 'none'>, strin
   dice: styles.diceTumble,
   energyCoins: styles.energyCoin,
   wizardMagic: styles.wizardMagic,
+  expressTiles: styles.expressTile,
 };
 
 function clampIndex(index: number, total: number) {
@@ -187,23 +232,7 @@ function createParticles(type: SliderGameParticleType): ParticleModel[] {
   }
 
   if (type === 'wizardMagic') {
-    const wizardMagicPositions = [
-      { x: 15, y: 28 },
-      { x: 30, y: 18 },
-      { x: 50, y: 16 },
-      { x: 70, y: 18 },
-      { x: 85, y: 28 },
-      { x: 20, y: 48 },
-      { x: 38, y: 36 },
-      { x: 62, y: 36 },
-      { x: 80, y: 48 },
-      { x: 28, y: 70 },
-      { x: 50, y: 74 },
-      { x: 72, y: 70 },
-    ];
-    const magicColors = ['#5ee7ff', '#8a7cff', '#b8faff', '#c78bff'] as const;
-
-    return wizardMagicPositions.map((position, index) => ({
+    return WIZARD_MAGIC_POSITIONS.map((position, index) => ({
       id: `wizard-magic-${index}`,
       type,
       style: {
@@ -214,32 +243,43 @@ function createParticles(type: SliderGameParticleType): ParticleModel[] {
         '--size': `${randomBetween(8, 18).toFixed(0)}px`,
         '--drift': `${randomBetween(-22, 22).toFixed(0)}px`,
         '--rise': `${randomBetween(-22, 18).toFixed(0)}px`,
-        '--magic-color': magicColors[index % magicColors.length],
+        '--magic-color': WIZARD_MAGIC_COLORS[index % WIZARD_MAGIC_COLORS.length],
       },
     }));
   }
 
-  const dicePositions = [
-    { x: '15%', y: '25%' },
-    { x: '78%', y: '22%' },
-    { x: '20%', y: '70%' },
-    { x: '75%', y: '68%' },
-    { x: '50%', y: '15%' },
-    { x: '10%', y: '50%' },
-    { x: '88%', y: '50%' },
-    { x: '50%', y: '82%' },
-  ];
+  if (type === 'expressTiles') {
+    return EXPRESS_TILE_POSITIONS.map((position, index) => ({
+      id: `express-tile-${index}`,
+      type,
+      style: {
+        '--x': `${(position.x + randomBetween(-2.2, 2.2)).toFixed(1)}%`,
+        '--y': `${(position.y + randomBetween(-2.6, 2.6)).toFixed(1)}%`,
+        '--delay': formatSeconds(randomBetween(0, 3.2)),
+        '--dur': formatSeconds(randomBetween(3.4, 5)),
+        '--size': `${randomBetween(28, 46).toFixed(0)}px`,
+        '--height': `${randomBetween(10, 18).toFixed(0)}px`,
+        '--travel': `${randomBetween(34, 62).toFixed(0)}px`,
+        '--trail': `${randomBetween(58, 92).toFixed(0)}px`,
+        '--tilt': `${randomBetween(-6, 6).toFixed(0)}deg`,
+      },
+    }));
+  }
 
-  return dicePositions.map((position, index) => ({
-    id: `dice-${index}`,
-    type,
-    style: {
-      '--x': position.x,
-      '--y': position.y,
-      '--delay': `${(index * 0.4).toFixed(2)}s`,
-      '--dur': formatSeconds(randomBetween(5, 7)),
-    },
-  }));
+  if (type === 'dice') {
+    return DICE_POSITIONS.map((position, index) => ({
+      id: `dice-${index}`,
+      type,
+      style: {
+        '--x': position.x,
+        '--y': position.y,
+        '--delay': `${(index * 0.4).toFixed(2)}s`,
+        '--dur': formatSeconds(randomBetween(5, 7)),
+      },
+    }));
+  }
+
+  return [];
 }
 
 function usePrefersReducedMotion() {
@@ -325,12 +365,12 @@ export function SliderGames({
     ];
   }, [slideCount, slides]);
 
-  const particleKey = slides.map((slide) => `${slide.id}:${slide.particleType}`).join('|');
+  const particleTypeKey = slides.map((slide) => slide.particleType).join('|');
   const particlesBySlide = useMemo(
-    () => slides.map((slide) => createParticles(slide.particleType)),
-    // The key keeps particle positions stable unless slide identity or particle type changes.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [particleKey],
+    () => (particleTypeKey
+      ? (particleTypeKey.split('|') as SliderGameParticleType[]).map(createParticles)
+      : []),
+    [particleTypeKey],
   );
 
   const resetAutoTimer = useCallback(() => {
@@ -648,7 +688,7 @@ export function SliderGames({
                 <div className={styles.particles} style={particleStyle} aria-hidden="true">
                   {particles.map((particle) => (
                     <span
-                      className={particleClassByType[particle.type]}
+                      className={`${styles.particleItem} ${particleClassByType[particle.type]}`}
                       key={particle.id}
                       style={particle.style}
                     />

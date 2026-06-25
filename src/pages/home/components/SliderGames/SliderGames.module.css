@@ -273,25 +273,17 @@
   pointer-events: none;
 }
 
+.particleItem {
+  will-change: transform, opacity;
+}
+
 .isIdle .iconMain,
-.isIdle .bubbleRise,
-.isIdle .cardFloat,
-.isIdle .ballOrbit,
-.isIdle .sparkRise,
-.isIdle .diceTumble,
-.isIdle .energyCoin,
-.isIdle .wizardMagic {
+.isIdle .particleItem {
   animation-play-state: paused;
 }
 
 .isTransitioning .iconMain,
-.isTransitioning .bubbleRise,
-.isTransitioning .cardFloat,
-.isTransitioning .ballOrbit,
-.isTransitioning .sparkRise,
-.isTransitioning .diceTumble,
-.isTransitioning .energyCoin,
-.isTransitioning .wizardMagic {
+.isTransitioning .particleItem {
   animation-play-state: paused;
 }
 
@@ -474,6 +466,57 @@
   transform: rotate(45deg);
 }
 
+.expressTile {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--size, 30px);
+  height: var(--height, 14px);
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.78) 18%, transparent 28%),
+    linear-gradient(90deg, rgba(255, 43, 214, 0.12) 0%, #ff2bd6 46%, #ffffff 50%, #ff2bd6 54%, rgba(255, 43, 214, 0.16) 100%);
+  border: 1px solid rgba(255, 117, 235, 0.9);
+  border-radius: 999px;
+  box-shadow:
+    0 0 12px rgba(255, 43, 214, 0.72),
+    0 0 28px rgba(255, 43, 214, 0.34),
+    inset 0 0 8px rgba(255, 255, 255, 0.24);
+  opacity: 0;
+  animation: expressTileRun var(--dur) cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  animation-delay: var(--delay);
+}
+
+.expressTile::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--height, 14px) * 1.6);
+  height: calc(var(--height, 14px) * 1.6);
+  content: "";
+  background:
+    radial-gradient(circle at 35% 30%, #ffffff 0 12%, transparent 13%),
+    radial-gradient(circle, #ffb7f5 0 22%, #ff2bd6 58%, #7a0a72 100%);
+  border: 1px solid rgba(255, 214, 250, 0.86);
+  border-radius: 4px;
+  box-shadow:
+    0 0 10px rgba(255, 43, 214, 0.84),
+    inset 0 0 6px rgba(255, 255, 255, 0.24);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.expressTile::after {
+  position: absolute;
+  top: 50%;
+  right: 72%;
+  width: var(--trail, 56px);
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255, 43, 214, 0.64), rgba(255, 255, 255, 0.9));
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(255, 43, 214, 0.66);
+  transform: translateY(-50%);
+}
+
 @keyframes iconBreathe {
   0%,
   100% {
@@ -622,6 +665,28 @@
   }
 }
 
+@keyframes expressTileRun {
+  0% {
+    opacity: 0;
+    transform: translate3d(calc(-50% - 24px), -50%, 0) rotate(var(--tilt, 0deg)) scaleX(0.76);
+  }
+
+  14%,
+  72% {
+    opacity: 0.88;
+  }
+
+  38% {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) rotate(0deg) scaleX(1.08);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(calc(var(--travel, 32px) - 50%), calc(-50% - 8px), 0) rotate(var(--tilt, 0deg)) scaleX(0.72);
+  }
+}
+
 @media (min-width: 901px) and (max-width: 1199px) {
   .bigText {
     font-size: clamp(84px, 16vw, 190px);
@@ -738,13 +803,7 @@
   }
 
   .iconMain,
-  .bubbleRise,
-  .cardFloat,
-  .ballOrbit,
-  .sparkRise,
-  .diceTumble,
-  .energyCoin,
-  .wizardMagic {
+  .particleItem {
     animation: none !important;
   }
 }
