@@ -1,118 +1,22 @@
 import { ROUTES } from "../../routes/routePaths";
-import {
-  ChartNoAxesCombined,
-  Gamepad2,
-  Network,
-  Settings2,
-  ShieldCheck,
-  UsersRound,
-} from "lucide-react";
 import AnimationText from "../../components/animation-text/AnimationText";
 import styles from "./Home.module.css";
-import BgHero from "./components/bg-hero/BgHero";
 import BtnElegant from "../../components/btn-elegant/BtnElegant";
-import AboutCompany from "./components/about-company/AboutCompany";
-import Metrics from "./components/metrics/Metrics";
-import CardSection, {type CardSectionCardProps,} from "./components/card-section/CardSection";
-import cardBackground from "../../assets/img/bg-mountain2.png";
-import { SliderGames, defaultSliderGames } from "./components/SliderGames";
-import ProviderCarousel, {
-  type ProviderCarouselItem,
-} from "./components/provider-carousel/ProviderCarousel";
-import CardMundoImg from "../../assets/img/bg-mundo.webp";
-import CardPiezaImg from "../../assets/img/bg-pieza.webp";
-import CardCoheteImg from "../../assets/img/bg-cohete.webp";
 import heroImage from "../../assets/img/img-hero.png";
-import pragmaticLogo from "../../assets/logos/pragmatic.webp";
-import playsonLogo from "../../assets/logos/playson.webp";
-import playngoLogo from "../../assets/logos/playngo.webp";
-import platiplusLogo from "../../assets/logos/platiplus.webp";
-
-
-const productCards: CardSectionCardProps[] = [
-  {
-    color: "#120F17",
-    title: "Single API",
-    description:
-      "Integra casino, sportsbook, pagos y servicios desde una sola capa.",
-    label: "Core Layer",
-    icon: Network,
-    backgroundImage: cardBackground,
-  },
-  {
-    color: "#120F17",
-    title: "Proveedores",
-    description:
-      "Conecta estudios, agregadores y operadores con flujos centralizados.",
-    label: "Ecosistema",
-    icon: UsersRound,
-    backgroundImage: CardMundoImg,
-  },
-  {
-    color: "#120F17",
-    title: "Operacion escalable",
-    description:
-      "Arquitectura preparada para crecer por marca, mercado y volumen operativo.",
-    label: "Escalabilidad",
-    icon: ChartNoAxesCombined,
-    backgroundImage: CardCoheteImg,
-  },
-  {
-    color: "#120F17",
-    title: "Backoffice",
-    description:
-      "Gestiona configuraciones, contenido y visibilidad operacional desde un panel.",
-    label: "Control",
-    icon: Settings2,
-  },
-  {
-    color: "#120F17",
-    title: "Analitica",
-    description:
-      "Monitorea actividad, rendimiento e integraciones con datos accionables.",
-    label: "Insights",
-    icon: Gamepad2,
-    backgroundImage: CardPiezaImg,
-  },
-  {
-    color: "#120F17",
-    title: "Seguridad",
-    description:
-      "Procesos robustos para operar integraciones B2B con mayor estabilidad.",
-    label: "Proteccion",
-    icon: ShieldCheck,
-    backgroundImage: cardBackground,
-  },
-];
-
-const providerLogos: ProviderCarouselItem[] = [
-  {
-    id: "pragmatic",
-    src: pragmaticLogo,
-    alt: "Pragmatic Play",
-    
-  },
-  {
-    id: "playson",
-    src: playsonLogo,
-    alt: "Playson",
-  },
-  {
-    id: "playngo",
-    src: playngoLogo,
-    alt: "Play'n GO",
-  },
-  {
-    id: "platiplus",
-    src: platiplusLogo,
-    alt: "Platiplus",
-  },
-];
+import {
+  AboutCompany,
+  BgHero,
+  CardSection,
+  defaultSliderGames,
+  Metrics,
+  ProviderCarousel,
+  SliderGames,
+} from "./components";
+import { productCards, providerLogos } from "./data";
 
 
 
 function Home() {
-  
   return (
     <>
       {/* Hero section */}
@@ -238,8 +142,9 @@ function Home() {
               <span> proveedores de primer nivel </span>
             </h2>
             <p>
-              Un hub preparado para integrar verticales, estudios y operadores
-              con una experiencia B2B fluida.
+              Tu camino hacia una diversa colección de más de 200 proveedores de
+              juegos premium para crear una experiencia de juego personalizada
+              para tus jugadores.
             </p>
           </div>
         </div>
@@ -247,33 +152,39 @@ function Home() {
           <ProviderCarousel
             items={providerLogos}
             ariaLabel="Logos de proveedores integrados"
-            logoWidth={170}
+            logoWidth={180}
             logoHeight={92}
-            durationSeconds={26}
+            durationSeconds={52}
           />
         </div>
         <div className={styles.providerActions}>
-          <BtnElegant text="Ver todos los proveedores"
+          <BtnElegant
+            text="Ver todos los proveedores"
             to={ROUTES.gameProviders}
             ariaLabel="Ver todos los proveedores"
           />
         </div>
       </section>
 
-      {/* Games section */}
+      {/* otro elemento */}
+      <div style={{ height: "300px", padding: "20px" }}>
+        <h2 className="text-black">Aqui ira un componente sin animacion. </h2>
+      </div>
+
+      {/* featured games session */}
       <SliderGames
         className={styles.sliderGames}
         slides={defaultSliderGames}
         eyebrow="// proveedores destacados"
         autoPlayMs={5000}
         titlePrefix="Juegos"
-        titleAccent="principales"
+        titleAccent="destacados"
         titleSuffix=" de nuestros proveedores."
         ariaLabel="Slider de juegos principales de proveedores"
       />
-
+  
+      {/* otro elemento */}
       <div style={{ height: "300px", padding: "20px" }}>
-        
         separacion temporal
       </div>
     </>

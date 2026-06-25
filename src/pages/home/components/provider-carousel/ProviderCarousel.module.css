@@ -62,14 +62,14 @@
   display: grid;
   place-items: center;
   padding: clamp(0.85rem, 1.8vw, 1.15rem);
-  border: 1px solid rgba(var(--andes-cyan-rgb), 0.16);
+  border: 1px solid rgba(var(--andes-cyan-rgb), 0.22);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(var(--andes-white-rgb), 0.42), rgba(var(--andes-white-rgb), 0.24)),
-    rgba(var(--andes-blue-midnight-rgb), 0.9);
+    linear-gradient(135deg, rgba(var(--andes-white-rgb), 0.64), rgba(var(--andes-white-rgb), 0.4)),
+    rgba(var(--andes-white-rgb), 0.16);
   box-shadow:
     0 16px 34px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
   transition:
     border-color var(--transition-base),
     filter var(--transition-base),
@@ -92,8 +92,8 @@
 
 .logoImage {
   display: block;
-  width: min(78%, 132px);
-  height: 42px;
+  width: min(94%, 160px);
+  height: 56px;
   object-fit: contain;
   object-position: center;
   transform: translateY(var(--item-logo-offset-y, 0)) scale(var(--item-logo-scale, 1));
@@ -128,8 +128,8 @@
   }
 
   .logoImage {
-    width: min(78%, 104px);
-    height: 34px;
+    width: min(94%, 124px);
+    height: 44px;
   }
 }
 

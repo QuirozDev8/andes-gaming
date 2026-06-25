@@ -10,7 +10,7 @@ export interface ProviderCarouselItem {
   offsetY?: number | string;
 }
 
-interface ProviderCarouselProps {
+export interface ProviderCarouselProps {
   items: ProviderCarouselItem[];
   secondRowItems?: ProviderCarouselItem[];
   className?: string;

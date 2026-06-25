@@ -559,11 +559,15 @@
   }
 
   .providerCarouselFrame {
-    height: 11rem;
+    height: auto;
+    min-height: 13.5rem;
+    margin-block: 0;
+    padding-block: var(--space-6) var(--space-5);
   }
 
   .providerActions {
     width: min(100%, 18rem);
+    margin-top: var(--space-3);
     margin-inline: auto;
   }
 

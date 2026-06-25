@@ -10,7 +10,7 @@
   background: #0d0420;
   color: #f5edff;
   contain: layout paint;
-  font-family: var(--slider-games-font-body, Sora, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  font-family: var(--slider-games-font-body, var(--font-body));
 }
 
 .header {
@@ -37,7 +37,7 @@
 .title {
   margin: 0;
   color: #ffffff;
-  font-family: var(--slider-games-font-display, Syne, Sora, system-ui, sans-serif);
+  font-family: var(--slider-games-font-display, var(--font-heading));
   font-size: 30px;
   font-weight: 800;
   line-height: 1.1;
@@ -64,7 +64,7 @@
 .bigText {
   max-width: calc(100vw - 96px);
   color: var(--active-accent);
-  font-family: var(--slider-games-font-display, Syne, Sora, system-ui, sans-serif);
+  font-family: var(--slider-games-font-display, var(--font-heading));
   font-size: clamp(92px, 17vw, 260px);
   font-weight: 800;
   line-height: 0.88;
@@ -170,7 +170,7 @@
   z-index: 3;
   margin: 18px 0 0;
   color: #ffffff;
-  font-family: var(--slider-games-font-display, Syne, Sora, system-ui, sans-serif);
+  font-family: var(--slider-games-font-display, var(--font-heading));
   font-size: clamp(30px, 3.4vw, 36px);
   font-weight: 800;
   line-height: 1.08;
