@@ -12,6 +12,8 @@ import {
   ProviderCarousel,
   SliderGames,
   PresenciaLatam,
+  Contact,
+  FlowIntegration,
 } from "./components";
 import { productCards, providerLogos } from "./data";
 
@@ -111,6 +113,7 @@ function Home() {
           </div>
         </div>
       </section>
+
       {/* Metrics section */}
       <Metrics />
 
@@ -167,7 +170,6 @@ function Home() {
         </div>
       </section>
 
-
       {/* featured games session */}
       <SliderGames className={styles.sliderGames}
         slides={defaultSliderGames}
@@ -182,6 +184,10 @@ function Home() {
       <section className={styles.presenciaLatamSection}>
         <PresenciaLatam />
       </section>
+
+      <FlowIntegration />
+
+      <Contact />
     </>
   );
 }
