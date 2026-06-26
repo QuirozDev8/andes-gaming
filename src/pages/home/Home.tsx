@@ -11,6 +11,7 @@ import {
   Metrics,
   ProviderCarousel,
   SliderGames,
+  PresenciaLatam,
 } from "./components";
 import { productCards, providerLogos } from "./data";
 
@@ -166,27 +167,21 @@ function Home() {
         </div>
       </section>
 
-      {/* otro elemento */}
-      <div style={{ height: "300px", padding: "20px" }}>
-        <h2 className="text-black">Aqui ira un componente sin animacion. </h2>
-      </div>
 
       {/* featured games session */}
-      <SliderGames
-        className={styles.sliderGames}
+      <SliderGames className={styles.sliderGames}
         slides={defaultSliderGames}
         eyebrow="// proveedores destacados"
         autoPlayMs={5000}
         titlePrefix="Juegos"
         titleAccent="destacados"
         titleSuffix=" de nuestros proveedores."
-        ariaLabel="Slider de juegos principales de proveedores"
-      />
+        ariaLabel="Slider de juegos principales de proveedores" />
   
       {/* otro elemento */}
-      <div style={{ height: "300px", padding: "20px" }}>
-        separacion temporal
-      </div>
+      <section className={styles.presenciaLatamSection}>
+        <PresenciaLatam />
+      </section>
     </>
   );
 }

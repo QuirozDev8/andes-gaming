@@ -18,4 +18,5 @@ export {
   type SliderGameParticleType,
   type SliderGameSlide,
   type SliderGamesProps,
-} from "./SliderGames";
+} from "./slider-games";
+export {PresenciaLatam} from "./presencia-latam/PresenciaLatama";
