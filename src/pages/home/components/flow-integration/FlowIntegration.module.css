@@ -47,6 +47,7 @@
   width: min(100%, 920px);
   margin: 0 auto clamp(2.75rem, 5vw, 4.5rem);
   text-align: center;
+  padding-top: var(--space-5);
 }
 
 .logo {
@@ -354,6 +355,10 @@
   line-height: 1.45;
 }
 
+.sliderDots {
+  display: none;
+}
+
 @media (max-width: 991.98px) {
   .flowIntegration {
     padding-block: var(--space-16);
@@ -417,18 +422,34 @@
   }
 
   .workflow {
+    --slide-side-space: clamp(0.75rem, 4vw, 1.1rem);
     --step-number-size: 5rem;
     --step-item-top-space: 3.7rem;
     display: flex;
-    max-width: 24rem;
-    flex-direction: column;
-    gap: var(--space-7);
+    width: min(100%, 24rem);
+    max-width: none;
+    flex-direction: row;
+    gap: var(--space-4);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .workflow::-webkit-scrollbar {
+    display: none;
   }
 
   .stepItem,
   .step5 {
+    flex: 0 0 100%;
     width: 100%;
+    margin-inline: 0;
     padding-top: var(--step-item-top-space);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
   }
 
   .stepNumber {
@@ -436,7 +457,9 @@
   }
 
   .stepCard {
+    width: calc(100% - (var(--slide-side-space) * 2));
     min-height: auto;
+    margin-inline: auto;
     padding: 4.35rem var(--space-5) var(--space-6);
   }
 
@@ -457,12 +480,51 @@
   .stepCard p {
     font-size: 0.92rem;
   }
+
+  .sliderDots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-top: var(--space-5);
+  }
+
+  .sliderDot {
+    width: 0.72rem;
+    height: 0.72rem;
+    padding: 0;
+    border: 1px solid rgba(var(--andes-cyan-rgb), 0.62);
+    border-radius: 50%;
+    background: rgba(var(--andes-white-rgb), 0.2);
+    box-shadow: 0 0 10px rgba(var(--andes-cyan-rgb), 0.16);
+    cursor: pointer;
+    transition:
+      background-color var(--transition-base),
+      border-color var(--transition-base),
+      box-shadow var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  .sliderDot[aria-current="step"] {
+    border-color: rgba(var(--andes-cyan-rgb), 0.96);
+    background: var(--andes-cyan);
+    box-shadow:
+      0 0 0 4px rgba(var(--andes-cyan-rgb), 0.1),
+      0 0 16px rgba(var(--andes-cyan-rgb), 0.62);
+    transform: scale(1.22);
+  }
+
+  .sliderDot:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .stepCard,
   .stepNumber,
-  .iconFrame {
+  .iconFrame,
+  .sliderDot {
     transition: none;
   }
 }

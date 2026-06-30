@@ -102,7 +102,7 @@ export function InfraTecnology() {
                   </Link>
                 </div>
 
-                <div className="infra-card-grid row g-3">
+                <div className="infra-card-grid row g-3 py-3">
                   {capabilityCards.map((card) => {
                     const CardIcon = card.icon;
 

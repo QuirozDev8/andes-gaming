@@ -5,6 +5,7 @@ import {
   Puzzle,
   Rocket,
 } from "lucide-react";
+import { useCallback, useRef, useState } from "react";
 import andesLogo from "../../../../assets/logos/logo-header.png";
 import styles from "./FlowIntegration.module.css";
 
@@ -52,10 +53,61 @@ const integrationSteps = [
 ] as const;
 
 export function FlowIntegration() {
+  const workflowRef = useRef<HTMLOListElement>(null);
+  const [activeStepIndex, setActiveStepIndex] = useState(0);
+
+  const updateActiveStep = useCallback(() => {
+    const workflow = workflowRef.current;
+
+    if (!workflow || workflow.children.length === 0) {
+      return;
+    }
+
+    const workflowRect = workflow.getBoundingClientRect();
+    const workflowCenter = workflowRect.left + workflowRect.width / 2;
+    const items = Array.from(workflow.children);
+    const closestStep = items.reduce(
+      (closest, item, index) => {
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.left + itemRect.width / 2;
+        const distance = Math.abs(itemCenter - workflowCenter);
+
+        return distance < closest.distance ? { distance, index } : closest;
+      },
+      { distance: Number.POSITIVE_INFINITY, index: 0 },
+    );
+
+    setActiveStepIndex(closestStep.index);
+  }, []);
+
+  const handleStepScroll = useCallback(() => {
+    window.requestAnimationFrame(updateActiveStep);
+  }, [updateActiveStep]);
+
+  const goToStep = useCallback((index: number) => {
+    const workflow = workflowRef.current;
+    const targetStep = workflow?.children[index] as HTMLElement | undefined;
+
+    if (!workflow || !targetStep) {
+      return;
+    }
+
+    const shouldReduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    workflow.scrollTo({
+      left: targetStep.offsetLeft,
+      behavior: shouldReduceMotion ? "auto" : "smooth",
+    });
+    setActiveStepIndex(index);
+  }, []);
+
   return (
     <section
       className={styles.flowIntegration}
-      aria-labelledby="flow-integration-title" >
+      aria-labelledby="flow-integration-title"
+    >
       <div className="container position-relative">
         <header className={styles.header}>
           <img
@@ -70,7 +122,12 @@ export function FlowIntegration() {
           <div className={styles.titleLine} aria-hidden="true" />
         </header>
 
-        <ol className={styles.workflow} aria-label="Pasos de integración">
+        <ol
+          className={styles.workflow}
+          aria-label="Pasos de integración"
+          onScroll={handleStepScroll}
+          ref={workflowRef}
+        >
           {integrationSteps.map((step, index) => {
             const StepIcon = step.icon;
 
@@ -96,6 +153,23 @@ export function FlowIntegration() {
             );
           })}
         </ol>
+
+        <div
+          className={styles.sliderDots}
+          aria-label="Navegación de pasos"
+          role="group"
+        >
+          {integrationSteps.map((step, index) => (
+            <button
+              aria-current={activeStepIndex === index ? "step" : undefined}
+              aria-label={`Ver paso ${step.number}: ${step.title}`}
+              className={styles.sliderDot}
+              key={step.number}
+              onClick={() => goToStep(index)}
+              type="button"
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
