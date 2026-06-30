@@ -23,3 +23,4 @@ export { PresenciaLatam } from "./presencia-latam/PresenciaLatam";
 export { Contact } from "./contact/Contact";
 export { FlowIntegration } from "./flow-integration/FlowIntegration";
 export { InfraTecnology } from "./infra-tecnology/InfraTecnology";
+export { JuegosPropios } from "./juegos-propios/JuegosPropios";

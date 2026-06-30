@@ -14,6 +14,7 @@ import {
   PresenciaLatam,
   FlowIntegration,
   InfraTecnology,
+  Contact, JuegosPropios
 } from "./components";
 import { productCards, providerLogos } from "./data";
 
@@ -186,17 +187,13 @@ function Home() {
       </section>
 
       <FlowIntegration />
+      
+       <JuegosPropios />
 
      {/* Infraestructura/tecnologya  */}
       <InfraTecnology />
 
-
-
-
-
-
-
-      {/* <Contact /> */}
+       <Contact /> 
     </>
   );
 }
