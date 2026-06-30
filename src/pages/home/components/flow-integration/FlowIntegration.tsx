@@ -55,8 +55,7 @@ export function FlowIntegration() {
   return (
     <section
       className={styles.flowIntegration}
-      aria-labelledby="flow-integration-title"
-    >
+      aria-labelledby="flow-integration-title" >
       <div className="container position-relative">
         <header className={styles.header}>
           <img

@@ -19,6 +19,7 @@ export {
   type SliderGameSlide,
   type SliderGamesProps,
 } from "./slider-games";
-export { PresenciaLatam } from "./presencia-latam/PresenciaLatama";
+export { PresenciaLatam } from "./presencia-latam/PresenciaLatam";
 export { Contact } from "./contact/Contact";
 export { FlowIntegration } from "./flow-integration/FlowIntegration";
+export { InfraTecnology } from "./infra-tecnology/InfraTecnology";

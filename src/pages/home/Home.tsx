@@ -12,8 +12,8 @@ import {
   ProviderCarousel,
   SliderGames,
   PresenciaLatam,
-  Contact,
   FlowIntegration,
+  InfraTecnology,
 } from "./components";
 import { productCards, providerLogos } from "./data";
 
@@ -187,7 +187,16 @@ function Home() {
 
       <FlowIntegration />
 
-      <Contact />
+     {/* Infraestructura/tecnologya  */}
+      <InfraTecnology />
+
+
+
+
+
+
+
+      {/* <Contact /> */}
     </>
   );
 }
