@@ -1,5 +1,4 @@
 import {
-  ArrowBigRightDash,
   ChartNoAxesCombined,
   Clock3,
   Globe2,
@@ -7,7 +6,10 @@ import {
   Puzzle,
   ShieldCheck,
 } from "lucide-react";
+import { Link } from "react-router-dom";
+import BtnElegant from "../../../../components/btn-elegant/BtnElegant";
 import fondoInfra from "../../../../assets/img/fondo-infra.png";
+import { ROUTES } from "../../../../routes/routePaths";
 import "./InfraTecnology.css";
 
 const capabilityCards = [
@@ -70,7 +72,7 @@ export function InfraTecnology() {
               <div className="infra-content mx-auto mx-lg-0">
                 <span className="infra-eyebrow">
                   <span className="infra-eyebrow-dot" aria-hidden="true" />
-                  Plataforma Andes Gaming
+                  Agregador de primer nivel
                 </span>
 
                 <h2 className="infra-title" id="infra-tecnology-title">
@@ -87,17 +89,17 @@ export function InfraTecnology() {
                 </p>
 
                 <div className="infra-actions d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
-                  <a className="infra-primary-btn" href="#infra-tecnology">
-                    <span className="infra-btn-icon" aria-hidden="true">
-                      <ArrowBigRightDash strokeWidth={1.8} />
-                    </span>
-                    Explorar tecnologia
-                  </a>
+                  <BtnElegant
+                    text="Explorar tecnologia"
+                    href="#infra-architecture"
+                    ariaLabel="Explorar tecnologia"
+                    className="infra-elegant-btn"
+                  />
 
-                  <a className="infra-secondary-btn" href="#infra-architecture">
+                  <Link className="infra-secondary-btn" to={ROUTES.contact}>
                     <Network aria-hidden="true" strokeWidth={1.8} />
-                    Ver arquitectura
-                  </a>
+                    Become a partner
+                  </Link>
                 </div>
 
                 <div className="infra-card-grid row g-3">
