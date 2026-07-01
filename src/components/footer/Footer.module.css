@@ -397,8 +397,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
-      "platform products"
-      "company company"
+      "products company"
       "contact contact";
     gap: var(--space-5);
     padding-top: var(--space-5);
@@ -435,6 +434,7 @@
 
   .linkColumn:nth-child(1) {
     grid-area: platform;
+    display: none;
   }
 
   .linkColumn:nth-child(2) {

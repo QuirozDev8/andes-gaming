@@ -64,6 +64,7 @@
   letter-spacing: var(--letter-spacing-default);
   line-height: var(--line-height-tight);
   text-transform: uppercase;
+  text-shadow: 0 0 24px rgba(var(--andes-blue-deep-rgb), 0.72);
 }
 
 .titleLine {
@@ -89,6 +90,13 @@
 .titleLine :global(.animation-text-word) {
   padding-inline: 0.04em;
   margin-inline: -0.04em;
+}
+
+.titleLine :global(.animation-text) {
+  max-width: none;
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all;
 }
 
 .titleLineAccent :global(.animation-text-line),
@@ -149,6 +157,10 @@
   box-shadow: var(--shadow-focus);
 }
 
+.heroMediaColumn {
+  display: block;
+}
+
 .heroMedia {
   position: relative;
   width: min(138%, 920px);
@@ -186,6 +198,14 @@
     padding-block: var(--space-10);
   }
 
+  .heroContent {
+    box-sizing: border-box;
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 5vw, 1.5rem);
+    text-align: center;
+  }
+
   .heroOverlay {
     background:
       linear-gradient(
@@ -199,8 +219,10 @@
   .actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 24rem);
     gap: var(--space-2);
     align-items: stretch;
+    margin-inline: auto;
   }
 
   .secondaryLink {
@@ -211,21 +233,20 @@
   }
 
   .title {
-    max-width: 100%;
+    --section-title-mobile-font-size: clamp(1.45rem, 6.3vw, 2.08rem);
+    --section-title-small-font-size: clamp(1.18rem, 5.55vw, 1.55rem);
+    --section-title-tiny-font-size: clamp(1.02rem, 5.15vw, 1.22rem);
+    --section-title-mobile-line-height: 1;
+    margin-top: var(--space-1);
+    max-width: none;
     font-size: var(--section-title-mobile-font-size);
+    text-shadow:
+      0 2px 14px rgba(var(--andes-blue-deep-rgb), 0.86),
+      0 0 28px rgba(var(--andes-violet-rgb), 0.26);
   }
 
-  .heroMedia {
-    width: 100%;
-    transform: none;
-  }
-
-  .heroVisualStage {
-    height: clamp(250px, 62vw, 330px);
-  }
-
-  .heroVisualImage {
-    transform: scale(1.16);
+  .heroMediaColumn {
+    display: none;
   }
 
 }

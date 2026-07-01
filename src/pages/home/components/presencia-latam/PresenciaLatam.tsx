@@ -1,29 +1,27 @@
 import { Building2, Globe2, Network, ShieldCheck } from "lucide-react";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
+import mapaMundiImage from "../../../../assets/img/mapa-mundi.webp";
 import styles from "./presenciaLatam.module.css";
 
 const presenceHighlights = [
   {
     title: "Operacion regional",
-    description:
-      "Tecnologia preparada para conectar operadores en mercados clave de Latinoamerica.",
+    description: "Conexion lista para mercados clave de LATAM.",
     icon: Globe2,
   },
   {
     title: "Integraciones activas",
-    description:
-      "Una capa tecnica que une proveedores, plataformas y servicios desde una sola arquitectura.",
+    description: "Proveedores y servicios en una sola arquitectura.",
     icon: Network,
   },
   {
     title: "Adaptacion por mercado",
-    description:
-      "Infraestructura flexible para acompanar reglas, monedas, verticales y modelos comerciales locales.",
+    description: "Reglas, monedas y verticales ajustadas localmente.",
     icon: Building2,
   },
   {
     title: "Escala confiable",
-    description: "Base robusta para sostener crecimiento, disponibilidad y control operativo en la region.",
+    description: "Disponibilidad y control para crecer en la region.",
     icon: ShieldCheck,
   },
 ] as const;
@@ -45,16 +43,15 @@ export function PresenciaLatam() {
               id="presencia-latam-title"
               lines={[
                 "Nuestra tecnologia",
-                { content: "ya conecta la region", accent: true },
+                { content: "ya conecta la región", accent: true },
               ]}
             />
             <p className={styles.description}>
-              Andes Gaming impulsa operaciones iGaming en Latinoamerica con una
-              infraestructura pensada para integrar proveedores, habilitar
-              nuevos mercados y escalar marcas desde una misma capa tecnologica.
+              Infraestructura iGaming para integrar proveedores, abrir mercados
+              y escalar marcas en Latinoamerica desde una sola capa tecnologica.
             </p>
 
-            <div className={`${styles.highlights} row g-3`}>
+            <div className={`${styles.highlights} row g-3 d-none d-md-flex`}>
               {presenceHighlights.map((highlight) => {
                 const HighlightIcon = highlight.icon;
 
@@ -77,10 +74,17 @@ export function PresenciaLatam() {
         </div>
 
         <div className="col-12 col-lg-6 d-flex">
-          <div
-            className={styles.visualSlot}
-            aria-label="Espacio reservado para visualizacion de presencia regional"
-          />
+          <div className={styles.visualSlot}>
+            <img
+              className={styles.visualImage}
+              src={mapaMundiImage}
+              alt="Mapa de presencia de Andes Gaming en Latinoamerica"
+              width={1536}
+              height={1024}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
       </div>
     </div>

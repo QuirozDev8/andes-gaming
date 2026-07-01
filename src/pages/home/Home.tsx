@@ -108,7 +108,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="col-12 col-lg-6">
+            <div className={`col-12 col-lg-6 ${styles.heroMediaColumn}`}>
               <div className={`${styles.heroMedia} ms-lg-auto`}>
                 <div
                   className={styles.heroVisualStage}

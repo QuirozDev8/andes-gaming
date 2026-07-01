@@ -15,7 +15,7 @@ type FooterLink =
       to?: never;
     };
 
-const footerColumns = [
+const footerColumns = [ 
   {
     title: "PLATAFORMA",
     links: [
@@ -37,7 +37,6 @@ const footerColumns = [
     title: "EMPRESA",
     links: [
       { label: "Nosotros", to: ROUTES.about },
-      { label: "Recursos", href: "#" },
       { label: "Contacto", to: ROUTES.contact },
       { label: "Politicas legales", href: "#" },
     ],

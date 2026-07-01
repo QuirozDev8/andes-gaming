@@ -81,6 +81,7 @@
   gap: var(--space-3);
   align-items: flex-start;
   padding: var(--space-4);
+  text-align: left;
   border: 1px solid rgba(var(--andes-gray-tech-rgb), 0.14);
   border-radius: var(--radius-md);
   background:
@@ -156,47 +157,24 @@
 
 .visualSlot {
   position: relative;
+  display: flex;
   flex: 1 1 auto;
+  align-items: center;
   align-self: stretch;
-  overflow: hidden;
-  width: min(100%, 680px);
-  min-height: 0;
+  justify-content: center;
+  overflow: visible;
+  width: min(100%, 760px);
+  min-height: clamp(28rem, 46vw, 43rem);
   margin-left: auto;
-  border: 1px solid rgba(var(--andes-cyan-rgb), 0.2);
   border-radius: var(--radius-xl);
-  background:
-    radial-gradient(circle at 48% 42%, rgba(var(--andes-cyan-rgb), 0.12), transparent 42%),
-    radial-gradient(circle at 74% 68%, rgba(var(--andes-violet-rgb), 0.14), transparent 38%),
-    linear-gradient(
-      135deg,
-      rgba(var(--andes-blue-midnight-rgb), 0.54) 0%,
-      rgba(var(--andes-blue-deep-rgb), 0.18) 100%
-    );
-  box-shadow:
-    inset 0 0 0 1px rgba(var(--andes-white-rgb), 0.03),
-    0 28px 70px rgba(var(--andes-blue-deep-rgb), 0.34);
 }
 
-.visualSlot::before {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(var(--andes-cyan-rgb), 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--andes-cyan-rgb), 0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
-  content: "";
-  mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 72%);
-  pointer-events: none;
-}
-
-.visualSlot::after {
-  position: absolute;
-  inset: 12%;
-  border: 1px solid rgba(var(--andes-cyan-rgb), 0.14);
-  border-radius: var(--radius-xl);
-  background: rgba(var(--andes-blue-deep-rgb), 0.18);
-  content: "";
-  pointer-events: none;
+.visualImage {
+  display: block;
+  width: clamp(44rem, 64vw, 62rem);
+  max-width: none;
+  height: auto;
+  object-fit: contain;
 }
 
 @media (max-width: 991.98px) {
@@ -212,7 +190,13 @@
   .visualSlot {
     margin-right: auto;
     margin-left: auto;
-    min-height: clamp(18rem, 52vw, 28rem);
+    width: min(100%, 38rem);
+    min-height: clamp(18rem, 58vw, 28rem);
+  }
+
+  .visualImage {
+    width: min(100%, 38rem);
+    max-width: 100%;
   }
 }
 
@@ -234,13 +218,27 @@
     font-size: 0.92rem;
   }
 
-  .highlight {
-    text-align: left;
+  .highlights {
+    display: none;
   }
 
   .visualSlot {
-    min-height: 18rem;
+    min-height: clamp(15rem, 68vw, 20rem);
     border-radius: var(--radius-lg);
+  }
+
+  .visualImage {
+    width: min(100%, 31rem);
+  }
+}
+
+@media (max-width: 479.98px) {
+  .visualSlot {
+    min-height: clamp(13rem, 66vw, 17rem);
+  }
+
+  .visualImage {
+    width: min(100%, 24rem);
   }
 }
 
