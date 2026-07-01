@@ -108,7 +108,10 @@ export function FlowIntegration() {
           <SectionTitle
             className={styles.title}
             id="flow-integration-title"
-            lines={["Pasos para trabajar", "con nosotros."]}
+            lines={[
+              "Pasos para trabajar",
+              { content: "con nosotros.", accent: true },
+            ]}
           />
           <div className={styles.titleLine} aria-hidden="true" />
         </header>

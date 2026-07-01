@@ -625,7 +625,6 @@ export function SliderGames({
   const activeSlide = slides[activeIndex] ?? slides[0];
   const activeAccent = activeSlide.accent;
   const activeGlow = activeSlide.glowColor ?? activeAccent;
-  const titleSuffixLine = titleSuffix.replace(/^[\s.]+/, '').trim();
   const rootStyle: CSSVariableStyle = {
     '--active-accent': activeAccent,
     '--active-accent-shadow': withHexAlpha(activeAccent, '99'),
@@ -658,10 +657,10 @@ export function SliderGames({
                   {titleAccent ? (
                     <span className={styles.titleAccent}>{titleAccent}</span>
                   ) : null}
+                  {titleSuffix}
                 </>
               ),
             },
-            ...(titleSuffixLine ? [titleSuffixLine] : []),
           ]}
         />
       </header>

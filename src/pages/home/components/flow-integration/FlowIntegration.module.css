@@ -63,18 +63,11 @@
   --section-title-font-size: clamp(1.75rem, 3.5vw, 3.25rem);
   --section-title-mobile-font-size: clamp(1.32rem, 6.4vw, 2rem);
   --section-title-small-font-size: clamp(1.12rem, 5.8vw, 1.56rem);
-  margin: 0;
+  --section-title-line-height: 1.02;
+  --section-title-letter-spacing: var(--letter-spacing-default);
+  --section-title-accent-background: var(--andes-gradient-primary);
+  --section-title-accent-filter: drop-shadow(0 0 18px rgba(var(--andes-cyan-rgb), 0.16));
   color: var(--andes-white);
-  font-family: var(--font-heading);
-  font-size: var(--section-title-font-size);
-  font-style: italic;
-  font-weight: var(--font-weight-black);
-  letter-spacing: var(--letter-spacing-default);
-  line-height: 1.02;
-  text-transform: uppercase;
-  text-shadow:
-    0 0 28px rgba(var(--andes-blue-deep-rgb), 0.78),
-    0 6px 22px rgba(0, 0, 0, 0.45);
 }
 
 .titleLine {

@@ -40,7 +40,9 @@
   --section-title-font-style: normal;
   --section-title-font-weight: 800;
   --section-title-line-height: 1.1;
-  --section-title-mobile-font-size: 15px;
+  --section-title-mobile-font-size: 18px;
+  --section-title-small-font-size: 16px;
+  --section-title-tiny-font-size: 14px;
   --section-title-text-transform: none;
   margin: 0;
   color: #ffffff;
@@ -49,6 +51,7 @@
   font-style: normal;
   font-weight: 800;
   line-height: 1.1;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.16);
   text-transform: none;
 }
 
@@ -784,9 +787,21 @@
   }
 }
 
+@media (max-width: 420px) {
+  .title {
+    font-size: var(--section-title-small-font-size);
+  }
+}
+
+@media (max-width: 360px) {
+  .title {
+    font-size: var(--section-title-tiny-font-size);
+  }
+}
+
 @media (max-height: 720px) {
   .sliderGames {
-    min-height: 560px;
+    min-height: min(var(--slider-games-mobile-min-height, 560px), 560px);
   }
 
   .iconMain {

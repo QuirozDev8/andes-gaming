@@ -20,7 +20,6 @@ import {
 import { productCards, providerLogos } from "./data";
 
 
-
 function Home() {
   return (
     <>
@@ -159,51 +158,56 @@ function Home() {
 
       {/* Providers section */}
       <section className={styles.providerSection}>
-        <div className="container">
-          <div className={styles.providerHeader}>
-            <span className={styles.providerEyebrow}>Ecosistema conectado</span>
-            <SectionTitle
-              className={styles.providerTitle}
-              accentClassName={styles.providerTitleAccent}
-              lines={[
-                "Conectamos marcas con",
-                { content: "proveedores de primer nivel", accent: true },
-              ]}
-            />
-            <p>
+        <div className="container position-relative">
+          <div className={styles.providerPanel}>
+            <div className={styles.providerHeader}>
+              <span className={styles.providerEyebrow}>Ecosistema conectado</span>
+              <SectionTitle
+                className={styles.providerTitle}
+                accentClassName={styles.providerTitleAccent}
+                lines={[
+                  "Conectamos marcas con",
+                  { content: "proveedores de primer nivel", accent: true },
+                ]}
+              />
+              <p>
               Tu camino hacia una diversa colección de más de 200 proveedores de
               juegos premium para crear una experiencia de juego personalizada
               para tus jugadores.
-            </p>
+              </p>
+            </div>
+
+            <div className={styles.providerCarouselFrame}>
+              <ProviderCarousel
+                items={providerLogos}
+                ariaLabel="Logos de proveedores integrados"
+                logoWidth={180}
+                logoHeight={92}
+                durationSeconds={82}
+              />
+            </div>
+
+            <div className={styles.providerActions}>
+              <BtnElegant
+                text="Ver todos los proveedores"
+                to={ROUTES.gameProviders}
+                ariaLabel="Ver todos los proveedores"
+              />
+            </div>
           </div>
-        </div>
-        <div className={styles.providerCarouselFrame}>
-          <ProviderCarousel
-            items={providerLogos}
-            ariaLabel="Logos de proveedores integrados"
-            logoWidth={180}
-            logoHeight={92}
-            durationSeconds={82}
-          />
-        </div>
-        <div className={styles.providerActions}>
-          <BtnElegant
-            text="Ver todos los proveedores"
-            to={ROUTES.gameProviders}
-            ariaLabel="Ver todos los proveedores"
-          />
         </div>
       </section>
 
-      
-      <SliderGames className={styles.sliderGames}
+      <SliderGames
+        className={styles.sliderGames}
         slides={defaultSliderGames}
         eyebrow="// proveedores destacados"
         autoPlayMs={6000}
         titlePrefix="Juegos"
         titleAccent="destacados"
         titleSuffix=" de nuestros proveedores."
-        ariaLabel="Slider de juegos principales de proveedores" />
+        ariaLabel="Slider de juegos principales de proveedores"
+      />
   
       
       <section className={styles.presenciaLatamSection}>

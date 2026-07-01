@@ -41,7 +41,7 @@ export function AboutCompany() {
           <div className="col-12 col-lg-6 d-flex text-center text-lg-start">
             <div className={`${styles.content} mx-auto mx-lg-0`}>
               <span className={styles.eyebrow}>
-                Tecnologia que conecta el ecosistema
+                Tecnologia que conecta ecosistemas
               </span>
 
               <SectionTitle

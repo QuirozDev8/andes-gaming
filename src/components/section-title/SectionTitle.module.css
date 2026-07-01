@@ -32,7 +32,9 @@
 .accent {
   background: var(--section-title-accent-background, var(--andes-gradient-primary));
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   filter: var(--section-title-accent-filter, drop-shadow(0 0 18px rgba(var(--andes-cyan-rgb), 0.16)));
 }
 
