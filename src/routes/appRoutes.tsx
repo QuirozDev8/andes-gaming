@@ -14,6 +14,7 @@ export const appRoutes = [
   { path: ROUTES.home, element: <Home /> },
   { path: ROUTES.casinoAggregation, element: <CasinoAggregation /> },
   { path: ROUTES.gameStudio, element: <GameStudio /> },
+  { path: "/game-studio", element: <GameStudio /> },
   { path: ROUTES.gameProviders, element: <GameProvider /> },
   { path: ROUTES.about, element: <About /> },
   { path: ROUTES.blog, element: <Blog /> },

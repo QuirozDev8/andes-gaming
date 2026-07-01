@@ -8,6 +8,7 @@ import {
   type TouchEvent,
   type TransitionEvent,
 } from 'react';
+import SectionTitle from '../../../../components/section-title/SectionTitle';
 import styles from './SliderGames.module.css';
 
 export type SliderGameParticleType =
@@ -624,6 +625,7 @@ export function SliderGames({
   const activeSlide = slides[activeIndex] ?? slides[0];
   const activeAccent = activeSlide.accent;
   const activeGlow = activeSlide.glowColor ?? activeAccent;
+  const titleSuffixLine = titleSuffix.replace(/^[\s.]+/, '').trim();
   const rootStyle: CSSVariableStyle = {
     '--active-accent': activeAccent,
     '--active-accent-shadow': withHexAlpha(activeAccent, '99'),
@@ -646,11 +648,22 @@ export function SliderGames({
     >
       <header className={styles.header}>
         {eyebrow ? <div className={styles.eyebrow}>{eyebrow}</div> : null}
-        <h2 className={styles.title}>
-          {titlePrefix ? `${titlePrefix} ` : ''}
-          <span className={styles.titleAccent}>{titleAccent}</span>
-          {titleSuffix}
-        </h2>
+        <SectionTitle
+          className={styles.title}
+          lines={[
+            {
+              content: (
+                <>
+                  {titlePrefix ? `${titlePrefix} ` : ''}
+                  {titleAccent ? (
+                    <span className={styles.titleAccent}>{titleAccent}</span>
+                  ) : null}
+                </>
+              ),
+            },
+            ...(titleSuffixLine ? [titleSuffixLine] : []),
+          ]}
+        />
       </header>
 
       <div className={styles.bigTextWrap} aria-hidden="true">

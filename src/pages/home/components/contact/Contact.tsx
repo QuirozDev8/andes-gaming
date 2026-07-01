@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import BtnElegant from "../../../../components/btn-elegant/BtnElegant";
+import SectionTitle from "../../../../components/section-title/SectionTitle";
 import bgContactHome from "../../../../assets/img/bg-contact-home.webp";
 import styles from "./Contact.module.css";
 
@@ -16,9 +17,11 @@ export function Contact() {
     >
       <div className="container">
         <div className={styles.content}>
-          <h2 className={styles.title} id="contact-home-title">
-            Hablemos de tu proyecto
-          </h2>
+          <SectionTitle
+            className={styles.title}
+            id="contact-home-title"
+            lines={["Hablemos de", "tu proyecto"]}
+          />
 
           <div className={styles.emailGroup}>
             <label className={styles.visuallyHidden} htmlFor="contact-email">

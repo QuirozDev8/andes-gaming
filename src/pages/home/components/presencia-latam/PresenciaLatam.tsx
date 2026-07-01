@@ -1,4 +1,5 @@
 import { Building2, Globe2, Network, ShieldCheck } from "lucide-react";
+import SectionTitle from "../../../../components/section-title/SectionTitle";
 import styles from "./presenciaLatam.module.css";
 
 const presenceHighlights = [
@@ -37,10 +38,16 @@ export function PresenciaLatam() {
         <div className="col-12 col-lg-6 d-flex text-center text-lg-start">
           <div className={`${styles.content} mx-auto mx-lg-0`}>
             <span className={styles.eyebrow}>Presencia en LATAM</span>
-            <h2 className={styles.title} id="presencia-latam-title">
-              <span className={styles.titleLine}>Nuestra tecnologia</span>
-              <span className={styles.titleAccent}>ya conecta la region</span>
-            </h2>
+            <SectionTitle
+              className={styles.title}
+              lineClassName={styles.titleLine}
+              accentClassName={styles.titleAccent}
+              id="presencia-latam-title"
+              lines={[
+                "Nuestra tecnologia",
+                { content: "ya conecta la region", accent: true },
+              ]}
+            />
             <p className={styles.description}>
               Andes Gaming impulsa operaciones iGaming en Latinoamerica con una
               infraestructura pensada para integrar proveedores, habilitar

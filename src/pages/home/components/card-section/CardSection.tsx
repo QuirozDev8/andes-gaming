@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { gsap } from 'gsap';
+import SectionTitle from '../../../../components/section-title/SectionTitle';
 import styles from './CardSection.module.css';
 
 export interface CardSectionCardProps {
@@ -575,7 +576,11 @@ const CardSection: React.FC<CardSectionProps> = ({
           </div>
         </div>
         <div className={styles['card-section-card__content']}>
-          <h2 className={styles['card-section-card__title']}>{card.title}</h2>
+          <SectionTitle
+            className={styles['card-section-card__title']}
+            lines={[card.title ?? '']}
+            nowrap={false}
+          />
           <p className={styles['card-section-card__description']}>{card.description}</p>
         </div>
       </>

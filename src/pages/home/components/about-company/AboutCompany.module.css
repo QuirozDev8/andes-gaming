@@ -70,10 +70,13 @@
 }
 
 .title {
+  --section-title-font-size: clamp(var(--text-3xl), 4.4vw, 4.1rem);
+  --section-title-mobile-font-size: clamp(1.55rem, 7.4vw, 2.25rem);
+  --section-title-small-font-size: clamp(1.32rem, 6.8vw, 1.9rem);
   margin: 0;
   color: var(--andes-white);
   font-family: var(--font-heading);
-  font-size: clamp(var(--text-3xl), 4.4vw, 4.1rem);
+  font-size: var(--section-title-font-size);
   font-style: italic;
   font-weight: var(--font-weight-black);
   letter-spacing: var(--letter-spacing-default);
@@ -81,12 +84,10 @@
   text-transform: uppercase;
 }
 
-.title span {
-  display: block;
+.titleAccent {
   background: var(--andes-gradient-primary);
   background-clip: text;
   color: transparent;
-  white-space: nowrap;
 }
 
 .description {
@@ -319,13 +320,7 @@
   }
 
   .title {
-    font-size: clamp(1.72rem, 9.2vw, 2.55rem);
-  }
-
-  .title span {
-    display: inline-block;
-    max-width: 100%;
-    white-space: nowrap;
+    font-size: var(--section-title-mobile-font-size);
   }
 
   .benefit {

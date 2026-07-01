@@ -110,11 +110,16 @@
 }
 
 .infra-title {
+  --section-title-color: var(--andes-blue-deep);
+  --section-title-font-size: clamp(2.15rem, 4.15vw, 3.75rem);
+  --section-title-mobile-font-size: clamp(1.75rem, 7.2vw, 2.65rem);
+  --section-title-small-font-size: clamp(1.42rem, 6.8vw, 2rem);
+  --section-title-tiny-font-size: 1.32rem;
   max-width: 12.6ch;
   margin: 0;
   color: var(--andes-blue-deep);
   font-family: var(--font-heading);
-  font-size: clamp(2.15rem, 4.15vw, 3.75rem);
+  font-size: var(--section-title-font-size);
   font-style: italic;
   font-weight: var(--font-weight-black);
   letter-spacing: var(--letter-spacing-default);
@@ -122,12 +127,10 @@
   text-transform: uppercase;
 }
 
-.infra-title span {
-  display: block;
+.infra-title-accent {
   background: linear-gradient(90deg, #1414d8 0%, var(--andes-violet) 52%, #4f85ff 100%);
   background-clip: text;
   color: transparent;
-  white-space: nowrap;
 }
 
 .infra-title-rule {
@@ -408,7 +411,7 @@
 
   .infra-title {
     max-width: 100%;
-    font-size: clamp(2.25rem, 8vw, 3.65rem);
+    font-size: var(--section-title-mobile-font-size);
   }
 
   .infra-visual {
@@ -441,13 +444,7 @@
   .infra-title {
     max-width: 100%;
     padding-inline: 0.06em;
-    font-size: 2rem;
     line-height: 1.08;
-  }
-
-  .infra-title span {
-    display: block;
-    white-space: normal;
   }
 
   .infra-secondary-btn {
@@ -488,7 +485,7 @@
   }
 
   .infra-title {
-    font-size: 1.7rem;
+    font-size: var(--section-title-small-font-size);
   }
 }
 
@@ -498,7 +495,7 @@
   }
 
   .infra-title {
-    font-size: 1.55rem;
+    font-size: var(--section-title-tiny-font-size);
   }
 }
 

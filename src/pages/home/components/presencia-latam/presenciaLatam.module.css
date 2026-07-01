@@ -36,25 +36,25 @@
 }
 
 .title {
+  --section-title-font-size: clamp(2.25rem, 3.45vw, 3.35rem);
+  --section-title-mobile-font-size: clamp(1.45rem, 7vw, 2.1rem);
+  --section-title-small-font-size: clamp(1.24rem, 6.4vw, 1.74rem);
   margin: 0;
   color: var(--andes-white);
   font-family: var(--font-heading);
-  font-size: clamp(2.25rem, 3.45vw, 3.35rem);
+  font-size: var(--section-title-font-size);
   font-style: italic;
   font-weight: var(--font-weight-black);
   letter-spacing: var(--letter-spacing-default);
   line-height: var(--line-height-tight);
   text-transform: uppercase;
-  text-wrap: balance;
 }
 
 .titleLine {
-  display: block;
   white-space: nowrap;
 }
 
 .titleAccent {
-  display: block;
   background: var(--andes-gradient-primary);
   background-clip: text;
   color: transparent;
@@ -227,11 +227,7 @@
   }
 
   .title {
-    font-size: clamp(1.72rem, 8vw, 2.35rem);
-  }
-
-  .titleLine {
-    white-space: normal;
+    font-size: var(--section-title-mobile-font-size);
   }
 
   .description {

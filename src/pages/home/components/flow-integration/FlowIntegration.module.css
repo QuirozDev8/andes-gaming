@@ -3,7 +3,7 @@
   isolation: isolate;
   overflow: hidden;
   scroll-margin-top: calc(var(--header-height) + var(--space-4));
-  padding: clamp(5rem, 8vw, 7rem) 0 clamp(5.5rem, 9vw, 8rem);
+  padding: clamp(3.75rem, 6vw, 5rem) 0 clamp(4rem, 6.5vw, 5.75rem);
   background:
     linear-gradient(
       180deg,
@@ -45,9 +45,9 @@
 
 .header {
   width: min(100%, 920px);
-  margin: 0 auto clamp(2.75rem, 5vw, 4.5rem);
+  margin: 0 auto clamp(1.85rem, 3vw, 2.75rem);
   text-align: center;
-  padding-top: var(--space-5);
+  padding-top: 0;
 }
 
 .logo {
@@ -60,16 +60,18 @@
 }
 
 .title {
+  --section-title-font-size: clamp(1.75rem, 3.5vw, 3.25rem);
+  --section-title-mobile-font-size: clamp(1.32rem, 6.4vw, 2rem);
+  --section-title-small-font-size: clamp(1.12rem, 5.8vw, 1.56rem);
   margin: 0;
   color: var(--andes-white);
   font-family: var(--font-heading);
-  font-size: clamp(2.25rem, 5vw, 4.85rem);
+  font-size: var(--section-title-font-size);
   font-style: italic;
   font-weight: var(--font-weight-black);
   letter-spacing: var(--letter-spacing-default);
   line-height: 1.02;
   text-transform: uppercase;
-  text-wrap: balance;
   text-shadow:
     0 0 28px rgba(var(--andes-blue-deep-rgb), 0.78),
     0 6px 22px rgba(0, 0, 0, 0.45);
@@ -79,7 +81,7 @@
   position: relative;
   width: min(72%, 650px);
   height: 2px;
-  margin: var(--space-5) auto 0;
+  margin: var(--space-4) auto 0;
   background:
     linear-gradient(
       90deg,
@@ -107,10 +109,10 @@
 }
 
 .workflow {
-  --step-number-size: clamp(5rem, 7vw, 6.1rem);
-  --step-item-top-space: calc(var(--step-number-size) * 0.76);
-  --workflow-row-gap: clamp(2.3rem, 4vw, 3.5rem);
-  --workflow-column-gap: clamp(2rem, 4vw, 3.4rem);
+  --step-number-size: clamp(4.2rem, 5.4vw, 5rem);
+  --step-item-top-space: calc(var(--step-number-size) * 0.7);
+  --workflow-row-gap: clamp(1.5rem, 2.7vw, 2.35rem);
+  --workflow-column-gap: clamp(1.25rem, 2.8vw, 2.35rem);
   isolation: isolate;
   position: relative;
   display: grid;
@@ -210,11 +212,11 @@
   z-index: 1;
   display: flex;
   width: 100%;
-  min-height: clamp(20rem, 28vw, 22.5rem);
+  min-height: clamp(15.75rem, 21vw, 18rem);
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: clamp(4.35rem, 5.6vw, 5.05rem) clamp(1.25rem, 2.2vw, 1.9rem) clamp(1.8rem, 3vw, 2.35rem);
+  padding: clamp(3.3rem, 4.35vw, 3.9rem) clamp(1rem, 1.8vw, 1.55rem) clamp(1.35rem, 2.2vw, 1.8rem);
   border: 1px solid rgba(var(--step-accent-rgb), 0.34);
   border-radius: var(--radius-md);
   background:
@@ -293,7 +295,7 @@
     0 0 28px rgba(var(--step-accent-rgb), 0.7);
   color: var(--andes-white);
   font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(1.9rem, 3vw, 2.7rem);
   font-style: italic;
   font-weight: var(--font-weight-black);
   line-height: 1;
@@ -302,11 +304,11 @@
 
 .iconFrame {
   display: inline-flex;
-  width: 5.25rem;
-  height: 5.25rem;
+  width: clamp(3.7rem, 5vw, 4.45rem);
+  height: clamp(3.7rem, 5vw, 4.45rem);
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
   border: 1px solid rgba(var(--step-accent-rgb), 0.76);
   background:
     radial-gradient(circle, rgba(var(--step-accent-rgb), 0.14), transparent 64%),
@@ -319,40 +321,46 @@
 }
 
 .iconFrame svg {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: clamp(1.8rem, 2.7vw, 2.2rem);
+  height: clamp(1.8rem, 2.7vw, 2.2rem);
   filter: drop-shadow(0 0 10px rgba(var(--step-accent-rgb), 0.48));
 }
 
 .stepCard h3 {
-  max-width: 15rem;
+  display: flex;
+  width: min(100%, 15.5rem);
+  min-height: 2.25rem;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   color: var(--andes-white);
   font-family: var(--font-heading);
-  font-size: clamp(1.18rem, 1.6vw, 1.45rem);
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
   font-style: italic;
   font-weight: var(--font-weight-black);
   letter-spacing: var(--letter-spacing-default);
   line-height: 1.06;
-  text-wrap: balance;
+  text-align: center;
 }
 
 .cardRule {
   display: block;
   width: 2.4rem;
   height: 2px;
-  margin: var(--space-4) auto;
+  margin: var(--space-2) auto var(--space-3);
   background: var(--step-accent);
   box-shadow: 0 0 12px rgba(var(--step-accent-rgb), 0.7);
 }
 
 .stepCard p {
-  max-width: 16rem;
+  width: min(100%, 15.5rem);
+  min-height: 2.65rem;
   margin: 0;
   color: rgba(var(--andes-white-rgb), 0.72);
   font-family: var(--font-body);
-  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
-  line-height: 1.45;
+  font-size: clamp(0.84rem, 1.1vw, 0.95rem);
+  line-height: 1.4;
+  text-align: center;
 }
 
 .sliderDots {
@@ -361,14 +369,14 @@
 
 @media (max-width: 991.98px) {
   .flowIntegration {
-    padding-block: var(--space-16);
+    padding-block: var(--space-12);
     background-size: auto 45%;
   }
 
   .workflow {
-    --step-number-size: 5.25rem;
-    --step-item-top-space: 4rem;
-    --workflow-row-gap: var(--space-8);
+    --step-number-size: 4.6rem;
+    --step-item-top-space: 3.35rem;
+    --workflow-row-gap: var(--space-6);
     --workflow-column-gap: var(--space-4);
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--workflow-row-gap) var(--workflow-column-gap);
@@ -394,18 +402,18 @@
   }
 
   .stepCard {
-    min-height: 20rem;
+    min-height: 16.75rem;
   }
 }
 
 @media (max-width: 767.98px) {
   .flowIntegration {
-    padding-block: var(--space-14);
+    padding-block: var(--space-12);
     background-size: auto 34%;
   }
 
   .header {
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-6);
   }
 
   .logo {
@@ -413,23 +421,24 @@
   }
 
   .title {
-    font-size: clamp(2rem, 10vw, 3.1rem);
+    font-size: var(--section-title-mobile-font-size);
   }
 
   .titleLine {
     width: min(88%, 22rem);
-    margin-top: var(--space-4);
+    margin-top: var(--space-3);
   }
 
   .workflow {
     --slide-side-space: clamp(0.75rem, 4vw, 1.1rem);
-    --step-number-size: 5rem;
-    --step-item-top-space: 3.7rem;
+    --step-number-size: 4.6rem;
+    --step-item-top-space: 3.35rem;
     display: flex;
     width: min(100%, 24rem);
     max-width: none;
     flex-direction: row;
     gap: var(--space-4);
+    padding-block: var(--space-3) var(--space-4);
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-padding-inline: 0;
@@ -453,32 +462,34 @@
   }
 
   .stepNumber {
-    font-size: 2.35rem;
+    font-size: 2.05rem;
   }
 
   .stepCard {
     width: calc(100% - (var(--slide-side-space) * 2));
     min-height: auto;
     margin-inline: auto;
-    padding: 4.35rem var(--space-5) var(--space-6);
+    padding: 3.9rem var(--space-5) var(--space-6);
   }
 
   .iconFrame {
-    width: 4.75rem;
-    height: 4.75rem;
+    width: 4.1rem;
+    height: 4.1rem;
   }
 
   .iconFrame svg {
-    width: 2.15rem;
-    height: 2.15rem;
+    width: 1.9rem;
+    height: 1.9rem;
   }
 
   .stepCard h3 {
-    font-size: 1.18rem;
+    min-height: 2.2rem;
+    font-size: 1.08rem;
   }
 
   .stepCard p {
-    font-size: 0.92rem;
+    min-height: 2.5rem;
+    font-size: 0.88rem;
   }
 
   .sliderDots {
@@ -486,7 +497,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.7rem;
-    margin-top: var(--space-5);
+    margin-top: var(--space-3);
   }
 
   .sliderDot {

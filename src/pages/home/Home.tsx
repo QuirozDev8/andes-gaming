@@ -1,5 +1,6 @@
 import { ROUTES } from "../../routes/routePaths";
 import AnimationText from "../../components/animation-text/AnimationText";
+import SectionTitle from "../../components/section-title/SectionTitle";
 import styles from "./Home.module.css";
 import BtnElegant from "../../components/btn-elegant/BtnElegant";
 import heroImage from "../../assets/img/img-hero.png";
@@ -52,34 +53,47 @@ function Home() {
             <div className="col-12 col-lg-6 text-center text-lg-start">
               <div className={`${styles.heroContent} mx-auto mx-lg-0`}>
                 <span className={styles.eyebrow}> iGaming B2B Platform </span>
-                <h1 className={`${styles.title} mx-auto mx-lg-0`}>
-                  <AnimationText
-                    text="Una sola API."
-                    tag="span"
-                    className={styles.titleLine}
-                    textAlign="inherit"
-                    overflow="visible"
-                    splitType="words"
-                    delay={90}
-                    duration={0.8}
-                    from={{ opacity: 0, y: 32, rotateX: -55 }}
-                    to={{ opacity: 1, y: 0, rotateX: 0 }}
-                    rootMargin="0px"
-                  />
-                  <AnimationText
-                    text="Un universo de juegos."
-                    tag="span"
-                    className={`${styles.titleLine} ${styles.titleLineAccent}`}
-                    textAlign="inherit"
-                    overflow="visible"
-                    splitType="words"
-                    delay={90}
-                    duration={0.8}
-                    from={{ opacity: 0, y: 32, rotateX: -55 }}
-                    to={{ opacity: 1, y: 0, rotateX: 0 }}
-                    rootMargin="0px"
-                  />
-                </h1>
+                <SectionTitle
+                  as="h1"
+                  className={`${styles.title} mx-auto mx-lg-0`}
+                  lineClassName={styles.titleLine}
+                  accentClassName={styles.titleLineAccent}
+                  lines={[
+                    {
+                      content: (
+                        <AnimationText
+                          text="Una sola API."
+                          tag="span"
+                          textAlign="inherit"
+                          overflow="visible"
+                          splitType="words"
+                          delay={90}
+                          duration={0.8}
+                          from={{ opacity: 0, y: 32, rotateX: -55 }}
+                          to={{ opacity: 1, y: 0, rotateX: 0 }}
+                          rootMargin="0px"
+                        />
+                      ),
+                    },
+                    {
+                      accent: true,
+                      content: (
+                        <AnimationText
+                          text="Un universo de juegos."
+                          tag="span"
+                          textAlign="inherit"
+                          overflow="visible"
+                          splitType="words"
+                          delay={90}
+                          duration={0.8}
+                          from={{ opacity: 0, y: 32, rotateX: -55 }}
+                          to={{ opacity: 1, y: 0, rotateX: 0 }}
+                          rootMargin="0px"
+                        />
+                      ),
+                    },
+                  ]}
+                />
                 <p className={`${styles.description} mx-auto mx-lg-0`}>
                   Integra proveedores, estudios y operadores en una
                   infraestructura robusta, escalable y preparada para acelerar
@@ -125,10 +139,14 @@ function Home() {
       <section className={`${styles.bgCardSection} container-fluid`}>
         <div className={styles.cardSectionHeader}>
           <span className={styles.sectionEyebrow}>Stack iGaming B2B</span>
-          <h2 className={styles.cardSectionTitle}>
-            Todo lo que necesitas
-            <span> para escalar</span>
-          </h2>
+          <SectionTitle
+            className={styles.cardSectionTitle}
+            accentClassName={styles.cardSectionTitleAccent}
+            lines={[
+              "Todo lo que necesitas",
+              { content: "para escalar", accent: true },
+            ]}
+          />
           <p className={styles.cardSectionDescription}>
             Integra proveedores, estudios y operadores en una infraestructura
             robusta, escalable y preparada para acelerar tu operacion iGaming.
@@ -137,15 +155,21 @@ function Home() {
         <CardSection cards={productCards} />
       </section>
 
+       <JuegosPropios />
+
       {/* Providers section */}
       <section className={styles.providerSection}>
         <div className="container">
           <div className={styles.providerHeader}>
             <span className={styles.providerEyebrow}>Ecosistema conectado</span>
-            <h2>
-              Conectamos marcas con
-              <span> proveedores de primer nivel </span>
-            </h2>
+            <SectionTitle
+              className={styles.providerTitle}
+              accentClassName={styles.providerTitleAccent}
+              lines={[
+                "Conectamos marcas con",
+                { content: "proveedores de primer nivel", accent: true },
+              ]}
+            />
             <p>
               Tu camino hacia una diversa colección de más de 200 proveedores de
               juegos premium para crear una experiencia de juego personalizada
@@ -159,7 +183,7 @@ function Home() {
             ariaLabel="Logos de proveedores integrados"
             logoWidth={180}
             logoHeight={92}
-            durationSeconds={52}
+            durationSeconds={82}
           />
         </div>
         <div className={styles.providerActions}>
@@ -171,28 +195,30 @@ function Home() {
         </div>
       </section>
 
-      {/* featured games session */}
+      
       <SliderGames className={styles.sliderGames}
         slides={defaultSliderGames}
         eyebrow="// proveedores destacados"
-        autoPlayMs={5000}
+        autoPlayMs={6000}
         titlePrefix="Juegos"
         titleAccent="destacados"
         titleSuffix=" de nuestros proveedores."
         ariaLabel="Slider de juegos principales de proveedores" />
   
-      {/* otro elemento */}
+      
       <section className={styles.presenciaLatamSection}>
         <PresenciaLatam />
       </section>
 
       <FlowIntegration />
       
-       <JuegosPropios />
+      
 
-     {/* Infraestructura/tecnologya  */}
+     
       <InfraTecnology />
-
+        <section>
+          <p className="text-black text-center"> pendiente desarrollo </p> 
+        </section>
        <Contact /> 
     </>
   );

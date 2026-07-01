@@ -35,12 +35,21 @@
 }
 
 .title {
+  --section-title-font-family: var(--slider-games-font-display, var(--font-heading));
+  --section-title-font-size: 30px;
+  --section-title-font-style: normal;
+  --section-title-font-weight: 800;
+  --section-title-line-height: 1.1;
+  --section-title-mobile-font-size: 15px;
+  --section-title-text-transform: none;
   margin: 0;
   color: #ffffff;
   font-family: var(--slider-games-font-display, var(--font-heading));
-  font-size: 30px;
+  font-size: var(--section-title-font-size);
+  font-style: normal;
   font-weight: 800;
   line-height: 1.1;
+  text-transform: none;
 }
 
 .titleAccent {
@@ -699,7 +708,8 @@
   }
 
   .title {
-    font-size: 24px;
+    --section-title-font-size: 24px;
+    font-size: var(--section-title-font-size);
   }
 }
 
@@ -751,7 +761,7 @@
   }
 
   .title {
-    font-size: 15px;
+    font-size: var(--section-title-mobile-font-size);
   }
 
   .bigText {

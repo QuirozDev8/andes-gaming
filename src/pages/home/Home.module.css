@@ -51,11 +51,14 @@
 }
 
 .title {
-  max-width: 16ch;
+  --section-title-font-size: var(--text-4xl);
+  --section-title-mobile-font-size: var(--text-2xl);
+  --section-title-line-height: var(--line-height-tight);
+  max-width: min(100%, 40rem);
   margin: 0;
   color: var(--andes-white);
   font-family: var(--font-heading);
-  font-size: var(--text-4xl);
+  font-size: var(--section-title-font-size);
   font-style: italic;
   font-weight: var(--font-weight-black);
   letter-spacing: var(--letter-spacing-default);
@@ -208,8 +211,8 @@
   }
 
   .title {
-    max-width: 13ch;
-    font-size: var(--text-2xl);
+    max-width: 100%;
+    font-size: var(--section-title-mobile-font-size);
   }
 
   .heroMedia {
@@ -317,21 +320,21 @@
 }
 
 .cardSectionTitle {
+  --section-title-font-size: clamp(1.85rem, 3.7vw, 3.65rem);
+  --section-title-mobile-font-size: clamp(1.5rem, 7.2vw, 2.15rem);
+  --section-title-small-font-size: clamp(1.28rem, 6.4vw, 1.8rem);
   margin: 0;
   color: var(--andes-white);
   font-family: var(--font-heading);
-  font-size: clamp(1.85rem, 3.7vw, 3.65rem);
+  font-size: var(--section-title-font-size);
   font-style: italic;
   font-weight: var(--font-weight-black);
   letter-spacing: var(--letter-spacing-default);
   line-height: var(--line-height-tight);
   text-transform: uppercase;
-  text-wrap: balance;
 }
 
-.cardSectionTitle span {
-  display: inline-block;
-  margin-left: 0.25em;
+.cardSectionTitleAccent {
   background: var(--andes-gradient-primary);
   background-clip: text;
   color: transparent;
@@ -399,7 +402,7 @@
 
 .providerHeader {
   position: relative;
-  width: min(100%, 820px);
+  width: min(100%, 940px);
   margin: 0 auto var(--space-4);
   padding: 0 var(--space-4) var(--space-4);
   text-align: center;
@@ -449,19 +452,21 @@
   background: rgba(var(--andes-violet-rgb), 0.78);
 }
 
-.providerHeader h2 {
+.providerTitle {
+  --section-title-font-size: clamp(1.8rem, 3.1vw, 3rem);
+  --section-title-mobile-font-size: clamp(1.05rem, 5vw, 1.8rem);
+  --section-title-small-font-size: clamp(0.98rem, 4.8vw, 1.15rem);
+  --section-title-tiny-font-size: 0.92rem;
   margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(1.85rem, 3.8vw, 3.65rem);
+  font-size: var(--section-title-font-size);
   font-style: italic;
   font-weight: var(--font-weight-black);
   line-height: var(--line-height-tight);
   text-transform: uppercase;
-  text-wrap: balance;
 }
 
-.providerHeader h2 span {
-  display: block;
+.providerTitleAccent {
   background: var(--andes-gradient-primary);
   background-clip: text;
   color: transparent;
@@ -570,12 +575,7 @@
   }
 
   .cardSectionTitle {
-    font-size: clamp(1.75rem, 8.5vw, 2.45rem);
-  }
-
-  .cardSectionTitle span {
-    display: block;
-    margin-left: 0;
+    font-size: var(--section-title-mobile-font-size);
   }
 
   .cardSectionDescription {
@@ -602,8 +602,8 @@
     width: 1.1rem;
   }
 
-  .providerHeader h2 {
-    font-size: clamp(1.65rem, 8vw, 2.35rem);
+  .providerTitle {
+    font-size: var(--section-title-mobile-font-size);
   }
 
   .providerHeader p {

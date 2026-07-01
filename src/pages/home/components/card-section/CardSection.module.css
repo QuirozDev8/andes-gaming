@@ -144,9 +144,19 @@
 }
 
 .card-section-card__title {
+  --section-title-color: var(--white);
+  --section-title-font-family: inherit;
+  --section-title-font-size: 16px;
+  --section-title-font-style: normal;
+  --section-title-font-weight: 400;
+  --section-title-line-height: 1.15;
+  --section-title-mobile-font-size: 0.85rem;
+  --section-title-text-transform: none;
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--section-title-font-size);
+  font-style: normal;
   margin: 0 0 0.25em;
+  text-transform: none;
 }
 
 .card-section-card__description {
@@ -272,7 +282,7 @@
 
   .card-section-card__label,
   .card-section-card__title {
-    font-size: 0.85rem;
+    font-size: var(--section-title-mobile-font-size);
   }
 
   .card-section-card__meta {

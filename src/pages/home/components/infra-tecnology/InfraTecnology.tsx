@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import BtnElegant from "../../../../components/btn-elegant/BtnElegant";
+import SectionTitle from "../../../../components/section-title/SectionTitle";
 import fondoInfra from "../../../../assets/img/fondo-infra.png";
 import { ROUTES } from "../../../../routes/routePaths";
 import "./InfraTecnology.css";
@@ -75,10 +76,15 @@ export function InfraTecnology() {
                   Agregador de primer nivel
                 </span>
 
-                <h2 className="infra-title" id="infra-tecnology-title">
-                  Infraestructura
-                  <span>y tecnolog&iacute;a</span>
-                </h2>
+                <SectionTitle
+                  className="infra-title"
+                  accentClassName="infra-title-accent"
+                  id="infra-tecnology-title"
+                  lines={[
+                    "Infraestructura",
+                    { content: <>y tecnolog&iacute;a</>, accent: true },
+                  ]}
+                />
 
                 <span className="infra-title-rule" aria-hidden="true" />
 

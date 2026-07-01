@@ -6,47 +6,42 @@ import {
   Rocket,
 } from "lucide-react";
 import { useCallback, useRef, useState } from "react";
-import andesLogo from "../../../../assets/logos/logo-header.png";
+import SectionTitle from "../../../../components/section-title/SectionTitle";
 import styles from "./FlowIntegration.module.css";
 
 const integrationSteps = [
   {
     number: "1",
-    title: "¡Hablemos!",
-    description:
-      "Platicamos sobre sus metas, su mercado objetivo y sobre lo que su casino necesita para alcanzar el éxito.",
+    title: "Hablemos",
+    description: "Definimos objetivos, audiencia y necesidades clave.",
     icon: MessageCircle,
     accent: "cyan",
   },
   {
     number: "2",
-    title: "Coincidencia inteligente de contenidos",
-    description:
-      "Seleccionamos los mejores juegos para su audiencia y cerramos el trato, de forma rápida y clara.",
+    title: "Coincidencia inteligente",
+    description: "Elegimos contenido ideal y cerramos el trato.",
     icon: Gamepad2,
     accent: "blue",
   },
   {
     number: "3",
-    title: "Configuración Plug and Play",
-    description:
-      "Nos encargamos de la integración de proveedores; usted solo se conecta y listo.",
+    title: "Plug and Play",
+    description: "Integramos proveedores y dejamos todo listo.",
     icon: Puzzle,
     accent: "violet",
   },
   {
     number: "4",
-    title: "¡Pruebe, ponga en marcha y gane!",
-    description:
-      "Probamos todo junto con usted y le ayudamos a ponerse en marcha sin problemas.",
+    title: "Pruebe y lance",
+    description: "Probamos juntos, lanzamos y ajustamos.",
     icon: Rocket,
     accent: "cyan",
   },
   {
     number: "5",
     title: "Siempre a su lado",
-    description:
-      "Proporcionamos soporte continuo, contenido nuevo y actualizaciones para aumentar la participación de los jugadores.",
+    description: "Soporte continuo, nuevos contenidos y mejoras.",
     icon: Headphones,
     accent: "violet",
   },
@@ -110,21 +105,17 @@ export function FlowIntegration() {
     >
       <div className="container position-relative">
         <header className={styles.header}>
-          <img
-            className={styles.logo}
-            src={andesLogo}
-            alt="Andes Gaming"
-            loading="lazy"
+          <SectionTitle
+            className={styles.title}
+            id="flow-integration-title"
+            lines={["Pasos para trabajar", "con nosotros."]}
           />
-          <h2 className={styles.title} id="flow-integration-title">
-            Su plan para el lanzamiento
-          </h2>
           <div className={styles.titleLine} aria-hidden="true" />
         </header>
 
         <ol
           className={styles.workflow}
-          aria-label="Pasos de integración"
+          aria-label="Pasos de integracion"
           onScroll={handleStepScroll}
           ref={workflowRef}
         >
@@ -156,7 +147,7 @@ export function FlowIntegration() {
 
         <div
           className={styles.sliderDots}
-          aria-label="Navegación de pasos"
+          aria-label="Navegacion de pasos"
           role="group"
         >
           {integrationSteps.map((step, index) => (

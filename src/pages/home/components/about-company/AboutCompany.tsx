@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import andesGamingImage from "../../../../assets/img/img-andesgaming.webp";
+import SectionTitle from "../../../../components/section-title/SectionTitle";
 import { ROUTES } from "../../../../routes/routePaths";
 import styles from "./AboutCompany.module.css";
 
@@ -43,10 +44,16 @@ export function AboutCompany() {
                 Tecnologia que conecta el ecosistema
               </span>
 
-              <h3 className={styles.title} id="about-company-title">
-                ¿Que es
-                <span>Andes Gaming?</span>
-              </h3>
+              <SectionTitle
+                as="h2"
+                className={styles.title}
+                accentClassName={styles.titleAccent}
+                id="about-company-title"
+                lines={[
+                  "Que es",
+                  { content: "Andes Gaming?", accent: true },
+                ]}
+              />
 
               <p className={styles.description}>
                 Andes Gaming es una infraestructura tecnologica B2B para
