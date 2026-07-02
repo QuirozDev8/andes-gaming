@@ -34,7 +34,7 @@ export function PresenciaLatam() {
     >
       <div className={`${styles.layoutRow} row align-items-stretch gx-5`}>
         <div className="col-12 col-lg-6 d-flex text-center text-lg-start">
-          <div className={`${styles.content} mx-auto mx-lg-0`}>
+          <div className={`${styles.content} mx-auto mx-lg-0 pt-3`}>
             <span className={styles.eyebrow}>Presencia en LATAM</span>
             <SectionTitle
               className={styles.title}

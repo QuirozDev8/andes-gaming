@@ -156,7 +156,9 @@
 }
 
 .visualSlot {
+  --presence-world-float: -16px;
   position: relative;
+  isolation: isolate;
   display: flex;
   flex: 1 1 auto;
   align-items: center;
@@ -164,17 +166,67 @@
   justify-content: center;
   overflow: visible;
   width: min(100%, 760px);
-  min-height: clamp(28rem, 46vw, 43rem);
+  min-height: clamp(25rem, 42vw, 39rem);
   margin-left: auto;
   border-radius: var(--radius-xl);
+  transform-style: preserve-3d;
+}
+
+.visualSlot::before {
+  position: absolute;
+  inset: 8% -6% 6%;
+  z-index: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(var(--andes-cyan-rgb), 0.28) 0%,
+      rgba(var(--andes-violet-rgb), 0.18) 34%,
+      rgba(var(--andes-blue-deep-rgb), 0) 70%
+    );
+  content: "";
+  opacity: 0.48;
+  pointer-events: none;
+  transform: scale(0.94);
+  animation: presenceWorldAura 8.5s ease-in-out infinite;
 }
 
 .visualImage {
+  position: relative;
+  z-index: 1;
   display: block;
-  width: clamp(44rem, 64vw, 62rem);
+  width: clamp(39rem, 58vw, 55rem);
   max-width: none;
   height: auto;
+  animation: presenceWorldFloat 8s ease-in-out infinite;
   object-fit: contain;
+  transform-origin: 50% 56%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+@keyframes presenceWorldFloat {
+  0%,
+  100% {
+    transform: perspective(1000px) translate3d(0, 0, 0) scale(1) rotateY(-6deg);
+  }
+
+  50% {
+    transform: perspective(1000px) translate3d(0, var(--presence-world-float), 0) scale(1.015) rotateY(7deg);
+  }
+}
+
+@keyframes presenceWorldAura {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scale(0.94);
+  }
+
+  50% {
+    opacity: 0.72;
+    transform: scale(1.04);
+  }
 }
 
 @media (max-width: 991.98px) {
@@ -188,14 +240,15 @@
   }
 
   .visualSlot {
+    --presence-world-float: -12px;
     margin-right: auto;
     margin-left: auto;
-    width: min(100%, 38rem);
-    min-height: clamp(18rem, 58vw, 28rem);
+    width: min(100%, 35rem);
+    min-height: clamp(17rem, 54vw, 26rem);
   }
 
   .visualImage {
-    width: min(100%, 38rem);
+    width: min(100%, 35rem);
     max-width: 100%;
   }
 }
@@ -223,22 +276,23 @@
   }
 
   .visualSlot {
-    min-height: clamp(15rem, 68vw, 20rem);
+    --presence-world-float: -10px;
+    min-height: clamp(14rem, 62vw, 19rem);
     border-radius: var(--radius-lg);
   }
 
   .visualImage {
-    width: min(100%, 31rem);
+    width: min(100%, 28rem);
   }
 }
 
 @media (max-width: 479.98px) {
   .visualSlot {
-    min-height: clamp(13rem, 66vw, 17rem);
+    min-height: clamp(12rem, 60vw, 16rem);
   }
 
   .visualImage {
-    width: min(100%, 24rem);
+    width: min(100%, 22rem);
   }
 }
 
@@ -246,5 +300,20 @@
   .highlight,
   .highlightIcon {
     transition: none;
+  }
+
+  .visualSlot::before,
+  .visualImage {
+    animation: none;
+  }
+
+  .visualSlot::before {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+
+  .visualImage {
+    transform: none;
+    will-change: auto;
   }
 }
