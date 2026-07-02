@@ -20,7 +20,7 @@ export function Contact() {
           <SectionTitle
             className={styles.title}
             id="contact-home-title"
-            lines={["Hablemos de", "tu proyecto"]}
+            lines={["eSTA SECTION ESTA PENDIENTE"]}
           />
 
           <div className={styles.emailGroup}>

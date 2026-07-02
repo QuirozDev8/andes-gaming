@@ -3,7 +3,7 @@
   isolation: isolate;
   overflow: hidden;
   scroll-margin-top: calc(var(--header-height) + var(--space-4));
-  padding: clamp(3.75rem, 6vw, 5.5rem) 0;
+  padding: clamp(3rem, 5vw, 4.5rem) 0;
   background:
     linear-gradient(
       180deg,
@@ -33,7 +33,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: clamp(1.75rem, 3.2vw, 2.9rem);
+  padding: clamp(1.35rem, 2.6vw, 2.35rem);
   border: 1px solid rgba(var(--andes-white-rgb), 0.86);
   border-radius: clamp(1.1rem, 2vw, 1.75rem);
   background:
@@ -78,12 +78,17 @@
   width: min(100%, 40rem);
 }
 
+.infra-panel > .row.align-items-center {
+  --bs-gutter-x: clamp(1.25rem, 2.4vw, 2.4rem);
+  --bs-gutter-y: var(--space-4);
+}
+
 .infra-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  min-height: 2rem;
-  margin-bottom: var(--space-4);
+  min-height: 1.85rem;
+  margin-bottom: var(--space-3);
   padding: 0 var(--space-4);
   border: 1px solid rgba(var(--andes-violet-rgb), 0.26);
   border-radius: var(--radius-pill);
@@ -137,7 +142,7 @@
   display: block;
   width: 4rem;
   height: 0.22rem;
-  margin: var(--space-5) auto 0;
+  margin: var(--space-4) auto 0;
   border-radius: var(--radius-pill);
   background: linear-gradient(90deg, var(--andes-violet), var(--andes-cyan));
   box-shadow: 0 0 16px rgba(var(--andes-cyan-rgb), 0.35);
@@ -145,35 +150,43 @@
 
 .infra-description {
   max-width: 33rem;
-  margin: var(--space-5) auto 0;
+  margin: var(--space-4) auto 0;
   color: rgba(var(--andes-blue-deep-rgb), 0.82);
   font-family: var(--font-body);
-  font-size: clamp(0.94rem, 1.35vw, 1.02rem);
-  line-height: 1.55;
+  font-size: clamp(0.9rem, 1.2vw, 0.98rem);
+  line-height: 1.48;
 }
 
 .infra-actions {
-  margin-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+
+.infra-actions.infra-actions--mobile {
+  display: none;
 }
 
 .infra-elegant-btn {
-  min-height: 3.25rem;
+  min-height: 3rem;
   border-radius: var(--radius-sm);
 }
 
 .infra-elegant-btn > span {
-  min-height: 3.25rem;
-  padding: 0 var(--space-6);
+  min-height: 3rem;
+  padding: 0 var(--space-5);
   border-radius: inherit;
 }
 
 .infra-secondary-btn {
   display: inline-flex;
-  min-height: 3.25rem;
+  min-height: 3rem;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: 0 var(--space-6);
+  padding: 0 var(--space-5);
   border: 1px solid rgba(79, 133, 255, 0.34);
   border-radius: var(--radius-sm);
   background: rgba(var(--andes-white-rgb), 0.48);
@@ -212,7 +225,7 @@
 }
 
 .infra-card-grid {
-  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  margin-top: clamp(1rem, 2vw, 1.65rem);
 }
 
 .infra-capability-card {
@@ -221,7 +234,7 @@
   min-height: 100%;
   flex-direction: column;
   align-items: flex-start;
-  padding: var(--space-5);
+  padding: var(--space-4);
   border: 1px solid rgba(var(--andes-white-rgb), 0.72);
   border-radius: var(--radius-sm);
   background: rgba(var(--andes-white-rgb), 0.46);
@@ -243,11 +256,11 @@
 
 .infra-capability-icon {
   display: inline-flex;
-  width: 3.3rem;
-  height: 3.3rem;
+  width: 2.85rem;
+  height: 2.85rem;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
   border: 1px solid rgba(79, 133, 255, 0.24);
   border-radius: 50%;
   background:
@@ -257,8 +270,8 @@
 }
 
 .infra-capability-icon svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.35rem;
+  height: 1.35rem;
 }
 
 .infra-capability-card h3 {
@@ -271,11 +284,11 @@
 }
 
 .infra-capability-card p {
-  margin: var(--space-2) 0 var(--space-4);
+  margin: var(--space-2) 0 var(--space-3);
   color: rgba(var(--andes-blue-deep-rgb), 0.72);
   font-family: var(--font-body);
   font-size: 0.78rem;
-  line-height: 1.45;
+  line-height: 1.35;
 }
 
 .infra-card-accent {
@@ -292,7 +305,7 @@
   z-index: 1;
   display: flex;
   width: min(108%, 780px);
-  min-height: clamp(300px, 34vw, 500px);
+  min-height: clamp(260px, 30vw, 440px);
   align-items: center;
   justify-content: center;
   transform: translateX(clamp(0rem, 2vw, 1.4rem));
@@ -331,7 +344,7 @@
   position: relative;
   z-index: 2;
   overflow: hidden;
-  margin-top: clamp(1.35rem, 2.5vw, 2rem);
+  margin-top: clamp(1rem, 2vw, 1.5rem);
   border: 1px solid rgba(var(--andes-white-rgb), 0.76);
   border-radius: var(--radius-sm);
   background: rgba(var(--andes-white-rgb), 0.42);
@@ -341,15 +354,15 @@
 }
 
 .infra-highlight {
-  min-height: 5.35rem;
-  padding: var(--space-3) var(--space-5);
+  min-height: 4.65rem;
+  padding: var(--space-3) var(--space-4);
   border-right: 1px solid rgba(79, 133, 255, 0.2);
 }
 
 .infra-highlight-icon {
   display: inline-flex;
-  width: 3.05rem;
-  height: 3.05rem;
+  width: 2.65rem;
+  height: 2.65rem;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
@@ -361,8 +374,8 @@
 }
 
 .infra-highlight-icon svg {
-  width: 1.55rem;
-  height: 1.55rem;
+  width: 1.35rem;
+  height: 1.35rem;
 }
 
 .infra-highlight h3 {
@@ -392,6 +405,17 @@
     margin-right: 0;
     margin-left: 0;
   }
+
+  .infra-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 576px) {
+  .infra-actions {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 @media (max-width: 1199.98px) {
@@ -406,7 +430,7 @@
 
 @media (max-width: 991.98px) {
   .infra-panel {
-    padding: clamp(1.6rem, 5vw, 2.4rem);
+    padding: clamp(1.3rem, 4vw, 2rem);
   }
 
   .infra-title {
@@ -429,7 +453,7 @@
 
 @media (max-width: 767.98px) {
   .infra-section {
-    padding: var(--space-16) 0;
+    padding: var(--space-12) 0;
   }
 
   .infra-panel {
@@ -456,12 +480,21 @@
     padding-inline: var(--space-4);
   }
 
-  .infra-card-grid {
-    margin-top: var(--space-8);
+  .infra-actions.infra-actions--desktop {
+    display: none;
   }
 
-  .infra-capability-card {
-    min-height: auto;
+  .infra-actions.infra-actions--mobile {
+    display: flex;
+    margin-top: var(--space-4);
+  }
+
+  .infra-card-grid.row {
+    display: none;
+  }
+
+  .infra-visual {
+    margin-top: var(--space-4);
   }
 
   .infra-visual::before {
@@ -481,7 +514,7 @@
 
 @media (max-width: 575.98px) {
   .infra-panel {
-    padding-inline: var(--space-5);
+    padding-inline: var(--space-4);
   }
 
   .infra-title {

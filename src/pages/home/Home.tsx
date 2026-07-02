@@ -220,9 +220,12 @@ function Home() {
 
      
       <InfraTecnology />
-        <section>
+        
+        
+      <section>
           <p className="text-black text-center"> pendiente desarrollo </p> 
-        </section>
+      </section>
+
        <Contact /> 
     </>
   );

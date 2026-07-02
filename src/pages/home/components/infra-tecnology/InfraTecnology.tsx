@@ -59,6 +59,24 @@ const platformHighlights = [
   },
 ] as const;
 
+function InfraActions({ className = "" }: { className?: string }) {
+  return (
+    <div className={`infra-actions ${className}`}>
+      <BtnElegant
+        text="Explorar tecnologia"
+        href="#infra-architecture"
+        ariaLabel="Explorar tecnologia"
+        className="infra-elegant-btn"
+      />
+
+      <Link className="infra-secondary-btn" to={ROUTES.contact}>
+        <Network aria-hidden="true" strokeWidth={1.8} />
+        Become a partner
+      </Link>
+    </div>
+  );
+}
+
 export function InfraTecnology() {
   return (
     <section
@@ -94,19 +112,7 @@ export function InfraTecnology() {
                   operaciones iGaming de alto rendimiento.
                 </p>
 
-                <div className="infra-actions d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
-                  <BtnElegant
-                    text="Explorar tecnologia"
-                    href="#infra-architecture"
-                    ariaLabel="Explorar tecnologia"
-                    className="infra-elegant-btn"
-                  />
-
-                  <Link className="infra-secondary-btn" to={ROUTES.contact}>
-                    <Network aria-hidden="true" strokeWidth={1.8} />
-                    Become a partner
-                  </Link>
-                </div>
+                <InfraActions className="infra-actions--desktop" />
 
                 <div className="infra-card-grid row g-3 py-3">
                   {capabilityCards.map((card) => {
@@ -137,7 +143,7 @@ export function InfraTecnology() {
                 <img
                   className="infra-image"
                   src={fondoInfra}
-                  alt="Arquitectura tecnologica Andes Gaming conectando verticales iGaming"
+                  alt="Arquitectura tecnologica Andes Gaming con API unificada, integraciones, seguridad y escalabilidad para operaciones iGaming"
                   loading="lazy"
                 />
               </div>
@@ -163,6 +169,8 @@ export function InfraTecnology() {
               );
             })}
           </div>
+
+          <InfraActions className="infra-actions--mobile" />
         </div>
       </div>
     </section>
