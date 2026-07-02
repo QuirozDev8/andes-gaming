@@ -215,7 +215,7 @@ function Header() {
         aria-label="Main navigation"
       >
         <Link
-          className={`ps-3 ${styles.brand}`}
+          className={`${styles.brand}`}
           to={ROUTES.home}
           aria-label="Andes Gaming home"
         >
@@ -255,7 +255,7 @@ function Header() {
           )}
         </div>
 
-        <div className={styles.rightActions}>
+        <div className={`${styles.rightActions} me-lg-2`}>
           {renderLanguageToggle(styles.desktopLanguage)}
           <div className={styles.demoButton}>{renderDemoButton()}</div>
         </div>

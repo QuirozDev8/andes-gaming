@@ -14,7 +14,7 @@
       circle at 72% 38%,
       rgba(var(--andes-cyan-rgb), 0.08),
       transparent 30%
-    ),
+    ), 
     radial-gradient(
       circle at 12% 42%,
       rgba(var(--andes-violet-rgb), 0.16),

@@ -25,7 +25,7 @@ const benefits = [
     title: "Operacion Escalable",
     description: "Preparado para crecer por marca, pais, vertical y volumen operativo.",
     icon: ChartNoAxesCombined,
-  },
+  }, 
   {
     title: "Gestion Centralizada",
     description: "Mas control, visibilidad y eficiencia para la operacion iGaming.",
