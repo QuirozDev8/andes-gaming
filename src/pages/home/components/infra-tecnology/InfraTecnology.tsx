@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import BtnElegant from "../../../../components/btn-elegant/BtnElegant";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
-import fondoInfra from "../../../../assets/img/fondo-infra.png";
+import fondoInfra from "../../../../assets/img/fondo-infra.webp";
 import { ROUTES } from "../../../../routes/routePaths";
 import "./InfraTecnology.css";
 
