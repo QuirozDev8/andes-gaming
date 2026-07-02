@@ -353,8 +353,16 @@
     0 18px 34px rgba(var(--andes-blue-deep-rgb), 0.1);
 }
 
+.infra-highlight-bar > [class*="col-"] {
+  display: flex;
+}
+
 .infra-highlight {
+  display: flex;
+  width: 100%;
   min-height: 4.65rem;
+  align-items: center;
+  gap: var(--space-3);
   padding: var(--space-3) var(--space-4);
   border-right: 1px solid rgba(79, 133, 255, 0.2);
 }
@@ -376,6 +384,14 @@
 .infra-highlight-icon svg {
   width: 1.35rem;
   height: 1.35rem;
+}
+
+.infra-highlight-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .infra-highlight h3 {

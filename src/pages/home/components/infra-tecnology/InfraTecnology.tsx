@@ -156,11 +156,11 @@ export function InfraTecnology() {
 
               return (
                 <div className="col-12 col-sm-6 col-xl-3" key={highlight.title}>
-                  <article className="infra-highlight d-flex align-items-center gap-3 h-100">
+                  <article className="infra-highlight">
                     <div className="infra-highlight-icon">
                       <HighlightIcon aria-hidden="true" strokeWidth={1.8} />
                     </div>
-                    <div>
+                    <div className="infra-highlight-copy">
                       <h3>{highlight.title}</h3>
                       <p>{highlight.description}</p>
                     </div>
