@@ -62,7 +62,7 @@ export function AboutCompany() {
                 capa tecnologica.
               </p>
 
-              <div className={`${styles.benefitsGrid} row g-3`}>
+              <div className={`${styles.benefitsGrid} row g-3 d-none d-md-flex`}>
                 {benefits.map((benefit) => {
                   const BenefitIcon = benefit.icon;
 
@@ -82,15 +82,15 @@ export function AboutCompany() {
                 })}
               </div>
 
-              <Link className={styles.cta} to={ROUTES.about}>
-                Conoce mas sobre nosotros 
+              <Link className={`${styles.cta} ${styles.ctaDesktop}`} to={ROUTES.about}>
+                Conoce mas sobre nosotros
               </Link>
 
               
             </div>
           </div>
 
-          <div className="col-12 col-lg-6 d-flex">
+          <div className={`col-12 col-lg-6 d-flex ${styles.visualColumn}`}>
             <div className={`${styles.visual} ms-lg-auto`}>
               <img
                 className={styles.image}
@@ -98,6 +98,9 @@ export function AboutCompany() {
                 alt="Infraestructura Andes Gaming conectando verticales de iGaming"
               />
             </div>
+            <Link className={`${styles.cta} ${styles.ctaMobile}`} to={ROUTES.about}>
+              Conoce mas sobre nosotros
+            </Link>
           </div>
         </div>
       </div>

@@ -133,7 +133,7 @@ function Header() {
   );
 
   const renderDemoButton = () => (
-    <Button text="Solicitar demo" to={ROUTES.contact} onClick={closeMenus} />
+    <Button text="Hablar con ventas" to={ROUTES.contact} onClick={closeMenus} />
   );
 
   const renderNavItem = (item: NavItem) => (

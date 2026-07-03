@@ -95,6 +95,7 @@ export function Contact() {
     <section
       aria-labelledby="contact-home-title"
       className={styles.contact}
+      id="contact-home"
       style={contactStyle}
     >
       <div className="container">

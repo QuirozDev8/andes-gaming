@@ -198,8 +198,10 @@
   width: clamp(39rem, 58vw, 55rem);
   max-width: none;
   height: auto;
+  margin-inline: auto;
   animation: presenceWorldFloat 8s ease-in-out infinite;
   object-fit: contain;
+  object-position: center;
   transform-origin: 50% 56%;
   transform-style: preserve-3d;
   will-change: transform;
@@ -254,6 +256,10 @@
 }
 
 @media (max-width: 767.98px) {
+  .layoutRow {
+    row-gap: var(--space-4);
+  }
+
   .eyebrow {
     justify-content: center;
     letter-spacing: 0.14em;
@@ -277,22 +283,39 @@
 
   .visualSlot {
     --presence-world-float: -10px;
-    min-height: clamp(14rem, 62vw, 19rem);
+    width: min(100%, 36rem);
+    max-width: 100%;
+    min-height: clamp(18rem, 78vw, 25rem);
+    margin-inline: auto;
     border-radius: var(--radius-lg);
   }
 
+  .visualSlot::before {
+    inset: -2% -6% -6%;
+    opacity: 0.78;
+    transform: scale(1.08);
+  }
+
   .visualImage {
-    width: min(100%, 28rem);
+    width: min(100%, 36rem);
+    max-width: 100%;
+    filter:
+      drop-shadow(0 0 26px rgba(var(--andes-cyan-rgb), 0.28))
+      drop-shadow(0 22px 34px rgba(var(--andes-blue-deep-rgb), 0.42))
+      brightness(1.16)
+      contrast(1.08)
+      saturate(1.12);
   }
 }
 
 @media (max-width: 479.98px) {
   .visualSlot {
-    min-height: clamp(12rem, 60vw, 16rem);
+    width: min(100%, 31rem);
+    min-height: clamp(17rem, 86vw, 22rem);
   }
 
   .visualImage {
-    width: min(100%, 22rem);
+    width: min(100%, 31rem);
   }
 }
 

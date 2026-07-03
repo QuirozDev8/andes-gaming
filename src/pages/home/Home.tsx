@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ROUTES } from "../../routes/routePaths";
 import AnimationText from "../../components/animation-text/AnimationText";
 import SectionTitle from "../../components/section-title/SectionTitle";
@@ -152,6 +153,18 @@ function Home() {
           </p>
         </div>
         <CardSection cards={productCards} />
+
+        <div
+          className={styles.cardSectionLinks}
+          aria-label="Acciones del stack iGaming"
+        >
+          <a className={styles.cardSectionLinkPrimary} href="#contact-home">
+            Hablar con ventas
+          </a>
+          <Link className={styles.cardSectionLinkSecondary} to={ROUTES.about}>
+            Conoce Andes Gaming
+          </Link>
+        </div>
       </section>
 
        <JuegosPropios />
@@ -183,7 +196,7 @@ function Home() {
                 ariaLabel="Logos de proveedores integrados"
                 logoWidth={180}
                 logoHeight={92}
-                durationSeconds={82}
+                durationSeconds={92}
               />
             </div>
 
@@ -223,7 +236,7 @@ function Home() {
         
         
       <section>
-          <p className="text-black text-center"> pendiente desarrollo </p> 
+          <p className="text-black text-center"> pendiente desarrollo moudulo reporteria </p> 
       </section>
 
        <Contact /> 

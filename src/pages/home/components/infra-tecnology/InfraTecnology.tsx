@@ -139,7 +139,7 @@ export function InfraTecnology() {
             </div>
 
             <div className="col-12 col-lg-6">
-              <div className="infra-visual ms-lg-auto" id="infra-architecture">
+              <div className="infra-visual" id="infra-architecture">
                 <img
                   className="infra-image"
                   src={fondoInfra}

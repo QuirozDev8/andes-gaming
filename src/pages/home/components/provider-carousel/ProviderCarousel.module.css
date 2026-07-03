@@ -61,7 +61,7 @@
 .logoTile {
   display: grid;
   place-items: center;
-  padding: clamp(0.85rem, 1.8vw, 1.15rem);
+  padding: clamp(0.45rem, 1vw, 0.75rem);
   border: 1px solid rgba(79, 133, 255, 0.24);
   border-radius: 8px;
   background:
@@ -108,8 +108,8 @@
 
 .logoImage {
   display: block;
-  width: min(94%, 160px);
-  height: 56px;
+  width: min(100%, calc(var(--logo-width) - 1.35rem));
+  height: min(72px, calc(var(--logo-height) - 1.35rem));
   object-fit: contain;
   object-position: center;
   transform: translateY(var(--item-logo-offset-y, 0)) scale(var(--item-logo-scale, 1));
@@ -144,8 +144,8 @@
   }
 
   .logoImage {
-    width: min(94%, 124px);
-    height: 44px;
+    width: min(100%, calc(var(--logo-width) - 0.95rem));
+    height: min(56px, calc(var(--logo-height) - 0.95rem));
   }
 }
 

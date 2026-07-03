@@ -304,16 +304,16 @@
   position: relative;
   z-index: 1;
   display: flex;
-  width: min(108%, 780px);
+  width: min(100%, 780px);
   min-height: clamp(260px, 30vw, 440px);
   align-items: center;
   justify-content: center;
-  transform: translateX(clamp(0rem, 2vw, 1.4rem));
+  margin-inline: auto;
 }
 
 .infra-visual::before {
   position: absolute;
-  inset: 10% 4% 3% 10%;
+  inset: 10% 6% 3%;
   z-index: -1;
   border: 1px solid rgba(var(--andes-white-rgb), 0.24);
   border-radius: 50%;
@@ -330,9 +330,9 @@
 
 .infra-image {
   display: block;
-  width: min(108%, 780px);
+  width: min(100%, 780px);
   height: auto;
-  max-width: none;
+  max-width: 100%;
   object-fit: contain;
   object-position: center;
   filter:
