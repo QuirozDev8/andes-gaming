@@ -23,6 +23,7 @@ export const productCards: CardSectionCardProps[] = [
         "Integra casino, sportsbook, pagos y servicios desde una unica API.",
         "Reduce tiempos de implementacion y evita integraciones aisladas por proveedor.",
         "Prepara la base para sumar nuevos mercados, marcas y verticales con menos friccion.",
+        
       ],
       outcome:
         "Una arquitectura mas simple para operar, escalar y evolucionar el ecosistema iGaming.",
