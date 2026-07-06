@@ -190,7 +190,7 @@ const ParticleCard: React.FC<{
 
     if (!particlesInitialized.current) {
       initializeParticles();
-    }
+    } 
 
     memoizedParticles.current.forEach((particle, index) => {
       const timeoutId = setTimeout(() => {

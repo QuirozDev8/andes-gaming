@@ -5,7 +5,7 @@ import SectionTitle from "../../../../components/section-title/SectionTitle";
 import "./JuegosPropios.css";
 import comandoImg from "../../../../assets/img/comando.webp";
 import egyptImg from "../../../../assets/img/egypt.webp";
-import wildImg from "../../../../assets/img/wild.webp";
+
 
 type OwnGame = {
   id: string;
@@ -17,6 +17,13 @@ type OwnGame = {
 
 const ownGames: OwnGame[] = [
   {
+    id: "comando",
+    title: "Comando",
+    imageSrc: comandoImg,
+    imageAlt: "Banner temporal del juego Comando",
+    youtubeId: "kXxVkRHKhQI",
+  },
+  {
     id: "neon-rush",
     title: "Andres gaming",
     imageSrc: egyptImg,
@@ -26,16 +33,9 @@ const ownGames: OwnGame[] = [
   {
     id: "andes-wild",
     title: "Andes Wild",
-    imageSrc: wildImg,
+    imageSrc: comandoImg,
     imageAlt: "Banner temporal del juego Andes Wild",
     youtubeId: "aqz-KE-bpKQ",
-  },
-  {
-    id: "comando",
-    title: "Comando",
-    imageSrc: comandoImg,
-    imageAlt: "Banner temporal del juego Commando",
-    youtubeId: "M7lc1UVf-VE",
   },
 ];
 

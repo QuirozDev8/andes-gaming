@@ -454,6 +454,7 @@
   font-weight: var(--font-weight-black, 900);
   line-height: 1.04;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .card-section-modal__intro {
@@ -463,6 +464,7 @@
   font-family: var(--font-body, sans-serif);
   font-size: clamp(0.92rem, 1.4vw, 1rem);
   line-height: 1.58;
+  overflow-wrap: anywhere;
 }
 
 .card-section-modal__points {
@@ -486,6 +488,7 @@
   font-family: var(--font-body, sans-serif);
   font-size: 0.9rem;
   line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .card-section-modal__point-marker {
@@ -507,6 +510,7 @@
   font-size: 0.9rem;
   font-weight: var(--font-weight-semibold, 600);
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .card-section-modal__cta {
@@ -563,6 +567,57 @@
   flex: 0 0 auto;
 }
 
+@media (max-width: 1023.98px) {
+  .card-section-modal {
+    align-items: center;
+    justify-content: center;
+    min-height: 100svh;
+    padding: clamp(0.75rem, 3vw, 1.5rem);
+  }
+
+  .card-section-modal__content {
+    width: min(100%, 42rem);
+    max-height: calc(100svh - clamp(1.5rem, 6vw, 3rem));
+    border-radius: var(--radius-md, 12px);
+  }
+
+  .card-section-modal__header {
+    gap: var(--space-3, 0.75rem);
+    padding: clamp(0.85rem, 2.4vw, 1.15rem) clamp(0.95rem, 3vw, 1.35rem);
+  }
+
+  .card-section-modal__body {
+    padding: clamp(1rem, 3.5vw, 1.5rem);
+  }
+
+  .card-section-modal__title {
+    font-size: clamp(1.28rem, 5vw, 1.85rem);
+    line-height: 1.06;
+  }
+
+  .card-section-modal__intro {
+    margin-top: var(--space-3, 0.75rem);
+    font-size: clamp(0.82rem, 2.2vw, 0.95rem);
+    line-height: 1.5;
+  }
+
+  .card-section-modal__points {
+    gap: var(--space-2, 0.5rem);
+    margin-top: var(--space-4, 1rem);
+  }
+
+  .card-section-modal__point {
+    padding: 0.72rem 0.8rem;
+    font-size: clamp(0.78rem, 2.1vw, 0.9rem);
+    line-height: 1.42;
+  }
+
+  .card-section-modal__outcome {
+    margin-top: var(--space-4, 1rem);
+    font-size: clamp(0.78rem, 2.1vw, 0.9rem);
+  }
+}
+
 @media (max-width: 599px) {
   .card-section-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -616,18 +671,20 @@
   }
 
   .card-section-modal {
-    align-items: flex-end;
-    padding: 0.85rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 100svh;
+    padding: 0.75rem;
   }
 
   .card-section-modal__content {
-    width: 100%;
-    max-height: 88svh;
+    width: min(100%, 24rem);
+    max-height: calc(100svh - 1.5rem);
     border-radius: var(--radius-md, 12px);
   }
 
   .card-section-modal__header {
-    padding: var(--space-4, 1rem);
+    padding: 0.8rem 0.85rem;
   }
 
   .card-section-modal__identity {
@@ -635,38 +692,62 @@
   }
 
   .card-section-modal__icon-wrap {
-    width: 2.1rem;
-    height: 2.1rem;
+    width: 1.95rem;
+    height: 1.95rem;
     border-radius: var(--radius-sm, 8px);
   }
 
+  .card-section-modal__icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
   .card-section-modal__eyebrow {
-    font-size: 0.68rem;
+    font-size: 0.64rem;
     letter-spacing: 0.08em;
   }
 
   .card-section-modal__close {
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 2rem;
+    height: 2rem;
   }
 
   .card-section-modal__body {
-    padding: var(--space-4, 1rem);
+    padding: 0.95rem;
   }
 
   .card-section-modal__title {
-    font-size: var(--section-title-mobile-font-size);
+    font-size: clamp(1.18rem, 7vw, 1.55rem);
   }
 
   .card-section-modal__intro,
   .card-section-modal__point,
   .card-section-modal__outcome {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
+  }
+
+  .card-section-modal__point {
+    gap: 0.58rem;
+    padding: 0.68rem 0.72rem;
+  }
+
+  .card-section-modal__point-marker {
+    width: 0.42rem;
+    height: 0.42rem;
+    margin-top: 0.38rem;
+  }
+
+  .card-section-modal__outcome {
+    padding-left: 0.75rem;
   }
 
   .card-section-modal__cta {
     width: 100%;
     min-height: 2.55rem;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0 var(--space-3, 0.75rem);
+    font-size: 0.68rem;
   }
 }
 

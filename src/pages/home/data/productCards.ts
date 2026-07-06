@@ -1,5 +1,6 @@
 import { ChartNoAxesCombined, Gamepad2,Network,Settings2,ShieldCheck, UsersRound,} from "lucide-react";
 import cardBackground from "../../../assets/img/bg-mountain2.png";
+import cardImgBo from "../../../assets/img/bg-card-bo.webp";
 import cardMundoImg from "../../../assets/img/bg-mundo.webp";
 import cardPiezaImg from "../../../assets/img/bg-pieza.webp";
 import cardCoheteImg from "../../../assets/img/bg-cohete.webp";
@@ -12,7 +13,7 @@ export const productCards: CardSectionCardProps[] = [
     color: "#120F17",
     title: "Single API",
     description:
-      "Integra casino, sportsbook, pagos y servicios desde una sola capa.",
+      "Todo el universo iGaming en una sola capa.",
     label: "Core Layer",
     icon: Network,
     backgroundImage: cardBackground,
@@ -33,7 +34,7 @@ export const productCards: CardSectionCardProps[] = [
     color: "#120F17",
     title: "Proveedores",
     description:
-      "Conecta estudios, agregadores y operadores con flujos centralizados.",
+      "Conecta con todos los proveedores de primer nivel.",
     label: "Ecosistema",
     icon: UsersRound,
     backgroundImage: cardMundoImg,
@@ -76,6 +77,7 @@ export const productCards: CardSectionCardProps[] = [
       "Gestiona configuraciones, contenido y visibilidad operacional desde un panel.",
     label: "Control",
     icon: Settings2,
+    backgroundImage: cardImgBo,
     detail: {
       intro:
         "Administra configuraciones, contenido y visibilidad operacional desde un panel pensado para equipos B2B.",

@@ -5,7 +5,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import andesGamingImage from "../../../../assets/img/img-andesgaming.webp";
+import andesGamingImage from "../../../../assets/img/fondo-que-es-andesgaming.webp";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
 import { ROUTES } from "../../../../routes/routePaths";
 import styles from "./AboutCompany.module.css";

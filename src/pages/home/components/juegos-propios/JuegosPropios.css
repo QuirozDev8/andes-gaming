@@ -486,7 +486,27 @@
   }
 
   .juegos-propios__carousel {
+    grid-template-rows: auto;
     height: auto;
+  }
+
+  .juegos-propios__viewport {
+    height: auto;
+    max-height: none;
+    aspect-ratio: 16 / 9;
+  }
+
+  .juegos-propios__track,
+  .juegos-propios__slide,
+  .juegos-propios__image {
+    height: 100%;
+    max-height: none;
+  }
+
+  .juegos-propios__image {
+    object-fit: contain;
+    object-position: center;
+    background: rgba(var(--andes-blue-deep-rgb), 0.82);
   }
 }
 
@@ -496,7 +516,7 @@
   }
 
   .juegos-propios__panel {
-    --juegos-propios-banner-height: clamp(8.25rem, 43vw, 11.5rem);
+    --juegos-propios-banner-height: auto;
     padding: var(--space-4);
     border-radius: var(--radius-md);
   }
