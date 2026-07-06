@@ -221,23 +221,14 @@ function Home() {
         titleSuffix=" de nuestros proveedores."
         ariaLabel="Slider de juegos principales de proveedores"
       />
-  
       
       <section className={styles.presenciaLatamSection}>
         <PresenciaLatam />
       </section>
 
       <FlowIntegration />
-      
-      
-
-     
+                
       <InfraTecnology />
-        
-        
-      <section>
-          <p className="text-black text-center"> pendiente desarrollo moudulo reporteria </p> 
-      </section>
 
        <Contact /> 
     </>

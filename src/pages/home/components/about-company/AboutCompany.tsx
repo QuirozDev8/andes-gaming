@@ -13,22 +13,22 @@ import styles from "./AboutCompany.module.css";
 const benefits = [
   {
     title: "Single API",
-    description: "Una sola integracion para conectar multiples proveedores y servicios.",
+    description: "Conecta proveedores y servicios desde una sola integracion.",
     icon: Network,
   },
   {
     title: "Ecosistema de Proveedores",
-    description: "Casino, sportsbook, pagos, KYC, CRM y mas desde una misma capa.",
+    description: "Casino, sportsbook, pagos, KYC y CRM en una misma capa.",
     icon: UsersRound,
   },
   {
     title: "Operacion Escalable",
-    description: "Preparado para crecer por marca, pais, vertical y volumen operativo.",
+    description: "Escala por marca, pais, vertical y volumen operativo.",
     icon: ChartNoAxesCombined,
   }, 
   {
     title: "Gestion Centralizada",
-    description: "Mas control, visibilidad y eficiencia para la operacion iGaming.",
+    description: "Control y visibilidad para operar con mas eficiencia.",
     icon: ShieldCheck,
   },
 ] as const;
@@ -72,7 +72,7 @@ export function AboutCompany() {
                         <div className={styles.benefitIcon}>
                           <BenefitIcon aria-hidden="true" strokeWidth={1.8} />
                         </div>
-                        <div>
+                        <div className={styles.benefitContent}>
                           <h3>{benefit.title}</h3>
                           <p>{benefit.description}</p>
                         </div>

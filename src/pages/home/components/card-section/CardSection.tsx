@@ -1,7 +1,16 @@
-import React, { useRef, useEffect, useCallback, useState } from 'react';
+import React, { useRef, useEffect, useCallback, useState, useId } from 'react';
+import { createPortal } from 'react-dom';
 import { gsap } from 'gsap';
+import { ArrowRight, X } from 'lucide-react';
 import SectionTitle from '../../../../components/section-title/SectionTitle';
 import styles from './CardSection.module.css';
+
+
+export interface CardSectionCardDetail {
+  intro: string;
+  points: string[];
+  outcome?: string;
+}
 
 export interface CardSectionCardProps {
   color?: string;
@@ -10,6 +19,7 @@ export interface CardSectionCardProps {
   label?: string;
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   backgroundImage?: string;
+  detail?: CardSectionCardDetail;
   textAutoHide?: boolean;
   disableAnimations?: boolean;
 }
@@ -27,6 +37,8 @@ export interface CardSectionProps {
   glowColor?: string;
   clickEffect?: boolean;
   enableMagnetism?: boolean;
+  modalCtaLabel?: string;
+  modalCtaHref?: string;
 }
 
 const DEFAULT_PARTICLE_COUNT = 15;
@@ -119,6 +131,9 @@ const ParticleCard: React.FC<{
   enableTilt?: boolean;
   clickEffect?: boolean;
   enableMagnetism?: boolean;
+  enableParticles?: boolean;
+  ariaLabel?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }> = ({
   children,
   className = '',
@@ -128,9 +143,12 @@ const ParticleCard: React.FC<{
   glowColor = DEFAULT_GLOW_COLOR,
   enableTilt = true,
   clickEffect = false,
-  enableMagnetism = false
+  enableMagnetism = false,
+  enableParticles = true,
+  ariaLabel,
+  onClick
 }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLButtonElement>(null);
   const particlesRef = useRef<HTMLDivElement[]>([]);
   const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const isHoveredRef = useRef(false);
@@ -139,14 +157,14 @@ const ParticleCard: React.FC<{
   const magnetismAnimationRef = useRef<gsap.core.Tween | null>(null);
 
   const initializeParticles = useCallback(() => {
-    if (particlesInitialized.current || !cardRef.current) return;
+    if (!enableParticles || particlesInitialized.current || !cardRef.current) return;
 
     const { width, height } = cardRef.current.getBoundingClientRect();
     memoizedParticles.current = Array.from({ length: particleCount }, () =>
       createParticleElement(Math.random() * width, Math.random() * height, glowColor)
     );
     particlesInitialized.current = true;
-  }, [particleCount, glowColor]);
+  }, [enableParticles, particleCount, glowColor]);
 
   const clearAllParticles = useCallback(() => {
     timeoutsRef.current.forEach(clearTimeout);
@@ -168,7 +186,7 @@ const ParticleCard: React.FC<{
   }, []);
 
   const animateParticles = useCallback(() => {
-    if (!cardRef.current || !isHoveredRef.current) return;
+    if (!enableParticles || !cardRef.current || !isHoveredRef.current) return;
 
     if (!particlesInitialized.current) {
       initializeParticles();
@@ -205,7 +223,7 @@ const ParticleCard: React.FC<{
 
       timeoutsRef.current.push(timeoutId);
     });
-  }, [initializeParticles]);
+  }, [enableParticles, initializeParticles]);
 
   useEffect(() => {
     if (disableAnimations || !cardRef.current) return;
@@ -214,7 +232,9 @@ const ParticleCard: React.FC<{
 
     const handleMouseEnter = () => {
       isHoveredRef.current = true;
-      animateParticles();
+      if (enableParticles) {
+        animateParticles();
+      }
 
       if (enableTilt) {
         gsap.to(element, {
@@ -342,17 +362,42 @@ const ParticleCard: React.FC<{
       element.removeEventListener('mousemove', handleMouseMove);
       element.removeEventListener('click', handleClick);
       clearAllParticles();
+      if (enableTilt || enableMagnetism) {
+        gsap.to(element, {
+          rotateX: 0,
+          rotateY: 0,
+          x: 0,
+          y: 0,
+          duration: 0.2,
+          ease: 'power2.out'
+        });
+      }
     };
-  }, [animateParticles, clearAllParticles, disableAnimations, enableTilt, enableMagnetism, clickEffect, glowColor]);
+  }, [
+    animateParticles,
+    clearAllParticles,
+    disableAnimations,
+    enableTilt,
+    enableMagnetism,
+    clickEffect,
+    glowColor,
+    enableParticles
+  ]);
 
   return (
-    <div
+    <button
       ref={cardRef}
-      className={`${className} ${styles['card-section-particle-container']}`}
+      type="button"
+      aria-label={ariaLabel}
+      className={[
+        className,
+        enableParticles ? styles['card-section-particle-container'] : ''
+      ].filter(Boolean).join(' ')}
+      onClick={onClick}
       style={{ ...style, position: 'relative', overflow: 'hidden' }}
     >
       {children}
-    </div>
+    </button>
   );
 };
 
@@ -530,14 +575,98 @@ const CardSection: React.FC<CardSectionProps> = ({
   enableTilt = false,
   glowColor = DEFAULT_GLOW_COLOR,
   clickEffect = true,
-  enableMagnetism = true
+  enableMagnetism = true,
+  modalCtaLabel = 'Hablar con ventas',
+  modalCtaHref = '#contact-home'
 }) => {
   const gridRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousActiveElementRef = useRef<HTMLElement | null>(null);
+  const modalTitleId = useId();
+  const modalDescriptionId = useId();
   const isMobile = useMobileDetection();
-  const shouldDisableAnimations = disableAnimations || isMobile;
+  const [selectedCard, setSelectedCard] = useState<CardSectionCardProps | null>(null);
+  const shouldDisableAnimations = disableAnimations || isMobile || Boolean(selectedCard);
+
+  const closeModal = useCallback(() => {
+    setSelectedCard(null);
+  }, []);
+
+  const openCardDetail = useCallback((card: CardSectionCardProps) => {
+    setSelectedCard(card);
+  }, []);
+
+  useEffect(() => {
+    if (!selectedCard) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [selectedCard]);
+
+  useEffect(() => {
+    if (!selectedCard) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeModal();
+        return;
+      }
+
+      if (event.key !== 'Tab' || !modalRef.current) return;
+
+      const focusableElements = Array.from(
+        modalRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        )
+      );
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (!firstElement || !lastElement) return;
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+        return;
+      }
+
+      if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [closeModal, selectedCard]);
+
+  useEffect(() => {
+    if (!selectedCard) return;
+
+    previousActiveElementRef.current = document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null;
+
+    const focusTimer = window.setTimeout(() => {
+      closeButtonRef.current?.focus();
+    }, 0);
+
+    return () => {
+      window.clearTimeout(focusTimer);
+      previousActiveElementRef.current?.focus();
+      previousActiveElementRef.current = null;
+    };
+  }, [selectedCard]);
 
   const renderCard = (card: CardSectionCardProps, index: number) => {
     const Icon = card.icon;
+    const cardTitle = card.title ?? 'servicio';
     const baseClassName = [
       styles['card-section-card'],
       card.backgroundImage ? styles['card-section-card--has-background'] : '',
@@ -565,167 +694,147 @@ const CardSection: React.FC<CardSectionProps> = ({
           />
         )}
 
-        <div className={styles['card-section-card__header']}>
-          <div className={styles['card-section-card__meta']}>
+        <span className={styles['card-section-card__header']}>
+          <span className={styles['card-section-card__meta']}>
             {Icon && (
               <span className={styles['card-section-card__icon-wrap']} aria-hidden="true">
                 <Icon className={styles['card-section-card__icon']} strokeWidth={1.8} />
               </span>
             )}
-            <div className={styles['card-section-card__label']}>{card.label}</div>
-          </div>
-        </div>
-        <div className={styles['card-section-card__content']}>
-          <SectionTitle
-            className={styles['card-section-card__title']}
-            lines={[card.title ?? '']}
-            nowrap={false}
-          />
-          <p className={styles['card-section-card__description']}>{card.description}</p>
-        </div>
+            <span className={styles['card-section-card__label']}>{card.label}</span>
+          </span>
+        </span>
+        <span className={styles['card-section-card__content']}>
+          <span className={styles['card-section-card__title']}>{cardTitle}</span>
+          <span className={styles['card-section-card__description']}>{card.description}</span>
+        </span>
       </>
     );
 
-    if (enableStars) {
-      return (
-        <ParticleCard
-          key={index}
-          {...cardProps}
-          disableAnimations={shouldDisableAnimations}
-          particleCount={particleCount}
-          glowColor={glowColor}
-          enableTilt={enableTilt}
-          clickEffect={clickEffect}
-          enableMagnetism={enableMagnetism}
-        >
-          {cardContent}
-        </ParticleCard>
-      );
-    }
-
     return (
-      <div
-        key={index}
+      <ParticleCard
+        key={`${cardTitle}-${index}`}
         {...cardProps}
-        ref={el => {
-          if (!el) return;
-
-          const handleMouseMove = (e: MouseEvent) => {
-            if (shouldDisableAnimations) return;
-
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            if (enableTilt) {
-              const rotateX = ((y - centerY) / centerY) * -10;
-              const rotateY = ((x - centerX) / centerX) * 10;
-              gsap.to(el, {
-                rotateX,
-                rotateY,
-                duration: 0.1,
-                ease: 'power2.out',
-                transformPerspective: 1000
-              });
-            }
-
-            if (enableMagnetism) {
-              const magnetX = (x - centerX) * 0.05;
-              const magnetY = (y - centerY) * 0.05;
-              gsap.to(el, {
-                x: magnetX,
-                y: magnetY,
-                duration: 0.3,
-                ease: 'power2.out'
-              });
-            }
-          };
-
-          const handleMouseLeave = () => {
-            if (shouldDisableAnimations) return;
-
-            if (enableTilt) {
-              gsap.to(el, {
-                rotateX: 0,
-                rotateY: 0,
-                duration: 0.3,
-                ease: 'power2.out'
-              });
-            }
-
-            if (enableMagnetism) {
-              gsap.to(el, {
-                x: 0,
-                y: 0,
-                duration: 0.3,
-                ease: 'power2.out'
-              });
-            }
-          };
-
-          const handleClick = (e: MouseEvent) => {
-            if (!clickEffect || shouldDisableAnimations) return;
-
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const maxDistance = Math.max(
-              Math.hypot(x, y),
-              Math.hypot(x - rect.width, y),
-              Math.hypot(x, y - rect.height),
-              Math.hypot(x - rect.width, y - rect.height)
-            );
-
-            const ripple = document.createElement('div');
-            ripple.style.cssText = `
-              position: absolute;
-              width: ${maxDistance * 2}px;
-              height: ${maxDistance * 2}px;
-              border-radius: 50%;
-              background: radial-gradient(circle, rgba(${glowColor}, 0.4) 0%, rgba(${glowColor}, 0.2) 30%, transparent 70%);
-              left: ${x - maxDistance}px;
-              top: ${y - maxDistance}px;
-              pointer-events: none;
-              z-index: 1000;
-            `;
-
-            el.appendChild(ripple);
-
-            gsap.fromTo(
-              ripple,
-              {
-                scale: 0,
-                opacity: 1
-              },
-              {
-                scale: 1,
-                opacity: 0,
-                duration: 0.8,
-                ease: 'power2.out',
-                onComplete: () => ripple.remove()
-              }
-            );
-          };
-
-          el.addEventListener('mousemove', handleMouseMove);
-          el.addEventListener('mouseleave', handleMouseLeave);
-          el.addEventListener('click', handleClick);
-        }}
+        ariaLabel={`Ver detalle de ${cardTitle}`}
+        disableAnimations={shouldDisableAnimations}
+        enableMagnetism={enableMagnetism}
+        enableParticles={enableStars}
+        enableTilt={enableTilt}
+        clickEffect={clickEffect}
+        glowColor={glowColor}
+        onClick={() => openCardDetail(card)}
+        particleCount={particleCount}
       >
         {cardContent}
-      </div>
+      </ParticleCard>
+    );
+  };
+
+  const renderModal = () => {
+    if (!selectedCard || typeof document === 'undefined') return null;
+
+    const Icon = selectedCard.icon;
+    const title = selectedCard.title ?? 'Servicio Andes Gaming';
+    const label = selectedCard.label ?? 'Solucion';
+    const intro = selectedCard.detail?.intro ?? selectedCard.description ?? '';
+    const points = selectedCard.detail?.points ?? [];
+    const outcome = selectedCard.detail?.outcome;
+
+    return createPortal(
+      <div
+        className={styles['card-section-modal']}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={modalTitleId}
+        aria-describedby={intro ? modalDescriptionId : undefined}
+        onMouseDown={(event) => {
+          if (event.target === event.currentTarget) {
+            closeModal();
+          }
+        }}
+      >
+        <div className={styles['card-section-modal__content']} ref={modalRef}>
+          {selectedCard.backgroundImage && (
+            <span
+              aria-hidden="true"
+              className={styles['card-section-modal__background']}
+              style={{ backgroundImage: `url(${selectedCard.backgroundImage})` }}
+            />
+          )}
+
+          <div className={styles['card-section-modal__header']}>
+            <div className={styles['card-section-modal__identity']}>
+              {Icon && (
+                <span className={styles['card-section-modal__icon-wrap']} aria-hidden="true">
+                  <Icon className={styles['card-section-modal__icon']} strokeWidth={1.8} />
+                </span>
+              )}
+              <span className={styles['card-section-modal__eyebrow']}>{label}</span>
+            </div>
+
+            <button
+              ref={closeButtonRef}
+              className={styles['card-section-modal__close']}
+              type="button"
+              aria-label={`Cerrar detalle de ${title}`}
+              onClick={closeModal}
+            >
+              <X aria-hidden="true" strokeWidth={2.3} />
+            </button>
+          </div>
+
+          <div className={styles['card-section-modal__body']}>
+            <SectionTitle
+              as="h3"
+              className={styles['card-section-modal__title']}
+              id={modalTitleId}
+              lines={[title]}
+              nowrap={false}
+            />
+
+            {intro && (
+              <p className={styles['card-section-modal__intro']} id={modalDescriptionId}>
+                {intro}
+              </p>
+            )}
+
+            {points.length > 0 && (
+              <ul className={styles['card-section-modal__points']}>
+                {points.map((point) => (
+                  <li className={styles['card-section-modal__point']} key={point}>
+                    <span className={styles['card-section-modal__point-marker']} aria-hidden="true" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {outcome && (
+              <p className={styles['card-section-modal__outcome']}>{outcome}</p>
+            )}
+
+            <a
+              className={styles['card-section-modal__cta']}
+              href={modalCtaHref}
+              onClick={closeModal}
+            >
+              <span>{modalCtaLabel}</span>
+              <ArrowRight aria-hidden="true" strokeWidth={2.2} />
+            </a>
+          </div>
+        </div>
+      </div>,
+      document.body
     );
   };
 
   return (
     <>
-      {enableSpotlight && (
+      {enableSpotlight && !selectedCard && (
         <GlobalSpotlight
           gridRef={gridRef}
           disableAnimations={shouldDisableAnimations}
-          enabled={enableSpotlight}
+          enabled={enableSpotlight && !selectedCard}
           spotlightRadius={spotlightRadius}
           glowColor={glowColor}
         />
@@ -734,6 +843,8 @@ const CardSection: React.FC<CardSectionProps> = ({
       <CardSectionGrid gridRef={gridRef}>
         {cards.map((card, index) => renderCard(card, index))}
       </CardSectionGrid>
+
+      {renderModal()}
     </>
   );
 };

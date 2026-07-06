@@ -17,13 +17,6 @@ type OwnGame = {
 
 const ownGames: OwnGame[] = [
   {
-    id: "commando",
-    title: "Commando",
-    imageSrc: comandoImg,
-    imageAlt: "Banner temporal del juego Commando",
-    youtubeId: "M7lc1UVf-VE",
-  },
-  {
     id: "neon-rush",
     title: "Andres gaming",
     imageSrc: egyptImg,
@@ -36,6 +29,13 @@ const ownGames: OwnGame[] = [
     imageSrc: wildImg,
     imageAlt: "Banner temporal del juego Andes Wild",
     youtubeId: "aqz-KE-bpKQ",
+  },
+  {
+    id: "comando",
+    title: "Comando",
+    imageSrc: comandoImg,
+    imageAlt: "Banner temporal del juego Commando",
+    youtubeId: "M7lc1UVf-VE",
   },
 ];
 

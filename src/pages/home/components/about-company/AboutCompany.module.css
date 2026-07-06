@@ -170,6 +170,11 @@
   height: 1.42rem;
 }
 
+.benefitContent {
+  min-width: 0;
+  text-align: left;
+}
+
 .benefit h3 {
   margin: 0;
   color: var(--andes-white);
