@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
@@ -126,6 +127,44 @@ export function JuegosPropios() {
 
   if (!activeGame) return null;
 
+  const modal =
+    selectedGame && typeof document !== "undefined" ? (
+      <div
+        className="juegos-propios-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="juegos-propios-modal-title"
+        onMouseDown={(event) => {
+          if (event.target === event.currentTarget) {
+            closeModal();
+          }
+        }}
+      >
+        <div className="juegos-propios-modal__content">
+          <div className="juegos-propios-modal__header">
+            <h3 id="juegos-propios-modal-title">{selectedGame.title}</h3>
+            <button
+              className="juegos-propios-modal__close"
+              type="button"
+              aria-label="Cerrar video"
+              onClick={closeModal}
+            >
+              <X aria-hidden="true" strokeWidth={2.3} />
+            </button>
+          </div>
+
+          <div className="juegos-propios-modal__video">
+            <iframe
+              src={`https://www.youtube.com/embed/${selectedGame.youtubeId}?autoplay=1&rel=0`}
+              title={`Video de ${selectedGame.title}`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </div>
+    ) : null;
+
   return (
     <>
       <section
@@ -231,42 +270,7 @@ export function JuegosPropios() {
         </div>
       </section>
 
-      {selectedGame ? (
-        <div
-          className="juegos-propios-modal"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="juegos-propios-modal-title"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) {
-              closeModal();
-            }
-          }}
-        >
-          <div className="juegos-propios-modal__content">
-            <div className="juegos-propios-modal__header">
-              <h3 id="juegos-propios-modal-title">{selectedGame.title}</h3>
-              <button
-                className="juegos-propios-modal__close"
-                type="button"
-                aria-label="Cerrar video"
-                onClick={closeModal}
-              >
-                <X aria-hidden="true" strokeWidth={2.3} />
-              </button>
-            </div>
-
-            <div className="juegos-propios-modal__video">
-              <iframe
-                src={`https://www.youtube.com/embed/${selectedGame.youtubeId}?autoplay=1&rel=0`}
-                title={`Video de ${selectedGame.title}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-      ) : null}
+      {modal ? createPortal(modal, document.body) : null}
     </>
   );
 }

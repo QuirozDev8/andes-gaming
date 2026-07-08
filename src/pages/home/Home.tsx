@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../../routes/routePaths";
 import AnimationText from "../../components/animation-text/AnimationText";
 import SectionTitle from "../../components/section-title/SectionTitle";
+import RevealOnScroll from "../../components/reveal-on-scroll/RevealOnScroll";
 import styles from "./Home.module.css";
 import BtnElegant from "../../components/btn-elegant/BtnElegant";
 import heroImage from "../../assets/img/img-hero.png";
@@ -16,7 +17,8 @@ import {
   PresenciaLatam,
   FlowIntegration,
   InfraTecnology,
-  Contact, JuegosPropios
+  Contact,
+  JuegosPropios,
 } from "./components";
 import { productCards, providerLogos } from "./data";
 
@@ -130,13 +132,24 @@ function Home() {
       </section>
 
       {/* Metrics section */}
-      <Metrics />
+      <RevealOnScroll className={styles.revealBackdrop}>
+        <Metrics />
+      </RevealOnScroll>
 
       {/* What is Andesgaming? section */}
-      <AboutCompany />
+      <RevealOnScroll className={styles.revealBackdrop}>
+        <AboutCompany />
+      </RevealOnScroll>
 
+      <RevealOnScroll as="section" className={styles.presenciaLatamSection}>
+        <PresenciaLatam />
+      </RevealOnScroll>
+      
       {/* Card section */}
-      <section className={`${styles.bgCardSection} container-fluid`}>
+      <RevealOnScroll
+        as="section"
+        className={`${styles.bgCardSection} container-fluid`}
+      >
         <div className={styles.cardSectionHeader}>
           <span className={styles.sectionEyebrow}>Stack iGaming B2B</span>
           <SectionTitle
@@ -165,12 +178,14 @@ function Home() {
             Conoce Andes Gaming
           </Link>
         </div>
-      </section>
+      </RevealOnScroll>
 
-       <JuegosPropios />
+      <RevealOnScroll className={styles.revealBackdrop}>
+        <JuegosPropios />
+      </RevealOnScroll>
 
       {/* Providers section */}
-      <section className={styles.providerSection}>
+      <RevealOnScroll as="section" className={styles.providerSection}>
         <div className="container position-relative">
           <div className={styles.providerPanel}>
             <div className={styles.providerHeader}>
@@ -209,28 +224,34 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <SliderGames
-        className={styles.sliderGames}
-        slides={defaultSliderGames}
-        eyebrow="// proveedores destacados"
-        autoPlayMs={6000}
-        titlePrefix="Juegos"
-        titleAccent="destacados"
-        titleSuffix=" de nuestros proveedores."
-        ariaLabel="Slider de juegos principales de proveedores"
-      />
-      
-      <section className={styles.presenciaLatamSection}>
-        <PresenciaLatam />
-      </section>
+      <RevealOnScroll className={styles.revealBackdrop}>
+        <SliderGames
+          className={styles.sliderGames}
+          slides={defaultSliderGames}
+          eyebrow="// proveedores destacados"
+          autoPlayMs={6000}
+          titlePrefix="Juegos"
+          titleAccent="destacados"
+          titleSuffix=" de nuestros proveedores."
+          ariaLabel="Slider de juegos principales de proveedores"
+        />
+      </RevealOnScroll>
 
-      <FlowIntegration />
-                
-      <InfraTecnology />
 
-       <Contact /> 
+
+      <RevealOnScroll className={styles.revealBackdrop}>
+        <FlowIntegration />
+      </RevealOnScroll>
+
+      <RevealOnScroll className={styles.revealBackdropLight}>
+        <InfraTecnology />
+      </RevealOnScroll>
+
+      <RevealOnScroll className={styles.revealBackdrop}>
+        <Contact />
+      </RevealOnScroll>
     </>
   );
 }

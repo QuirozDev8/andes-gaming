@@ -376,20 +376,24 @@
 .juegos-propios-modal {
   position: fixed;
   inset: 0;
-  z-index: var(--z-modal);
+  z-index: calc(var(--z-modal, 60) + 260);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: clamp(1rem, 4vw, 2.5rem);
+  overflow-y: auto;
   background:
     radial-gradient(circle at 50% 42%, rgba(var(--andes-violet-rgb), 0.22), transparent 46%),
     rgba(var(--andes-blue-deep-rgb), 0.88);
   backdrop-filter: blur(10px);
+  overscroll-behavior: contain;
 }
 
 .juegos-propios-modal__content {
+  flex: 0 1 auto;
   width: min(100%, 960px);
-  overflow: hidden;
+  max-height: calc(100svh - clamp(2rem, 8vw, 5rem));
+  overflow: hidden auto;
   border: 1px solid rgba(var(--andes-cyan-rgb), 0.24);
   border-radius: var(--radius-md);
   background:
@@ -398,6 +402,12 @@
     inset 0 0 0 1px rgba(var(--andes-white-rgb), 0.05),
     0 32px 90px rgba(0, 0, 0, 0.54),
     0 0 34px rgba(var(--andes-cyan-rgb), 0.12);
+  scrollbar-width: none;
+}
+
+.juegos-propios-modal__content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .juegos-propios-modal__header {
@@ -453,6 +463,7 @@
 .juegos-propios-modal__video {
   position: relative;
   aspect-ratio: 16 / 9;
+  min-height: 0;
   background: #000;
 }
 
@@ -545,6 +556,10 @@
 
   .juegos-propios-modal__header {
     padding: var(--space-3) var(--space-4);
+  }
+
+  .juegos-propios-modal {
+    align-items: flex-start;
   }
 }
 
