@@ -4,7 +4,7 @@ import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
 import "./JuegosPropios.css";
-import comandoImg from "../../../../assets/img/comando.webp";
+import comandoImg from "../../../../assets/img/comando.png";
 import egyptImg from "../../../../assets/img/egypt.webp";
 
 
@@ -18,25 +18,25 @@ type OwnGame = {
 
 const ownGames: OwnGame[] = [
   {
-    id: "comando",
-    title: "Comando",
+    id: "commando",
+    title: "Commando",
     imageSrc: comandoImg,
     imageAlt: "Banner temporal del juego Comando",
-    youtubeId: "kXxVkRHKhQI",
-  },
+    youtubeId: "vugCplUn6bk",
+  }, 
   {
     id: "neon-rush",
-    title: "Andres gaming",
+    title: "Neon Rush",
     imageSrc: egyptImg,
     imageAlt: "Banner temporal del juego Neon Rush",
-    youtubeId: "ysz5S6PUM-U",
+    youtubeId: "vugCplUn6bk",
   },
   {
     id: "andes-wild",
     title: "Andes Wild",
     imageSrc: comandoImg,
     imageAlt: "Banner temporal del juego Andes Wild",
-    youtubeId: "aqz-KE-bpKQ",
+    youtubeId: "vugCplUn6bk",
   },
 ];
 

@@ -144,7 +144,7 @@ function Home() {
       <RevealOnScroll as="section" className={styles.presenciaLatamSection}>
         <PresenciaLatam />
       </RevealOnScroll>
-      
+
       {/* Card section */}
       <RevealOnScroll
         as="section"
@@ -239,8 +239,6 @@ function Home() {
         />
       </RevealOnScroll>
 
-
-
       <RevealOnScroll className={styles.revealBackdrop}>
         <FlowIntegration />
       </RevealOnScroll>
@@ -252,6 +250,7 @@ function Home() {
       <RevealOnScroll className={styles.revealBackdrop}>
         <Contact />
       </RevealOnScroll>
+      
     </>
   );
 }
