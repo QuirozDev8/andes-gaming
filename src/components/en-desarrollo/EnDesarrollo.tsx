@@ -21,7 +21,7 @@ export function EnDesarrollo() {
           <p className={styles.eyebrow}>Andes Gaming · Evolución continua</p>
           <h1 className={styles.title} id="development-title">
             Estamos construyendo
-            <span> algo extraordinario.</span>
+            <span> algo extraordinario</span>
           </h1>
           <p className={styles.description}>
             Esta sección se encuentra en desarrollo. Muy pronto encontrarás aquí
