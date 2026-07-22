@@ -2,16 +2,18 @@ import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import commonEn from "./locales/en/common";
+import contactPageEn from "./locales/en/contactPage";
 import homeEn from "./locales/en/home";
 import commonEs from "./locales/es/common";
+import contactPageEs from "./locales/es/contactPage";
 import homeEs from "./locales/es/home";
 
 export const SUPPORTED_LANGUAGES = ["es", "en"] as const;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 const resources = {
-  es: { common: commonEs, home: homeEs },
-  en: { common: commonEn, home: homeEn },
+  es: { common: commonEs, contactPage: contactPageEs, home: homeEs },
+  en: { common: commonEn, contactPage: contactPageEn, home: homeEn },
 } as const;
 
 void i18n
@@ -44,5 +46,4 @@ i18n.on("languageChanged", updateDocumentLanguage);
 updateDocumentLanguage(i18n.resolvedLanguage ?? "es");
 
 export default i18n;
-
 

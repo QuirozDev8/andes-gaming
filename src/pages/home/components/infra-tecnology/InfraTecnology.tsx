@@ -93,12 +93,14 @@ export function InfraTecnology() {
 
                 <SectionTitle
                   className="infra-title"
+                  lineClassName="infra-title-line"
                   accentClassName="infra-title-accent"
                   id="infra-tecnology-title"
                   lines={[
                     t("infrastructure.titleFirst"),
                     { content: t("infrastructure.titleSecond"), accent: true },
                   ]}
+                  nowrap
                 />
 
                 <span className="infra-title-rule" aria-hidden="true" />

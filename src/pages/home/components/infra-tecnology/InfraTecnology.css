@@ -132,10 +132,25 @@
   text-transform: uppercase;
 }
 
+.infra-title-line {
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 .infra-title-accent {
   background: linear-gradient(90deg, #1414d8 0%, var(--andes-violet) 52%, #4f85ff 100%);
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+html[lang="en"] .infra-title {
+  --section-title-font-size: clamp(2rem, 3.75vw, 3.4rem);
+  max-width: 100%;
 }
 
 .infra-title-rule {
@@ -452,6 +467,10 @@
   .infra-title {
     max-width: 100%;
     font-size: var(--section-title-mobile-font-size);
+  }
+
+  html[lang="en"] .infra-title {
+    --section-title-mobile-font-size: clamp(1.35rem, 5.8vw, 2.1rem);
   }
 
   .infra-visual {
