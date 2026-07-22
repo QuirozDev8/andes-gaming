@@ -47,7 +47,7 @@ const homeEn = {
   presence: {
     eyebrow: "Presence across LATAM",
     titleFirst: "Our technology",
-    titleSecond: "already connects the region",
+    titleSecond: "connects the region",
     description:
       "iGaming infrastructure to integrate providers, enter new markets, and scale brands across Latin America through one technology layer.",
     imageAlt: "Map of Andes Gaming's presence across Latin America",

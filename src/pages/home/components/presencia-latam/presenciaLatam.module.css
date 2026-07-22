@@ -51,14 +51,25 @@
 }
 
 .titleLine {
-  white-space: nowrap;
+  width: 100%;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: normal;
+  text-wrap: balance;
+  word-break: normal;
 }
 
 .titleAccent {
   background: var(--andes-gradient-primary);
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 18px rgba(var(--andes-cyan-rgb), 0.16));
+}
+
+:global(html[lang="en"]) .title {
+  --section-title-font-size: clamp(2.1rem, 3.15vw, 3.1rem);
 }
 
 .description {
@@ -271,6 +282,10 @@
 
   .title {
     font-size: var(--section-title-mobile-font-size);
+  }
+
+  :global(html[lang="en"]) .title {
+    --section-title-mobile-font-size: clamp(1.35rem, 6.5vw, 1.95rem);
   }
 
   .description {

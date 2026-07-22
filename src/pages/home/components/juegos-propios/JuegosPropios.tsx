@@ -10,7 +10,7 @@ import "./JuegosPropios.css";
 
 type OwnGameDefinition = {
   id: string;
-  translationKey: "commando" | "andesWild";
+  translationKey: "commando"  | "andes-wild";
   imageSrc: string;
   mobileImageSrc?: string;
   youtubeId: string;
@@ -30,8 +30,8 @@ const ownGameDefinitions: OwnGameDefinition[] = [
     youtubeId: "vugCplUn6bk",
   },
   {
-    id: "andes-wild",
-    translationKey: "andesWild",
+    id: "commando",
+    translationKey: "commando",
     imageSrc: comandoDesktopImg,
     mobileImageSrc: comandoMobileImg,
     youtubeId: "vugCplUn6bk",

@@ -1,9 +1,13 @@
 
 
+
+
 export function ContactPage() {
     return (
-        <p> esta es la pagina de contacto</p>
+        <p className="text-black mt-5"> esta es la pagina de contacto</p>
     )
 }
+
+
 
 export default ContactPage;

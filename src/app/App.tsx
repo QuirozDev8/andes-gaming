@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout/MainLayout";
 import { appRoutes } from "../routes/appRoutes";
 
+
+
 function App() {
   return (
     <MainLayout>

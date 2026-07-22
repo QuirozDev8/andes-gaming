@@ -32,6 +32,7 @@ export function PresenciaLatam() {
                 t("presence.titleFirst"),
                 { content: t("presence.titleSecond"), accent: true },
               ]}
+              nowrap={false}
             />
             <p className={styles.description}>{t("presence.description")}</p>
 
