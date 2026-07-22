@@ -4,14 +4,16 @@ import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
 import "./JuegosPropios.css";
-import comandoImg from "../../../../assets/img/comando.png";
-import egyptImg from "../../../../assets/img/egypt.webp";
+import comandoDesktopImg from "../../../../assets/img/COMMANDO-DESKTOP.webp";
+import comandoMobileImg from "../../../../assets/img/COMMANDO-MOVIL.webp";
+ 
 
 
 type OwnGame = {
   id: string;
   title: string;
   imageSrc: string;
+  mobileImageSrc?: string;
   imageAlt: string;
   youtubeId: string;
 };
@@ -20,21 +22,16 @@ const ownGames: OwnGame[] = [
   {
     id: "commando",
     title: "Commando",
-    imageSrc: comandoImg,
+    imageSrc: comandoDesktopImg,
+    mobileImageSrc: comandoMobileImg,
     imageAlt: "Banner temporal del juego Comando",
     youtubeId: "vugCplUn6bk",
   }, 
   {
-    id: "neon-rush",
-    title: "Neon Rush",
-    imageSrc: egyptImg,
-    imageAlt: "Banner temporal del juego Neon Rush",
-    youtubeId: "vugCplUn6bk",
-  },
-  {
     id: "andes-wild",
     title: "Andes Wild",
-    imageSrc: comandoImg,
+    imageSrc: comandoDesktopImg,
+    mobileImageSrc: comandoMobileImg,
     imageAlt: "Banner temporal del juego Andes Wild",
     youtubeId: "vugCplUn6bk",
   },
@@ -180,17 +177,19 @@ export function JuegosPropios() {
             <div className="juegos-propios__content">
               <span className="juegos-propios__eyebrow">Game Studio</span>
 
-              <SectionTitle
-                className="juegos-propios__title py-1"
-                lineClassName="juegos-propios__titleLine"
-                id="juegos-propios-title"
-                lines={["Creamos experiencias", "que marcan la diferencia"]}
-              />
+              <div className="juegos-propios__copy">
+                <SectionTitle
+                  className="juegos-propios__title py-1"
+                  lineClassName="juegos-propios__titleLine"
+                  id="juegos-propios-title"
+                  lines={["Creamos experiencias", "que marcan la diferencia"]}
+                />
 
-              <p className="juegos-propios__description">
-                En Andes Gaming Studio desarrollamos contenido propio innovador y
-                de alto rendimiento.
-              </p>
+                <p className="juegos-propios__description">
+                  En Andes Gaming Studio desarrollamos contenido propio innovador y
+                  de alto rendimiento.
+                </p>
+              </div>
 
               <Link className="juegos-propios__link" to="/game-studio">
                 Conoce nuestros juegos
@@ -218,12 +217,20 @@ export function JuegosPropios() {
                       tabIndex={index === activeIndex ? 0 : -1}
                       onClick={() => setSelectedGame(game)}
                     >
-                      <img
-                        className="juegos-propios__image"
-                        src={game.imageSrc}
-                        alt={game.imageAlt}
-                        loading={index === activeIndex ? "eager" : "lazy"}
-                      />
+                      <picture className="juegos-propios__picture">
+                        {game.mobileImageSrc ? (
+                          <source
+                            media="(max-width: 991.98px)"
+                            srcSet={game.mobileImageSrc}
+                          />
+                        ) : null}
+                        <img
+                          className="juegos-propios__image"
+                          src={game.imageSrc}
+                          alt={game.imageAlt}
+                          loading={index === activeIndex ? "eager" : "lazy"}
+                        />
+                      </picture>
                     </button>
                   ))}
                 </div>
