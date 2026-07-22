@@ -1,21 +1,21 @@
 import { type FocusEvent, useEffect, useId, useState } from "react";
 import { ArrowBigRightDash, Gamepad2, Network, Puzzle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import andesLogo from "../../assets/logos/logo-header.png";
+import type { SupportedLanguage } from "../../i18n";
 import { ROUTES } from "../../routes/routePaths";
 import Button from "../Button/Button";
 import styles from "./Header.module.css";
-
-type Language = "ES" | "EN";
 
 const LANGUAGE_ICON = "\uD83C\uDF10";
 const DESKTOP_MEDIA_QUERY = "(min-width: 768px)";
 
 const navItems = [
-  { label: "Home", to: ROUTES.home },
-  { label: "Nosotros", to: ROUTES.about },
-  { label: "Blog", to: ROUTES.blog },
-  { label: "Contacto", to: ROUTES.contact },
+  { labelKey: "header.home", to: ROUTES.home },
+  { labelKey: "header.about", to: ROUTES.about },
+  { labelKey: "header.blog", to: ROUTES.blog },
+  { labelKey: "header.contact", to: ROUTES.contact },
 ] as const;
 
 type NavItem = (typeof navItems)[number];
@@ -23,29 +23,26 @@ const [homeNavItem, ...secondaryNavItems] = navItems;
 
 const productItems = [
   {
-    label: "Casino Aggregation",
+    translationKey: "casinoAggregation",
     to: ROUTES.casinoAggregation,
-    description: "Agregacion de contenido iGaming B2B.",
     icon: Puzzle,
   },
   {
-    label: "Game Studio",
+    translationKey: "gameStudio",
     to: ROUTES.gameStudio,
-    description: "Desarrollo de contenido propio e innovador.",
     icon: Gamepad2,
   },
   {
-    label: "Game Providers",
+    translationKey: "gameProviders",
     to: ROUTES.gameProviders,
-    description: "Red de proveedores conectados.",
     icon: Network,
   },
 ] as const;
 
 function Header() {
+  const { t, i18n } = useTranslation("common");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>("ES");
   const mainMenuId = useId();
   const productsMenuId = useId();
   const location = useLocation();
@@ -110,30 +107,36 @@ function Header() {
     setIsProductsOpen(true);
   };
 
-  const toggleLanguage = () => {
-    setSelectedLanguage((currentLanguage) =>
-      currentLanguage === "ES" ? "EN" : "ES",
-    );
+  const selectedLanguage = (i18n.resolvedLanguage ?? "es").split(
+    "-",
+  )[0] as SupportedLanguage;
+
+  const changeLanguage = (language: SupportedLanguage) => {
+    void i18n.changeLanguage(language);
   };
 
-  const renderLanguageToggle = (className: string) => (
+  const renderLanguageSelector = (className: string) => (
     <div className={`${styles.language} ${className}`}>
       <button
+        aria-label={`${t("header.languageSelector")}: ${selectedLanguage.toUpperCase()}`}
         className={styles.languageButton}
+        onClick={() =>
+          changeLanguage(selectedLanguage === "es" ? "en" : "es")
+        }
         type="button"
-        aria-label={`Cambiar idioma. Idioma actual: ${selectedLanguage}`}
-        onClick={toggleLanguage}
       >
         <span className={styles.languageIcon} aria-hidden="true">
           {LANGUAGE_ICON}
         </span>
-        <span className={styles.languageCode}>{selectedLanguage}</span>
+        <span className={styles.languageCode} lang={selectedLanguage}>
+          {selectedLanguage.toUpperCase()}
+        </span>
       </button>
     </div>
   );
 
   const renderDemoButton = () => (
-    <Button text="Hablar con ventas" to={ROUTES.contact} onClick={closeMenus} />
+    <Button text={t("header.sales")} to={ROUTES.contact} onClick={closeMenus} />
   );
 
   const renderNavItem = (item: NavItem) => (
@@ -146,7 +149,7 @@ function Header() {
         onClick={closeMenus}
         to={item.to}
       >
-        {item.label}
+        {t(item.labelKey)}
       </NavLink>
     </li>
   );
@@ -170,7 +173,7 @@ function Header() {
         type="button"
         onClick={toggleProductsMenu}
       >
-        <span>Productos</span>
+        <span>{t("header.products")}</span>
         <span className={styles.productsChevron} aria-hidden="true" />
       </button>
 
@@ -178,6 +181,7 @@ function Header() {
         <div className={styles.productsGrid}>
           {productItems.map((item) => {
             const ProductIcon = item.icon;
+            const productKey = `header.productsList.${item.translationKey}`;
 
             return (
               <NavLink
@@ -194,8 +198,8 @@ function Header() {
                   <ProductIcon aria-hidden="true" strokeWidth={1.8} />
                 </span>
                 <span className={styles.productContent}>
-                  <strong>{item.label}</strong>
-                  <span>{item.description}</span>
+                  <strong>{t(`${productKey}.label`)}</strong>
+                  <span>{t(`${productKey}.description`)}</span>
                 </span>
                 <span className={styles.productArrow} aria-hidden="true">
                   <ArrowBigRightDash strokeWidth={1.8} />
@@ -212,12 +216,12 @@ function Header() {
     <header className={styles.header}>
       <nav
         className={`container-fluid ${styles.navbar}`}
-        aria-label="Main navigation"
+        aria-label={t("header.navigationLabel")}
       >
         <Link
           className={`${styles.brand}`}
           to={ROUTES.home}
-          aria-label="Andes Gaming home"
+          aria-label={t("header.homeLabel")}
         >
           <img className={styles.logo} src={andesLogo} alt="Andes Gaming" />
         </Link>
@@ -225,7 +229,9 @@ function Header() {
         <button
           className={styles.menuButton}
           type="button"
-          aria-label={isMenuOpen ? "Cerrar menu" : "Abrir menu"}
+          aria-label={
+            isMenuOpen ? t("header.closeMenu") : t("header.openMenu")
+          }
           aria-controls={mainMenuId}
           aria-expanded={isMenuOpen}
           onClick={toggleMobileMenu}
@@ -250,13 +256,13 @@ function Header() {
           {isMenuOpen && (
             <div className={styles.mobileActions}>
               <div className={styles.demoButton}>{renderDemoButton()}</div>
-              {renderLanguageToggle(styles.mobileLanguage)}
+              {renderLanguageSelector(styles.mobileLanguage)}
             </div>
           )}
         </div>
 
         <div className={`${styles.rightActions} me-lg-2`}>
-          {renderLanguageToggle(styles.desktopLanguage)}
+          {renderLanguageSelector(styles.desktopLanguage)}
           <div className={styles.demoButton}>{renderDemoButton()}</div>
         </div>
       </nav>

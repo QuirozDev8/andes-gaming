@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useCallback, useState, useId } from 'react';
 import { createPortal } from 'react-dom';
 import { gsap } from 'gsap';
 import { ArrowRight, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import SectionTitle from '../../../../components/section-title/SectionTitle';
 import styles from './CardSection.module.css';
 
@@ -576,9 +577,10 @@ const CardSection: React.FC<CardSectionProps> = ({
   glowColor = DEFAULT_GLOW_COLOR,
   clickEffect = true,
   enableMagnetism = true,
-  modalCtaLabel = 'Hablar con ventas',
+  modalCtaLabel,
   modalCtaHref = '#contact-home'
 }) => {
+  const { t } = useTranslation('home');
   const gridRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -586,15 +588,18 @@ const CardSection: React.FC<CardSectionProps> = ({
   const modalTitleId = useId();
   const modalDescriptionId = useId();
   const isMobile = useMobileDetection();
-  const [selectedCard, setSelectedCard] = useState<CardSectionCardProps | null>(null);
+  const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
+  const selectedCard = selectedCardIndex === null
+    ? null
+    : cards[selectedCardIndex] ?? null;
   const shouldDisableAnimations = disableAnimations || isMobile || Boolean(selectedCard);
 
   const closeModal = useCallback(() => {
-    setSelectedCard(null);
+    setSelectedCardIndex(null);
   }, []);
 
-  const openCardDetail = useCallback((card: CardSectionCardProps) => {
-    setSelectedCard(card);
+  const openCardDetail = useCallback((index: number) => {
+    setSelectedCardIndex(index);
   }, []);
 
   useEffect(() => {
@@ -666,7 +671,7 @@ const CardSection: React.FC<CardSectionProps> = ({
 
   const renderCard = (card: CardSectionCardProps, index: number) => {
     const Icon = card.icon;
-    const cardTitle = card.title ?? 'servicio';
+    const cardTitle = card.title ?? t('stack.defaultService');
     const baseClassName = [
       styles['card-section-card'],
       card.backgroundImage ? styles['card-section-card--has-background'] : '',
@@ -715,14 +720,14 @@ const CardSection: React.FC<CardSectionProps> = ({
       <ParticleCard
         key={`${cardTitle}-${index}`}
         {...cardProps}
-        ariaLabel={`Ver detalle de ${cardTitle}`}
+        ariaLabel={t('stack.viewDetail', { title: cardTitle })}
         disableAnimations={shouldDisableAnimations}
         enableMagnetism={enableMagnetism}
         enableParticles={enableStars}
         enableTilt={enableTilt}
         clickEffect={clickEffect}
         glowColor={glowColor}
-        onClick={() => openCardDetail(card)}
+        onClick={() => openCardDetail(index)}
         particleCount={particleCount}
       >
         {cardContent}
@@ -734,8 +739,8 @@ const CardSection: React.FC<CardSectionProps> = ({
     if (!selectedCard || typeof document === 'undefined') return null;
 
     const Icon = selectedCard.icon;
-    const title = selectedCard.title ?? 'Servicio Andes Gaming';
-    const label = selectedCard.label ?? 'Solucion';
+    const title = selectedCard.title ?? t('stack.defaultTitle');
+    const label = selectedCard.label ?? t('stack.defaultLabel');
     const intro = selectedCard.detail?.intro ?? selectedCard.description ?? '';
     const points = selectedCard.detail?.points ?? [];
     const outcome = selectedCard.detail?.outcome;
@@ -776,7 +781,7 @@ const CardSection: React.FC<CardSectionProps> = ({
               ref={closeButtonRef}
               className={styles['card-section-modal__close']}
               type="button"
-              aria-label={`Cerrar detalle de ${title}`}
+              aria-label={t('stack.closeDetail', { title })}
               onClick={closeModal}
             >
               <X aria-hidden="true" strokeWidth={2.3} />
@@ -818,7 +823,7 @@ const CardSection: React.FC<CardSectionProps> = ({
               href={modalCtaHref}
               onClick={closeModal}
             >
-              <span>{modalCtaLabel}</span>
+              <span>{modalCtaLabel ?? t('stack.salesCta')}</span>
               <ArrowRight aria-hidden="true" strokeWidth={2.2} />
             </a>
           </div>

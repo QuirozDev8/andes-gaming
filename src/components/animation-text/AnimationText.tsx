@@ -42,6 +42,7 @@ const AnimationText: React.FC<AnimationTextProps> = ({
 }) => {
   const ref = useRef<HTMLParagraphElement>(null);
   const animationCompletedRef = useRef(false);
+  const animatedTextRef = useRef<string | null>(null);
   const onCompleteRef = useRef(onLetterAnimationComplete);
   const [fontsLoaded, setFontsLoaded] = useState<boolean>(
     () => document.fonts.status === 'loaded'
@@ -63,6 +64,12 @@ const AnimationText: React.FC<AnimationTextProps> = ({
   useGSAP(
     () => {
       if (!ref.current || !text || !fontsLoaded) return;
+
+      if (animatedTextRef.current !== text) {
+        animatedTextRef.current = text;
+        animationCompletedRef.current = false;
+      }
+
       // Prevent re-animation if already completed
       if (animationCompletedRef.current) return;
 
@@ -77,6 +84,14 @@ const AnimationText: React.FC<AnimationTextProps> = ({
           // GSAP can no-op if the instance was already reverted.
         }
         el._animationTextInstance = undefined;
+      }
+
+      // SplitText restores the text captured by the previous instance when it
+      // reverts. On a language change that cleanup runs after React has already
+      // rendered the new translation, so make the current prop authoritative
+      // before creating the next split instance.
+      if (el.textContent !== text) {
+        el.textContent = text;
       }
 
       const startPct = (1 - threshold) * 100;

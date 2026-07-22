@@ -104,7 +104,9 @@
 .titleLineAccent :global(.animation-text-char) {
   background: var(--andes-gradient-primary);
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .description {

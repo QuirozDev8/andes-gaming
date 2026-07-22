@@ -8,9 +8,10 @@ import {
   Phone,
   UserRound,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import bgContactHome from "../../../../assets/img/bg-contact-home.webp";
 import BtnElegant from "../../../../components/btn-elegant/BtnElegant";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
-import bgContactHome from "../../../../assets/img/bg-contact-home.webp";
 import styles from "./Contact.module.css";
 
 const contactStyle = {
@@ -21,9 +22,8 @@ const contactFields = [
   {
     icon: UserRound,
     id: "contact-name",
-    label: "Nombre completo",
+    translationKey: "name",
     name: "fullName",
-    placeholder: "Nombre completo",
     autoComplete: "name",
     required: true,
     type: "text",
@@ -31,9 +31,8 @@ const contactFields = [
   {
     icon: BriefcaseBusiness,
     id: "contact-role",
-    label: "Cargo",
+    translationKey: "role",
     name: "role",
-    placeholder: "Cargo",
     autoComplete: "organization-title",
     required: true,
     type: "text",
@@ -41,9 +40,8 @@ const contactFields = [
   {
     icon: Building2,
     id: "contact-company",
-    label: "Empresa/Operación",
+    translationKey: "company",
     name: "company",
-    placeholder: "Empresa/Operación",
     autoComplete: "organization",
     required: true,
     type: "text",
@@ -51,9 +49,8 @@ const contactFields = [
   {
     icon: MapPin,
     id: "contact-country",
-    label: "País",
+    translationKey: "country",
     name: "country",
-    placeholder: "País",
     autoComplete: "country-name",
     required: true,
     type: "text",
@@ -61,9 +58,8 @@ const contactFields = [
   {
     icon: Mail,
     id: "contact-email",
-    label: "Correo",
+    translationKey: "email",
     name: "email",
-    placeholder: "Correo",
     autoComplete: "email",
     required: true,
     type: "email",
@@ -71,9 +67,8 @@ const contactFields = [
   {
     icon: Phone,
     id: "contact-whatsapp",
-    label: "WhatsApp",
+    translationKey: "whatsapp",
     name: "whatsapp",
-    placeholder: "WhatsApp",
     autoComplete: "tel",
     required: false,
     type: "tel",
@@ -81,16 +76,17 @@ const contactFields = [
   {
     icon: Globe2,
     id: "contact-website",
-    label: "Sitio web",
+    translationKey: "website",
     name: "website",
-    placeholder: "Sitio web",
     autoComplete: "url",
     required: false,
     type: "url",
   },
-];
+] as const;
 
 export function Contact() {
+  const { t } = useTranslation("home");
+
   return (
     <section
       aria-labelledby="contact-home-title"
@@ -101,33 +97,29 @@ export function Contact() {
       <div className="container">
         <div className={styles.panel}>
           <div className={styles.header}>
-            <span className={styles.eyebrow}>ANDES GAMING</span>
+            <span className={styles.eyebrow}>{t("contact.eyebrow")}</span>
 
             <SectionTitle
               as="h2"
               className={styles.title}
               id="contact-home-title"
-              lines={["CONTÁCTANOS"]}
+              lines={[t("contact.title")]}
               nowrap={false}
             />
 
-            <p className={styles.description}>
-              Completa el formulario y hablemos.
-            </p>
+            <p className={styles.description}>{t("contact.description")}</p>
           </div>
 
-          <form
-            aria-label="Formulario de contacto Andes Gaming"
-            className={styles.form}
-          >
+          <form aria-label={t("contact.formLabel")} className={styles.form}>
             <div className={styles.formGrid}>
               {contactFields.map((field) => {
                 const FieldIcon = field.icon;
+                const fieldText = t(`contact.fields.${field.translationKey}`);
 
                 return (
                   <div className={styles.field} key={field.id}>
                     <label className={styles.fieldLabel} htmlFor={field.id}>
-                      {field.label}
+                      {fieldText}
                       {field.required && (
                         <span className={styles.requiredMark}>*</span>
                       )}
@@ -142,7 +134,7 @@ export function Contact() {
                         className={styles.input}
                         id={field.id}
                         name={field.name}
-                        placeholder={field.placeholder}
+                        placeholder={fieldText}
                         required={field.required}
                         type={field.type}
                       />
@@ -160,18 +152,14 @@ export function Contact() {
                 required
                 type="checkbox"
               />
-              <span className={styles.consentText}>
-                Autorizo a ANDES GAMING a tratar mis datos personales para fines
-                comerciales, incluyendo información, contacto, promociones y
-                ofertas, conforme a su Política de Privacidad.
-              </span>
+              <span className={styles.consentText}>{t("contact.consent")}</span>
             </label>
 
             <div className={styles.actions}>
               <BtnElegant
-                ariaLabel="Conectar con Andes Gaming"
+                ariaLabel={t("contact.submitLabel")}
                 className={styles.submitButton}
-                text="Conectar"
+                text={t("contact.submit")}
                 type="button"
               />
             </div>

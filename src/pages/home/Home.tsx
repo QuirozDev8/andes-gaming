@@ -1,32 +1,35 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { ROUTES } from "../../routes/routePaths";
-import AnimationText from "../../components/animation-text/AnimationText";
-import SectionTitle from "../../components/section-title/SectionTitle";
-import RevealOnScroll from "../../components/reveal-on-scroll/RevealOnScroll";
-import styles from "./Home.module.css";
-import BtnElegant from "../../components/btn-elegant/BtnElegant";
 import heroImage from "../../assets/img/img-hero.png";
+import AnimationText from "../../components/animation-text/AnimationText";
+import BtnElegant from "../../components/btn-elegant/BtnElegant";
+import RevealOnScroll from "../../components/reveal-on-scroll/RevealOnScroll";
+import SectionTitle from "../../components/section-title/SectionTitle";
+import { ROUTES } from "../../routes/routePaths";
+import styles from "./Home.module.css";
 import {
   AboutCompany,
   BgHero,
   CardSection,
-  defaultSliderGames,
+  Contact,
+  FlowIntegration,
+  getDefaultSliderGames,
+  InfraTecnology,
+  JuegosPropios,
   Metrics,
+  PresenciaLatam,
   ProviderCarousel,
   SliderGames,
-  PresenciaLatam,
-  FlowIntegration,
-  InfraTecnology,
-  Contact,
-  JuegosPropios,
 } from "./components";
-import { productCards, providerLogos } from "./data";
-
+import { getProductCards, providerLogos } from "./data";
 
 function Home() {
+  const { t } = useTranslation("home");
+  const productCards = getProductCards(t);
+  const sliderGames = getDefaultSliderGames(t);
+
   return (
     <>
-      {/* Hero section */}
       <section className={styles.hero}>
         <BgHero
           className={styles.heroBackground}
@@ -54,7 +57,7 @@ function Home() {
           <div className="row align-items-center g-5">
             <div className="col-12 col-lg-6 text-center text-lg-start">
               <div className={`${styles.heroContent} mx-auto mx-lg-0`}>
-                <span className={styles.eyebrow}> iGaming B2B Platform </span>
+                <span className={styles.eyebrow}>{t("hero.eyebrow")}</span>
                 <SectionTitle
                   as="h1"
                   className={`${styles.title} mx-auto mx-lg-0`}
@@ -64,7 +67,7 @@ function Home() {
                     {
                       content: (
                         <AnimationText
-                          text="Una sola API."
+                          text={t("hero.titleFirst")}
                           tag="span"
                           textAlign="inherit"
                           overflow="visible"
@@ -81,7 +84,7 @@ function Home() {
                       accent: true,
                       content: (
                         <AnimationText
-                          text="Un universo de juegos."
+                          text={t("hero.titleSecond")}
                           tag="span"
                           textAlign="inherit"
                           overflow="visible"
@@ -97,15 +100,16 @@ function Home() {
                   ]}
                 />
                 <p className={`${styles.description} mx-auto mx-lg-0`}>
-                  Integra proveedores, estudios y operadores en una
-                  infraestructura robusta, escalable y preparada para acelerar
-                  tu operacion iGaming.
+                  {t("hero.description")}
                 </p>
 
                 <div className={styles.actions}>
-                  <BtnElegant text="Become a partner" to={ROUTES.contact} />
+                  <BtnElegant
+                    text={t("hero.primaryCta")}
+                    to={ROUTES.contact}
+                  />
                   <a className={styles.secondaryLink} href="#single-api">
-                    Explorar tecnologia
+                    {t("hero.secondaryCta")}
                   </a>
                 </div>
               </div>
@@ -115,13 +119,13 @@ function Home() {
               <div className={`${styles.heroMedia} ms-lg-auto`}>
                 <div
                   className={styles.heroVisualStage}
-                  aria-label="Imagen principal de Andes Gaming"
+                  aria-label={t("hero.visualLabel")}
                 >
                   <div className={styles.heroVisualFrame}>
                     <img
                       className={styles.heroVisualImage}
                       src={heroImage}
-                      alt="hero img"
+                      alt={t("hero.imageAlt")}
                     />
                   </div>
                 </div>
@@ -131,12 +135,10 @@ function Home() {
         </div>
       </section>
 
-      {/* Metrics section */}
       <RevealOnScroll className={styles.revealBackdrop}>
         <Metrics />
       </RevealOnScroll>
 
-      {/* What is Andesgaming? section */}
       <RevealOnScroll className={styles.revealBackdrop}>
         <AboutCompany />
       </RevealOnScroll>
@@ -145,37 +147,35 @@ function Home() {
         <PresenciaLatam />
       </RevealOnScroll>
 
-      {/* Card section */}
       <RevealOnScroll
         as="section"
         className={`${styles.bgCardSection} container-fluid`}
       >
         <div className={styles.cardSectionHeader}>
-          <span className={styles.sectionEyebrow}>Stack iGaming B2B</span>
+          <span className={styles.sectionEyebrow}>{t("stack.eyebrow")}</span>
           <SectionTitle
             className={styles.cardSectionTitle}
             accentClassName={styles.cardSectionTitleAccent}
             lines={[
-              "Todo lo que necesitas",
-              { content: "para escalar", accent: true },
+              t("stack.titleFirst"),
+              { content: t("stack.titleSecond"), accent: true },
             ]}
           />
           <p className={styles.cardSectionDescription}>
-            Integra proveedores, estudios y operadores en una infraestructura
-            robusta, escalable y preparada para acelerar tu operacion iGaming.
+            {t("stack.description")}
           </p>
         </div>
         <CardSection cards={productCards} />
 
         <div
           className={styles.cardSectionLinks}
-          aria-label="Acciones del stack iGaming"
+          aria-label={t("stack.actionsLabel")}
         >
           <a className={styles.cardSectionLinkPrimary} href="#contact-home">
-            Hablar con ventas
+            {t("stack.salesCta")}
           </a>
           <Link className={styles.cardSectionLinkSecondary} to={ROUTES.about}>
-            Conoce Andes Gaming
+            {t("stack.aboutCta")}
           </Link>
         </div>
       </RevealOnScroll>
@@ -184,31 +184,28 @@ function Home() {
         <JuegosPropios />
       </RevealOnScroll>
 
-      {/* Providers section */}
       <RevealOnScroll as="section" className={styles.providerSection}>
         <div className="container position-relative">
           <div className={styles.providerPanel}>
             <div className={styles.providerHeader}>
-              <span className={styles.providerEyebrow}>Ecosistema conectado</span>
+              <span className={styles.providerEyebrow}>
+                {t("providers.eyebrow")}
+              </span>
               <SectionTitle
                 className={styles.providerTitle}
                 accentClassName={styles.providerTitleAccent}
                 lines={[
-                  "Conectamos marcas con",
-                  { content: "proveedores de primer nivel", accent: true },
+                  t("providers.titleFirst"),
+                  { content: t("providers.titleSecond"), accent: true },
                 ]}
               />
-              <p>
-              Tu camino hacia una diversa colección de más de 200 proveedores de
-              juegos premium para crear una experiencia de juego personalizada
-              para tus jugadores.
-              </p>
+              <p>{t("providers.description")}</p>
             </div>
 
             <div className={styles.providerCarouselFrame}>
               <ProviderCarousel
                 items={providerLogos}
-                ariaLabel="Logos de proveedores integrados"
+                ariaLabel={t("providers.carouselLabel")}
                 logoWidth={180}
                 logoHeight={92}
                 durationSeconds={92}
@@ -217,9 +214,9 @@ function Home() {
 
             <div className={styles.providerActions}>
               <BtnElegant
-                text="Ver todos los proveedores"
+                text={t("providers.cta")}
                 to={ROUTES.gameProviders}
-                ariaLabel="Ver todos los proveedores"
+                ariaLabel={t("providers.cta")}
               />
             </div>
           </div>
@@ -229,13 +226,13 @@ function Home() {
       <RevealOnScroll className={styles.revealBackdrop}>
         <SliderGames
           className={styles.sliderGames}
-          slides={defaultSliderGames}
-          eyebrow="// proveedores destacados"
+          slides={sliderGames}
+          eyebrow={t("slider.eyebrow")}
           autoPlayMs={6000}
-          titlePrefix="Juegos"
-          titleAccent="destacados"
-          titleSuffix=" de nuestros proveedores."
-          ariaLabel="Slider de juegos principales de proveedores"
+          titlePrefix={t("slider.titlePrefix")}
+          titleAccent={t("slider.titleAccent")}
+          titleSuffix={t("slider.titleSuffix")}
+          ariaLabel={t("slider.ariaLabel")}
         />
       </RevealOnScroll>
 
@@ -250,7 +247,6 @@ function Home() {
       <RevealOnScroll className={styles.revealBackdrop}>
         <Contact />
       </RevealOnScroll>
-      
     </>
   );
 }

@@ -8,6 +8,7 @@ import {
   type TouchEvent,
   type TransitionEvent,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import SectionTitle from '../../../../components/section-title/SectionTitle';
 import styles from './SliderGames.module.css';
 
@@ -308,16 +309,22 @@ function usePrefersReducedMotion() {
 
 export function SliderGames({
   slides,
-  eyebrow = '// ecosistema en expansion',
-  titlePrefix = 'Cinco',
-  titleAccent = 'verticales',
-  titleSuffix = '. Una integracion.',
+  eyebrow,
+  titlePrefix,
+  titleAccent,
+  titleSuffix,
   initialIndex = 0,
   autoPlayMs = DEFAULT_AUTOPLAY_MS,
   pauseOnHover = true,
   className,
-  ariaLabel = 'Slider de juegos destacados',
+  ariaLabel,
 }: SliderGamesProps) {
+  const { t } = useTranslation('home');
+  const resolvedEyebrow = eyebrow ?? t('slider.eyebrow');
+  const resolvedTitlePrefix = titlePrefix ?? t('slider.titlePrefix');
+  const resolvedTitleAccent = titleAccent ?? t('slider.titleAccent');
+  const resolvedTitleSuffix = titleSuffix ?? t('slider.titleSuffix');
+  const resolvedAriaLabel = ariaLabel ?? t('slider.ariaLabel');
   const slideCount = slides.length;
   const sectionRef = useRef<HTMLElement | null>(null);
   const touchStartXRef = useRef<number | null>(null);
@@ -639,25 +646,29 @@ export function SliderGames({
       ref={sectionRef}
       className={`${styles.sliderGames} ${isInView ? '' : styles.isIdle} ${isTransitioning ? styles.isTransitioning : ''} ${className ?? ''}`}
       style={rootStyle}
-      aria-label={ariaLabel}
+      aria-label={resolvedAriaLabel}
       onMouseEnter={() => pauseOnHover && setPaused(true)}
       onMouseLeave={() => pauseOnHover && setPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       <header className={styles.header}>
-        {eyebrow ? <div className={styles.eyebrow}>{eyebrow}</div> : null}
+        {resolvedEyebrow ? (
+          <div className={styles.eyebrow}>{resolvedEyebrow}</div>
+        ) : null}
         <SectionTitle
           className={styles.title}
           lines={[
             {
               content: (
                 <>
-                  {titlePrefix ? `${titlePrefix} ` : ''}
-                  {titleAccent ? (
-                    <span className={styles.titleAccent}>{titleAccent}</span>
+                  {resolvedTitlePrefix ? `${resolvedTitlePrefix} ` : ''}
+                  {resolvedTitleAccent ? (
+                    <span className={styles.titleAccent}>
+                      {resolvedTitleAccent}
+                    </span>
                   ) : null}
-                  {titleSuffix}
+                  {resolvedTitleSuffix}
                 </>
               ),
             },
@@ -732,7 +743,7 @@ export function SliderGames({
       <button
         className={`${styles.navButton} ${styles.prevButton}`}
         type="button"
-        aria-label="Slide anterior"
+        aria-label={t('slider.previous')}
         disabled={slideCount <= 1}
         onClick={goPrev}
       >
@@ -743,7 +754,7 @@ export function SliderGames({
       <button
         className={`${styles.navButton} ${styles.nextButton}`}
         type="button"
-        aria-label="Slide siguiente"
+        aria-label={t('slider.next')}
         disabled={slideCount <= 1}
         onClick={goNext}
       >
@@ -752,7 +763,7 @@ export function SliderGames({
         </svg>
       </button>
 
-      <div className={styles.dots} aria-label="Seleccionar juego">
+      <div className={styles.dots} aria-label={t('slider.select')}>
         {slides.map((slide, index) => {
           const dotStyle: CSSVariableStyle = {
             '--dot-accent': slide.accent,
@@ -764,7 +775,7 @@ export function SliderGames({
               type="button"
               key={slide.id}
               style={dotStyle}
-              aria-label={`Mostrar ${slide.title}`}
+              aria-label={t('slider.show', { title: slide.title })}
               aria-current={index === activeIndex ? 'true' : undefined}
               onClick={() => goToSlide(index)}
             />

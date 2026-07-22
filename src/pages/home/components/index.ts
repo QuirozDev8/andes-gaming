@@ -13,7 +13,7 @@ export type {
   ProviderCarouselProps,
 } from "./provider-carousel/ProviderCarousel";
 export {
-  defaultSliderGames,
+  getDefaultSliderGames,
   SliderGames,
   type SliderGameParticleType,
   type SliderGameSlide,

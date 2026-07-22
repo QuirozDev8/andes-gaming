@@ -1,2 +1,2 @@
-export { productCards } from "./productCards";
+export { getProductCards } from "./productCards";
 export { providerLogos } from "./providerLogos";

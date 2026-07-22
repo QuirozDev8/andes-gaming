@@ -1,38 +1,39 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import SectionTitle from "../../../../components/section-title/SectionTitle";
-import "./JuegosPropios.css";
 import comandoDesktopImg from "../../../../assets/img/COMMANDO-DESKTOP.webp";
 import comandoMobileImg from "../../../../assets/img/COMMANDO-MOVIL.webp";
- 
+import SectionTitle from "../../../../components/section-title/SectionTitle";
+import "./JuegosPropios.css";
 
-
-type OwnGame = {
+type OwnGameDefinition = {
   id: string;
-  title: string;
+  translationKey: "commando" | "andesWild";
   imageSrc: string;
   mobileImageSrc?: string;
-  imageAlt: string;
   youtubeId: string;
 };
 
-const ownGames: OwnGame[] = [
+type OwnGame = OwnGameDefinition & {
+  title: string;
+  imageAlt: string;
+};
+
+const ownGameDefinitions: OwnGameDefinition[] = [
   {
     id: "commando",
-    title: "Commando",
+    translationKey: "commando",
     imageSrc: comandoDesktopImg,
     mobileImageSrc: comandoMobileImg,
-    imageAlt: "Banner temporal del juego Comando",
     youtubeId: "vugCplUn6bk",
-  }, 
+  },
   {
     id: "andes-wild",
-    title: "Andes Wild",
+    translationKey: "andesWild",
     imageSrc: comandoDesktopImg,
     mobileImageSrc: comandoMobileImg,
-    imageAlt: "Banner temporal del juego Andes Wild",
     youtubeId: "vugCplUn6bk",
   },
 ];
@@ -68,38 +69,63 @@ function usePrefersReducedMotion() {
 }
 
 export function JuegosPropios() {
+  const { t } = useTranslation("home");
+  const games = useMemo<OwnGame[]>(
+    () =>
+      ownGameDefinitions.map((game) => ({
+        ...game,
+        title: t(`ownGames.games.${game.translationKey}.title`),
+        imageAlt: t(`ownGames.games.${game.translationKey}.imageAlt`),
+      })),
+    [t],
+  );
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [selectedGame, setSelectedGame] = useState<OwnGame | null>(null);
+  const [selectedGameId, setSelectedGameId] = useState<string | null>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
-  const slideCount = ownGames.length;
-  const activeGame = ownGames[activeIndex] ?? ownGames[0];
+  const slideCount = games.length;
+  const activeGame = games[activeIndex] ?? games[0];
+  const selectedGame = games.find((game) => game.id === selectedGameId) ?? null;
 
-  const goToGame = useCallback((nextIndex: number) => {
-    setActiveIndex(getCarouselIndex(nextIndex, slideCount));
-  }, [slideCount]);
+  const goToGame = useCallback(
+    (nextIndex: number) => {
+      setActiveIndex(getCarouselIndex(nextIndex, slideCount));
+    },
+    [slideCount],
+  );
 
   const goToPreviousGame = useCallback(() => {
-    setActiveIndex((currentIndex) => getCarouselIndex(currentIndex - 1, slideCount));
+    setActiveIndex((currentIndex) =>
+      getCarouselIndex(currentIndex - 1, slideCount),
+    );
   }, [slideCount]);
 
   const goToNextGame = useCallback(() => {
-    setActiveIndex((currentIndex) => getCarouselIndex(currentIndex + 1, slideCount));
+    setActiveIndex((currentIndex) =>
+      getCarouselIndex(currentIndex + 1, slideCount),
+    );
   }, [slideCount]);
 
   const closeModal = useCallback(() => {
-    setSelectedGame(null);
+    setSelectedGameId(null);
   }, []);
 
   useEffect(() => {
-    if (slideCount <= 1 || isPaused || selectedGame || prefersReducedMotion) return;
+    if (
+      slideCount <= 1 ||
+      isPaused ||
+      selectedGameId ||
+      prefersReducedMotion
+    ) {
+      return;
+    }
 
     const timer = window.setInterval(goToNextGame, AUTOPLAY_MS);
     return () => window.clearInterval(timer);
-  }, [goToNextGame, isPaused, prefersReducedMotion, selectedGame, slideCount]);
+  }, [goToNextGame, isPaused, prefersReducedMotion, selectedGameId, slideCount]);
 
   useEffect(() => {
-    if (!selectedGame) return;
+    if (!selectedGameId) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -109,10 +135,10 @@ export function JuegosPropios() {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [closeModal, selectedGame]);
+  }, [closeModal, selectedGameId]);
 
   useEffect(() => {
-    if (!selectedGame) return;
+    if (!selectedGameId) return;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -120,7 +146,7 @@ export function JuegosPropios() {
     return () => {
       document.body.style.overflow = previousOverflow;
     };
-  }, [selectedGame]);
+  }, [selectedGameId]);
 
   if (!activeGame) return null;
 
@@ -143,7 +169,7 @@ export function JuegosPropios() {
             <button
               className="juegos-propios-modal__close"
               type="button"
-              aria-label="Cerrar video"
+              aria-label={t("ownGames.closeVideo")}
               onClick={closeModal}
             >
               <X aria-hidden="true" strokeWidth={2.3} />
@@ -153,7 +179,7 @@ export function JuegosPropios() {
           <div className="juegos-propios-modal__video">
             <iframe
               src={`https://www.youtube.com/embed/${selectedGame.youtubeId}?autoplay=1&rel=0`}
-              title={`Video de ${selectedGame.title}`}
+              title={t("ownGames.videoTitle", { title: selectedGame.title })}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
@@ -175,24 +201,28 @@ export function JuegosPropios() {
         <div className="container">
           <div className="juegos-propios__panel">
             <div className="juegos-propios__content">
-              <span className="juegos-propios__eyebrow">Game Studio</span>
+              <span className="juegos-propios__eyebrow">
+                {t("ownGames.eyebrow")}
+              </span>
 
               <div className="juegos-propios__copy">
                 <SectionTitle
                   className="juegos-propios__title py-1"
                   lineClassName="juegos-propios__titleLine"
                   id="juegos-propios-title"
-                  lines={["Creamos experiencias", "que marcan la diferencia"]}
+                  lines={[
+                    t("ownGames.titleFirst"),
+                    t("ownGames.titleSecond"),
+                  ]}
                 />
 
                 <p className="juegos-propios__description">
-                  En Andes Gaming Studio desarrollamos contenido propio innovador y
-                  de alto rendimiento.
+                  {t("ownGames.description")}
                 </p>
               </div>
 
               <Link className="juegos-propios__link" to="/game-studio">
-                Conoce nuestros juegos
+                {t("ownGames.cta")}
                 <ArrowRight aria-hidden="true" strokeWidth={2} />
               </Link>
             </div>
@@ -200,22 +230,26 @@ export function JuegosPropios() {
             <div
               className="juegos-propios__carousel"
               id="juegos-propios-carousel"
-              aria-label="Juegos desarrollados por Andes Gaming"
+              aria-label={t("ownGames.carouselLabel")}
             >
               <div className="juegos-propios__viewport">
                 <div
                   className="juegos-propios__track"
-                  style={{ transform: `translate3d(-${activeIndex * 100}%, 0, 0)` }}
+                  style={{
+                    transform: `translate3d(-${activeIndex * 100}%, 0, 0)`,
+                  }}
                 >
-                  {ownGames.map((game, index) => (
+                  {games.map((game, index) => (
                     <button
                       className="juegos-propios__slide"
                       key={game.id}
                       type="button"
-                      aria-label={`Ver video de ${game.title}`}
+                      aria-label={t("ownGames.viewVideo", {
+                        title: game.title,
+                      })}
                       aria-hidden={index !== activeIndex}
                       tabIndex={index === activeIndex ? 0 : -1}
-                      onClick={() => setSelectedGame(game)}
+                      onClick={() => setSelectedGameId(game.id)}
                     >
                       <picture className="juegos-propios__picture">
                         {game.mobileImageSrc ? (
@@ -241,7 +275,7 @@ export function JuegosPropios() {
                   <button
                     className="juegos-propios__nav juegos-propios__nav--prev"
                     type="button"
-                    aria-label="Juego anterior"
+                    aria-label={t("ownGames.previous")}
                     onClick={goToPreviousGame}
                   >
                     <ChevronLeft aria-hidden="true" strokeWidth={2.4} />
@@ -250,22 +284,29 @@ export function JuegosPropios() {
                   <button
                     className="juegos-propios__nav juegos-propios__nav--next"
                     type="button"
-                    aria-label="Juego siguiente"
+                    aria-label={t("ownGames.next")}
                     onClick={goToNextGame}
                   >
                     <ChevronRight aria-hidden="true" strokeWidth={2.4} />
                   </button>
 
-                  <div className="juegos-propios__dots" aria-label="Seleccionar juego">
-                    {ownGames.map((game, index) => (
+                  <div
+                    className="juegos-propios__dots"
+                    aria-label={t("ownGames.select")}
+                  >
+                    {games.map((game, index) => (
                       <button
                         className={`juegos-propios__dot ${
-                          index === activeIndex ? "juegos-propios__dot--active" : ""
+                          index === activeIndex
+                            ? "juegos-propios__dot--active"
+                            : ""
                         }`}
                         key={game.id}
                         type="button"
-                        aria-label={`Mostrar ${game.title}`}
-                        aria-current={index === activeIndex ? "true" : undefined}
+                        aria-label={t("ownGames.show", { title: game.title })}
+                        aria-current={
+                          index === activeIndex ? "true" : undefined
+                        }
                         onClick={() => goToGame(index)}
                       />
                     ))}

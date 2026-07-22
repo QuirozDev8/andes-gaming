@@ -1,30 +1,31 @@
 import { useEffect, useRef, useState } from "react";
 import { Clock3, Gamepad2, Globe2, UsersRound } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import styles from "./Metrics.module.css";
 
 const metrics = [
   {
     value: 150,
     prefix: "+",
-    label: "Operadores conectados",
+    labelKey: "metrics.operators",
     icon: UsersRound,
   },
   {
     value: 12000,
     prefix: "+",
-    label: "Juegos integrados",
+    labelKey: "metrics.games",
     icon: Gamepad2,
   },
   {
     value: 18,
-    label: "Mercados en LATAM",
+    labelKey: "metrics.markets",
     icon: Globe2,
   },
   {
     value: 99.9,
     suffix: "%",
     decimals: 1,
-    label: "Uptime de plataforma",
+    labelKey: "metrics.uptime",
     icon: Clock3,
   },
 ] as const;
@@ -34,14 +35,14 @@ type Metric = {
   prefix?: string;
   suffix?: string;
   decimals?: number;
-  label: string;
+  labelKey: string;
   icon: typeof UsersRound;
 };
 
 const animationDurationMs = 1500;
 
-function formatMetricValue(metric: Metric, value: number) {
-  const formattedValue = value.toLocaleString("es-CO", {
+function formatMetricValue(metric: Metric, value: number, locale: string) {
+  const formattedValue = value.toLocaleString(locale, {
     minimumFractionDigits: metric.decimals ?? 0,
     maximumFractionDigits: metric.decimals ?? 0,
   });
@@ -127,10 +128,12 @@ function AnimatedMetricValue({
   metric,
   shouldStart,
   shouldReduceMotion,
+  locale,
 }: {
   metric: Metric;
   shouldStart: boolean;
   shouldReduceMotion: boolean;
+  locale: string;
 }) {
   const value = useCountUp(
     metric.value,
@@ -138,8 +141,8 @@ function AnimatedMetricValue({
     shouldStart,
     shouldReduceMotion,
   );
-  const finalValue = formatMetricValue(metric, metric.value);
-  const visualValue = formatMetricValue(metric, value);
+  const finalValue = formatMetricValue(metric, metric.value, locale);
+  const visualValue = formatMetricValue(metric, value, locale);
 
   return (
     <strong className={styles.value} aria-label={finalValue}>
@@ -149,10 +152,14 @@ function AnimatedMetricValue({
 }
 
 export function Metrics() {
+  const { t, i18n } = useTranslation("home");
   const sectionRef = useRef<HTMLElement | null>(null);
   const [hasEnteredView, setHasEnteredView] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
   const shouldStartCounter = hasEnteredView || prefersReducedMotion;
+  const numberLocale = i18n.resolvedLanguage?.startsWith("en")
+    ? "en-US"
+    : "es-CO";
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -195,7 +202,7 @@ export function Metrics() {
   return (
     <section
       className={styles.metrics}
-      aria-label="Metricas principales"
+      aria-label={t("metrics.ariaLabel")}
       ref={sectionRef}
     >
       <div className="container position-relative">
@@ -204,7 +211,7 @@ export function Metrics() {
             const MetricIcon = metric.icon;
 
             return (
-              <li className={styles.item} key={metric.label}>
+              <li className={styles.item} key={metric.labelKey}>
                 <div className={styles.iconWrap}>
                   <MetricIcon aria-hidden="true" strokeWidth={1.7} />
                 </div>
@@ -213,8 +220,9 @@ export function Metrics() {
                     metric={metric}
                     shouldStart={shouldStartCounter}
                     shouldReduceMotion={prefersReducedMotion}
+                    locale={numberLocale}
                   />
-                  <span className={styles.label}>{metric.label}</span>
+                  <span className={styles.label}>{t(metric.labelKey)}</span>
                 </div>
               </li>
             );

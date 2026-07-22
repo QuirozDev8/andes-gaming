@@ -6,48 +6,45 @@ import {
   Rocket,
 } from "lucide-react";
 import { useCallback, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
 import styles from "./FlowIntegration.module.css";
 
 const integrationSteps = [
   {
     number: "1",
-    title: "Hablemos",
-    description: "Definimos objetivos, audiencia y necesidades clave.",
+    translationKey: "talk",
     icon: MessageCircle,
     accent: "cyan",
   },
   {
     number: "2",
-    title: "Coincidencia inteligente",
-    description: "Elegimos contenido ideal y cerramos el trato.",
+    translationKey: "matching",
     icon: Gamepad2,
     accent: "blue",
   },
   {
     number: "3",
-    title: "Plug and Play",
-    description: "Integramos proveedores y dejamos todo listo.",
+    translationKey: "plugAndPlay",
     icon: Puzzle,
     accent: "violet",
   },
   {
     number: "4",
-    title: "Pruebe y lance",
-    description: "Probamos juntos, lanzamos y ajustamos.",
+    translationKey: "launch",
     icon: Rocket,
     accent: "cyan",
   },
   {
     number: "5",
-    title: "Siempre a su lado",
-    description: "Soporte continuo, nuevos contenidos y mejoras.",
+    translationKey: "support",
     icon: Headphones,
     accent: "violet",
   },
 ] as const;
 
 export function FlowIntegration() {
+  const { t } = useTranslation("home");
   const workflowRef = useRef<HTMLOListElement>(null);
   const [activeStepIndex, setActiveStepIndex] = useState(0);
 
@@ -109,8 +106,8 @@ export function FlowIntegration() {
             className={styles.title}
             id="flow-integration-title"
             lines={[
-              "Pasos para trabajar",
-              { content: "con nosotros.", accent: true },
+              t("flow.titleFirst"),
+              { content: t("flow.titleSecond"), accent: true },
             ]}
           />
           <div className={styles.titleLine} aria-hidden="true" />
@@ -118,12 +115,13 @@ export function FlowIntegration() {
 
         <ol
           className={styles.workflow}
-          aria-label="Pasos de integracion"
+          aria-label={t("flow.workflowLabel")}
           onScroll={handleStepScroll}
           ref={workflowRef}
         >
           {integrationSteps.map((step, index) => {
             const StepIcon = step.icon;
+            const stepKey = `flow.steps.${step.translationKey}`;
 
             return (
               <li
@@ -139,9 +137,9 @@ export function FlowIntegration() {
                   <div className={styles.iconFrame}>
                     <StepIcon aria-hidden="true" strokeWidth={1.7} />
                   </div>
-                  <h3>{step.title}</h3>
+                  <h3>{t(`${stepKey}.title`)}</h3>
                   <span className={styles.cardRule} aria-hidden="true" />
-                  <p>{step.description}</p>
+                  <p>{t(`${stepKey}.description`)}</p>
                 </article>
               </li>
             );
@@ -150,13 +148,16 @@ export function FlowIntegration() {
 
         <div
           className={styles.sliderDots}
-          aria-label="Navegacion de pasos"
+          aria-label={t("flow.navigationLabel")}
           role="group"
         >
           {integrationSteps.map((step, index) => (
             <button
               aria-current={activeStepIndex === index ? "step" : undefined}
-              aria-label={`Ver paso ${step.number}: ${step.title}`}
+              aria-label={t("flow.viewStep", {
+                number: step.number,
+                title: t(`flow.steps.${step.translationKey}.title`),
+              })}
               className={styles.sliderDot}
               key={step.number}
               onClick={() => goToStep(index)}
