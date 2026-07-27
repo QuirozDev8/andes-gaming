@@ -3,12 +3,13 @@ import EnDesarrollo from "../components/en-desarrollo/EnDesarrollo";
 import Home from "../pages/home/Home";
 import { ContactPage } from "../pages/contact-page/ContactPage";
 import { ROUTES } from "./routePaths";
+import { CasinoAggregation } from "../pages/casino-aggregation/CasinoAggregation";
 
 const pendingPage = <EnDesarrollo />;
 
 export const appRoutes = [
   { path: ROUTES.home, element: <Home /> },
-  { path: ROUTES.casinoAggregation, element: pendingPage },
+  { path: ROUTES.casinoAggregation, element: <CasinoAggregation /> },
   { path: ROUTES.gameStudio, element: pendingPage },
   { path: "/game-studio", element: pendingPage },
   { path: ROUTES.gameProviders, element: pendingPage },
