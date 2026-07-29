@@ -201,13 +201,13 @@ export function JuegosPropios() {
         <div className="container">
           <div className="juegos-propios__panel">
             <div className="juegos-propios__content">
-              <span className="juegos-propios__eyebrow">
-                {t("ownGames.eyebrow")}
-              </span>
+              <div className="juegos-propios__header">
+                <span className="juegos-propios__eyebrow">
+                  {t("ownGames.eyebrow")}
+                </span>
 
-              <div className="juegos-propios__copy">
                 <SectionTitle
-                  className="juegos-propios__title py-1"
+                  className="juegos-propios__title"
                   lineClassName="juegos-propios__titleLine"
                   id="juegos-propios-title"
                   lines={[
@@ -215,16 +215,21 @@ export function JuegosPropios() {
                     t("ownGames.titleSecond"),
                   ]}
                 />
+              </div>
 
+              <div className="juegos-propios__details">
                 <p className="juegos-propios__description">
                   {t("ownGames.description")}
                 </p>
-              </div>
 
-              <Link className="juegos-propios__link" to="/game-studio">
-                {t("ownGames.cta")}
-                <ArrowRight aria-hidden="true" strokeWidth={2} />
-              </Link>
+                <Link
+                  className="juegos-propios__link juegos-propios__link--desktop"
+                  to="/game-studio"
+                >
+                  {t("ownGames.cta")}
+                  <ArrowRight aria-hidden="true" strokeWidth={2} />
+                </Link>
+              </div>
             </div>
 
             <div
@@ -314,6 +319,14 @@ export function JuegosPropios() {
                 </>
               ) : null}
             </div>
+
+            <Link
+              className="juegos-propios__link juegos-propios__link--mobile"
+              to="/game-studio"
+            >
+              {t("ownGames.cta")}
+              <ArrowRight aria-hidden="true" strokeWidth={2} />
+            </Link>
           </div>
         </div>
       </section>

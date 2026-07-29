@@ -62,14 +62,14 @@
 }
 
 .juegos-propios__panel {
-  --juegos-propios-banner-height: clamp(7.75rem, 13vw, 10.5rem);
+  --juegos-propios-banner-height: clamp(15rem, 21vw, 19rem);
   position: relative;
   display: grid;
   grid-template-columns: minmax(22rem, 0.78fr) minmax(0, 1.22fr);
   align-items: center;
-  gap: clamp(1.35rem, 4vw, 3.5rem);
+  gap: clamp(1.75rem, 4vw, 3.75rem);
   min-height: 0;
-  padding: clamp(0.95rem, 2.2vw, 1.5rem) clamp(1rem, 2.8vw, 1.85rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1rem, 2.8vw, 1.85rem);
   border: 1px solid rgba(var(--andes-cyan-rgb), 0.22);
   border-radius: var(--radius-lg);
   background:
@@ -85,17 +85,23 @@
 
 .juegos-propios__content {
   display: flex;
-  width: min(100%, 28rem);
+  width: min(100%, 30rem);
   min-height: var(--juegos-propios-banner-height);
   flex-direction: column;
   justify-content: center;
+  gap: clamp(1.35rem, 2.4vw, 2rem);
+}
+
+.juegos-propios__header {
+  display: grid;
+  gap: clamp(0.8rem, 1.4vw, 1.1rem);
 }
 
 .juegos-propios__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
-  margin-bottom: 0.45rem;
+  margin-bottom: 0;
   color: var(--andes-cyan);
   font-family: var(--font-body);
   font-size: clamp(0.68rem, 1vw, 0.82rem);
@@ -116,10 +122,10 @@
 }
 
 .juegos-propios__title {
-  --section-title-font-size: clamp(1.2rem, 1.72vw, 1.55rem);
+  --section-title-font-size: clamp(1.45rem, 2.15vw, 2rem);
   --section-title-mobile-font-size: clamp(1.08rem, 5.2vw, 1.38rem);
   --section-title-small-font-size: clamp(1rem, 5vw, 1.18rem);
-  max-width: 24rem;
+  max-width: 28rem;
   margin: 0;
   color: var(--andes-white);
   font-family: var(--font-heading);
@@ -127,7 +133,7 @@
   font-style: italic;
   font-weight: var(--font-weight-black);
   letter-spacing: 0;
-  line-height: 1.06;
+  line-height: 1.03;
   text-transform: uppercase;
   text-wrap: normal;
 }
@@ -137,31 +143,49 @@
   white-space: nowrap;
 }
 
+.juegos-propios__details {
+  display: grid;
+  gap: clamp(0.9rem, 1.5vw, 1.2rem);
+  max-width: 27rem;
+}
+
 .juegos-propios__description {
-  max-width: 24rem;
-  margin: var(--space-3) 0 0;
+  max-width: 27rem;
+  margin: 0;
   color: rgba(var(--andes-white-rgb), 0.8);
   font-family: var(--font-body);
-  font-size: clamp(0.72rem, 1vw, 0.88rem);
+  font-size: clamp(0.8rem, 1.05vw, 0.95rem);
   font-weight: var(--font-weight-semibold);
-  line-height: 1.5;
+  line-height: 1.65;
 }
 
 .juegos-propios__link {
   display: inline-flex;
+  width: fit-content;
   align-items: center;
   gap: var(--space-2);
-  margin-top: var(--space-3);
-  color: var(--andes-violet);
+  margin-top: 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(var(--andes-violet-rgb), 0.42);
+  border-radius: var(--radius-pill);
+  background: rgba(var(--andes-violet-rgb), 0.08);
+  color: var(--andes-white);
   font-family: var(--font-body);
   font-size: clamp(0.72rem, 0.95vw, 0.86rem);
   font-weight: var(--font-weight-black);
   line-height: 1;
   text-decoration: none;
   transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
     color var(--transition-base),
     transform var(--transition-base),
     text-shadow var(--transition-base);
+}
+
+.juegos-propios__link--mobile {
+  display: none;
 }
 
 .juegos-propios__link svg {
@@ -172,7 +196,10 @@
 
 .juegos-propios__link:hover,
 .juegos-propios__link:focus-visible {
+  border-color: rgba(var(--andes-cyan-rgb), 0.64);
+  background: rgba(var(--andes-cyan-rgb), 0.1);
   color: var(--andes-cyan);
+  box-shadow: 0 0 22px rgba(var(--andes-cyan-rgb), 0.12);
   text-shadow: 0 0 14px rgba(var(--andes-cyan-rgb), 0.36);
   transform: translateX(0.2rem);
 }
@@ -483,30 +510,16 @@
 
 @media (min-width: 992px) {
   .juegos-propios__panel {
-    align-items: stretch;
+    align-items: center;
   }
 
   .juegos-propios__content {
-    display: grid;
     width: 100%;
     height: 100%;
     min-height: 0;
-    grid-template-rows: auto 1fr auto;
+    align-items: flex-start;
+    justify-content: center;
     padding-block: clamp(0.75rem, 1.5vw, 1.5rem);
-  }
-
-  .juegos-propios__eyebrow {
-    align-self: start;
-    margin-bottom: 0;
-  }
-
-  .juegos-propios__copy {
-    align-self: center;
-  }
-
-  .juegos-propios__link {
-    align-self: end;
-    margin-top: 0;
   }
 
   .juegos-propios__carousel {
@@ -517,7 +530,7 @@
   .juegos-propios__viewport {
     height: auto;
     max-height: none;
-    aspect-ratio: 3 / 1;
+    aspect-ratio: 12 / 5;
   }
 
   .juegos-propios__track,
@@ -541,6 +554,19 @@
     min-height: 0;
     text-align: left;
     margin-inline: auto;
+  }
+
+  .juegos-propios__details {
+    max-width: 32rem;
+  }
+
+  .juegos-propios__link--desktop {
+    display: none;
+  }
+
+  .juegos-propios__link--mobile {
+    display: inline-flex;
+    justify-self: start;
   }
 
   .juegos-propios__title,
@@ -588,6 +614,18 @@
   .juegos-propios__title {
     max-width: 100%;
     font-size: var(--section-title-mobile-font-size);
+  }
+
+  .juegos-propios__content {
+    gap: var(--space-4);
+  }
+
+  .juegos-propios__header {
+    gap: var(--space-3);
+  }
+
+  .juegos-propios__details {
+    gap: var(--space-3);
   }
 
   .juegos-propios__description {

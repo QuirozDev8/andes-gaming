@@ -65,13 +65,6 @@ export function AboutCompany() {
                   );
                 })}
               </div>
-
-              <Link
-                className={`${styles.cta} ${styles.ctaDesktop}`}
-                to={ROUTES.about}
-              >
-                {t("about.cta")}
-              </Link>
             </div>
           </div>
 
@@ -83,13 +76,13 @@ export function AboutCompany() {
                 alt={t("about.imageAlt")}
               />
             </div>
-            <Link
-              className={`${styles.cta} ${styles.ctaMobile}`}
-              to={ROUTES.about}
-            >
-              {t("about.cta")}
-            </Link>
           </div>
+        </div>
+
+        <div className={styles.actions}>
+          <Link className={styles.cta} to={ROUTES.about}>
+            {t("about.cta")}
+          </Link>
         </div>
       </div>
     </section>

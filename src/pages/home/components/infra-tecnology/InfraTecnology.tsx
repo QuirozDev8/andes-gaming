@@ -52,25 +52,7 @@ const platformHighlights = [
   },
 ] as const;
 
-function InfraActions({ className = "" }: { className?: string }) {
-  const { t } = useTranslation("home");
 
-  return (
-    <div className={`infra-actions ${className}`}>
-      <BtnElegant
-        text={t("infrastructure.explore")}
-        href="#infra-architecture"
-        ariaLabel={t("infrastructure.explore")}
-        className="infra-elegant-btn"
-      />
-
-      <Link className="infra-secondary-btn" to={ROUTES.contact}>
-        <Network aria-hidden="true" strokeWidth={1.8} />
-        {t("infrastructure.partner")}
-      </Link>
-    </div>
-  );
-}
 
 export function InfraTecnology() {
   const { t } = useTranslation("home");
@@ -109,7 +91,7 @@ export function InfraTecnology() {
                   {t("infrastructure.description")}
                 </p>
 
-                <InfraActions className="infra-actions--desktop" />
+                 
 
                 <div className="infra-card-grid row g-3 py-3">
                   {capabilityCards.map((card) => {
@@ -175,7 +157,7 @@ export function InfraTecnology() {
             })}
           </div>
 
-          <InfraActions className="infra-actions--mobile" />
+         
         </div>
       </div>
     </section>

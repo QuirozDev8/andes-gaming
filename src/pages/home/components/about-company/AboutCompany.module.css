@@ -194,10 +194,10 @@
 .cta {
   display: inline-flex;
   cursor: pointer;
+  width: min(100%, 25rem);
   min-height: 3rem;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
   padding: 0 var(--space-7);
   border: 1px solid rgba(var(--andes-cyan-rgb), 0.72);
   border-radius: var(--radius-sm);
@@ -212,6 +212,7 @@
   font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: var(--font-weight-bold);
+  white-space: nowrap;
   text-decoration: none;
   transition:
     border-color var(--transition-base),
@@ -231,8 +232,10 @@
   box-shadow: var(--shadow-focus);
 }
 
-.ctaMobile {
-  display: none;
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(var(--space-6), 4vw, var(--space-8));
 }
 
 .visualColumn {
@@ -351,10 +354,6 @@
     display: none;
   }
 
-  .ctaDesktop {
-    display: none;
-  }
-
   .visualColumn {
     flex-direction: column;
     align-items: center;
@@ -402,11 +401,13 @@
     mask-composite: intersect;
   }
 
-  .ctaMobile {
-    display: inline-flex;
+  .actions {
+    margin-top: var(--space-3);
+  }
+
+  .cta {
     width: 100%;
     max-width: 22rem;
-    margin-top: var(--space-2);
     padding: 0 var(--space-5);
     font-size: var(--text-base);
   }
