@@ -143,7 +143,7 @@ export function CasinoAggregation() {
 
    {/* NAME SECTION */}
     <section>
-
+            <h4 className="text-black text-center"> Section pendiente </h4>
     </section>
 
   </>

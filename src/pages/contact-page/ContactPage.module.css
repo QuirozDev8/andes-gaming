@@ -97,22 +97,12 @@
 
 .landingShell {
   display: grid;
-  grid-template-areas:
-    "copy form"
-    "channels form"
-    "reasons reasons";
-  grid-template-columns: minmax(0, 0.92fr) minmax(33rem, 1.08fr);
+  grid-template-areas: "visual form";
+  grid-template-columns: minmax(0, 0.84fr) minmax(33rem, 1.16fr);
   gap: clamp(var(--space-4), 2vw, var(--space-6));
   align-items: stretch;
 }
 
-.heroContent {
-  grid-area: copy;
-  align-self: start;
-  padding: clamp(var(--space-2), 1.5vw, var(--space-5));
-}
-
-.eyebrow,
 .sectionEyebrow {
   display: inline-flex;
   align-items: center;
@@ -126,104 +116,31 @@
   text-transform: uppercase;
 }
 
-.eyebrow {
-  margin-bottom: var(--space-4);
-  padding: 0.62rem var(--space-3);
-  border: 1px solid rgba(var(--andes-violet-rgb), 0.22);
-  border-radius: var(--radius-pill);
-  background: rgba(var(--andes-white-rgb), 0.7);
-  box-shadow:
-    inset 0 1px 0 rgba(var(--andes-white-rgb), 0.9),
-    0 10px 24px rgba(var(--andes-blue-deep-rgb), 0.07);
-  backdrop-filter: blur(10px);
-}
-
-.eyebrow svg {
-  width: 0.95rem;
-  height: 0.95rem;
-  color: var(--andes-violet);
-}
-
-.heroTitle {
-  --section-title-font-size: clamp(2.05rem, 2.75vw, 3.05rem);
-  --section-title-mobile-font-size: clamp(2rem, 9vw, 3rem);
-  --section-title-small-font-size: clamp(1.68rem, 8.6vw, 2.35rem);
-  --section-title-tiny-font-size: 1.55rem;
-  --section-title-line-height: 0.98;
-  --section-title-text-align: left;
-  --section-title-text-transform: uppercase;
+.contactVisual {
+  position: relative;
+  min-width: 0;
+  min-height: 100%;
+  grid-area: visual;
   margin: 0;
-  color: var(--andes-blue-deep);
-  font-style: italic;
-  letter-spacing: -0.035em;
+  overflow: hidden;
+  border: 1px solid rgba(var(--andes-white-rgb), 0.94);
+  border-radius: clamp(1.2rem, 2vw, 1.75rem);
+  background: var(--andes-blue-deep);
+  box-shadow:
+    inset 0 0 0 1px rgba(79, 133, 255, 0.14),
+    0 22px 52px rgba(var(--andes-blue-deep-rgb), 0.15);
 }
 
-@media (min-width: 992px) {
-  .heroTitle > span {
-    white-space: nowrap;
-  }
+.contactVisual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-.heroTitleAccent,
-.reasonsTitleAccent {
-  --section-title-accent-filter: none;
-  background: linear-gradient(
-    90deg,
-    #2a35c9 0%,
-    var(--andes-violet) 48%,
-    #149bc5 100%
-  );
-  background-clip: text;
-  color: transparent;
-  filter: none;
-}
-
-.heroDescription {
-  max-width: 35rem;
-  margin: var(--space-4) 0 0;
-  color: rgba(var(--andes-blue-deep-rgb), 0.68);
-  font-size: clamp(0.88rem, 1.2vw, 0.98rem);
-  font-weight: var(--font-weight-semibold);
-  line-height: 1.58;
-}
-
-.heroHighlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin: var(--space-5) 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.heroHighlights li {
-  display: inline-flex;
-  min-height: 2.15rem;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0 var(--space-2);
-  border: 1px solid rgba(79, 133, 255, 0.2);
-  border-radius: var(--radius-pill);
-  background: rgba(var(--andes-white-rgb), 0.6);
-  color: rgba(var(--andes-blue-deep-rgb), 0.7);
-  font-size: 0.65rem;
-  font-weight: var(--font-weight-bold);
-  box-shadow: inset 0 1px 0 rgba(var(--andes-white-rgb), 0.86);
-}
-
-.heroHighlights svg {
-  width: 0.85rem;
-  height: 0.85rem;
-  color: #4f85ff;
-}
-
-.mobileHeroActions {
-  display: none;
-}
-
-.formCard,
-.channelsPanel,
-.reasonsPanel {
+.formCard {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -290,8 +207,7 @@
   content: "";
 }
 
-.sectionHeader h2,
-.channelsHeader h2 {
+.sectionHeader h1 {
   margin: 0;
   color: var(--andes-blue-deep);
   font-family: var(--font-heading);
@@ -302,8 +218,7 @@
   text-transform: uppercase;
 }
 
-.sectionHeader p,
-.channelsHeader p {
+.sectionHeader p {
   margin: var(--space-2) 0 0;
   color: rgba(var(--andes-blue-deep-rgb), 0.61);
   font-size: 0.78rem;
@@ -440,7 +355,7 @@
 
 .formActions {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   margin-top: auto;
 }
 
@@ -453,305 +368,9 @@
   min-height: 2.8rem;
 }
 
-.channelsPanel {
-  grid-area: channels;
-  align-self: stretch;
-  padding: clamp(1.1rem, 2vw, 1.5rem);
-  border-color: rgba(79, 133, 255, 0.18);
-  border-radius: var(--radius-xl);
-  scroll-margin-top: calc(var(--header-height) + var(--space-4));
-  background:
-    radial-gradient(
-      circle at 100% 0%,
-      rgba(var(--andes-cyan-rgb), 0.16),
-      transparent 34%
-    ),
-    linear-gradient(145deg, #fafdff 0%, #e9efff 100%);
-}
-
-.channelsHeader > span {
-  display: inline-flex;
-  margin-bottom: 0.38rem;
-  color: #4c5dd6;
-  font-size: 0.62rem;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.channelsHeader h2 {
-  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
-}
-
-.channelsHeader p {
-  max-width: 31rem;
-  font-size: 0.7rem;
-}
-
-.channelList {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-2);
-  margin: var(--space-3) 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.channelCard {
-  display: grid;
-  min-width: 0;
-  min-height: 3.55rem;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: var(--space-2);
-  align-items: center;
-  padding: 0.5rem;
-  border: 1px solid rgba(79, 93, 214, 0.15);
-  border-radius: var(--radius-md);
-  background: rgba(var(--andes-white-rgb), 0.72);
-  color: var(--andes-blue-deep);
-  text-decoration: none;
-  box-shadow: inset 0 1px 0 rgba(var(--andes-white-rgb), 0.9);
-  transition:
-    border-color var(--transition-base),
-    background var(--transition-base),
-    box-shadow var(--transition-base),
-    transform var(--transition-base);
-}
-
-.channelCard:hover,
-.channelCard:focus-visible {
-  border-color: rgba(var(--andes-violet-rgb), 0.42);
-  background: rgba(var(--andes-white-rgb), 0.98);
-  box-shadow: 0 12px 26px rgba(var(--andes-blue-deep-rgb), 0.09);
-  transform: translateY(-2px);
-}
-
-.channelCard:focus-visible {
-  outline: none;
-  box-shadow: var(--shadow-focus);
-}
-
-.channelIcon {
-  display: inline-flex;
-  width: 2.15rem;
-  height: 2.15rem;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(var(--andes-violet-rgb), 0.22);
-  border-radius: var(--radius-sm);
-  background: linear-gradient(
-    135deg,
-    rgba(var(--andes-violet-rgb), 0.09),
-    rgba(var(--andes-cyan-rgb), 0.11)
-  );
-  color: #5364d8;
-}
-
-.channelIcon svg {
-  width: 1rem;
-  height: 1rem;
-}
-
-.channelContent {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  gap: 0.08rem;
-}
-
-.channelContent strong {
-  font-size: 0.67rem;
-  font-weight: var(--font-weight-extrabold);
-}
-
-.channelContent > span {
-  overflow: hidden;
-  color: rgba(var(--andes-blue-deep-rgb), 0.54);
-  font-size: 0.58rem;
-  font-weight: var(--font-weight-semibold);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.channelArrow {
-  width: 0.85rem;
-  height: 0.85rem;
-  color: rgba(var(--andes-blue-deep-rgb), 0.32);
-  transition:
-    color var(--transition-base),
-    transform var(--transition-base);
-}
-
-.channelCard:hover .channelArrow,
-.channelCard:focus-visible .channelArrow {
-  color: var(--andes-violet);
-  transform: translate(2px, -2px);
-}
-
-.channelsNote {
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
-  margin-top: var(--space-3);
-  color: rgba(var(--andes-blue-deep-rgb), 0.5);
-}
-
-.channelsNote svg {
-  width: 0.85rem;
-  height: 0.85rem;
-  flex: 0 0 auto;
-  color: #4f85ff;
-}
-
-.channelsNote p {
-  margin: 0;
-  font-size: 0.61rem;
-  font-weight: var(--font-weight-bold);
-}
-
-.reasonsReveal {
-  grid-area: reasons;
-}
-
-.reasonsReveal > div {
-  height: 100%;
-}
-
-.reasonsPanel {
-  display: grid;
-  min-height: 100%;
-  grid-template-columns: minmax(12rem, 0.3fr) minmax(0, 1fr);
-  gap: var(--space-4);
-  align-items: center;
-  padding: clamp(1rem, 2vw, 1.45rem);
-  border-color: rgba(79, 133, 255, 0.17);
-  border-radius: var(--radius-xl);
-}
-
-.reasonsHeader {
-  min-width: 0;
-}
-
-.reasonsHeader .sectionEyebrow {
-  display: block;
-  margin-bottom: var(--space-2);
-  font-size: 0.58rem;
-  line-height: 1.35;
-}
-
-.reasonsHeader .sectionEyebrow::before {
-  display: none;
-}
-
-.reasonsTitle {
-  --section-title-font-size: clamp(1.25rem, 2vw, 1.75rem);
-  --section-title-mobile-font-size: clamp(1.45rem, 6.5vw, 2rem);
-  --section-title-small-font-size: clamp(1.3rem, 6vw, 1.75rem);
-  --section-title-tiny-font-size: 1.2rem;
-  --section-title-line-height: 1.02;
-  --section-title-text-align: left;
-  --section-title-text-transform: uppercase;
-  margin: 0;
-  color: var(--andes-blue-deep);
-  font-style: italic;
-}
-
-.reasonsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-2);
-}
-
-.reasonCard {
-  display: grid;
-  min-width: 0;
-  min-height: 7.7rem;
-  grid-template-rows: auto 1fr;
-  gap: var(--space-2);
-  padding: var(--space-3);
-  border: 1px solid rgba(79, 93, 214, 0.14);
-  border-radius: var(--radius-md);
-  background: rgba(var(--andes-white-rgb), 0.68);
-  box-shadow: inset 0 1px 0 rgba(var(--andes-white-rgb), 0.9);
-  transition:
-    border-color var(--transition-base),
-    box-shadow var(--transition-base),
-    transform var(--transition-base);
-}
-
-.reasonCard:hover {
-  border-color: rgba(var(--andes-violet-rgb), 0.35);
-  box-shadow: 0 12px 24px rgba(var(--andes-blue-deep-rgb), 0.08);
-  transform: translateY(-2px);
-}
-
-.reasonIcon {
-  display: inline-flex;
-  width: 2rem;
-  height: 2rem;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(var(--andes-violet-rgb), 0.2);
-  border-radius: var(--radius-sm);
-  background: linear-gradient(
-    135deg,
-    rgba(var(--andes-violet-rgb), 0.09),
-    rgba(var(--andes-cyan-rgb), 0.11)
-  );
-  color: #5364d8;
-}
-
-.reasonIcon svg {
-  width: 0.95rem;
-  height: 0.95rem;
-}
-
-.reasonCard h3 {
-  margin: 0;
-  color: var(--andes-blue-deep);
-  font-family: var(--font-heading);
-  font-size: 0.68rem;
-  font-weight: var(--font-weight-black);
-  line-height: 1.22;
-  text-transform: uppercase;
-}
-
-.reasonCard p {
-  margin: 0.3rem 0 0;
-  color: rgba(var(--andes-blue-deep-rgb), 0.55);
-  font-size: 0.59rem;
-  font-weight: var(--font-weight-semibold);
-  line-height: 1.42;
-}
-
 @media (max-width: 1199.98px) {
   .landingShell {
-    grid-template-columns: minmax(0, 0.82fr) minmax(30rem, 1.18fr);
-  }
-
-  .heroTitle {
-    --section-title-font-size: clamp(2rem, 3.15vw, 2.65rem);
-  }
-
-  .reasonsPanel {
-    grid-template-columns: 1fr;
-  }
-
-  .reasonsHeader {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-  }
-
-  .reasonsHeader .sectionEyebrow {
-    width: 12rem;
-    flex: 0 0 auto;
-    margin: 0;
-  }
-
-  .reasonsTitle {
-    --section-title-text-align: left;
-    flex: 1 1 auto;
+    grid-template-columns: minmax(0, 0.74fr) minmax(30rem, 1.26fr);
   }
 }
 
@@ -762,63 +381,21 @@
 
   .landingShell {
     grid-template-areas:
-      "copy"
-      "form"
-      "channels"
-      "reasons";
+      "visual"
+      "form";
     grid-template-columns: 1fr;
   }
 
-  .heroContent {
+  .contactVisual {
+    width: min(100%, 47rem);
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    margin-inline: auto;
+  }
+
+  .formCard {
     width: min(100%, 47rem);
     margin-inline: auto;
-    padding-block: var(--space-4) var(--space-6);
-    text-align: center;
-  }
-
-  .heroTitle {
-    --section-title-text-align: center;
-    --section-title-font-size: clamp(2.15rem, 6.4vw, 3.4rem);
-  }
-
-  .heroDescription {
-    margin-inline: auto;
-  }
-
-  .heroHighlights {
-    justify-content: center;
-  }
-
-  .formCard,
-  .channelsPanel,
-  .reasonsPanel {
-    width: min(100%, 47rem);
-    margin-inline: auto;
-  }
-
-  .reasonsHeader {
-    display: block;
-    text-align: center;
-  }
-
-  .reasonsHeader .sectionEyebrow {
-    width: auto;
-    margin-bottom: var(--space-2);
-  }
-
-  .reasonsTitle {
-    --section-title-text-align: center;
-  }
-
-  .reasonsGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .reasonCard {
-    min-height: 6.7rem;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: none;
-    align-items: start;
   }
 }
 
@@ -829,123 +406,16 @@
 
   .landingShell {
     grid-template-areas:
-      "form"
-      "channels"
-      "reasons";
+      "visual"
+      "form";
   }
 
-  .heroContent {
-    display: none;
-  }
-
-  .eyebrow {
-    align-self: flex-start;
-    margin-bottom: var(--space-3);
-    padding: 0.55rem var(--space-3);
-    font-size: 0.62rem;
-  }
-
-  .heroTitle {
-    --section-title-font-style: normal;
-    --section-title-mobile-font-size: clamp(1.9rem, 8.3vw, 2.45rem);
-    --section-title-mobile-line-height: 1.07;
-    --section-title-text-align: left;
-    --section-title-text-transform: none;
-    letter-spacing: -0.025em;
-  }
-
-  .heroDescription {
-    margin-top: var(--space-4);
-    color: rgba(var(--andes-blue-deep-rgb), 0.72);
-    font-size: 0.88rem;
-    line-height: 1.6;
-    text-align: left;
-  }
-
-  .heroHighlights {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-top: var(--space-5);
-  }
-
-  .heroHighlights li {
-    min-height: 2.2rem;
-    flex: 0 1 auto;
-    justify-content: center;
-    padding-inline: 0.65rem;
-    border-radius: var(--radius-pill);
-    background: rgba(var(--andes-white-rgb), 0.7);
-    font-size: 0.62rem;
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  .heroHighlights svg {
-    width: 0.85rem;
-    height: 0.85rem;
-    flex: 0 0 auto;
-  }
-
-  .mobileHeroActions {
-    display: grid;
-    gap: var(--space-2);
-    margin-top: var(--space-5);
-  }
-
-  .mobilePrimaryAction,
-  .mobilePrimaryAction > span {
-    width: 100%;
-    min-height: 3rem;
-  }
-
-  .mobileSecondaryAction {
-    display: inline-flex;
-    min-height: 2.9rem;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    padding: 0 var(--space-4);
-    border: 1px solid rgba(var(--andes-violet-rgb), 0.28);
-    border-radius: var(--radius-md);
-    background: rgba(var(--andes-white-rgb), 0.64);
-    color: #3e4db4;
-    font-size: 0.72rem;
-    font-weight: var(--font-weight-bold);
-    text-decoration: none;
-    box-shadow: inset 0 1px 0 rgba(var(--andes-white-rgb), 0.9);
-    transition:
-      border-color var(--transition-base),
-      background var(--transition-base),
-      box-shadow var(--transition-base),
-      transform var(--transition-base);
-  }
-
-  .mobileSecondaryAction svg {
-    width: 1rem;
-    height: 1rem;
-    color: var(--andes-violet);
-  }
-
-  .mobileSecondaryAction:hover,
-  .mobileSecondaryAction:focus-visible {
-    border-color: rgba(var(--andes-violet-rgb), 0.56);
-    background: rgba(var(--andes-white-rgb), 0.94);
-    transform: translateY(-1px);
-  }
-
-  .mobileSecondaryAction:focus-visible {
-    outline: none;
-    box-shadow: var(--shadow-focus);
-  }
-
-  .formCard,
-  .channelsPanel,
-  .reasonsPanel {
+  .contactVisual,
+  .formCard {
     border-radius: var(--radius-xl);
   }
 
-  .sectionHeader h2 {
+  .sectionHeader h1 {
     font-size: 1.55rem;
   }
 
@@ -954,9 +424,6 @@
     width: 100%;
   }
 
-  .reasonsTitle {
-    font-size: var(--section-title-mobile-font-size);
-  }
 }
 
 @media (max-width: 620px) {
@@ -983,73 +450,13 @@
     gap: var(--space-3);
   }
 
-  .heroTitle {
-    --section-title-small-font-size: clamp(1.78rem, 8.4vw, 2.2rem);
-  }
-
-  .heroHighlights {
-    justify-content: flex-start;
-  }
-
-  .heroHighlights li {
-    justify-content: center;
-  }
-
-  .formCard,
-  .channelsPanel,
-  .reasonsPanel {
+  .formCard {
     padding: var(--space-5) var(--space-4);
-  }
-
-  .reasonsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .channelList {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.45rem;
-  }
-
-  .channelCard {
-    min-height: 3.35rem;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 0.4rem;
-    padding: 0.42rem;
-  }
-
-  .channelIcon {
-    width: 1.9rem;
-    height: 1.9rem;
-  }
-
-  .channelIcon svg {
-    width: 0.9rem;
-    height: 0.9rem;
-  }
-
-  .channelContent strong {
-    font-size: 0.61rem;
-  }
-
-  .channelContent > span {
-    font-size: 0.52rem;
-  }
-
-  .channelArrow {
-    display: none;
-  }
-
-  .reasonCard {
-    min-height: auto;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .inputShell,
-  .channelCard,
-  .channelArrow,
-  .reasonCard,
-  .mobileSecondaryAction {
+  .inputShell {
     transition: none;
   }
 }
