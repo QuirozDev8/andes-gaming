@@ -1,4 +1,4 @@
-import type { FormEvent } from "react";
+import { useEffect, type FormEvent } from "react";
 import {
   BriefcaseBusiness,
   Building2,
@@ -82,6 +82,10 @@ const contactFields = [
 
 export function ContactPage() {
   const { t } = useTranslation("contactPage");
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

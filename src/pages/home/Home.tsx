@@ -23,6 +23,10 @@ import {
 } from "./components";
 import { getProductCards, providerLogos } from "./data";
 
+const scrollToPageStart = () => {
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+};
+
 function Home() {
   const { t } = useTranslation("home");
   const productCards = getProductCards(t);
@@ -107,6 +111,7 @@ function Home() {
                   <BtnElegant
                     text={t("hero.primaryCta")}
                     to={ROUTES.contact}
+                    onClick={scrollToPageStart}
                   />
                   <a className={styles.secondaryLink} href="#single-api">
                     {t("hero.secondaryCta")}
@@ -174,7 +179,11 @@ function Home() {
           <a className={styles.cardSectionLinkPrimary} href="#contact-home">
             {t("stack.salesCta")}
           </a>
-          <Link className={styles.cardSectionLinkSecondary} to={ROUTES.about}>
+          <Link
+            className={styles.cardSectionLinkSecondary}
+            to={ROUTES.about}
+            onClick={scrollToPageStart}
+          >
             {t("stack.aboutCta")}
           </Link>
         </div>
@@ -217,6 +226,7 @@ function Home() {
                 text={t("providers.cta")}
                 to={ROUTES.gameProviders}
                 ariaLabel={t("providers.cta")}
+                onClick={scrollToPageStart}
               />
             </div>
           </div>

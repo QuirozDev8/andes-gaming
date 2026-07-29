@@ -63,10 +63,14 @@ const socialLinks = [
   { labelKey: "footer.social.email", text: "\u2709", to: ROUTES.contact },
 ] as const;
 
+const scrollToPageStart = () => {
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+};
+
 function FooterNavLink({ label, link }: { label: string; link: FooterLink }) {
   if (link.to) {
     return (
-      <Link className={styles.footerLink} to={link.to}>
+      <Link className={styles.footerLink} to={link.to} onClick={scrollToPageStart}>
         {label}
       </Link>
     );
@@ -91,6 +95,7 @@ function Footer() {
               className={styles.logoLink}
               to={ROUTES.home}
               aria-label={t("footer.homeLabel")}
+              onClick={scrollToPageStart}
             >
               <img className={styles.logo} src={footerLogo} alt="Andes Gaming" />
             </Link>
@@ -107,6 +112,7 @@ function Footer() {
                   <Link
                     className={styles.socialLink}
                     to={item.to}
+                    onClick={scrollToPageStart}
                     aria-label={
                       item.labelKey.startsWith("footer.")
                         ? t(item.labelKey)
@@ -167,13 +173,17 @@ function Footer() {
                 {t("footer.contact.location")}
               </p>
 
-              <a className={styles.talkButton} href="mailto:hello@andesgaming.com">
+              <Link
+                className={styles.talkButton}
+                to={ROUTES.contact}
+                onClick={scrollToPageStart}
+              >
                 <span className={styles.talkSurface}>
                   <span className={styles.talkContent}>
                     {t("footer.contact.talk")}
                   </span>
                 </span>
-              </a>
+              </Link>
             </section>
           </nav>
         </div>
