@@ -1,4 +1,9 @@
 const casinoAggregationEs = {
+  trustedBrands: {
+    title: "Estas marcas ya confían en nuestra tecnología",
+    ariaLabel: "Marcas que confían en la tecnología de Andes Gaming",
+    cta: "Hablemos de tu proyecto",
+  },
   hero: {
     eyebrow: "Casino Aggregation",
     title: {
@@ -15,21 +20,15 @@ const casinoAggregationEs = {
       liveCasino: "Casino en vivo",
       instantGames: "Crash e instantáneos",
     },
-    values: {
-      catalog: {
-        title: "Catálogo en expansión",
-        description:
-          "Contenido pensado para mantener una oferta fresca y competitiva.",
+    metrics: {
+      ariaLabel: "Cifras de Casino Aggregation",
+      providers: {
+        value: "+200",
+        label: "Proveedores integrados",
       },
-      integration: {
-        title: "Una sola integración",
-        description:
-          "Accede a múltiples experiencias desde una conexión centralizada.",
-      },
-      global: {
-        title: "Alcance global",
-        description:
-          "Juegos preparados para conectar con audiencias y mercados diversos.",
+      games: {
+        value: "+15.000",
+        label: "Juegos disponibles",
       },
     },
     actions: {

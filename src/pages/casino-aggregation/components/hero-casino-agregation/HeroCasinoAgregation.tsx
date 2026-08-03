@@ -27,18 +27,14 @@ export function HeroCasinoAgregation() {
     t('hero.categories.liveCasino'),
     t('hero.categories.instantGames')
   ];
-  const valueItems = [
+  const metrics = [
     {
-      title: t('hero.values.catalog.title'),
-      description: t('hero.values.catalog.description')
+      value: t('hero.metrics.providers.value'),
+      label: t('hero.metrics.providers.label')
     },
     {
-      title: t('hero.values.integration.title'),
-      description: t('hero.values.integration.description')
-    },
-    {
-      title: t('hero.values.global.title'),
-      description: t('hero.values.global.description')
+      value: t('hero.metrics.games.value'),
+      label: t('hero.metrics.games.label')
     }
   ];
 
@@ -70,19 +66,14 @@ export function HeroCasinoAgregation() {
             ))}
           </ul>
 
-          <div className={styles.valueList}>
-            {valueItems.map((item, index) => (
-              <article className={styles.valueItem} key={item.title}>
-                <span className={styles.valueIndex} aria-hidden="true">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div>
-                  <h2>{item.title}</h2>
-                  <p>{item.description}</p>
-                </div>
-              </article>
+          <ul className={styles.metrics} aria-label={t('hero.metrics.ariaLabel')}>
+            {metrics.map(metric => (
+              <li className={styles.metric} key={metric.label}>
+                <strong>{metric.value}</strong>
+                <span>{metric.label}</span>
+              </li>
             ))}
-          </div>
+          </ul>
 
         </div>
 

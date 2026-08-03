@@ -38,8 +38,11 @@ import zeusPlayLogo from "../../../assets/logos/logos-providers/zeus-play.png";
 import zillionGamesLogo from "../../../assets/logos/logos-providers/zillion-games.png";
 
 export const providerLogos: ProviderCarouselItem[] = [
+  { id: "pragmatic-play", src: pragmaticPlayLogo, alt: "Pragmatic Play" },
+  { id: "evolution", src: evolutionLogo, alt: "Evolution" },
   { id: "cool-games", src: coolGamesLogo, alt: "Cool Games" },
   { id: "cogg-studios", src: coggStudiosLogo, alt: "Cogg Studios" },
+  { id: "playngo", src: playngoLogo, alt: "Play'n GO" },
   { id: "concept-gaming", src: conceptGamingLogo, alt: "Concept Gaming" },
   { id: "cq9", src: cq9Logo, alt: "CQ9" },
   { id: "crazy-billions", src: crazyBillionsLogo, alt: "Crazy Billions" },
@@ -47,7 +50,6 @@ export const providerLogos: ProviderCarouselItem[] = [
   { id: "egypt-quest", src: egyptQuestLogo, alt: "Egypt Quest" },
   { id: "elbet", src: elbetLogo, alt: "Elbet" },
   { id: "elysium-studios", src: elysiumStudiosLogo, alt: "Elysium Studios" },
-  { id: "evolution", src: evolutionLogo, alt: "Evolution" },
   { id: "fusion", src: fusionLogo, alt: "Fusion" },
   { id: "ga", src: gaLogo, alt: "GA" },
   { id: "gamebeat", src: gamebeatLogo, alt: "Gamebeat" },
@@ -58,8 +60,6 @@ export const providerLogos: ProviderCarouselItem[] = [
   { id: "kalamba-games", src: kalambaGamesLogo, alt: "Kalamba Games" },
   { id: "mancala-gaming", src: mancalaGamingLogo, alt: "Mancala Gaming" },
   { id: "maxwin-gaming", src: maxwinGamingLogo, alt: "Maxwin Gaming" },
-  { id: "playngo", src: playngoLogo, alt: "Play'n GO" },
-  { id: "pragmatic-play", src: pragmaticPlayLogo, alt: "Pragmatic Play" },
   { id: "reel-nrg-slots", src: reelNrgSlotsLogo, alt: "Reel NRG Slots" },
   { id: "sky-wind-group", src: skyWindGroupLogo, alt: "Skywind Group" },
   { id: "smartsoft", src: smartsoftLogo, alt: "Smartsoft" },
