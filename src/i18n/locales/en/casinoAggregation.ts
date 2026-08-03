@@ -104,6 +104,26 @@ const casinoAggregationEn = {
       },
     },
   },
+  contact: {
+    eyebrow: "CASINO AGGREGATION",
+    title: "LET'S BUILD YOUR CASINO OFFERING",
+    description:
+      "Tell us about your operation and discover how one integration can expand your casino ecosystem.",
+    formLabel: "Casino Aggregation contact form",
+    fields: {
+      name: "Full name",
+      role: "Job title",
+      company: "Company/Operation",
+      country: "Country",
+      email: "Email",
+      whatsapp: "WhatsApp",
+      website: "Website",
+    },
+    consent:
+      "I authorize ANDES GAMING to process my personal data for commercial purposes, including information, contact, promotions, and offers, in accordance with its Privacy Policy.",
+    submit: "Let's talk",
+    submitLabel: "Talk to Andes Gaming about Casino Aggregation",
+  },
 } as const;
 
 export default casinoAggregationEn;

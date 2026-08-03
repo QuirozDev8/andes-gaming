@@ -10,8 +10,8 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import bgContactHome from "../../../../assets/img/bg-contact-home.webp";
-import BtnElegant from "../../../../components/btn-elegant/BtnElegant";
-import SectionTitle from "../../../../components/section-title/SectionTitle";
+import BtnElegant from "../btn-elegant/BtnElegant";
+import SectionTitle from "../section-title/SectionTitle";
 import styles from "./Contact.module.css";
 
 const contactStyle = {
@@ -84,14 +84,23 @@ const contactFields = [
   },
 ] as const;
 
-export function Contact() {
-  const { t } = useTranslation("home");
+type ContactProps = {
+  sectionId?: string;
+  translationNamespace?: "home" | "casinoAggregation";
+};
+
+export function Contact({
+  sectionId = "contact-home",
+  translationNamespace = "home",
+}: ContactProps) {
+  const { t } = useTranslation(translationNamespace);
+  const titleId = `${sectionId}-title`;
 
   return (
     <section
-      aria-labelledby="contact-home-title"
+      aria-labelledby={titleId}
       className={styles.contact}
-      id="contact-home"
+      id={sectionId}
       style={contactStyle}
     >
       <div className="container">
@@ -102,7 +111,7 @@ export function Contact() {
             <SectionTitle
               as="h2"
               className={styles.title}
-              id="contact-home-title"
+              id={titleId}
               lines={[t("contact.title")]}
               nowrap={false}
             />

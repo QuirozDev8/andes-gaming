@@ -104,6 +104,26 @@ const casinoAggregationEs = {
       },
     },
   },
+  contact: {
+    eyebrow: "CASINO AGGREGATION",
+    title: "CONSTRUYAMOS TU OFERTA DE CASINO",
+    description:
+      "Cuéntanos sobre tu operación y descubre cómo una sola integración puede ampliar tu ecosistema de casino.",
+    formLabel: "Formulario de contacto de Casino Aggregation",
+    fields: {
+      name: "Nombre completo",
+      role: "Cargo",
+      company: "Empresa/Operación",
+      country: "País",
+      email: "Correo electrónico",
+      whatsapp: "WhatsApp",
+      website: "Sitio web",
+    },
+    consent:
+      "Autorizo a ANDES GAMING a tratar mis datos personales para fines comerciales, incluyendo información, contacto, promociones y ofertas, conforme a su Política de Privacidad.",
+    submit: "Hablemos",
+    submitLabel: "Hablar con Andes Gaming sobre Casino Aggregation",
+  },
 } as const;
 
 export default casinoAggregationEs;

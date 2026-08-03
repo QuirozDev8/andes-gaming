@@ -26,6 +26,7 @@ export interface SliderMarcasProps {
   ariaLabel?: string;
   duracionSegundos?: number;
   pausarAlPasar?: boolean;
+  transicionHero?: boolean;
 }
 
 const marcasPredeterminadas: MarcaItem[] = [
@@ -78,6 +79,7 @@ export function SliderMarcas({
   ariaLabel = "Marcas que trabajan con nosotros",
   duracionSegundos = 28,
   pausarAlPasar = true,
+  transicionHero = false,
 }: SliderMarcasProps) {
   if (marcas.length === 0) return null;
 
@@ -91,24 +93,27 @@ export function SliderMarcas({
       style={style}
       aria-label={ariaLabel}
       data-pausar={pausarAlPasar}
+      data-transicion-hero={transicionHero || undefined}
     >
       {titulo ? <h2 className={styles.title}>{titulo}</h2> : null}
-      <div className={styles.track}>
-        {[false, true].map((duplicado) => (
-          <div
-            className={styles.group}
-            key={duplicado ? "duplicado" : "original"}
-            aria-hidden={duplicado || undefined}
-          >
-            {marcas.map((marca) => (
-              <LogoMarca
-                key={`${duplicado ? "copia" : "original"}-${marca.id}`}
-                marca={marca}
-                duplicado={duplicado}
-              />
-            ))}
-          </div>
-        ))}
+      <div className={styles.viewport}>
+        <div className={styles.track}>
+          {[false, true].map((duplicado) => (
+            <div
+              className={styles.group}
+              key={duplicado ? "duplicado" : "original"}
+              aria-hidden={duplicado || undefined}
+            >
+              {marcas.map((marca) => (
+                <LogoMarca
+                  key={`${duplicado ? "copia" : "original"}-${marca.id}`}
+                  marca={marca}
+                  duplicado={duplicado}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
       {ctaTexto && ctaRuta ? (
         <div className={styles.cta}>
