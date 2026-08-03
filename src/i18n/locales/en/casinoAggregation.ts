@@ -51,6 +51,59 @@ const casinoAggregationEn = {
       },
     },
   },
+  integration: {
+    eyebrow: "How integration works",
+    title: {
+      primary: "One connection.",
+      accent: "Your entire casino ecosystem.",
+    },
+    description:
+      "Connect your platform once and access providers, games, and operational tools through one unified integration layer.",
+    diagramLabel:
+      "Interactive diagram showing the connection between your platform, Andes Gaming API, and the casino ecosystem",
+    navigationLabel: "Explore the integration flow",
+    activeStatus: "Active",
+    exploreStatus: "Explore",
+    detailLabel: "Integration layer",
+    nodes: {
+      platform: {
+        title: "Your platform",
+        summary: "Your operation and player experience",
+        description:
+          "Your existing channels connect to Andes Gaming through a single, consistent integration point.",
+        capabilities: {
+          0: "Website and mobile app",
+          1: "Player wallet",
+          2: "Back office",
+          3: "Your existing technology stack",
+        },
+      },
+      andes: {
+        title: "Andes Gaming API",
+        summary: "One secure and scalable connection",
+        description:
+          "A unified technology layer centralizes content, sessions, operations, and control so your team can move faster.",
+        capabilities: {
+          0: "Unified game catalog",
+          1: "Sessions and wallet",
+          2: "Reporting and control",
+          3: "Secure, scalable infrastructure",
+        },
+      },
+      ecosystem: {
+        title: "Casino ecosystem",
+        summary: "Content ready to grow with you",
+        description:
+          "Expand your offering from one connection with a broad ecosystem of providers and experiences for every player profile.",
+        capabilities: {
+          0: "200+ integrated providers",
+          1: "15,000+ available games",
+          2: "Slots and live casino",
+          3: "Crash and instant games",
+        },
+      },
+    },
+  },
 } as const;
 
 export default casinoAggregationEn;
