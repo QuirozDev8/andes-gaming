@@ -7,11 +7,8 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import BtnElegant from "../../../../components/btn-elegant/BtnElegant";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
 import fondoInfra from "../../../../assets/img/fondo-infra.webp";
-import { ROUTES } from "../../../../routes/routePaths";
 import "./InfraTecnology.css";
 
 const capabilityCards = [

@@ -51,6 +51,39 @@ const casinoAggregationEs = {
       },
     },
   },
+  benefits: {
+    eyebrow: "Beneficios clave",
+    title: {
+      primary: "Menos complejidad.",
+      accent: "Más oportunidades.",
+    },
+    description:
+      "Centraliza tu operación de casino y avanza con una plataforma preparada para crecer contigo.",
+    ariaLabel: "Beneficios de Casino Aggregation",
+    swipeHint: "Desliza para explorar",
+    items: {
+      faster: {
+        title: "Integra más rápido",
+        description:
+          "Conecta múltiples proveedores desde una única capa tecnológica y reduce los tiempos de implementación.",
+      },
+      relevant: {
+        title: "Mantén una oferta relevante",
+        description:
+          "Amplía tu catálogo con experiencias para distintos mercados y perfiles de jugador.",
+      },
+      control: {
+        title: "Opera con mayor control",
+        description:
+          "Gestiona contenido, disponibilidad y visibilidad desde un entorno centralizado.",
+      },
+      scale: {
+        title: "Escala sin fricción",
+        description:
+          "Expande marcas y mercados sobre una infraestructura preparada para acompañar tu operación.",
+      },
+    },
+  },
   integration: {
     eyebrow: "Cómo funciona la integración",
     title: {
@@ -103,6 +136,14 @@ const casinoAggregationEs = {
         },
       },
     },
+  },
+  providers: {
+    eyebrow: "Nuestras alianzas",
+    title: "Proveedores con los que colaboramos",
+    description:
+      "Colaboramos con proveedores líderes de la industria para ofrecer un catálogo diverso, competitivo y listo para crecer.",
+    ariaLabel: "Proveedores de casino destacados",
+    cta: "Ver todos los proveedores",
   },
   contact: {
     eyebrow: "CASINO AGGREGATION",

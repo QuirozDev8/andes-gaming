@@ -5,47 +5,25 @@ import {
   SlidersHorizontal,
   type LucideIcon,
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import styles from './Benefits.module.css';
 
 type Benefit = {
   number: string;
-  title: string;
-  description: string;
+  translationKey: 'faster' | 'relevant' | 'control' | 'scale';
   icon: LucideIcon;
 };
 
 const benefits: Benefit[] = [
-  {
-    number: '01',
-    title: 'Integra más rápido',
-    description:
-      'Conecta múltiples proveedores desde una única capa tecnológica y reduce los tiempos de implementación.',
-    icon: Network,
-  },
-  {
-    number: '02',
-    title: 'Mantén una oferta relevante',
-    description:
-      'Amplía tu catálogo con experiencias para distintos mercados y perfiles de jugador.',
-    icon: Gamepad2,
-  },
-  {
-    number: '03',
-    title: 'Opera con mayor control',
-    description:
-      'Gestiona contenido, disponibilidad y visibilidad desde un entorno centralizado.',
-    icon: SlidersHorizontal,
-  },
-  {
-    number: '04',
-    title: 'Escala sin fricción',
-    description:
-      'Expande marcas y mercados sobre una infraestructura preparada para acompañar tu operación.',
-    icon: ChartNoAxesCombined,
-  },
+  { number: '01', translationKey: 'faster', icon: Network },
+  { number: '02', translationKey: 'relevant', icon: Gamepad2 },
+  { number: '03', translationKey: 'control', icon: SlidersHorizontal },
+  { number: '04', translationKey: 'scale', icon: ChartNoAxesCombined },
 ];
 
 export default function Benefits() {
+  const { t } = useTranslation('casinoAggregation');
+
   return (
     <section className={styles.benefits} aria-labelledby="benefits-title">
       <span className={styles.glowViolet} aria-hidden="true" />
@@ -55,29 +33,28 @@ export default function Benefits() {
         <header className={styles.header}>
           <p className={styles.eyebrow}>
             <span aria-hidden="true" />
-            Beneficios clave
+            {t('benefits.eyebrow')}
             <span aria-hidden="true" />
           </p>
 
           <h2 className={styles.title} id="benefits-title">
-            <span>Menos complejidad.</span>
-            <span className={styles.titleAccent}>Más oportunidades.</span>
+            <span>{t('benefits.title.primary')}</span>
+            <span className={styles.titleAccent}>{t('benefits.title.accent')}</span>
           </h2>
 
-          <p className={styles.introduction}>
-            Centraliza tu operación de casino y avanza con una plataforma preparada para crecer contigo.
-          </p>
+          <p className={styles.introduction}>{t('benefits.description')}</p>
         </header>
 
         <div
           className={styles.railViewport}
           role="region"
-          aria-label="Beneficios de Casino Aggregation"
+          aria-label={t('benefits.ariaLabel')}
           tabIndex={0}
         >
           <ol className={styles.rail}>
             {benefits.map((benefit) => {
               const BenefitIcon = benefit.icon;
+              const benefitKey = `benefits.items.${benefit.translationKey}`;
 
               return (
                 <li className={styles.railItem} key={benefit.number}>
@@ -95,8 +72,8 @@ export default function Benefits() {
                       <BenefitIcon strokeWidth={1.7} />
                     </span>
 
-                    <h3>{benefit.title}</h3>
-                    <p>{benefit.description}</p>
+                    <h3>{t(`${benefitKey}.title`)}</h3>
+                    <p>{t(`${benefitKey}.description`)}</p>
                   </article>
                 </li>
               );
@@ -105,7 +82,7 @@ export default function Benefits() {
         </div>
 
         <p className={styles.swipeHint} aria-hidden="true">
-          Desliza para explorar <span>→</span>
+          {t('benefits.swipeHint')} <span>→</span>
         </p>
       </div>
     </section>

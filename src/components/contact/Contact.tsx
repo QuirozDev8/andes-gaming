@@ -9,7 +9,7 @@ import {
   UserRound,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import bgContactHome from "../../../../assets/img/bg-contact-home.webp";
+import bgContactHome from "../../assets/img/bg-contact-home.webp";
 import BtnElegant from "../btn-elegant/BtnElegant";
 import SectionTitle from "../section-title/SectionTitle";
 import styles from "./Contact.module.css";

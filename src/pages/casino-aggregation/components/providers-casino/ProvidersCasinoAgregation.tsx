@@ -1,27 +1,27 @@
 import { ArrowRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { providerLogos } from '../../../home/data/providerLogos';
 import { ROUTES } from '../../../../routes/routePaths';
+import { providerLogos } from '../../../home/data/providerLogos';
 import styles from './Providers.module.css';
 
 const featuredProviders = providerLogos.slice(0, 30);
 
 export default function ProvidersCasinoAgregation() {
+  const { t } = useTranslation('casinoAggregation');
+
   return (
     <section className={styles.providers} aria-labelledby="casino-providers-title">
       <div className={styles.container}>
         <div className={styles.panel}>
           <header className={styles.panelHeader}>
-            <span className={styles.eyebrow}>Nuestras alianzas</span>
-            <h2 id="casino-providers-title">Proveedores con los que colaboramos</h2>
-            <p>
-              Colaboramos con proveedores líderes de la industria para ofrecer un catálogo diverso,
-              competitivo y listo para crecer.
-            </p>
+            <span className={styles.eyebrow}>{t('providers.eyebrow')}</span>
+            <h2 id="casino-providers-title">{t('providers.title')}</h2>
+            <p>{t('providers.description')}</p>
           </header>
 
           <div className={styles.providersPreview}>
-            <ul className={styles.providersGrid} aria-label="Proveedores destacados">
+            <ul className={styles.providersGrid} aria-label={t('providers.ariaLabel')}>
               {featuredProviders.map((provider) => (
                 <li className={styles.providerCard} key={provider.id ?? provider.src}>
                   <img src={provider.src} alt={provider.alt} loading="lazy" />
@@ -32,7 +32,7 @@ export default function ProvidersCasinoAgregation() {
             <div className={styles.fade} aria-hidden="true" />
 
             <Link className={styles.cta} to={ROUTES.gameProviders}>
-              Ver todos los proveedores
+              {t('providers.cta')}
               <ArrowRight aria-hidden="true" strokeWidth={2} />
             </Link>
           </div>
