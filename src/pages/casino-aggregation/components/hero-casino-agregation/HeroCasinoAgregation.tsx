@@ -84,17 +84,6 @@ export function HeroCasinoAgregation() {
             ))}
           </div>
 
-          <div className={styles.actions}>
-            <BtnElegant
-              ariaLabel={t('hero.actions.expertLabel')}
-              text={t('hero.actions.expert')}
-              to={ROUTES.contact}
-            />
-            <a className={styles.secondaryAction} href="#game-world">
-              {t('hero.actions.explore')}
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
         </div>
 
         <div className={styles.visual} id="game-world">
@@ -131,6 +120,18 @@ export function HeroCasinoAgregation() {
           </div>
 
           <p className={styles.visualCaption}>{t('hero.world.caption')}</p>
+        </div>
+
+        <div className={styles.actions}>
+          <BtnElegant
+            ariaLabel={t('hero.actions.expertLabel')}
+            text={t('hero.actions.expert')}
+            to={ROUTES.contact}
+          />
+          <a className={styles.secondaryAction} href="#game-world">
+            {t('hero.actions.explore')}
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </section>
     </div>
