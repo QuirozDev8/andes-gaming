@@ -4,6 +4,7 @@ import Home from "../pages/home/Home";
 import { ContactPage } from "../pages/contact-page/ContactPage";
 import { ROUTES } from "./routePaths";
 import { CasinoAggregation } from "../pages/casino-aggregation/CasinoAggregation";
+import { GameProvider } from "../pages/game-provider/GameProvider";
 
 const pendingPage = <EnDesarrollo />;
 
@@ -12,7 +13,7 @@ export const appRoutes = [
   { path: ROUTES.casinoAggregation, element: <CasinoAggregation /> },
   { path: ROUTES.gameStudio, element: pendingPage },
   { path: "/game-studio", element: pendingPage },
-  { path: ROUTES.gameProviders, element: pendingPage },
+  { path: ROUTES.gameProviders, element: <GameProvider /> },
   { path: ROUTES.about, element: pendingPage },
   { path: ROUTES.blog, element: pendingPage },
   { path: ROUTES.contact, element: <ContactPage /> },

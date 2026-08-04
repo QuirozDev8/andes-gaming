@@ -1,7 +1,17 @@
+import HeroGameProvider from "./components/hero-game-provider/HeroGameProvider";
+
+
+
+
+
 export function GameProvider() {
     return (
-        <p> esta es la página de proveedor de juegos</p>
+       <>
+        <HeroGameProvider />
+       
+       
+       </>
     )
 }
-
+  
 export default GameProvider;

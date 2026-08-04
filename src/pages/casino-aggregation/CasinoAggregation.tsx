@@ -35,11 +35,11 @@ export function CasinoAggregation() {
       <RevealOnScroll className={styles.revealBackdrop}>
         <ProvidersCasinoAgregation />
       </RevealOnScroll>
+
       <RevealOnScroll className={styles.revealBackdrop}>
         <Contact
           sectionId="contact-casino-aggregation"
-          translationNamespace="casinoAggregation"
-        />
+          translationNamespace="casinoAggregation" />
       </RevealOnScroll>
     </>
   );

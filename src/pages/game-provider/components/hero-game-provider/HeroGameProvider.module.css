@@ -1,0 +1,288 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  width: calc(100% - clamp(1rem, 2.75vw, 3.25rem));
+  max-width: 1916px;
+  aspect-ratio: 1672 / 860;
+  margin: clamp(0.75rem, 1.35vw, 1.625rem) auto 0;
+  overflow: hidden;
+  border: 1px solid rgba(var(--andes-white-rgb), 0.82);
+  border-radius: clamp(1.5rem, 2.6vw, 3rem);
+  background-image: url("../../../../assets/logos/bg-hero-game-provider-desktop.webp");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--andes-blue-deep);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--andes-violet-rgb), 0.05),
+    0 24px 64px rgba(var(--andes-blue-deep-rgb), 0.16);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(100%, 58rem);
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+  padding: clamp(2rem, 2.8vw, 3.35rem) clamp(1.5rem, 4vw, 4rem) 0;
+  text-align: center;
+}
+
+.logoStage {
+  --logo-float-distance: 12px;
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  z-index: 1;
+  isolation: isolate;
+  width: clamp(16rem, 19vw, 22rem);
+  transform: translateX(-50%);
+  pointer-events: none;
+  user-select: none;
+}
+
+.logoStage::before,
+.logoStage::after {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  content: "";
+  opacity: 0.34;
+  transform: scale(0.92);
+  animation: logoGlow 4.8s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.logoStage::before {
+  inset: 12% 5% 9%;
+  background: radial-gradient(
+    circle at 50% 54%,
+    rgba(var(--andes-cyan-rgb), 0.48) 0%,
+    rgba(var(--andes-violet-rgb), 0.34) 38%,
+    rgba(var(--andes-violet-rgb), 0) 72%
+  );
+  filter: blur(20px);
+}
+
+.logoStage::after {
+  right: 10%;
+  bottom: 13%;
+  left: 10%;
+  height: 22%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(var(--andes-white-rgb), 0.78) 0%,
+    rgba(var(--andes-cyan-rgb), 0.46) 34%,
+    rgba(var(--andes-violet-rgb), 0) 76%
+  );
+  filter: blur(12px);
+}
+
+.floatingLogo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transform-origin: 50% 55%;
+  filter:
+    drop-shadow(0 18px 22px rgba(var(--andes-violet-rgb), 0.2))
+    drop-shadow(0 6px 14px rgba(var(--andes-cyan-rgb), 0.16));
+  animation: logoFloat 4.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.eyebrow {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(1.25rem, 2vw, 1.75rem);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background:
+    linear-gradient(
+        rgba(var(--andes-white-rgb), 0.62),
+        rgba(var(--andes-white-rgb), 0.62)
+      )
+      padding-box,
+    linear-gradient(
+        105deg,
+        rgba(var(--andes-cyan-rgb), 0.72),
+        rgba(var(--andes-violet-rgb), 0.86)
+      )
+      border-box;
+  color: rgba(var(--andes-blue-deep-rgb), 0.86);
+  font-family: var(--font-body);
+  font-size: clamp(0.72rem, 0.85vw, 0.9rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.055em;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow:
+    inset 0 1px 0 rgba(var(--andes-white-rgb), 0.74),
+    0 8px 24px rgba(var(--andes-violet-rgb), 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.title {
+  max-width: none;
+  margin: clamp(0.75rem, 1.1vw, 1.15rem) 0 0;
+  background: linear-gradient(
+    96deg,
+    #15064c 0%,
+    #2d147e 60%,
+    #2458ad 100%
+  );
+  background-clip: text;
+  color: transparent;
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 3.15vw, 3.8rem);
+  font-style: normal;
+  font-weight: var(--font-weight-black);
+  letter-spacing: -0.035em;
+  line-height: 0.94;
+  text-wrap: balance;
+}
+
+.title span {
+  display: block;
+  white-space: nowrap;
+}
+
+.description {
+  width: min(100%, 43rem);
+  margin: clamp(0.8rem, 1.2vw, 1.1rem) 0 0;
+  color: rgba(var(--andes-blue-deep-rgb), 0.66);
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 0.9vw, 0.98rem);
+  font-weight: var(--font-weight-medium, 500);
+  line-height: 1.52;
+  text-wrap: balance;
+}
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-0.5deg);
+  }
+
+  50% {
+    transform: translate3d(0, calc(-1 * var(--logo-float-distance)), 0)
+      rotate(0.5deg);
+  }
+}
+
+@keyframes logoGlow {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: scale(0.92);
+  }
+
+  50% {
+    opacity: 0.82;
+    transform: scale(1.08);
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .hero {
+    min-height: clamp(38rem, calc(100svh - var(--header-height) - 1.5rem), 47rem);
+    aspect-ratio: auto;
+    background-position: center bottom;
+  }
+
+  .content {
+    width: min(100%, 50rem);
+    padding-top: clamp(2rem, 5vw, 3rem);
+  }
+
+  .title {
+    font-size: clamp(2.35rem, 5vw, 3.45rem);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero {
+    width: calc(100% - 1rem);
+    min-height: clamp(38rem, calc(100svh - 72px - 1rem), 45rem);
+    margin-top: 0.5rem;
+    border-radius: clamp(1.25rem, 6vw, 2rem);
+  }
+
+  .content {
+    width: 100%;
+    padding: clamp(1.65rem, 7vw, 2.35rem) clamp(1rem, 5vw, 1.5rem) 0;
+  }
+
+  .logoStage {
+    --logo-float-distance: 8px;
+    bottom: 14%;
+    width: clamp(12rem, 55vw, 15rem);
+  }
+
+  .eyebrow {
+    min-height: 2.1rem;
+    padding-inline: 1rem;
+    font-size: clamp(0.62rem, 2.7vw, 0.72rem);
+    letter-spacing: 0.04em;
+  }
+
+  .title {
+    width: 100%;
+    max-width: 12ch;
+    margin-top: 0.75rem;
+    font-size: clamp(2rem, 10.5vw, 2.75rem);
+    letter-spacing: -0.04em;
+    line-height: 0.96;
+  }
+
+  .title span {
+    white-space: normal;
+  }
+
+  .description {
+    width: min(100%, 32rem);
+    margin-top: 0.8rem;
+    font-size: clamp(0.72rem, 3.15vw, 0.86rem);
+    line-height: 1.48;
+  }
+}
+
+@media (max-width: 359.98px) {
+  .hero {
+    min-height: 38rem;
+  }
+
+  .content {
+    padding-inline: 0.85rem;
+  }
+
+  .title {
+    font-size: 1.95rem;
+  }
+
+  .description {
+    font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoStage::before,
+  .logoStage::after {
+    opacity: 0.5;
+    transform: none;
+    animation: none;
+    will-change: auto;
+  }
+
+  .floatingLogo {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+}
