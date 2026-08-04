@@ -209,9 +209,11 @@
 @media (max-width: 767.98px) {
   .hero {
     width: calc(100% - 1rem);
-    min-height: clamp(38rem, calc(100svh - 72px - 1rem), 45rem);
+    min-height: clamp(38rem, 177.68vw, 60rem);
     margin-top: 0.5rem;
     border-radius: clamp(1.25rem, 6vw, 2rem);
+    background-image: url("../../../../assets/logos/bg-hero-movil-game-provider.webp");
+    background-position: center bottom;
   }
 
   .content {
@@ -268,6 +270,13 @@
 
   .description {
     font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 767.98px) and (orientation: landscape) {
+  .hero {
+    min-height: 38rem;
+    background-image: url("../../../../assets/logos/bg-hero-game-provider-desktop.webp");
   }
 }
 
