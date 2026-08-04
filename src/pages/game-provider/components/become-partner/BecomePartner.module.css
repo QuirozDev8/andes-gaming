@@ -1,0 +1,249 @@
+.partner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(5rem, 8vw, 7rem);
+  background:
+    radial-gradient(circle at 18% 25%, rgba(83, 226, 255, 0.12), transparent 25rem),
+    radial-gradient(circle at 82% 30%, rgba(139, 92, 246, 0.12), transparent 27rem),
+    linear-gradient(180deg, #edf2ff 0%, #f8f9ff 100%);
+}
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+}
+
+.panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 6vw, 5rem);
+  border: 1px solid rgba(111, 92, 255, 0.2);
+  border-radius: 0;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(250, 250, 255, 0.84)),
+    rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 1.5rem 4rem rgba(30, 39, 91, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.panel::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(98, 113, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(98, 113, 184, 0.06) 1px, transparent 1px);
+  background-size: 3.25rem 3.25rem;
+  -webkit-mask-image: linear-gradient(to right, black, transparent 30%, transparent 70%, black);
+  mask-image: linear-gradient(to right, black, transparent 30%, transparent 70%, black);
+  content: "";
+}
+
+.panel::after {
+  position: absolute;
+  z-index: -1;
+  inset: 18% 25%;
+  border-radius: 50%;
+  background: rgba(102, 218, 255, 0.18);
+  filter: blur(5rem);
+  content: "";
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  max-width: 52rem;
+  margin-inline: auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logoBadge {
+  display: grid;
+  width: 4.5rem;
+  aspect-ratio: 1;
+  margin-bottom: 1.5rem;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(111, 92, 255, 0.18);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 0.75rem 2rem rgba(55, 49, 143, 0.12),
+    0 0 2.5rem rgba(83, 226, 255, 0.1);
+}
+
+.logoBadge img {
+  width: 115%;
+  max-width: none;
+  height: 115%;
+  object-fit: contain;
+  user-select: none;
+}
+
+.title {
+  max-width: 22ch;
+  margin: 0;
+  background: linear-gradient(100deg, var(--andes-blue-deep) 12%, #4f33c8 62%, #177ba5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.description {
+  max-width: 42rem;
+  margin: 1.25rem 0 0;
+  color: rgba(23, 37, 84, 0.74);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  line-height: 1.7;
+}
+
+.ctaWrapper {
+  margin-top: 2rem;
+}
+
+.decorations {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.decorations::before,
+.decorations::after {
+  position: absolute;
+  width: clamp(8rem, 16vw, 16rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(92, 107, 223, 0.28), rgba(64, 212, 235, 0.18));
+  content: "";
+  transform-origin: center;
+}
+
+.decorations::before {
+  top: 49%;
+  left: 3%;
+  rotate: -14deg;
+}
+
+.decorations::after {
+  right: 3%;
+  bottom: 37%;
+  rotate: 16deg;
+}
+
+.decorations span {
+  position: absolute;
+  display: block;
+  aspect-ratio: 1;
+  rotate: 45deg;
+  border: 1px solid rgba(91, 95, 207, 0.18);
+  border-radius: 24%;
+  background: linear-gradient(135deg, rgba(94, 91, 246, 0.13), rgba(60, 211, 238, 0.2));
+  box-shadow: 0 0.75rem 2rem rgba(56, 82, 169, 0.08);
+}
+
+.nodeLarge {
+  top: 29%;
+  left: 9%;
+  width: clamp(3.75rem, 5vw, 5.5rem);
+}
+
+.nodeMedium {
+  top: 58%;
+  left: 17%;
+  width: clamp(2.5rem, 3vw, 3.5rem);
+}
+
+.nodeSmall {
+  top: 27%;
+  right: 11%;
+  width: clamp(2rem, 2.5vw, 3rem);
+}
+
+.nodeLeftTop {
+  top: 14%;
+  left: 22%;
+  width: clamp(1rem, 1.5vw, 1.5rem);
+  opacity: 0.7;
+}
+
+.nodeRightLarge {
+  top: 48%;
+  right: 7%;
+  width: clamp(3.25rem, 4.5vw, 4.75rem);
+}
+
+.nodeRightBottom {
+  right: 20%;
+  bottom: 13%;
+  width: clamp(1.25rem, 1.8vw, 1.9rem);
+  opacity: 0.75;
+}
+
+.nodeBottom {
+  bottom: 10%;
+  left: 29%;
+  width: clamp(1.5rem, 2.2vw, 2.25rem);
+  opacity: 0.65;
+}
+
+@media (max-width: 767px) {
+  .partner {
+    padding: 2rem 0 4.5rem;
+  }
+
+  .panel {
+    padding: 3.25rem 1.25rem;
+    border-radius: 0;
+  }
+
+  .panel::before {
+    display: none;
+  }
+
+  .logoBadge {
+    width: 3.75rem;
+    margin-bottom: 1.25rem;
+    border-radius: 1rem;
+  }
+
+  .title {
+    font-size: clamp(1.75rem, 8vw, 2.1rem);
+  }
+
+  .description {
+    margin-top: 1rem;
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .ctaWrapper {
+    width: min(100%, 20rem);
+    margin-top: 1.75rem;
+  }
+
+  .decorations {
+    display: none;
+  }
+}
+
+@media (max-width: 359px) {
+  .panel {
+    padding: 2.75rem 1rem;
+  }
+
+  .title {
+    font-size: 1.65rem;
+  }
+
+}

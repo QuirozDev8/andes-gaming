@@ -4,10 +4,12 @@ import { initReactI18next } from "react-i18next";
 import commonEn from "./locales/en/common";
 import casinoAggregationEn from "./locales/en/casinoAggregation";
 import contactPageEn from "./locales/en/contactPage";
+import gameProviderEn from "./locales/en/gameProvider";
 import homeEn from "./locales/en/home";
 import commonEs from "./locales/es/common";
 import casinoAggregationEs from "./locales/es/casinoAggregation";
 import contactPageEs from "./locales/es/contactPage";
+import gameProviderEs from "./locales/es/gameProvider";
 import homeEs from "./locales/es/home";
 
 export const SUPPORTED_LANGUAGES = ["es", "en"] as const;
@@ -18,12 +20,14 @@ const resources = {
     common: commonEs,
     casinoAggregation: casinoAggregationEs,
     contactPage: contactPageEs,
+    gameProvider: gameProviderEs,
     home: homeEs,
   },
   en: {
     common: commonEn,
     casinoAggregation: casinoAggregationEn,
     contactPage: contactPageEn,
+    gameProvider: gameProviderEn,
     home: homeEn,
   },
 } as const;
