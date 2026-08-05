@@ -137,6 +137,148 @@ const casinoAggregationEn = {
       },
     },
   },
+  successCases: {
+    eyebrow: "Success stories",
+    title: {
+      primary: "Stories connecting",
+      accent: "technology and growth.",
+    },
+    description:
+      "Discover how a simpler integration can become an operation ready to grow.",
+    ariaLabel: "Casino Aggregation success stories carousel",
+    carouselRole: "carousel",
+    slideRole: "slide",
+    slideLabel: "{{brand}} story, {{current}} of {{total}}",
+    brandLink: "Learn about {{brand}}",
+    brandLinkLabel: "Learn about {{brand}}, opens in a new tab",
+    resultsLabel: "Project results",
+    controls: {
+      previous: "View previous story",
+      next: "View next story",
+      pause: "Pause automatic playback",
+      play: "Resume automatic playback",
+      pagination: "Select a success story",
+      goTo: "Go to story {{index}}",
+      status: "Showing story {{current}} of {{total}}",
+    },
+    items: {
+      ecuabet: {
+        brand: "Ecuabet",
+        logoAlt: "Ecuabet logo",
+        title: "An operation ready to expand its offering",
+        description:
+          "This space will present the client's approved challenge, implementation, and results. The current content is a visual reference until verified information is available. This will help the story clearly communicate the value created for the operation.",
+        metrics: {
+          0: {
+            value: "To be confirmed",
+            label: "Integration time",
+          },
+          1: {
+            value: "To be confirmed",
+            label: "Catalog growth",
+          },
+          2: {
+            value: "To be confirmed",
+            label: "Markets launched",
+          },
+        },
+        cta: "I want similar results",
+        ctaLabel: "Talk to Andes Gaming about achieving similar results",
+      },
+      doradobet: {
+        brand: "DoradoBet",
+        logoAlt: "DoradoBet logo",
+        title: "A catalog designed to grow with every market",
+        description:
+          "Editorial example showing how an operation can centralize content, expand its offering, and maintain a consistent experience through a single integration. The result will be a more flexible experience for the business and its players.",
+        metrics: {
+          0: {
+            value: "To be confirmed",
+            label: "Content added",
+          },
+          1: {
+            value: "To be confirmed",
+            label: "Deployment time",
+          },
+          2: {
+            value: "To be confirmed",
+            label: "Regional coverage",
+          },
+        },
+        cta: "I want to accelerate my operation",
+        ctaLabel: "Talk to Andes Gaming about accelerating my operation",
+      },
+      camanbet: {
+        brand: "Camanbet",
+        logoAlt: "Camanbet logo",
+        title: "One integration that simplifies casino evolution",
+        description:
+          "Content model explaining the operator's starting point, the implemented solution, and the indicators that will be validated before publication. This presents the technology evolution with clear context and understandable results.",
+        metrics: {
+          0: {
+            value: "To be confirmed",
+            label: "Providers connected",
+          },
+          1: {
+            value: "To be confirmed",
+            label: "Operational efficiency",
+          },
+          2: {
+            value: "To be confirmed",
+            label: "New experiences",
+          },
+        },
+        cta: "Let's discuss my project",
+        ctaLabel: "Talk to Andes Gaming about my project",
+      },
+      latinbet: {
+        brand: "LatinBet",
+        logoAlt: "LatinBet logo",
+        title: "A digital offering ready for new players",
+        description:
+          "An example of how an operation can organize different casino experiences into a catalog available through one integration. The final story will highlight how the offering evolved and its ability to support new business opportunities.",
+        metrics: {
+          0: {
+            value: "To be confirmed",
+            label: "Content variety",
+          },
+          1: {
+            value: "To be confirmed",
+            label: "Enabled channels",
+          },
+          2: {
+            value: "To be confirmed",
+            label: "Catalog reach",
+          },
+        },
+        cta: "I want to expand my offering",
+        ctaLabel: "Talk to Andes Gaming about expanding my offering",
+      },
+      redcasino: {
+        brand: "Red Casino",
+        logoAlt: "Red Casino logo",
+        title: "A consistent casino experience across every channel",
+        description:
+          "An editorial model explaining how a centralized integration can connect content, operations, and the user experience across different touchpoints. The approved story will present the progress achieved and the impact created for the brand.",
+        metrics: {
+          0: {
+            value: "To be confirmed",
+            label: "Integrated experiences",
+          },
+          1: {
+            value: "To be confirmed",
+            label: "Operational speed",
+          },
+          2: {
+            value: "To be confirmed",
+            label: "Availability",
+          },
+        },
+        cta: "I want a connected experience",
+        ctaLabel: "Talk to Andes Gaming about a connected experience",
+      },
+    },
+  },
   providers: {
     eyebrow: "Our partnerships",
     title: "Providers we work with",

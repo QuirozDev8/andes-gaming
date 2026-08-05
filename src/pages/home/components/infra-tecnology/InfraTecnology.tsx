@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import SectionTitle from "../../../../components/section-title/SectionTitle";
-import fondoInfra from "../../../../assets/img/fondo-infra.webp";
+import fondoInfra from "../../../../assets/img/img-infra.webp";
 import "./InfraTecnology.css";
 
 const capabilityCards = [
