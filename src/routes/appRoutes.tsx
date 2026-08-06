@@ -5,6 +5,7 @@ import { ContactPage } from "../pages/contact-page/ContactPage";
 import { ROUTES } from "./routePaths";
 import { CasinoAggregation } from "../pages/casino-aggregation/CasinoAggregation";
 import { GameProvider } from "../pages/game-provider/GameProvider";
+import {Blog} from "../pages/blog/Blog";
 
 const pendingPage = <EnDesarrollo />;
 
@@ -15,6 +16,6 @@ export const appRoutes = [
   { path: "/game-studio", element: pendingPage },
   { path: ROUTES.gameProviders, element: <GameProvider /> },
   { path: ROUTES.about, element: pendingPage },
-  { path: ROUTES.blog, element: pendingPage },
+  { path: ROUTES.blog, element: <Blog /> },
   { path: ROUTES.contact, element: <ContactPage /> },
 ] as const;
