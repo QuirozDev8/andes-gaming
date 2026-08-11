@@ -11,6 +11,7 @@ import {
 import BtnElegant from "../../components/btn-elegant/BtnElegant";
 import RevealOnScroll from "../../components/reveal-on-scroll/RevealOnScroll";
 import SectionTitle from "../../components/section-title/SectionTitle";
+import StrokeText from "../../components/stroke-text";
 import { formatBlogDate } from "./blog-utils";
 import ArticleModal from "./components/ArticleModal";
 import PostCard from "./components/PostCard";
@@ -50,6 +51,8 @@ const categoryCounts = new Map(
 function getCategoryLabel(category: BlogCategory) {
   return categoryLabels.get(category) ?? category;
 }
+
+
 
 export function Blog() {
   const [activeCategory, setActiveCategory] =
@@ -110,16 +113,43 @@ export function Blog() {
                 {blogPageContent.hero.eyebrow}
               </span>
 
-              <SectionTitle
-                as="h1"
+              <h1
+                aria-label={`${blogPageContent.hero.title} ${blogPageContent.hero.accent}`}
                 className={styles.heroTitle}
                 id="blog-title"
-                lines={[
-                  blogPageContent.hero.title,
-                  { content: blogPageContent.hero.accent, accent: true },
-                ]}
-                nowrap={false}
-              />
+              >
+                <StrokeText
+                  className={`${styles.heroTitleLine} ${styles.heroTitlePrimary}`}
+                  drawDuration={1.35}
+                  fillDelay={0.12}
+                  fillMode="fade"
+                  fontSize={96}
+                  fontWeight={900}
+                  letterSpacing={-2}
+                  stagger={0.035}
+                  strokeColor="var(--andes-violet)"
+                  text={blogPageContent.hero.title.toUpperCase()}
+                  trigger="mount"
+                />
+                <StrokeText
+                  className={`${styles.heroTitleLine} ${styles.heroTitleAccent}`}
+                  drawDuration={1.5}
+                  fillDelay={0.16}
+                  fillGradient={{
+                    from: "var(--andes-violet)",
+                    to: "var(--andes-cyan)",
+                  }}
+                  fillMode="fade"
+                  fontSize={96}
+                  fontWeight={900}
+                  letterSpacing={-2}
+                  reverse
+                  stagger={0.035}
+                  strokeColor="var(--andes-violet)"
+                  text={blogPageContent.hero.accent.toUpperCase()}
+                  trigger="mount"
+                />
+              </h1>
 
               <p className={styles.heroDescription}>
                 {blogPageContent.hero.description}

@@ -109,6 +109,7 @@ function Home() {
 
                 <div className={styles.actions}>
                   <BtnElegant
+                    className={styles.heroPrimaryCta}
                     text={t("hero.primaryCta")}
                     to={ROUTES.contact}
                     onClick={scrollToPageStart}

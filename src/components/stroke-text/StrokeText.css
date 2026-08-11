@@ -1,0 +1,38 @@
+.stroke-text {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  line-height: 0;
+  container-type: inline-size;
+}
+
+.stroke-text--hover {
+  cursor: pointer;
+}
+
+.stroke-text__svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: var(--stroke-text-height, 160px);
+  overflow: visible;
+}
+
+@supports (width: 1cqi) {
+  .stroke-text__svg {
+    height: min(var(--stroke-text-height, 160px), max(3.5rem, 24cqi));
+  }
+}
+
+.stroke-text__stroke,
+.stroke-text__fill {
+  font-family: var(--font-heading, "Exo 2", sans-serif);
+  font-style: italic;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stroke-text--hover {
+    cursor: default;
+  }
+}
