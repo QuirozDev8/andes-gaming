@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import {
   ArrowUpRight,
   BookOpen,
   CalendarDays,
+  ChevronLeft,
+  ChevronRight,
   Clock3,
   Network,
   Plus,
@@ -52,13 +54,19 @@ function getCategoryLabel(category: BlogCategory) {
   return categoryLabels.get(category) ?? category;
 }
 
-
+function formatCarouselPosition(position: number) {
+  return String(position).padStart(2, "0");
+}
 
 export function Blog() {
   const [activeCategory, setActiveCategory] =
     useState<BlogCategoryFilter>("todos");
   const [visiblePosts, setVisiblePosts] = useState(INITIAL_VISIBLE_POSTS);
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
+  const catalogGridId = useId();
+  const catalogGridRef = useRef<HTMLDivElement>(null);
+  const carouselFrameRef = useRef<number | null>(null);
   const articleSlug = searchParams.get("articulo");
   const selectedPost = articleSlug ? postsBySlug.get(articleSlug) : undefined;
 
@@ -71,9 +79,23 @@ export function Blog() {
     setSearchParams(nextSearchParams, { replace: true });
   }, [articleSlug, searchParams, selectedPost, setSearchParams]);
 
+  useEffect(() => {
+    catalogGridRef.current?.scrollTo({ left: 0, behavior: "auto" });
+  }, [activeCategory]);
+
+  useEffect(
+    () => () => {
+      if (carouselFrameRef.current !== null) {
+        window.cancelAnimationFrame(carouselFrameRef.current);
+      }
+    },
+    [],
+  );
+
   const handleCategoryChange = (category: BlogCategoryFilter) => {
     setActiveCategory(category);
     setVisiblePosts(INITIAL_VISIBLE_POSTS);
+    setActiveSlideIndex(0);
   };
 
   const handleOpenPost = (post: BlogPost) => {
@@ -98,6 +120,79 @@ export function Blog() {
       : catalogPosts;
   const canLoadMore =
     activeCategory === "todos" && visiblePosts < catalogPosts.length;
+  const carouselPosition = Math.min(
+    activeSlideIndex + 1,
+    visibleCatalogPosts.length,
+  );
+  const hasCarouselNavigation = visibleCatalogPosts.length > 1;
+
+  const updateActiveSlide = useCallback(() => {
+    const carousel = catalogGridRef.current;
+
+    if (!carousel || carousel.children.length === 0) return;
+
+    const carouselRect = carousel.getBoundingClientRect();
+    const carouselCenter = carouselRect.left + carouselRect.width / 2;
+    const slides = Array.from(carousel.children);
+    const closestSlide = slides.reduce(
+      (closest, slide, index) => {
+        const slideRect = slide.getBoundingClientRect();
+        const slideCenter = slideRect.left + slideRect.width / 2;
+        const distance = Math.abs(slideCenter - carouselCenter);
+
+        return distance < closest.distance ? { distance, index } : closest;
+      },
+      { distance: Number.POSITIVE_INFINITY, index: 0 },
+    );
+
+    setActiveSlideIndex((currentIndex) =>
+      currentIndex === closestSlide.index ? currentIndex : closestSlide.index,
+    );
+  }, []);
+
+  const handleCarouselScroll = useCallback(() => {
+    if (carouselFrameRef.current !== null) return;
+
+    carouselFrameRef.current = window.requestAnimationFrame(() => {
+      carouselFrameRef.current = null;
+      updateActiveSlide();
+    });
+  }, [updateActiveSlide]);
+
+  const goToSlide = useCallback(
+    (requestedIndex: number) => {
+      const carousel = catalogGridRef.current;
+      const lastSlideIndex = visibleCatalogPosts.length - 1;
+      const nextIndex = Math.min(Math.max(requestedIndex, 0), lastSlideIndex);
+      const targetSlide = carousel?.children[nextIndex] as HTMLElement | undefined;
+
+      if (!carousel || !targetSlide || lastSlideIndex < 0) return;
+
+      const carouselRect = carousel.getBoundingClientRect();
+      const targetRect = targetSlide.getBoundingClientRect();
+      const scrollPadding = Number.parseFloat(
+        window.getComputedStyle(carousel).scrollPaddingLeft,
+      );
+      const targetLeft =
+        carousel.scrollLeft +
+        targetRect.left -
+        carouselRect.left -
+        (Number.isNaN(scrollPadding) ? 0 : scrollPadding);
+      const shouldReduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      carousel.scrollTo({
+        left: targetLeft,
+        behavior: shouldReduceMotion ? "auto" : "smooth",
+      });
+
+      if (shouldReduceMotion) {
+        setActiveSlideIndex(nextIndex);
+      }
+    },
+    [visibleCatalogPosts.length],
+  );
 
   return (
     <>
@@ -250,6 +345,7 @@ export function Blog() {
               {blogCategories.map((category) => {
                 return (
                   <button
+                    aria-controls={catalogGridId}
                     aria-pressed={activeCategory === category.id}
                     className={`${styles.filterButton} ${
                       activeCategory === category.id ? styles.filterButtonActive : ""
@@ -269,7 +365,14 @@ export function Blog() {
               {visibleCatalogPosts.length} {blogPageContent.catalog.resultsLabel}
             </p>
 
-            <div className={styles.grid}>
+            <div
+              aria-label={blogPageContent.catalog.postsLabel}
+              className={styles.grid}
+              id={catalogGridId}
+              onScroll={handleCarouselScroll}
+              ref={catalogGridRef}
+              role="region"
+            >
               {visibleCatalogPosts.map((post) => (
                 <PostCard
                   categoryLabel={getCategoryLabel(post.category)}
@@ -280,9 +383,61 @@ export function Blog() {
               ))}
             </div>
 
+            {hasCarouselNavigation && (
+              <div
+                aria-label={blogPageContent.catalog.carouselControlsLabel}
+                className={styles.carouselControls}
+                role="group"
+              >
+                <span
+                  aria-atomic="true"
+                  aria-live="polite"
+                  className={styles.carouselCounter}
+                >
+                  <span aria-hidden="true">
+                    <strong>{formatCarouselPosition(carouselPosition)}</strong>
+                    <span>/</span>
+                    {formatCarouselPosition(visibleCatalogPosts.length)}
+                  </span>
+                  <span className={styles.resultsStatus}>
+                    {blogPageContent.catalog.carouselPositionLabel}{" "}
+                    {carouselPosition}{" "}
+                    {blogPageContent.catalog.carouselPositionOfLabel}{" "}
+                    {visibleCatalogPosts.length}
+                  </span>
+                </span>
+
+                <span className={styles.carouselButtons}>
+                  <button
+                    aria-controls={catalogGridId}
+                    aria-label={blogPageContent.catalog.previousPostLabel}
+                    className={styles.carouselButton}
+                    disabled={activeSlideIndex === 0}
+                    onClick={() => goToSlide(activeSlideIndex - 1)}
+                    type="button"
+                  >
+                    <ChevronLeft aria-hidden="true" strokeWidth={1.8} />
+                  </button>
+                  <button
+                    aria-controls={catalogGridId}
+                    aria-label={blogPageContent.catalog.nextPostLabel}
+                    className={styles.carouselButton}
+                    disabled={
+                      activeSlideIndex >= visibleCatalogPosts.length - 1
+                    }
+                    onClick={() => goToSlide(activeSlideIndex + 1)}
+                    type="button"
+                  >
+                    <ChevronRight aria-hidden="true" strokeWidth={1.8} />
+                  </button>
+                </span>
+              </div>
+            )}
+
             {canLoadMore && (
               <div className={styles.loadMoreArea}>
                 <button
+                  aria-controls={catalogGridId}
                   className={styles.loadMoreButton}
                   onClick={() => setVisiblePosts(catalogPosts.length)}
                   type="button"

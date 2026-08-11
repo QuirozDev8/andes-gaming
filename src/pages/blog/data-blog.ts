@@ -75,7 +75,13 @@ export const blogPageContent = {
       "Encuentra análisis, recursos prácticos y aprendizajes para tomar decisiones con mayor contexto.",
     filterLabel: "Filtrar publicaciones por categoría",
     loadMore: "Ver más publicaciones",
+    postsLabel: "Publicaciones del blog",
     resultsLabel: "publicaciones visibles en el catálogo",
+    carouselControlsLabel: "Controles del carrusel de publicaciones",
+    previousPostLabel: "Ver publicación anterior",
+    nextPostLabel: "Ver publicación siguiente",
+    carouselPositionLabel: "Publicación",
+    carouselPositionOfLabel: "de",
   },
   modal: {
     closeLabel: "Cerrar artículo",
