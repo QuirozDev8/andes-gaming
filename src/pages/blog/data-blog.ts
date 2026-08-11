@@ -47,6 +47,8 @@ export type BlogPost = {
 };
 
 export const blogPageContent = {
+  // Los textos de interfaz permanecen separados de los artículos para facilitar
+  // una futura migración a i18n o a un CMS sin modificar los componentes.
   hero: {
     eyebrow: "Andes Insights",
     title: "Ideas que impulsan",
@@ -73,6 +75,7 @@ export const blogPageContent = {
       "Encuentra análisis, recursos prácticos y aprendizajes para tomar decisiones con mayor contexto.",
     filterLabel: "Filtrar publicaciones por categoría",
     loadMore: "Ver más publicaciones",
+    resultsLabel: "publicaciones visibles en el catálogo",
   },
   modal: {
     closeLabel: "Cerrar artículo",
@@ -110,6 +113,7 @@ export const blogCategories = [
 export type BlogCategoryFilter = (typeof blogCategories)[number]["id"];
 
 export const blogPosts: readonly BlogPost[] = [
+  // Las fechas ISO mantienen un orden editorial estable y predecible.
   {
     slug: "checklist-integracion-api",
     category: "guias",

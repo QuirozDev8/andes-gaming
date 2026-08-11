@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import {
   ArrowUpRight,
+  BookOpen,
   CalendarDays,
   Clock3,
   Network,
@@ -24,16 +25,30 @@ import {
 import styles from "./Blog.module.css";
 
 const INITIAL_VISIBLE_POSTS = 6;
+
+// Los índices se construyen una sola vez: mantienen el orden editorial estable
+// y evitan recorrer toda la colección durante cada renderizado.
 const sortedBlogPosts = [...blogPosts].sort((firstPost, secondPost) =>
   secondPost.publishedAt.localeCompare(firstPost.publishedAt),
 );
 const featuredPost = sortedBlogPosts.find((post) => post.featured);
+const postsBySlug = new Map(
+  sortedBlogPosts.map((post) => [post.slug, post] as const),
+);
+const categoryLabels = new Map(
+  blogCategories.map((category) => [category.id, category.label] as const),
+);
+const categoryCounts = new Map(
+  blogCategories.map((category) => [
+    category.id,
+    category.id === "todos"
+      ? sortedBlogPosts.length
+      : sortedBlogPosts.filter((post) => post.category === category.id).length,
+  ] as const),
+);
 
 function getCategoryLabel(category: BlogCategory) {
-  return (
-    blogCategories.find((categoryItem) => categoryItem.id === category)?.label ??
-    category
-  );
+  return categoryLabels.get(category) ?? category;
 }
 
 export function Blog() {
@@ -42,13 +57,12 @@ export function Blog() {
   const [visiblePosts, setVisiblePosts] = useState(INITIAL_VISIBLE_POSTS);
   const [searchParams, setSearchParams] = useSearchParams();
   const articleSlug = searchParams.get("articulo");
-  const selectedPost = articleSlug
-    ? sortedBlogPosts.find((post) => post.slug === articleSlug)
-    : undefined;
+  const selectedPost = articleSlug ? postsBySlug.get(articleSlug) : undefined;
 
   useEffect(() => {
     if (!articleSlug || selectedPost) return;
 
+    // Una URL compartida inválida vuelve al catálogo sin sumar otra entrada al historial.
     const nextSearchParams = new URLSearchParams(searchParams);
     nextSearchParams.delete("articulo");
     setSearchParams(nextSearchParams, { replace: true });
@@ -143,17 +157,17 @@ export function Blog() {
                     className={styles.featuredImage}
                     decoding="async"
                     fetchPriority="high"
+                    height={788}
                     src={featuredPost.image}
+                    width={1400}
                   />
+                  <span className={styles.featuredBadge}>
+                    <BookOpen aria-hidden="true" strokeWidth={1.8} />
+                    {blogPageContent.featured.eyebrow}
+                  </span>
                 </span>
 
                 <span className={styles.featuredContent}>
-                  <span className={styles.featuredEyebrow}>
-                    {blogPageContent.featured.eyebrow}
-                  </span>
-                  <span className={styles.featuredCategory}>
-                    {getCategoryLabel(featuredPost.category)}
-                  </span>
                   <strong className={styles.featuredTitle} id="featured-post-title">
                     {featuredPost.title}
                   </strong>
@@ -163,7 +177,9 @@ export function Blog() {
                   <span className={styles.featuredMeta}>
                     <span>
                       <CalendarDays aria-hidden="true" strokeWidth={1.8} />
-                      {formatBlogDate(featuredPost.publishedAt)}
+                      <time dateTime={featuredPost.publishedAt}>
+                        {formatBlogDate(featuredPost.publishedAt)}
+                      </time>
                     </span>
                     <span>
                       <Clock3 aria-hidden="true" strokeWidth={1.8} />
@@ -202,13 +218,6 @@ export function Blog() {
               role="group"
             >
               {blogCategories.map((category) => {
-                const categoryCount =
-                  category.id === "todos"
-                    ? sortedBlogPosts.length
-                    : sortedBlogPosts.filter(
-                        (post) => post.category === category.id,
-                      ).length;
-
                 return (
                   <button
                     aria-pressed={activeCategory === category.id}
@@ -220,13 +229,17 @@ export function Blog() {
                     type="button"
                   >
                     {category.label}
-                    <span>{categoryCount}</span>
+                    <span>{categoryCounts.get(category.id) ?? 0}</span>
                   </button>
                 );
               })}
             </div>
 
-            <div className={styles.grid} aria-live="polite">
+            <p className={styles.resultsStatus} role="status">
+              {visibleCatalogPosts.length} {blogPageContent.catalog.resultsLabel}
+            </p>
+
+            <div className={styles.grid}>
               {visibleCatalogPosts.map((post) => (
                 <PostCard
                   categoryLabel={getCategoryLabel(post.category)}

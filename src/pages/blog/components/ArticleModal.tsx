@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowUpRight,
@@ -28,6 +28,8 @@ export function ArticleModal({
   const titleId = `article-title-${post.slug}`;
   const descriptionId = `article-description-${post.slug}`;
 
+  // El mismo diálogo puede cambiar de artículo al navegar por el historial;
+  // el foco y el bloqueo de scroll solo se gestionan al montar y desmontar.
   useEffect(() => {
     const dialog = dialogRef.current;
     const previouslyFocusedElement = document.activeElement;
@@ -48,13 +50,16 @@ export function ArticleModal({
         dialog.close();
       }
 
-      if (previouslyFocusedElement instanceof HTMLElement) {
+      if (
+        previouslyFocusedElement instanceof HTMLElement &&
+        previouslyFocusedElement.isConnected
+      ) {
         window.requestAnimationFrame(() => previouslyFocusedElement.focus());
       }
     };
-  }, [post.slug]);
+  }, []);
 
-  const handleDialogClick = (event: React.MouseEvent<HTMLDialogElement>) => {
+  const handleDialogClick = (event: MouseEvent<HTMLDialogElement>) => {
     if (event.target === dialogRef.current) {
       onRequestClose();
     }
@@ -87,7 +92,9 @@ export function ArticleModal({
             alt={post.imageAlt}
             className={styles.heroImage}
             decoding="async"
+            height={788}
             src={post.image}
+            width={1400}
           />
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
@@ -117,12 +124,14 @@ export function ArticleModal({
             <div className={styles.articleMeta}>
               <span>
                 <CalendarDays aria-hidden="true" strokeWidth={1.8} />
-                {formatBlogDate(post.publishedAt)}
+                <time dateTime={post.publishedAt}>
+                  {formatBlogDate(post.publishedAt)}
+                </time>
               </span>
               {post.updatedAt && (
-                <span>
+                <time dateTime={post.updatedAt}>
                   {blogPageContent.modal.updatedLabel} {formatBlogDate(post.updatedAt)}
-                </span>
+                </time>
               )}
               <span>
                 <Clock3 aria-hidden="true" strokeWidth={1.8} />
@@ -177,7 +186,11 @@ export function ArticleModal({
                 text={blogPageContent.modal.contactAction}
                 to={ROUTES.contact}
               />
-              <Link className={styles.relatedLink} to={post.relatedProduct.path}>
+              <Link
+                aria-label={`${blogPageContent.modal.relatedAction}: ${post.relatedProduct.label}. ${post.relatedProduct.description}`}
+                className={styles.relatedLink}
+                to={post.relatedProduct.path}
+              >
                 <span>
                   <small>{blogPageContent.modal.relatedAction}</small>
                   <strong>{post.relatedProduct.label}</strong>

@@ -23,8 +23,10 @@ export function PostCard({ post, categoryLabel, onOpen }: PostCardProps) {
             alt={post.imageAlt}
             className={styles.image}
             decoding="async"
+            height={788}
             loading="lazy"
             src={post.image}
+            width={1400}
           />
           <span className={styles.category}>{categoryLabel}</span>
         </span>
@@ -33,7 +35,9 @@ export function PostCard({ post, categoryLabel, onOpen }: PostCardProps) {
           <span className={styles.meta}>
             <span>
               <CalendarDays aria-hidden="true" strokeWidth={1.8} />
-              {formatBlogDate(post.publishedAt)}
+              <time dateTime={post.publishedAt}>
+                {formatBlogDate(post.publishedAt)}
+              </time>
             </span>
             <span>
               <Clock3 aria-hidden="true" strokeWidth={1.8} />
