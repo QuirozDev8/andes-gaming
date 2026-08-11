@@ -16,6 +16,7 @@ import SectionTitle from "../../components/section-title/SectionTitle";
 import StrokeText from "../../components/stroke-text";
 import { formatBlogDate } from "./blog-utils";
 import ArticleModal from "./components/ArticleModal";
+import BlogHeroEffects from "./components/BlogHeroEffects";
 import PostCard from "./components/PostCard";
 import {
   blogCategories,
@@ -41,11 +42,15 @@ const postsBySlug = new Map(
 const categoryLabels = new Map(
   blogCategories.map((category) => [category.id, category.label] as const),
 );
+const catalogPostCount = sortedBlogPosts.filter((post) => !post.featured).length;
+
+// Los contadores describen las tarjetas controladas por cada filtro. Por eso
+// "Todos" excluye la lectura destacada, que se presenta en una sección separada.
 const categoryCounts = new Map(
   blogCategories.map((category) => [
     category.id,
     category.id === "todos"
-      ? sortedBlogPosts.length
+      ? catalogPostCount
       : sortedBlogPosts.filter((post) => post.category === category.id).length,
   ] as const),
 );
@@ -199,7 +204,7 @@ export function Blog() {
       <div className={styles.page}>
         <section aria-labelledby="blog-title" className={styles.hero}>
           <div className={styles.heroGrid} aria-hidden="true" />
-          <div className={styles.heroGlow} aria-hidden="true" />
+          <BlogHeroEffects />
 
           <div className={styles.heroInner}>
             <div className={styles.heroContent}>

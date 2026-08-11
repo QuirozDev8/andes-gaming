@@ -1,0 +1,262 @@
+.root {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  contain: layout paint style;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(86vw, 940px);
+  height: min(58vw, 520px);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(var(--andes-violet-rgb), 0.16) 0%,
+    rgba(var(--andes-violet-rgb), 0.065) 42%,
+    transparent 72%
+  );
+  opacity: 0.72;
+  transform: translate3d(-50%, -50%, 0);
+  animation: auraPulse 12s ease-in-out infinite alternate;
+  will-change: opacity, transform;
+}
+
+.halo {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(76px);
+  will-change: opacity, transform;
+}
+
+.haloViolet {
+  --halo-opacity-start: 0.13;
+  --halo-opacity-end: 0.25;
+  top: 4%;
+  left: -9%;
+  width: clamp(260px, 36vw, 540px);
+  aspect-ratio: 1;
+  background: rgba(var(--andes-violet-rgb), 0.72);
+  animation: haloVioletDrift 14s ease-in-out infinite alternate;
+}
+
+.haloCyan {
+  --halo-opacity-start: 0.07;
+  --halo-opacity-end: 0.16;
+  right: -7%;
+  bottom: -28%;
+  width: clamp(230px, 31vw, 470px);
+  aspect-ratio: 1;
+  background: rgba(var(--andes-cyan-rgb), 0.62);
+  animation: haloCyanDrift 16s ease-in-out -6s infinite alternate;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0.9;
+  -webkit-mask-image: radial-gradient(
+    ellipse 48% 48% at 50% 48%,
+    rgba(0, 0, 0, 0.14) 0%,
+    rgba(0, 0, 0, 0.48) 52%,
+    #000 84%
+  );
+  mask-image: radial-gradient(
+    ellipse 48% 48% at 50% 48%,
+    rgba(0, 0, 0, 0.14) 0%,
+    rgba(0, 0, 0, 0.48) 52%,
+    #000 84%
+  );
+}
+
+.particle {
+  position: absolute;
+  top: var(--particle-y);
+  left: var(--particle-x);
+  width: var(--particle-size);
+  height: var(--particle-size);
+  border-radius: 50%;
+  opacity: 0.12;
+  animation: particleDrift var(--particle-duration) ease-in-out
+    var(--particle-delay) infinite alternate;
+  will-change: opacity, transform;
+}
+
+.cyan {
+  color: var(--andes-cyan);
+}
+
+.violet {
+  color: var(--andes-violet);
+}
+
+.dot {
+  background: currentColor;
+  box-shadow:
+    0 0 7px currentColor,
+    0 0 18px currentColor;
+}
+
+.node {
+  border: 1px solid currentColor;
+  background: rgba(var(--andes-blue-deep-rgb), 0.5);
+  box-shadow:
+    0 0 12px currentColor,
+    inset 0 0 8px currentColor;
+}
+
+.node::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: currentColor;
+  content: "";
+  transform: translate3d(-50%, -50%, 0);
+}
+
+@keyframes particleDrift {
+  0% {
+    opacity: 0.12;
+    transform: translate3d(0, 8px, 0) scale(0.78);
+  }
+
+  48% {
+    opacity: var(--particle-opacity);
+  }
+
+  100% {
+    opacity: 0.2;
+    transform: translate3d(
+      var(--particle-drift-x),
+      var(--particle-drift-y),
+      0
+    ) scale(1.08);
+  }
+}
+
+@keyframes auraPulse {
+  from {
+    opacity: 0.52;
+    transform: translate3d(-50%, -49%, 0) scale(0.94);
+  }
+
+  to {
+    opacity: 0.78;
+    transform: translate3d(-50%, -51%, 0) scale(1.05);
+  }
+}
+
+@keyframes haloVioletDrift {
+  from {
+    opacity: var(--halo-opacity-start);
+    transform: translate3d(-4%, 3%, 0) scale(0.92);
+  }
+
+  to {
+    opacity: var(--halo-opacity-end);
+    transform: translate3d(9%, -5%, 0) scale(1.08);
+  }
+}
+
+@keyframes haloCyanDrift {
+  from {
+    opacity: var(--halo-opacity-start);
+    transform: translate3d(5%, 4%, 0) scale(0.9);
+  }
+
+  to {
+    opacity: var(--halo-opacity-end);
+    transform: translate3d(-10%, -7%, 0) scale(1.1);
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .particle:nth-child(n + 13) {
+    display: none;
+  }
+
+  .halo {
+    filter: blur(68px);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .aura {
+    width: 118vw;
+    height: 82vw;
+    opacity: 0.58;
+  }
+
+  .halo {
+    filter: blur(58px);
+  }
+
+  .haloViolet {
+    --halo-opacity-start: 0.09;
+    --halo-opacity-end: 0.17;
+    top: 8%;
+    left: -34%;
+  }
+
+  .haloCyan {
+    --halo-opacity-start: 0.05;
+    --halo-opacity-end: 0.11;
+    right: -32%;
+    bottom: -14%;
+  }
+
+  .particles {
+    opacity: 0.68;
+    -webkit-mask-image: radial-gradient(
+      ellipse 62% 50% at 50% 46%,
+      rgba(0, 0, 0, 0.06) 0%,
+      rgba(0, 0, 0, 0.36) 58%,
+      #000 88%
+    );
+    mask-image: radial-gradient(
+      ellipse 62% 50% at 50% 46%,
+      rgba(0, 0, 0, 0.06) 0%,
+      rgba(0, 0, 0, 0.36) 58%,
+      #000 88%
+    );
+  }
+
+  .particle:nth-child(n + 10) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aura,
+  .halo,
+  .particle {
+    animation: none;
+    will-change: auto;
+  }
+
+  .aura {
+    opacity: 0.56;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  .haloViolet {
+    opacity: 0.16;
+  }
+
+  .haloCyan {
+    opacity: 0.09;
+  }
+
+  .particle {
+    opacity: 0.4;
+    transform: none;
+  }
+}
