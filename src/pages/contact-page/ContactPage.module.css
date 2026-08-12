@@ -405,12 +405,13 @@
   }
 
   .landingShell {
-    grid-template-areas:
-      "visual"
-      "form";
+    grid-template-areas: "form";
   }
 
-  .contactVisual,
+  .contactVisual {
+    display: none;
+  }
+
   .formCard {
     border-radius: var(--radius-xl);
   }
