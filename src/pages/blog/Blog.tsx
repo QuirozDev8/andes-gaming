@@ -1,5 +1,13 @@
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   ArrowUpRight,
   BookOpen,
@@ -14,14 +22,14 @@ import BtnElegant from "../../components/btn-elegant/BtnElegant";
 import RevealOnScroll from "../../components/reveal-on-scroll/RevealOnScroll";
 import SectionTitle from "../../components/section-title/SectionTitle";
 import StrokeText from "../../components/stroke-text";
+import { ROUTES } from "../../routes/routePaths";
 import { formatBlogDate } from "./blog-utils";
 import ArticleModal from "./components/ArticleModal";
 import BlogHeroEffects from "./components/BlogHeroEffects";
 import PostCard from "./components/PostCard";
 import {
-  blogCategories,
-  blogPageContent,
-  blogPosts,
+  blogCategoryIds,
+  getBlogPosts,
   type BlogCategory,
   type BlogCategoryFilter,
   type BlogPost,
@@ -29,41 +37,14 @@ import {
 import styles from "./Blog.module.css";
 
 const INITIAL_VISIBLE_POSTS = 6;
-
-// Los índices se construyen una sola vez: mantienen el orden editorial estable
-// y evitan recorrer toda la colección durante cada renderizado.
-const sortedBlogPosts = [...blogPosts].sort((firstPost, secondPost) =>
-  secondPost.publishedAt.localeCompare(firstPost.publishedAt),
-);
-const featuredPost = sortedBlogPosts.find((post) => post.featured);
-const postsBySlug = new Map(
-  sortedBlogPosts.map((post) => [post.slug, post] as const),
-);
-const categoryLabels = new Map(
-  blogCategories.map((category) => [category.id, category.label] as const),
-);
-const catalogPostCount = sortedBlogPosts.filter((post) => !post.featured).length;
-
-// Los contadores describen las tarjetas controladas por cada filtro. Por eso
-// "Todos" excluye la lectura destacada, que se presenta en una sección separada.
-const categoryCounts = new Map(
-  blogCategories.map((category) => [
-    category.id,
-    category.id === "todos"
-      ? catalogPostCount
-      : sortedBlogPosts.filter((post) => post.category === category.id).length,
-  ] as const),
-);
-
-function getCategoryLabel(category: BlogCategory) {
-  return categoryLabels.get(category) ?? category;
-}
+const BLOG_TOPIC_IDS = ["strategy", "integration", "operations"] as const;
 
 function formatCarouselPosition(position: number) {
   return String(position).padStart(2, "0");
 }
 
 export function Blog() {
+  const { t, i18n } = useTranslation("blog");
   const [activeCategory, setActiveCategory] =
     useState<BlogCategoryFilter>("todos");
   const [visiblePosts, setVisiblePosts] = useState(INITIAL_VISIBLE_POSTS);
@@ -72,6 +53,50 @@ export function Blog() {
   const catalogGridId = useId();
   const catalogGridRef = useRef<HTMLDivElement>(null);
   const carouselFrameRef = useRef<number | null>(null);
+  const language = i18n.resolvedLanguage ?? "es";
+  const sortedBlogPosts = useMemo(
+    () =>
+      [...getBlogPosts(t)].sort((firstPost, secondPost) =>
+        secondPost.publishedAt.localeCompare(firstPost.publishedAt),
+      ),
+    [t],
+  );
+  const blogCategories = useMemo(
+    () =>
+      blogCategoryIds.map((id) => ({
+        id,
+        label: t(`categories.${id}`),
+      })),
+    [t],
+  );
+  const featuredPost = sortedBlogPosts.find((post) => post.featured);
+  const postsBySlug = useMemo(
+    () =>
+      new Map<string, BlogPost>(
+        sortedBlogPosts.map((post) => [post.slug, post] as const),
+      ),
+    [sortedBlogPosts],
+  );
+  const categoryLabels = useMemo(
+    () =>
+      new Map(
+        blogCategories.map((category) => [category.id, category.label] as const),
+      ),
+    [blogCategories],
+  );
+  const catalogPostCount = sortedBlogPosts.filter(
+    (post) => !post.featured,
+  ).length;
+  const categoryCounts = new Map(
+    blogCategories.map((category) => [
+      category.id,
+      category.id === "todos"
+        ? catalogPostCount
+        : sortedBlogPosts.filter((post) => post.category === category.id).length,
+    ] as const),
+  );
+  const getCategoryLabel = (category: BlogCategory) =>
+    categoryLabels.get(category) ?? category;
   const articleSlug = searchParams.get("articulo");
   const selectedPost = articleSlug ? postsBySlug.get(articleSlug) : undefined;
 
@@ -210,11 +235,11 @@ export function Blog() {
             <div className={styles.heroContent}>
               <span className={styles.eyebrow}>
                 <Network aria-hidden="true" strokeWidth={1.8} />
-                {blogPageContent.hero.eyebrow}
+                {t("hero.eyebrow")}
               </span>
 
               <h1
-                aria-label={`${blogPageContent.hero.title} ${blogPageContent.hero.accent}`}
+                aria-label={`${t("hero.title")} ${t("hero.accent")}`}
                 className={styles.heroTitle}
                 id="blog-title"
               >
@@ -226,9 +251,10 @@ export function Blog() {
                   fontSize={96}
                   fontWeight={900}
                   letterSpacing={-2}
+                  key={t("hero.title")}
                   stagger={0.035}
                   strokeColor="var(--andes-violet)"
-                  text={blogPageContent.hero.title.toUpperCase()}
+                  text={t("hero.title").toLocaleUpperCase(language)}
                   trigger="mount"
                 />
                 <StrokeText
@@ -243,24 +269,25 @@ export function Blog() {
                   fontSize={96}
                   fontWeight={900}
                   letterSpacing={-2}
+                  key={t("hero.accent")}
                   reverse
                   stagger={0.035}
                   strokeColor="var(--andes-violet)"
-                  text={blogPageContent.hero.accent.toUpperCase()}
+                  text={t("hero.accent").toLocaleUpperCase(language)}
                   trigger="mount"
                 />
               </h1>
 
               <p className={styles.heroDescription}>
-                {blogPageContent.hero.description}
+                {t("hero.description")}
               </p>
 
               <div
                 className={styles.heroTopics}
-                aria-label={blogPageContent.hero.topicsLabel}
+                aria-label={t("hero.topicsLabel")}
               >
-                {blogPageContent.hero.topics.map((topic) => (
-                  <span key={topic}>{topic}</span>
+                {BLOG_TOPIC_IDS.map((topicId) => (
+                  <span key={topicId}>{t(`hero.topics.${topicId}`)}</span>
                 ))}
               </div>
             </div>
@@ -276,7 +303,9 @@ export function Blog() {
           >
             <div className={styles.sectionContainer}>
               <button
-                aria-label={`${blogPageContent.featured.openLabel}: ${featuredPost.title}`}
+                aria-label={t("featured.openLabel", {
+                  title: featuredPost.title,
+                })}
                 className={styles.featuredCard}
                 onClick={() => handleOpenPost(featuredPost)}
                 type="button"
@@ -293,7 +322,7 @@ export function Blog() {
                   />
                   <span className={styles.featuredBadge}>
                     <BookOpen aria-hidden="true" strokeWidth={1.8} />
-                    {blogPageContent.featured.eyebrow}
+                    {t("featured.eyebrow")}
                   </span>
                 </span>
 
@@ -308,16 +337,18 @@ export function Blog() {
                     <span>
                       <CalendarDays aria-hidden="true" strokeWidth={1.8} />
                       <time dateTime={featuredPost.publishedAt}>
-                        {formatBlogDate(featuredPost.publishedAt)}
+                        {formatBlogDate(featuredPost.publishedAt, language)}
                       </time>
                     </span>
                     <span>
                       <Clock3 aria-hidden="true" strokeWidth={1.8} />
-                      {featuredPost.readingTime} {blogPageContent.card.minutesLabel}
+                      {t("card.readingTime", {
+                        count: featuredPost.readingTime,
+                      })}
                     </span>
                   </span>
                   <span className={styles.featuredAction} aria-hidden="true">
-                    {blogPageContent.featured.action}
+                    {t("featured.action")}
                     <ArrowUpRight strokeWidth={1.8} />
                   </span>
                 </span>
@@ -330,20 +361,20 @@ export function Blog() {
           <div className={styles.sectionContainer}>
             <RevealOnScroll className={styles.catalogHeader}>
               <span className={styles.sectionEyebrow}>
-                {blogPageContent.catalog.eyebrow}
+                {t("catalog.eyebrow")}
               </span>
               <SectionTitle
                 as="h2"
                 className={styles.catalogTitle}
                 id="blog-catalog-title"
-                lines={[blogPageContent.catalog.title]}
+                lines={[t("catalog.title")]}
                 nowrap={false}
               />
-              <p>{blogPageContent.catalog.description}</p>
+              <p>{t("catalog.description")}</p>
             </RevealOnScroll>
 
             <div
-              aria-label={blogPageContent.catalog.filterLabel}
+              aria-label={t("catalog.filterLabel")}
               className={styles.filters}
               role="group"
             >
@@ -367,11 +398,11 @@ export function Blog() {
             </div>
 
             <p className={styles.resultsStatus} role="status">
-              {visibleCatalogPosts.length} {blogPageContent.catalog.resultsLabel}
+              {t("catalog.results", { count: visibleCatalogPosts.length })}
             </p>
 
             <div
-              aria-label={blogPageContent.catalog.postsLabel}
+              aria-label={t("catalog.postsLabel")}
               className={styles.grid}
               id={catalogGridId}
               onScroll={handleCarouselScroll}
@@ -390,7 +421,7 @@ export function Blog() {
 
             {hasCarouselNavigation && (
               <div
-                aria-label={blogPageContent.catalog.carouselControlsLabel}
+                aria-label={t("catalog.carouselControlsLabel")}
                 className={styles.carouselControls}
                 role="group"
               >
@@ -405,17 +436,17 @@ export function Blog() {
                     {formatCarouselPosition(visibleCatalogPosts.length)}
                   </span>
                   <span className={styles.resultsStatus}>
-                    {blogPageContent.catalog.carouselPositionLabel}{" "}
-                    {carouselPosition}{" "}
-                    {blogPageContent.catalog.carouselPositionOfLabel}{" "}
-                    {visibleCatalogPosts.length}
+                    {t("catalog.carouselPosition", {
+                      current: carouselPosition,
+                      total: visibleCatalogPosts.length,
+                    })}
                   </span>
                 </span>
 
                 <span className={styles.carouselButtons}>
                   <button
                     aria-controls={catalogGridId}
-                    aria-label={blogPageContent.catalog.previousPostLabel}
+                    aria-label={t("catalog.previousPostLabel")}
                     className={styles.carouselButton}
                     disabled={activeSlideIndex === 0}
                     onClick={() => goToSlide(activeSlideIndex - 1)}
@@ -425,7 +456,7 @@ export function Blog() {
                   </button>
                   <button
                     aria-controls={catalogGridId}
-                    aria-label={blogPageContent.catalog.nextPostLabel}
+                    aria-label={t("catalog.nextPostLabel")}
                     className={styles.carouselButton}
                     disabled={
                       activeSlideIndex >= visibleCatalogPosts.length - 1
@@ -448,7 +479,7 @@ export function Blog() {
                   type="button"
                 >
                   <Plus aria-hidden="true" strokeWidth={1.8} />
-                  {blogPageContent.catalog.loadMore}
+                  {t("catalog.loadMore")}
                 </button>
               </div>
             )}
@@ -464,22 +495,22 @@ export function Blog() {
             <div className={styles.ctaPanel}>
               <div className={styles.ctaCopy}>
                 <span className={styles.sectionEyebrow}>
-                  {blogPageContent.cta.eyebrow}
+                  {t("cta.eyebrow")}
                 </span>
-                <h2 id="blog-cta-title">{blogPageContent.cta.title}</h2>
-                <p>{blogPageContent.cta.description}</p>
+                <h2 id="blog-cta-title">{t("cta.title")}</h2>
+                <p>{t("cta.description")}</p>
               </div>
               <div className={styles.ctaActions}>
                 <BtnElegant
-                  ariaLabel={blogPageContent.cta.primaryAction}
-                  text={blogPageContent.cta.primaryAction}
-                  to={blogPageContent.cta.primaryPath}
+                  ariaLabel={t("cta.primaryAction")}
+                  text={t("cta.primaryAction")}
+                  to={ROUTES.contact}
                 />
                 <Link
                   className={styles.secondaryCta}
-                  to={blogPageContent.cta.secondaryPath}
+                  to={ROUTES.casinoAggregation}
                 >
-                  {blogPageContent.cta.secondaryAction}
+                  {t("cta.secondaryAction")}
                   <ArrowUpRight aria-hidden="true" strokeWidth={1.8} />
                 </Link>
               </div>

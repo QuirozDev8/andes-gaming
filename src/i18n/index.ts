@@ -6,11 +6,13 @@ import casinoAggregationEn from "./locales/en/casinoAggregation";
 import contactPageEn from "./locales/en/contactPage";
 import gameProviderEn from "./locales/en/gameProvider";
 import homeEn from "./locales/en/home";
+import blogEn from "./locales/en/blog";
 import commonEs from "./locales/es/common";
 import casinoAggregationEs from "./locales/es/casinoAggregation";
 import contactPageEs from "./locales/es/contactPage";
 import gameProviderEs from "./locales/es/gameProvider";
 import homeEs from "./locales/es/home";
+import blogEs from "./locales/es/blog";
 
 export const SUPPORTED_LANGUAGES = ["es", "en"] as const;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
@@ -22,6 +24,7 @@ const resources = {
     contactPage: contactPageEs,
     gameProvider: gameProviderEs,
     home: homeEs,
+    blog: blogEs,
   },
   en: {
     common: commonEn,
@@ -29,6 +32,7 @@ const resources = {
     contactPage: contactPageEn,
     gameProvider: gameProviderEn,
     home: homeEn,
+    blog: blogEn,
   },
 } as const;
 

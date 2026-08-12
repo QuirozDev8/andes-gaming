@@ -1,5 +1,6 @@
 import { ArrowUpRight, CalendarDays, Clock3 } from "lucide-react";
-import { blogPageContent, type BlogPost } from "../data-blog";
+import { useTranslation } from "react-i18next";
+import type { BlogPost } from "../data-blog";
 import { formatBlogDate } from "../blog-utils";
 import styles from "./PostCard.module.css";
 
@@ -10,10 +11,13 @@ type PostCardProps = {
 };
 
 export function PostCard({ post, categoryLabel, onOpen }: PostCardProps) {
+  const { t, i18n } = useTranslation("blog");
+  const language = i18n.resolvedLanguage ?? "es";
+
   return (
     <article className={styles.card}>
       <button
-        aria-label={`${blogPageContent.card.openLabel}: ${post.title}`}
+        aria-label={t("card.openLabel", { title: post.title })}
         className={styles.trigger}
         onClick={() => onOpen(post)}
         type="button"
@@ -36,12 +40,12 @@ export function PostCard({ post, categoryLabel, onOpen }: PostCardProps) {
             <span>
               <CalendarDays aria-hidden="true" strokeWidth={1.8} />
               <time dateTime={post.publishedAt}>
-                {formatBlogDate(post.publishedAt)}
+                {formatBlogDate(post.publishedAt, language)}
               </time>
             </span>
             <span>
               <Clock3 aria-hidden="true" strokeWidth={1.8} />
-              {post.readingTime} {blogPageContent.card.minutesLabel}
+              {t("card.readingTime", { count: post.readingTime })}
             </span>
           </span>
 
@@ -49,7 +53,7 @@ export function PostCard({ post, categoryLabel, onOpen }: PostCardProps) {
           <span className={styles.excerpt}>{post.excerpt}</span>
 
           <span className={styles.action} aria-hidden="true">
-            {blogPageContent.card.action}
+            {t("card.action")}
             <ArrowUpRight strokeWidth={1.8} />
           </span>
         </span>
