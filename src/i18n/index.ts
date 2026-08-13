@@ -2,12 +2,14 @@ import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import commonEn from "./locales/en/common";
+import aboutPageEn from "./locales/en/aboutPage";
 import casinoAggregationEn from "./locales/en/casinoAggregation";
 import contactPageEn from "./locales/en/contactPage";
 import gameProviderEn from "./locales/en/gameProvider";
 import homeEn from "./locales/en/home";
 import blogEn from "./locales/en/blog";
 import commonEs from "./locales/es/common";
+import aboutPageEs from "./locales/es/aboutPage";
 import casinoAggregationEs from "./locales/es/casinoAggregation";
 import contactPageEs from "./locales/es/contactPage";
 import gameProviderEs from "./locales/es/gameProvider";
@@ -20,6 +22,7 @@ export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 const resources = {
   es: {
     common: commonEs,
+    aboutPage: aboutPageEs,
     casinoAggregation: casinoAggregationEs,
     contactPage: contactPageEs,
     gameProvider: gameProviderEs,
@@ -28,6 +31,7 @@ const resources = {
   },
   en: {
     common: commonEn,
+    aboutPage: aboutPageEn,
     casinoAggregation: casinoAggregationEn,
     contactPage: contactPageEn,
     gameProvider: gameProviderEn,
