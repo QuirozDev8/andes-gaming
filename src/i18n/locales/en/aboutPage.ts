@@ -67,6 +67,34 @@ const aboutPageEn = {
       },
     },
   },
+  map: {
+    eyebrow: "Regional presence",
+    titlePrefix: "Our technology",
+    titleAccent: "connects Latin America",
+    marketsAriaLabel: "Latin American markets where Andes Gaming operates",
+    imageAlt:
+      "Map of Latin America representing Andes Gaming's regional presence",
+    markets: {
+      argentina: "Argentina",
+      bolivia: "Bolivia",
+      brazil: "Brazil",
+      chile: "Chile",
+      colombia: "Colombia",
+      costaRica: "Costa Rica",
+      ecuador: "Ecuador",
+      elSalvador: "El Salvador",
+      guatemala: "Guatemala",
+      honduras: "Honduras",
+      mexico: "Mexico",
+      nicaragua: "Nicaragua",
+      panama: "Panama",
+      paraguay: "Paraguay",
+      peru: "Peru",
+      dominicanRepublic: "Dominican Republic",
+      uruguay: "Uruguay",
+      venezuela: "Venezuela",
+    },
+  },
 } as const;
 
 export default aboutPageEn;
