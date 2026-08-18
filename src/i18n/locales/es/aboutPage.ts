@@ -20,6 +20,53 @@ const aboutPageEs = {
     videoTitle: "Historia de Andes Gaming",
     thumbnailAlt: "Vista previa del video sobre la historia de Andes Gaming",
   },
+  purpose: {
+    backdrop: "NORTE",
+    eyebrow: "Lo que nos mueve",
+    titlePrefix: "Un mismo norte.",
+    titleAccent: "Infinitas posibilidades.",
+    mission: {
+      label: "Misión / hoy",
+      statement:
+        "Simplificar el iGaming para que operadores y proveedores avancen más rápido, conectados por tecnología que sí responde.",
+      support:
+        "Convertimos la complejidad operativa en conexiones simples, sólidas y listas para escalar.",
+    },
+    vision: {
+      label: "Visión / mañana",
+      statement:
+        "Ser la infraestructura que impulse la próxima generación del iGaming en Latinoamérica y más allá.",
+      support:
+        "Un ecosistema abierto, confiable y regional capaz de acercar oportunidades a cada mercado.",
+    },
+    values: {
+      title: "Así elegimos avanzar",
+      intro:
+        "Principios concretos que llevamos del discurso al producto y de la tecnología a cada relación.",
+      items: {
+        innovation: {
+          title: "Innovación útil",
+          description:
+            "Exploramos lo nuevo cuando resuelve mejor, acelera procesos y crea valor real.",
+        },
+        reliability: {
+          title: "Confianza que escala",
+          description:
+            "Respondemos con transparencia, tecnología robusta y compromisos que se cumplen.",
+        },
+        proximity: {
+          title: "Cercanía regional",
+          description:
+            "Entendemos cada mercado desde dentro y construimos relaciones de largo plazo.",
+        },
+        growth: {
+          title: "Crecimiento compartido",
+          description:
+            "Avanzamos cuando nuestros socios, nuestro equipo y el ecosistema avanzan con nosotros.",
+        },
+      },
+    },
+  },
 } as const;
 
 export default aboutPageEs;

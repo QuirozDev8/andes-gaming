@@ -20,6 +20,53 @@ const aboutPageEn = {
     videoTitle: "The Andes Gaming story",
     thumbnailAlt: "Preview of the video about the Andes Gaming story",
   },
+  purpose: {
+    backdrop: "NORTH",
+    eyebrow: "What drives us",
+    titlePrefix: "One true north.",
+    titleAccent: "Endless possibilities.",
+    mission: {
+      label: "Mission / today",
+      statement:
+        "Simplify iGaming so operators and providers can move faster, connected by technology that delivers.",
+      support:
+        "We turn operational complexity into simple, resilient connections built to scale.",
+    },
+    vision: {
+      label: "Vision / tomorrow",
+      statement:
+        "Become the infrastructure powering the next generation of iGaming across Latin America and beyond.",
+      support:
+        "An open, trusted, regional ecosystem capable of bringing opportunity closer to every market.",
+    },
+    values: {
+      title: "How we choose to move",
+      intro:
+        "Concrete principles we bring from words into the product, and from technology into every relationship.",
+      items: {
+        innovation: {
+          title: "Useful innovation",
+          description:
+            "We explore what is new when it solves better, moves faster, and creates real value.",
+        },
+        reliability: {
+          title: "Trust that scales",
+          description:
+            "We deliver with transparency, resilient technology, and commitments we keep.",
+        },
+        proximity: {
+          title: "Regional closeness",
+          description:
+            "We understand every market from within and build relationships for the long term.",
+        },
+        growth: {
+          title: "Shared growth",
+          description:
+            "We move forward when our partners, our team, and the ecosystem move with us.",
+        },
+      },
+    },
+  },
 } as const;
 
 export default aboutPageEn;
