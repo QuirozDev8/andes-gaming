@@ -1,4 +1,12 @@
 const commonEs = {
+  formSubmission: {
+    sending: "Enviando…",
+    successTitle: "¡Gracias por contactarnos, {{name}}!",
+    success: "Gracias. Recibimos tus datos y nos pondremos en contacto contigo.",
+    errorTitle: "No pudimos completar el envío",
+    error: "No pudimos enviar tus datos. Inténtalo nuevamente.",
+    dismiss: "Entendido",
+  },
   header: {
     navigationLabel: "Navegación principal",
     homeLabel: "Inicio de Andes Gaming",

@@ -1,4 +1,12 @@
 const commonEn = {
+  formSubmission: {
+    sending: "Sending…",
+    successTitle: "Thank you for contacting us, {{name}}!",
+    success: "Thank you. We received your details and will contact you soon.",
+    errorTitle: "We could not complete the submission",
+    error: "We could not send your details. Please try again.",
+    dismiss: "Got it",
+  },
   header: {
     navigationLabel: "Main navigation",
     homeLabel: "Andes Gaming home",

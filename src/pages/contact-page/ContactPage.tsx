@@ -1,4 +1,4 @@
-import { useEffect, type FormEvent } from "react";
+import { useEffect } from "react";
 import {
   BriefcaseBusiness,
   Building2,
@@ -11,7 +11,9 @@ import {
 import { useTranslation } from "react-i18next";
 import contactVisual from "../../assets/img/img-contact-page.png";
 import BtnElegant from "../../components/btn-elegant/BtnElegant";
+import { FormSubmissionStatus } from "../../components/form-submission-status/FormSubmissionStatus";
 import RevealOnScroll from "../../components/reveal-on-scroll/RevealOnScroll";
+import { useContactFormSubmission } from "../../hooks/useContactFormSubmission";
 import styles from "./ContactPage.module.css";
 
 const contactFields = [
@@ -65,7 +67,7 @@ const contactFields = [
     icon: Phone,
     id: "contact-page-whatsapp",
     name: "whatsapp",
-    required: false,
+    required: true,
     translationKey: "whatsapp",
     type: "tel",
   },
@@ -82,15 +84,19 @@ const contactFields = [
 
 export function ContactPage() {
   const { t } = useTranslation("contactPage");
+  const { t: tCommon } = useTranslation("common");
+  const {
+    dismissStatus,
+    handleSubmit,
+    isSubmitting,
+    status,
+    submittedName,
+  } = useContactFormSubmission("contact-page");
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
  
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   return (
     <div className={styles.page}>
       <section
@@ -174,6 +180,7 @@ export function ContactPage() {
                     <input
                       id="contact-page-consent"
                       name="privacyConsent"
+                      aria-required="true"
                       required
                       type="checkbox"
                     />
@@ -184,10 +191,21 @@ export function ContactPage() {
                     <BtnElegant
                       ariaLabel={t("form.submitLabel")}
                       className={styles.submitButton}
-                      text={t("form.submit")}
+                      disabled={isSubmitting}
+                      text={
+                        isSubmitting
+                          ? tCommon("formSubmission.sending")
+                          : t("form.submit")
+                      }
                       type="submit"
                     />
                   </div>
+
+                  <FormSubmissionStatus
+                    onDismiss={dismissStatus}
+                    status={status}
+                    submittedName={submittedName}
+                  />
                 </form>
               </div>
             </div>

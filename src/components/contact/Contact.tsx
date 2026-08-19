@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import bgContactHome from "../../assets/img/bg-contact-home.webp";
+import { FormSubmissionStatus } from "../form-submission-status/FormSubmissionStatus";
+import { useContactFormSubmission } from "../../hooks/useContactFormSubmission";
 import BtnElegant from "../btn-elegant/BtnElegant";
 import SectionTitle from "../section-title/SectionTitle";
 import styles from "./Contact.module.css";
@@ -70,7 +72,7 @@ const contactFields = [
     translationKey: "whatsapp",
     name: "whatsapp",
     autoComplete: "tel",
-    required: false,
+    required: true,
     type: "tel",
   },
   {
@@ -94,6 +96,14 @@ export function Contact({
   translationNamespace = "home",
 }: ContactProps) {
   const { t } = useTranslation(translationNamespace);
+  const { t: tCommon } = useTranslation("common");
+  const {
+    dismissStatus,
+    handleSubmit,
+    isSubmitting,
+    status,
+    submittedName,
+  } = useContactFormSubmission(sectionId);
   const titleId = `${sectionId}-title`;
 
   return (
@@ -119,7 +129,11 @@ export function Contact({
             <p className={styles.description}>{t("contact.description")}</p>
           </div>
 
-          <form aria-label={t("contact.formLabel")} className={styles.form}>
+          <form
+            aria-label={t("contact.formLabel")}
+            className={styles.form}
+            onSubmit={handleSubmit}
+          >
             <div className={styles.formGrid}>
               {contactFields.map((field) => {
                 const FieldIcon = field.icon;
@@ -158,6 +172,7 @@ export function Contact({
                 className={styles.consentInput}
                 id="contact-consent"
                 name="privacyConsent"
+                aria-required="true"
                 required
                 type="checkbox"
               />
@@ -168,10 +183,21 @@ export function Contact({
               <BtnElegant
                 ariaLabel={t("contact.submitLabel")}
                 className={styles.submitButton}
-                text={t("contact.submit")}
-                type="button"
+                disabled={isSubmitting}
+                text={
+                  isSubmitting
+                    ? tCommon("formSubmission.sending")
+                    : t("contact.submit")
+                }
+                type="submit"
               />
             </div>
+
+            <FormSubmissionStatus
+              onDismiss={dismissStatus}
+              status={status}
+              submittedName={submittedName}
+            />
           </form>
         </div>
       </div>
