@@ -3,46 +3,29 @@ import gsap from "gsap";
 import { useTranslation } from "react-i18next";
 import mapBackground from "../../../../assets/img/bg-map-about.webp";
 import latamMap from "../../../../assets/img/mapa-about-sinfondo.webp";
-import flagArgentina from "../../../../assets/img/flags/ar.svg";
-import flagBolivia from "../../../../assets/img/flags/bo.svg";
-import flagBrazil from "../../../../assets/img/flags/br.svg";
-import flagChile from "../../../../assets/img/flags/cl.svg";
-import flagColombia from "../../../../assets/img/flags/co.svg";
-import flagCostaRica from "../../../../assets/img/flags/cr.svg";
-import flagDominicanRepublic from "../../../../assets/img/flags/do.svg";
-import flagEcuador from "../../../../assets/img/flags/ec.svg";
-import flagGuatemala from "../../../../assets/img/flags/gt.svg";
-import flagHonduras from "../../../../assets/img/flags/hn.svg";
-import flagMexico from "../../../../assets/img/flags/mx.svg";
-import flagNicaragua from "../../../../assets/img/flags/ni.svg";
-import flagPanama from "../../../../assets/img/flags/pa.svg";
-import flagParaguay from "../../../../assets/img/flags/py.svg";
-import flagPeru from "../../../../assets/img/flags/pe.svg";
-import flagElSalvador from "../../../../assets/img/flags/sv.svg";
-import flagUruguay from "../../../../assets/img/flags/uy.svg";
-import flagVenezuela from "../../../../assets/img/flags/ve.svg";
+import flagSprite from "../../../../assets/img/flags/latam-flags.svg?url";
 import RevealOnScroll from "../../../../components/reveal-on-scroll/RevealOnScroll";
 import styles from "./MapAbout.module.css";
 
 const MARKETS = [
-  { flag: flagArgentina, translationKey: "argentina" },
-  { flag: flagBolivia, translationKey: "bolivia" },
-  { flag: flagBrazil, translationKey: "brazil" },
-  { flag: flagChile, translationKey: "chile" },
-  { flag: flagColombia, translationKey: "colombia" },
-  { flag: flagCostaRica, translationKey: "costaRica" },
-  { flag: flagEcuador, translationKey: "ecuador" },
-  { flag: flagElSalvador, translationKey: "elSalvador" },
-  { flag: flagGuatemala, translationKey: "guatemala" },
-  { flag: flagHonduras, translationKey: "honduras" },
-  { flag: flagMexico, translationKey: "mexico" },
-  { flag: flagNicaragua, translationKey: "nicaragua" },
-  { flag: flagPanama, translationKey: "panama" },
-  { flag: flagParaguay, translationKey: "paraguay" },
-  { flag: flagPeru, translationKey: "peru" },
-  { flag: flagDominicanRepublic, translationKey: "dominicanRepublic" },
-  { flag: flagUruguay, translationKey: "uruguay" },
-  { flag: flagVenezuela, translationKey: "venezuela" },
+  { flagId: "ar", translationKey: "argentina" },
+  { flagId: "bo", translationKey: "bolivia" },
+  { flagId: "br", translationKey: "brazil" },
+  { flagId: "cl", translationKey: "chile" },
+  { flagId: "co", translationKey: "colombia" },
+  { flagId: "cr", translationKey: "costaRica" },
+  { flagId: "ec", translationKey: "ecuador" },
+  { flagId: "sv", translationKey: "elSalvador" },
+  { flagId: "gt", translationKey: "guatemala" },
+  { flagId: "hn", translationKey: "honduras" },
+  { flagId: "mx", translationKey: "mexico" },
+  { flagId: "ni", translationKey: "nicaragua" },
+  { flagId: "pa", translationKey: "panama" },
+  { flagId: "py", translationKey: "paraguay" },
+  { flagId: "pe", translationKey: "peru" },
+  { flagId: "do", translationKey: "dominicanRepublic" },
+  { flagId: "uy", translationKey: "uruguay" },
+  { flagId: "ve", translationKey: "venezuela" },
 ] as const;
 
 export default function MapAbout() {
@@ -179,8 +162,6 @@ export default function MapAbout() {
 
     return () => {
       media.revert();
-      gsap.killTweensOf([background, map]);
-      gsap.set([background, map], { x: 0, y: 0 });
     };
   }, []);
 
@@ -230,16 +211,14 @@ export default function MapAbout() {
             <ul className={styles.markets}>
               {MARKETS.map((market) => (
                 <li className={styles.market} key={market.translationKey}>
-                  <img
+                  <svg
                     className={styles.flag}
-                    src={market.flag}
-                    alt=""
                     aria-hidden="true"
-                    width={36}
-                    height={36}
-                    decoding="async"
-                    draggable={false}
-                  />
+                    focusable="false"
+                    viewBox="0 0 36 36"
+                  >
+                    <use href={`${flagSprite}#flag-${market.flagId}`} />
+                  </svg>
                   <span className={styles.marketName}>
                     {t(`map.markets.${market.translationKey}`)}
                   </span>

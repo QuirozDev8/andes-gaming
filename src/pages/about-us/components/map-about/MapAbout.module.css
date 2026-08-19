@@ -225,7 +225,6 @@
   width: 1.55rem;
   height: 1.55rem;
   flex: 0 0 auto;
-  object-fit: contain;
   filter: drop-shadow(0 0.3rem 0.45rem rgba(var(--andes-blue-deep-rgb), 0.3));
   user-select: none;
 }

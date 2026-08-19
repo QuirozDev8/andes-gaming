@@ -95,6 +95,26 @@ const aboutPageEn = {
       venezuela: "Venezuela",
     },
   },
+  contact: {
+    eyebrow: "ANDES GAMING",
+    title: "LET'S CONNECT THE NEXT OPPORTUNITY",
+    description:
+      "Tell us what you want to build and discover how our technology can support your growth.",
+    formLabel: "About page contact form",
+    fields: {
+      name: "Full name",
+      role: "Job title",
+      company: "Company/Operation",
+      country: "Country",
+      email: "Email",
+      whatsapp: "WhatsApp",
+      website: "Website",
+    },
+    consent:
+      "I authorize ANDES GAMING to process my personal data for commercial purposes, including information, contact, promotions, and offers, in accordance with its Privacy Policy.",
+    submit: "Let's talk",
+    submitLabel: "Talk to Andes Gaming from the About page",
+  },
 } as const;
 
 export default aboutPageEn;

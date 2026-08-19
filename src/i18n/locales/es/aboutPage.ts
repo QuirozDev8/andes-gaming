@@ -95,6 +95,26 @@ const aboutPageEs = {
       venezuela: "Venezuela",
     },
   },
+  contact: {
+    eyebrow: "ANDES GAMING",
+    title: "CONECTEMOS LA PRÓXIMA OPORTUNIDAD",
+    description:
+      "Cuéntanos qué quieres construir y descubramos cómo nuestra tecnología puede acompañar tu crecimiento.",
+    formLabel: "Formulario de contacto de la página Nosotros",
+    fields: {
+      name: "Nombre completo",
+      role: "Cargo",
+      company: "Empresa/Operación",
+      country: "País",
+      email: "Correo electrónico",
+      whatsapp: "WhatsApp",
+      website: "Sitio web",
+    },
+    consent:
+      "Autorizo a ANDES GAMING a tratar mis datos personales para fines comerciales, incluyendo información, contacto, promociones y ofertas, conforme a su Política de Privacidad.",
+    submit: "Hablemos",
+    submitLabel: "Hablar con Andes Gaming desde la página Nosotros",
+  },
 } as const;
 
 export default aboutPageEs;

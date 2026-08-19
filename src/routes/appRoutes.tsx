@@ -7,14 +7,15 @@ import { CasinoAggregation } from "../pages/casino-aggregation/CasinoAggregation
 import { GameProvider } from "../pages/game-provider/GameProvider";
 import {Blog} from "../pages/blog/Blog";
 import { About } from "../pages/about-us/About";
+import { GameStudio } from "../pages/game-studio/GameStudio";
 
-const pendingPage = <EnDesarrollo />;
+ const pendingPage = <EnDesarrollo />;
 
 export const appRoutes = [
   { path: ROUTES.home, element: <Home /> },
   { path: ROUTES.casinoAggregation, element: <CasinoAggregation /> },
-  { path: ROUTES.gameStudio, element: pendingPage },
-  { path: "/game-studio", element: pendingPage },
+  { path: ROUTES.gameStudio, element: <GameStudio /> },
+  { path: "/game-studio", element: <GameStudio /> },
   { path: ROUTES.gameProviders, element: <GameProvider /> },
   { path: ROUTES.about, element: <About /> },
   { path: ROUTES.blog, element: <Blog /> },

@@ -86,7 +86,7 @@ const contactFields = [
 
 type ContactProps = {
   sectionId?: string;
-  translationNamespace?: "home" | "casinoAggregation";
+  translationNamespace?: "home" | "casinoAggregation" | "aboutPage";
 };
 
 export function Contact({

@@ -1,7 +1,7 @@
+import HeroGameStudio from "./components/hero-game-study/HeroGameStudio";
+
 export function GameStudio() {
-    return ( 
-        <p> esta es la página de estudio de juegos</p>
-    )
+  return <HeroGameStudio />;
 }
 
 export default GameStudio;
