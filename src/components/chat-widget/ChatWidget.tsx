@@ -9,6 +9,13 @@ const CHAT_SESSION_STORAGE_KEY = "n8n-chat/sessionId";
 const CHAT_ACTIVITY_STORAGE_KEY = "andes-chat/lastActivityAt";
 const CHAT_SESSION_TTL_MS = 24 * 60 * 60 * 1000;
 const CHAT_HISTORY_TIMEOUT_MS = 8_000;
+const N8N_FAILURE_MESSAGES = new Set([
+  "error: failed to receive response",
+  "error in workflow",
+  "workflow execution failed",
+  "workflow did not return a response",
+  "[no response received. this could happen if streaming is enabled in the trigger but disabled in agent node(s)]",
+]);
 
 type ChatApp = {
   unmount: () => void;
@@ -42,6 +49,7 @@ type ToggleCopy = {
   resetDescription: string;
   resetConfirm: string;
   resetCancel: string;
+  unavailableMessage: string;
 };
 
 type StoredSession = {
@@ -204,7 +212,7 @@ async function loadVisibleMessageHistory(
     .filter((message): message is VisibleChatMessage => message !== null);
 }
 
-function enhanceToggleAccessibility(
+function enhanceChatInterface(
   container: HTMLElement,
   copy: ToggleCopy,
   onResetConversation: () => void,
@@ -447,6 +455,39 @@ function enhanceToggleAccessibility(
     attributes: true,
   });
 
+  const replaceUnavailableResponses = () => {
+    const botMessages = container.querySelectorAll<HTMLElement>(
+      ".chat-message-from-bot",
+    );
+
+    botMessages.forEach((message) => {
+      const content = message.querySelector<HTMLElement>(
+        ".chat-message-markdown",
+      );
+      if (!content) return;
+
+      const responseText = content.textContent?.trim() ?? "";
+      const isKnownFailure = N8N_FAILURE_MESSAGES.has(
+        responseText.toLowerCase(),
+      );
+      if (responseText && !isKnownFailure) return;
+
+      const paragraph =
+        content.querySelector<HTMLParagraphElement>("p") ??
+        document.createElement("p");
+      paragraph.textContent = copy.unavailableMessage;
+
+      if (!paragraph.parentElement) content.replaceChildren(paragraph);
+    });
+  };
+
+  const responseObserver = new MutationObserver(replaceUnavailableResponses);
+  responseObserver.observe(chatWindow, {
+    childList: true,
+    characterData: true,
+    subtree: true,
+  });
+
   toggle.addEventListener("keydown", handleKeyDown);
   toggle.addEventListener("click", handleClick);
   resetButton.addEventListener("click", handleResetClick);
@@ -455,9 +496,11 @@ function enhanceToggleAccessibility(
   dialogBackdrop.addEventListener("click", handleBackdropClick);
   dialog.addEventListener("keydown", handleDialogKeyDown);
   syncExpandedState();
+  replaceUnavailableResponses();
 
   return () => {
     observer.disconnect();
+    responseObserver.disconnect();
     toggle.removeEventListener("keydown", handleKeyDown);
     toggle.removeEventListener("click", handleClick);
     resetButton.removeEventListener("click", handleResetClick);
@@ -499,6 +542,7 @@ function ChatWidget() {
       resetDescription: t("chatWidget.resetDescription"),
       resetConfirm: t("chatWidget.resetConfirm"),
       resetCancel: t("chatWidget.resetCancel"),
+      unavailableMessage: t("chatWidget.unavailableMessage"),
     }),
     [t],
   );
@@ -618,7 +662,7 @@ function ChatWidget() {
           },
         });
 
-        cleanupAccessibility = enhanceToggleAccessibility(
+        cleanupAccessibility = enhanceChatInterface(
           container,
           {
             open: copy.openToggle,
@@ -628,6 +672,7 @@ function ChatWidget() {
             resetDescription: copy.resetDescription,
             resetConfirm: copy.resetConfirm,
             resetCancel: copy.resetCancel,
+            unavailableMessage: copy.unavailableMessage,
           },
           resetConversation,
         );

@@ -22,6 +22,8 @@ const commonEs = {
       "El historial actual dejará de mostrarse y Andi-AI comenzará sin el contexto anterior.",
     resetConfirm: "Iniciar nueva conversación",
     resetCancel: "Continuar aquí",
+    unavailableMessage:
+      "En este momento no puedo atender tu consulta. Por favor, inténtalo de nuevo más tarde.",
   },
   header: {
     navigationLabel: "Navegación principal",

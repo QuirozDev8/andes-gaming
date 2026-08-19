@@ -22,6 +22,8 @@ const commonEn = {
       "The current history will no longer be shown and Andi-AI will start without the previous context.",
     resetConfirm: "Start new conversation",
     resetCancel: "Continue here",
+    unavailableMessage:
+      "I can't answer your question right now. Please try again later.",
   },
   header: {
     navigationLabel: "Main navigation",
