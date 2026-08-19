@@ -7,6 +7,22 @@ const commonEn = {
     error: "We could not send your details. Please try again.",
     dismiss: "Got it",
   },
+  chatWidget: {
+    title: "Andi-AI",
+    initialGreeting: "Hi! I'm Andi-AI, the Andes Gaming virtual assistant.",
+    initialInvitation: "How can I help you?",
+    getStarted: "New conversation",
+    inputPlaceholder: "Type your question...",
+    closeButton: "Close Andi-AI chat",
+    openToggle: "Open Andi-AI chat",
+    closeToggle: "Close Andi-AI chat",
+    newConversation: "Start a new conversation",
+    resetTitle: "Start a new conversation?",
+    resetDescription:
+      "The current history will no longer be shown and Andi-AI will start without the previous context.",
+    resetConfirm: "Start new conversation",
+    resetCancel: "Continue here",
+  },
   header: {
     navigationLabel: "Main navigation",
     homeLabel: "Andes Gaming home",

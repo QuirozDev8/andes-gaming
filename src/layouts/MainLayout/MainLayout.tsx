@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import ChatWidget from "../../components/chat-widget/ChatWidget";
 import styles from "./MainLayout.module.css";
 
 type MainLayoutProps = {
@@ -48,6 +49,8 @@ function MainLayout({ children }: MainLayoutProps) {
       <main className={styles.main}>{children}</main>
 
       <Footer />
+
+      <ChatWidget />
     </div>
   );
 }
