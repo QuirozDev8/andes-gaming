@@ -1,4 +1,11 @@
 #andes-chat {
+  --andes-chat-body-start: #111936;
+  --andes-chat-body-end: #171b33;
+  --andes-chat-bot-surface: #2a3152;
+  --andes-chat-user-start: #6f2bd9;
+  --andes-chat-user-end: #0e7490;
+  --andes-chat-footer-surface: #141a34;
+  --andes-chat-input-surface: #222943;
   --chat--color--primary: var(--andes-violet);
   --chat--color--primary-shade-50: var(--andes-violet-alt);
   --chat--color--primary--shade-100: #7708c4;
@@ -38,40 +45,34 @@
   --chat--heading--font-size: 1.2rem;
   --chat--body--background: linear-gradient(
     180deg,
-    rgba(var(--andes-blue-deep-rgb), 0.985),
-    rgba(var(--andes-blue-midnight-rgb), 0.99)
+    var(--andes-chat-body-start),
+    var(--andes-chat-body-end)
   );
   --chat--message--font-size: 0.9rem;
   --chat--message--padding: 0.8rem 0.95rem;
   --chat--message--border-radius: var(--radius-lg);
   --chat--message-line-height: 1.55;
   --chat--message--margin-bottom: 0.75rem;
-  --chat--message--bot--background: rgba(
-    var(--andes-blue-midnight-rgb),
-    0.96
-  );
-  --chat--message--bot--color: rgba(var(--andes-white-rgb), 0.9);
-  --chat--message--bot--border: 1px solid rgba(var(--andes-cyan-rgb), 0.2);
-  --chat--message--user--background: var(--andes-gradient-primary);
+  --chat--message--bot--background: var(--andes-chat-bot-surface);
+  --chat--message--bot--color: rgba(var(--andes-white-rgb), 0.96);
+  --chat--message--bot--border: 1px solid rgba(var(--andes-cyan-rgb), 0.32);
+  --chat--message--user--background: var(--andes-chat-user-start);
   --chat--message--user--color: var(--andes-white);
-  --chat--message--user--border: 0;
-  --chat--message--pre--background: rgba(var(--andes-blue-deep-rgb), 0.78);
+  --chat--message--user--border: 1px solid rgba(var(--andes-white-rgb), 0.14);
+  --chat--message--pre--background: rgba(var(--andes-blue-deep-rgb), 0.7);
   --chat--messages-list--padding: 1rem;
-  --chat--footer--background: rgba(var(--andes-blue-deep-rgb), 0.98);
+  --chat--footer--background: var(--andes-chat-footer-surface);
   --chat--footer--color: var(--color-text-secondary);
-  --chat--footer--border-top: 1px solid rgba(var(--andes-cyan-rgb), 0.18);
+  --chat--footer--border-top: 1px solid rgba(var(--andes-cyan-rgb), 0.3);
   --chat--input--background: transparent;
   --chat--input--text-color: var(--andes-white);
   --chat--input--font-size: 0.9rem;
   --chat--input--line-height: 1.45;
   --chat--input--border: 0;
   --chat--input--border-active: 0;
-  --chat--input--container--background: rgba(
-    var(--andes-blue-midnight-rgb),
-    0.94
-  );
+  --chat--input--container--background: var(--andes-chat-input-surface);
   --chat--input--container--border: 1px solid
-    rgba(var(--andes-gray-tech-rgb), 0.18);
+    rgba(var(--andes-cyan-rgb), 0.24);
   --chat--input--container--border-radius: var(--radius-lg);
   --chat--input--container--padding: 0.3rem 0.4rem 0.3rem 0.85rem;
   --chat--input--send--button--background: var(--andes-cyan);
@@ -93,7 +94,7 @@
 
 #andes-chat .chat-window {
   position: relative;
-  background: var(--andes-blue-deep);
+  background: var(--andes-chat-body-start);
   box-shadow:
     0 28px 80px rgba(var(--andes-blue-deep-rgb), 0.64),
     inset 0 0 0 1px rgba(var(--andes-cyan-rgb), 0.04);
@@ -358,11 +359,21 @@
 
 #andes-chat .chat-message {
   overflow-wrap: anywhere;
-  box-shadow: 0 10px 28px rgba(var(--andes-blue-deep-rgb), 0.2);
+  box-shadow:
+    0 10px 28px rgba(var(--andes-blue-deep-rgb), 0.28),
+    inset 0 0 0 1px rgba(var(--andes-white-rgb), 0.025);
 }
 
 #andes-chat .chat-message-from-user {
-  box-shadow: 0 12px 28px rgba(var(--andes-violet-rgb), 0.2);
+  background-color: var(--andes-chat-user-start);
+  background-image: linear-gradient(
+    135deg,
+    var(--andes-chat-user-start),
+    var(--andes-chat-user-end)
+  );
+  box-shadow:
+    0 12px 28px rgba(var(--andes-violet-rgb), 0.28),
+    inset 0 0 0 1px rgba(var(--andes-white-rgb), 0.05);
 }
 
 #andes-chat .chat-message-markdown a {
@@ -381,7 +392,7 @@
 }
 
 #andes-chat .chat-input::placeholder {
-  color: rgba(var(--andes-gray-tech-rgb), 0.54);
+  color: rgba(var(--andes-gray-tech-rgb), 0.68);
 }
 
 #andes-chat .chat-inputs:focus-within {
@@ -404,8 +415,8 @@
 }
 
 #andes-chat .chat-input-send-button[disabled] {
-  border-color: rgba(var(--andes-gray-tech-rgb), 0.12);
-  background: rgba(var(--andes-gray-tech-rgb), 0.09);
+  border-color: rgba(var(--andes-gray-tech-rgb), 0.2);
+  background: rgba(var(--andes-gray-tech-rgb), 0.14);
   box-shadow: none;
 }
 
