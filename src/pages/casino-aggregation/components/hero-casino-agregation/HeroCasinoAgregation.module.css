@@ -534,7 +534,7 @@
   .actions {
     display: grid;
     width: 100%;
-    max-width: 20rem;
+    max-width: 17.5rem;
     grid-template-columns: 1fr;
     justify-self: center;
     gap: var(--space-3);

@@ -208,23 +208,49 @@ export default function MapAbout() {
             aria-label={t("map.marketsAriaLabel")}
             tabIndex={0}
           >
-            <ul className={styles.markets}>
-              {MARKETS.map((market) => (
-                <li className={styles.market} key={market.translationKey}>
-                  <svg
-                    className={styles.flag}
-                    aria-hidden="true"
-                    focusable="false"
-                    viewBox="0 0 36 36"
+            <div className={styles.marketsTrack}>
+              <ul className={styles.markets}>
+                {MARKETS.map((market) => (
+                  <li className={styles.market} key={market.translationKey}>
+                    <svg
+                      className={styles.flag}
+                      aria-hidden="true"
+                      focusable="false"
+                      viewBox="0 0 36 36"
+                    >
+                      <use href={`${flagSprite}#flag-${market.flagId}`} />
+                    </svg>
+                    <span className={styles.marketName}>
+                      {t(`map.markets.${market.translationKey}`)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <ul
+                className={`${styles.markets} ${styles.marketsClone}`}
+                aria-hidden="true"
+              >
+                {MARKETS.map((market) => (
+                  <li
+                    className={styles.market}
+                    key={`clone-${market.translationKey}`}
                   >
-                    <use href={`${flagSprite}#flag-${market.flagId}`} />
-                  </svg>
-                  <span className={styles.marketName}>
-                    {t(`map.markets.${market.translationKey}`)}
-                  </span>
-                </li>
-              ))}
-            </ul>
+                    <svg
+                      className={styles.flag}
+                      aria-hidden="true"
+                      focusable="false"
+                      viewBox="0 0 36 36"
+                    >
+                      <use href={`${flagSprite}#flag-${market.flagId}`} />
+                    </svg>
+                    <span className={styles.marketName}>
+                      {t(`map.markets.${market.translationKey}`)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </RevealOnScroll>
 
