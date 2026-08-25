@@ -11,17 +11,42 @@ const FLIGHT_RESPONSE = 0.009;
 const FLIGHT_MOVEMENT_THRESHOLD = 0.08;
 const FLIGHT_SETTLE_THRESHOLD = 0.15;
 const POINTER_DIRECTION_THRESHOLD = 0.6;
- 
+const EXPLOSION_POOL_SIZE = 4;
+const EXPLOSION_SPARK_COUNT = 6;
+const MAX_ACTIVE_EXPLOSIONS = 3;
+const EXPLOSION_COOLDOWN = 450;
+const EXPLOSION_DISTANCE_MIN = 140;
+const EXPLOSION_DISTANCE_MAX = 220;
+
+const explosionPool = Array.from(
+  { length: EXPLOSION_POOL_SIZE },
+  (_, index) => index,
+);
+const explosionSparks = Array.from(
+  { length: EXPLOSION_SPARK_COUNT },
+  (_, index) => index,
+);
+const randomBetween = (min: number, max: number) =>
+  min + Math.random() * (max - min);
+
 export default function HeroGameStudio() {
   const { t } = useTranslation("home");
   const title = t("ownGames.eyebrow").toUpperCase();
   const heroRef = useRef<HTMLElement | null>(null);
+  const particleStageRef = useRef<HTMLDivElement | null>(null);
+  const explosionLayerRef = useRef<HTMLDivElement | null>(null);
   const helicopterRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const hero = heroRef.current;
+    const particleStage = particleStageRef.current;
+    const explosionLayer = explosionLayerRef.current;
     const helicopter = helicopterRef.current;
-    if (!hero || !helicopter) return;
+    if (!hero || !particleStage || !explosionLayer || !helicopter) return;
+
+    const explosionNodes = Array.from(
+      explosionLayer.querySelectorAll<HTMLElement>("[data-flight-explosion]"),
+    );
 
     const finePointer = window.matchMedia(
       "(hover: hover) and (pointer: fine)",
@@ -47,7 +72,149 @@ export default function HeroGameStudio() {
     let facingDirection: 1 | -1 = 1;
     let wakeStrength = 0;
     let wakeActive = false;
+    let activeExplosions = 0;
+    let distanceSinceExplosion = 0;
+    let lastExplosionTimestamp = Number.NEGATIVE_INFINITY;
+    let nextExplosionDistance = randomBetween(
+      EXPLOSION_DISTANCE_MIN,
+      EXPLOSION_DISTANCE_MAX,
+    );
+    let explosionSide: 1 | -1 = 1;
     let lastFrameTimestamp = performance.now();
+
+    const clearExplosions = () => {
+      explosionNodes.forEach((explosion) => {
+        explosion.classList.remove(styles.explosionActive);
+        explosion.removeAttribute("style");
+      });
+      activeExplosions = 0;
+    };
+
+    const handleExplosionEnd = (event: AnimationEvent) => {
+      const explosion = event.currentTarget as HTMLElement;
+      if (event.target !== explosion) return;
+
+      explosion.classList.remove(styles.explosionActive);
+      explosion.removeAttribute("style");
+      activeExplosions = Math.max(0, activeExplosions - 1);
+    };
+
+    explosionNodes.forEach((explosion) => {
+      explosion.addEventListener("animationend", handleExplosionEnd);
+    });
+
+    const keepExplosionClearOfTitle = (
+      candidateX: number,
+      candidateY: number,
+      heroRect: DOMRect,
+    ) => {
+      const stageRect = particleStage.getBoundingClientRect();
+      const safePadding = 32;
+      const safeLeft = stageRect.left - heroRect.left - safePadding;
+      const safeRight = stageRect.right - heroRect.left + safePadding;
+      const safeTop = stageRect.top - heroRect.top - safePadding;
+      const safeBottom = stageRect.bottom - heroRect.top + safePadding;
+
+      if (
+        candidateX <= safeLeft ||
+        candidateX >= safeRight ||
+        candidateY <= safeTop ||
+        candidateY >= safeBottom
+      ) {
+        return { x: candidateX, y: candidateY };
+      }
+
+      const exits = [
+        { distance: candidateX - safeLeft, x: safeLeft - 20, y: candidateY },
+        { distance: safeRight - candidateX, x: safeRight + 20, y: candidateY },
+        { distance: candidateY - safeTop, x: candidateX, y: safeTop - 20 },
+        { distance: safeBottom - candidateY, x: candidateX, y: safeBottom + 20 },
+      ];
+      exits.sort((first, second) => first.distance - second.distance);
+      return exits[0];
+    };
+
+    const spawnExplosion = (
+      timestamp: number,
+      directionX: number,
+      directionY: number,
+      speedFactor: number,
+    ) => {
+      if (
+        reducedMotion.matches ||
+        activeExplosions >= MAX_ACTIVE_EXPLOSIONS ||
+        timestamp - lastExplosionTimestamp < EXPLOSION_COOLDOWN
+      ) {
+        return false;
+      }
+
+      const explosion = explosionNodes.find(
+        (node) => !node.classList.contains(styles.explosionActive),
+      );
+      if (!explosion) return false;
+
+      const heroRect = hero.getBoundingClientRect();
+      const pathDistance = randomBetween(60, 125);
+      const pathOffset =
+        Math.random() < 0.76 ? -pathDistance : randomBetween(-24, 38);
+      const lateralOffset = randomBetween(34, 92) * explosionSide;
+      const perpendicularX = -directionY;
+      const perpendicularY = directionX;
+      const rawX =
+        currentX + directionX * pathOffset + perpendicularX * lateralOffset;
+      const rawY =
+        currentY + directionY * pathOffset + perpendicularY * lateralOffset;
+      const clearPosition = keepExplosionClearOfTitle(rawX, rawY, heroRect);
+      const horizontalGuard = clamp(heroRect.width * 0.065, 64, 92);
+      const verticalGuard = clamp(heroRect.height * 0.1, 58, 84);
+      const explosionX = clamp(
+        clearPosition.x,
+        horizontalGuard,
+        heroRect.width - horizontalGuard,
+      );
+      const explosionY = clamp(
+        clearPosition.y,
+        verticalGuard,
+        heroRect.height - verticalGuard,
+      );
+      const scale = randomBetween(0.82, 1.12) * (0.94 + speedFactor * 0.1);
+      const intensity = clamp(
+        randomBetween(0.78, 0.96) + speedFactor * 0.08,
+        0.78,
+        1,
+      );
+
+      explosion.style.setProperty("--explosion-x", `${explosionX}px`);
+      explosion.style.setProperty("--explosion-y", `${explosionY}px`);
+      explosion.style.setProperty("--explosion-scale", scale.toFixed(3));
+      explosion.style.setProperty(
+        "--explosion-rotation",
+        `${randomBetween(-24, 24).toFixed(2)}deg`,
+      );
+      explosion.style.setProperty(
+        "--explosion-intensity",
+        intensity.toFixed(3),
+      );
+      explosion.style.setProperty(
+        "--explosion-drift-x",
+        `${(-directionX * 18 + perpendicularX * explosionSide * 9).toFixed(2)}px`,
+      );
+      explosion.style.setProperty(
+        "--explosion-drift-y",
+        `${(-directionY * 18 + perpendicularY * explosionSide * 9).toFixed(2)}px`,
+      );
+      explosion.classList.add(styles.explosionActive);
+
+      activeExplosions += 1;
+      explosionSide = explosionSide === 1 ? -1 : 1;
+      lastExplosionTimestamp = timestamp;
+      distanceSinceExplosion = 0;
+      nextExplosionDistance = randomBetween(
+        EXPLOSION_DISTANCE_MIN,
+        EXPLOSION_DISTANCE_MAX,
+      );
+      return true;
+    };
 
     const queueRender = () => {
       if (animationFrame === null) {
@@ -106,6 +273,11 @@ export default function HeroGameStudio() {
         const directionY = movementY / movementDistance;
         const speedFactor = clamp(movementDistance / elapsed / 0.72, 0, 1);
         wakeStrength = wakeStrength * 0.62 + speedFactor * 0.38;
+        distanceSinceExplosion += movementDistance;
+
+        if (distanceSinceExplosion >= nextExplosionDistance) {
+          spawnExplosion(timestamp, directionX, directionY, speedFactor);
+        }
 
         helicopter.style.setProperty(
           "--wake-angle",
@@ -241,6 +413,11 @@ export default function HeroGameStudio() {
       pendingMovementX = 0;
       pendingMovementY = 0;
       wakeStrength = 0;
+      distanceSinceExplosion = 0;
+      nextExplosionDistance = randomBetween(
+        EXPLOSION_DISTANCE_MIN,
+        EXPLOSION_DISTANCE_MAX,
+      );
       helicopter.classList.remove(styles.helicopterActive);
       setWakeActive(false);
       if (animationFrame !== null) {
@@ -251,11 +428,18 @@ export default function HeroGameStudio() {
 
     const handleMotionPreference = () => {
       setWakeActive(false);
+      if (reducedMotion.matches) {
+        clearExplosions();
+        distanceSinceExplosion = 0;
+      }
       if (pointerInside) queueRender();
     };
 
     const handlePointerCapability = () => {
-      if (!finePointer.matches) handlePointerLeave();
+      if (!finePointer.matches) {
+        handlePointerLeave();
+        clearExplosions();
+      }
     };
 
     hero.addEventListener("pointerenter", handlePointerInput, {
@@ -274,6 +458,10 @@ export default function HeroGameStudio() {
       hero.removeEventListener("pointerleave", handlePointerLeave);
       reducedMotion.removeEventListener("change", handleMotionPreference);
       finePointer.removeEventListener("change", handlePointerCapability);
+      explosionNodes.forEach((explosion) => {
+        explosion.removeEventListener("animationend", handleExplosionEnd);
+      });
+      clearExplosions();
       if (animationFrame !== null) {
         window.cancelAnimationFrame(animationFrame);
       }
@@ -300,7 +488,11 @@ export default function HeroGameStudio() {
           {title}
         </h1>
 
-        <div className={styles.particleStage} aria-hidden="true">
+        <div
+          ref={particleStageRef}
+          className={styles.particleStage}
+          aria-hidden="true"
+        >
           <ParticleText
             text={title}
             particleSize={2}
@@ -329,6 +521,35 @@ export default function HeroGameStudio() {
         <span />
         <span />
         <span />
+      </div>
+
+      <div
+        ref={explosionLayerRef}
+        className={styles.explosionField}
+        aria-hidden="true"
+      >
+        {explosionPool.map((explosionIndex) => (
+          <div
+            className={styles.explosion}
+            data-flight-explosion
+            key={explosionIndex}
+          >
+            <span className={styles.explosionShockwave} />
+            <span className={styles.explosionFlash} />
+            <span className={styles.explosionFire} />
+            <span className={styles.explosionCore} />
+            <span className={styles.explosionSmoke}>
+              <span />
+              <span />
+              <span />
+            </span>
+            <span className={styles.explosionSparks}>
+              {explosionSparks.map((sparkIndex) => (
+                <span key={sparkIndex} />
+              ))}
+            </span>
+          </div>
+        ))}
       </div>
 
       <div
