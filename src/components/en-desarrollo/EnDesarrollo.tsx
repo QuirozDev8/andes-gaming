@@ -4,8 +4,7 @@ import { ROUTES } from "../../routes/routePaths";
 import styles from "./EnDesarrollo.module.css";
 
 export function EnDesarrollo() {
-  
-    return (
+  return (
     <section className={styles.page} aria-labelledby="development-title">
       <div className={styles.grid} aria-hidden="true" />
       <div className={styles.glowViolet} aria-hidden="true" />
@@ -20,8 +19,8 @@ export function EnDesarrollo() {
 
           <p className={styles.eyebrow}>Andes Gaming · Evolución continua</p>
           <h1 className={styles.title} id="development-title">
-            Estamos construyendo
-            <span> algo extraordinario</span>
+            <span className={styles.titleLead}>Estamos construyendo</span>
+            <span>algo extraordinario</span>
           </h1>
           <p className={styles.description}>
             Esta sección se encuentra en desarrollo. Muy pronto encontrarás aquí
