@@ -11,7 +11,7 @@ const FLIGHT_RESPONSE = 0.009;
 const FLIGHT_MOVEMENT_THRESHOLD = 0.08;
 const FLIGHT_SETTLE_THRESHOLD = 0.15;
 const POINTER_DIRECTION_THRESHOLD = 0.6;
-
+ 
 export default function HeroGameStudio() {
   const { t } = useTranslation("home");
   const title = t("ownGames.eyebrow").toUpperCase();

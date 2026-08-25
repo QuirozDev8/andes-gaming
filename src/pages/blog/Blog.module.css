@@ -42,7 +42,7 @@
     linear-gradient(rgba(var(--andes-cyan-rgb), 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--andes-cyan-rgb), 0.045) 1px, transparent 1px);
   background-size: 54px 54px;
-  mask-image: linear-gradient(180deg, transparent 5%, black 55%, transparent 100%);
+  mask-image: linear-  gradient(180deg, transparent 5%, black 55%, transparent 100%);
   opacity: 0.32;
   transform: perspective(700px) rotateX(68deg) translateY(50%);
   transform-origin: bottom;

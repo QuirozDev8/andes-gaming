@@ -6,7 +6,7 @@
     35rem,
     calc(100svh - var(--header-height) - 3rem),
     50rem
-  );
+  ); 
   overflow: hidden;
   color: var(--andes-white);
   background:
