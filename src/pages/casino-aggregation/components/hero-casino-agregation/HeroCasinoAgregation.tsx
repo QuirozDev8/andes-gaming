@@ -34,6 +34,7 @@ import styles from "./HeroCasinoAgregation.module.css";
 export function HeroCasinoAgregation() {
   const { t } = useTranslation("casinoAggregation");
 
+  /* imagenes que se renderizan en el domo-galery */
   const gameImages = [
     { src: adventuresBeyondImage, alt: "Adventures Beyond" },
     { src: aviatorImage, alt: "Aviator" },

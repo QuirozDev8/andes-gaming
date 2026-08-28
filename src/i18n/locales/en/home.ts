@@ -4,7 +4,7 @@ const homeEn = {
     titleFirst: "One API.",
     titleSecond: "A universe of games.",
     description:
-      "Connect providers, studios, and operators through a robust, scalable infrastructure built to accelerate your iGaming operation.",
+      "Connect once and access a global ecosystem of games and providers. It's time to simplify your operations",
     primaryCta: "Become a partner",
     secondaryCta: "Explore technology",
     visualLabel: "Main Andes Gaming visual",

@@ -4,7 +4,7 @@ import Metrics from "../home/components/metrics/Metrics";
 import Contact from "../../components/contact/Contact";
 import RevealOnScroll from "../../components/reveal-on-scroll/RevealOnScroll";
 import MisionVisionValores from "./components/mision-vision-valores/MisionVisionValores";
-import Certificaciones from "./components/certificaciones/Certificaciones";
+// import Certificaciones from "./components/certificaciones/Certificaciones";
 import MapAbout from "./components/map-about/MapAbout";
 import styles from "./About.module.css";
 
@@ -20,7 +20,7 @@ export function About() {
 
       <MapAbout />
 
-      <Certificaciones />
+     {/*  <Certificaciones /> */}
      
       <RevealOnScroll className={styles.revealBackdrop}>
         <Contact sectionId="contact-about" translationNamespace="aboutPage" />

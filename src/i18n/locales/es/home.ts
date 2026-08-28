@@ -4,7 +4,7 @@ const homeEs = {
     titleFirst: "Una sola API.",
     titleSecond: "Un universo de juegos.",
     description:
-      "Integra proveedores, estudios y operadores en una infraestructura robusta, escalable y preparada para acelerar tu operación iGaming.",
+      "Conecta una sola vez y accede a un ecosistema global de juegos y proveedores. Es el momento de simplificar tu operación.",
     primaryCta: "Conviértete en socio",
     secondaryCta: "Explorar tecnología",
     visualLabel: "Imagen principal de Andes Gaming",
