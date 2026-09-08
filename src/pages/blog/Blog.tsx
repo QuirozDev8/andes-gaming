@@ -15,8 +15,11 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock3,
+  Cpu,
   Network,
   Plus,
+  ShieldCheck,
+  Zap,
 } from "lucide-react";
 import BtnElegant from "../../components/btn-elegant/BtnElegant";
 import RevealOnScroll from "../../components/reveal-on-scroll/RevealOnScroll";
@@ -99,6 +102,20 @@ export function Blog() {
     categoryLabels.get(category) ?? category;
   const articleSlug = searchParams.get("articulo");
   const selectedPost = articleSlug ? postsBySlug.get(articleSlug) : undefined;
+  const ctaTitle = t("cta.title");
+  const ctaTitleParts = useMemo(() => {
+    const dotIndex = ctaTitle.indexOf(".");
+    if (dotIndex !== -1 && dotIndex < ctaTitle.length - 1) {
+      return {
+        primary: ctaTitle.slice(0, dotIndex + 1),
+        accent: ctaTitle.slice(dotIndex + 1).trim(),
+      };
+    }
+    return {
+      primary: ctaTitle,
+      accent: "",
+    };
+  }, [ctaTitle]);
 
   useEffect(() => {
     if (!articleSlug || selectedPost) return;
@@ -491,27 +508,93 @@ export function Blog() {
           as="section"
           className={styles.ctaSection}
         >
+          <span className={styles.ctaGlowOuterViolet} aria-hidden="true" />
+          <span className={styles.ctaGlowOuterCyan} aria-hidden="true" />
+
           <div className={styles.sectionContainer}>
             <div className={styles.ctaPanel}>
+              <div className={styles.ctaBeam} aria-hidden="true" />
+              <div className={styles.ctaPanelGrid} aria-hidden="true" />
+              <div className={styles.ctaGlowInnerViolet} aria-hidden="true" />
+              <div className={styles.ctaGlowInnerCyan} aria-hidden="true" />
+
+              <span
+                aria-hidden="true"
+                className={`${styles.techCorner} ${styles.cornerTL}`}
+              />
+              <span
+                aria-hidden="true"
+                className={`${styles.techCorner} ${styles.cornerTR}`}
+              />
+              <span
+                aria-hidden="true"
+                className={`${styles.techCorner} ${styles.cornerBL}`}
+              />
+              <span
+                aria-hidden="true"
+                className={`${styles.techCorner} ${styles.cornerBR}`}
+              />
+
               <div className={styles.ctaCopy}>
-                <span className={styles.sectionEyebrow}>
-                  {t("cta.eyebrow")}
-                </span>
-                <h2 id="blog-cta-title">{t("cta.title")}</h2>
-                <p>{t("cta.description")}</p>
+                <div className={styles.sectionEyebrow}>
+                  <span className={styles.eyebrowLed} aria-hidden="true" />
+                  <Network
+                    aria-hidden="true"
+                    className={styles.eyebrowIcon}
+                    size={14}
+                    strokeWidth={2}
+                  />
+                  <span>{t("cta.eyebrow")}</span>
+                </div>
+
+                <h2 className={styles.ctaTitle} id="blog-cta-title">
+                  <span className={styles.ctaTitlePrimary}>
+                    {ctaTitleParts.primary}
+                  </span>
+                  {ctaTitleParts.accent && (
+                    <span className={styles.ctaTitleAccent}>
+                      {ctaTitleParts.accent}
+                    </span>
+                  )}
+                </h2>
+
+                <p className={styles.ctaDescription}>{t("cta.description")}</p>
+
+                <div className={styles.ctaChips}>
+                  <div className={styles.techChip}>
+                    <Cpu aria-hidden="true" size={13} strokeWidth={2} />
+                    <span>Single API Core</span>
+                  </div>
+                  <div className={styles.techChip}>
+                    <ShieldCheck aria-hidden="true" size={13} strokeWidth={2} />
+                    <span>99.9% Uptime SLA</span>
+                  </div>
+                  <div className={styles.techChip}>
+                    <Zap aria-hidden="true" size={13} strokeWidth={2} />
+                    <span>Plug &amp; Play</span>
+                  </div>
+                </div>
               </div>
+
               <div className={styles.ctaActions}>
-                <BtnElegant
-                  ariaLabel={t("cta.primaryAction")}
-                  text={t("cta.primaryAction")}
-                  to={ROUTES.contact}
-                />
+                <div className={styles.primaryActionWrapper}>
+                  <BtnElegant
+                    ariaLabel={t("cta.primaryAction")}
+                    text={t("cta.primaryAction")}
+                    to={ROUTES.contact}
+                  />
+                </div>
                 <Link
                   className={styles.secondaryCta}
                   to={ROUTES.casinoAggregation}
                 >
-                  {t("cta.secondaryAction")}
-                  <ArrowUpRight aria-hidden="true" strokeWidth={1.8} />
+                  <span>{t("cta.secondaryAction")}</span>
+                  <span
+                    aria-hidden="true"
+                    className={styles.secondaryCtaIconFrame}
+                  >
+                    <ArrowUpRight strokeWidth={2} />
+                  </span>
                 </Link>
               </div>
             </div>
