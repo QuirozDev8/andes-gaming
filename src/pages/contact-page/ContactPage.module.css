@@ -247,7 +247,8 @@
   gap: 0.38rem;
 }
 
-.field:last-child {
+.field:last-child,
+.fieldFullWidth {
   grid-column: 1 / -1;
 }
 
@@ -290,6 +291,12 @@
     transform var(--transition-base);
 }
 
+.textareaShell {
+  align-items: flex-start;
+  min-height: 7rem;
+  padding-block: var(--space-3);
+}
+
 .field:focus-within .inputShell {
   border-color: rgba(var(--andes-violet-rgb), 0.62);
   background: var(--andes-white);
@@ -306,6 +313,10 @@
   color: #5c6bd4;
 }
 
+.textareaIcon {
+  margin-top: 0.15rem;
+}
+
 .inputShell input {
   width: 100%;
   min-width: 0;
@@ -317,7 +328,23 @@
   font-weight: var(--font-weight-semibold);
 }
 
-.inputShell input::placeholder {
+.inputShell textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 5.4rem;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--andes-blue-deep);
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.inputShell input::placeholder,
+.inputShell textarea::placeholder {
   color: rgba(var(--andes-blue-deep-rgb), 0.36);
 }
 
@@ -432,7 +459,8 @@
     grid-template-columns: 1fr;
   }
 
-  .field:last-child {
+  .field:last-child,
+  .fieldFullWidth {
     grid-column: auto;
   }
 

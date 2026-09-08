@@ -221,7 +221,8 @@
   gap: var(--space-2);
 }
 
-.field:last-child {
+.field:last-child,
+.fieldFullWidth {
   grid-column: 1 / -1;
 }
 
@@ -256,6 +257,12 @@
     background var(--transition-base);
 }
 
+.textareaShell {
+  align-items: flex-start;
+  min-height: 7.2rem;
+  padding: var(--space-3);
+}
+
 .field:focus-within .inputShell {
   border-color: rgba(var(--andes-cyan-rgb), 0.88);
   background: rgba(var(--andes-blue-deep-rgb), 0.38);
@@ -272,6 +279,10 @@
   color: rgba(var(--andes-gray-tech-rgb), 0.88);
 }
 
+.textareaIcon {
+  margin-top: 0.15rem;
+}
+
 .input {
   width: 100%;
   min-width: 0;
@@ -285,7 +296,23 @@
   outline: none;
 }
 
-.input::placeholder {
+.textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 5.4rem;
+  border: 0;
+  background: transparent;
+  color: var(--andes-white);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.45;
+  outline: none;
+  resize: vertical;
+}
+
+.input::placeholder,
+.textarea::placeholder {
   color: rgba(var(--andes-gray-tech-rgb), 0.68);
 }
 
@@ -379,7 +406,8 @@
     grid-template-columns: 1fr;
   }
 
-  .field:last-child {
+  .field:last-child,
+  .fieldFullWidth {
     grid-column: auto;
   }
 
@@ -409,7 +437,8 @@
   }
 
   .fieldLabel,
-  .input {
+  .input,
+  .textarea {
     font-size: 0.76rem;
   }
 

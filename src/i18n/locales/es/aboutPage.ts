@@ -109,6 +109,7 @@ const aboutPageEs = {
       email: "Correo electrónico",
       whatsapp: "WhatsApp",
       website: "Sitio web",
+      contactReason: "Motivo contacto",
     },
     consent:
       "Autorizo a ANDES GAMING a tratar mis datos personales para fines comerciales, incluyendo información, contacto, promociones y ofertas, conforme a su Política de Privacidad.",

@@ -5,6 +5,7 @@ import {
   Globe2,
   Mail,
   MapPin,
+  MessageSquare,
   Phone,
   UserRound,
 } from "lucide-react";
@@ -25,6 +26,7 @@ const contactFields = [
     required: true,
     translationKey: "name",
     type: "text",
+    fullWidth: false,
   },
   {
     autoComplete: "organization-title",
@@ -34,6 +36,7 @@ const contactFields = [
     required: true,
     translationKey: "role",
     type: "text",
+    fullWidth: false,
   },
   {
     autoComplete: "organization",
@@ -43,6 +46,7 @@ const contactFields = [
     required: true,
     translationKey: "company",
     type: "text",
+    fullWidth: false,
   },
   {
     autoComplete: "country-name",
@@ -52,6 +56,7 @@ const contactFields = [
     required: true,
     translationKey: "country",
     type: "text",
+    fullWidth: false,
   },
   {
     autoComplete: "email",
@@ -61,6 +66,7 @@ const contactFields = [
     required: true,
     translationKey: "email",
     type: "email",
+    fullWidth: false,
   },
   {
     autoComplete: "tel",
@@ -70,6 +76,7 @@ const contactFields = [
     required: true,
     translationKey: "whatsapp",
     type: "tel",
+    fullWidth: false,
   },
   {
     autoComplete: "url",
@@ -79,6 +86,17 @@ const contactFields = [
     required: false,
     translationKey: "website",
     type: "url",
+    fullWidth: true,
+  },
+  {
+    autoComplete: "off",
+    icon: MessageSquare,
+    id: "contact-page-reason",
+    name: "contactReason",
+    required: true,
+    translationKey: "contactReason",
+    type: "textarea",
+    fullWidth: true,
   },
 ] as const;
 
@@ -134,9 +152,15 @@ export function ContactPage() {
                       const fieldLabel = t(
                         `form.fields.${field.translationKey}`,
                       );
+                      const isTextarea = field.type === "textarea";
 
                       return (
-                        <div className={styles.field} key={field.id}>
+                        <div
+                          className={`${styles.field} ${
+                            field.fullWidth ? styles.fieldFullWidth : ""
+                          }`}
+                          key={field.id}
+                        >
                           <label htmlFor={field.id}>
                             {fieldLabel}
                             {field.required ? (
@@ -153,20 +177,36 @@ export function ContactPage() {
                             )}
                           </label>
 
-                          <div className={styles.inputShell}>
+                          <div
+                            className={`${styles.inputShell} ${
+                              isTextarea ? styles.textareaShell : ""
+                            }`}
+                          >
                             <FieldIcon
                               aria-hidden="true"
-                              className={styles.fieldIcon}
+                              className={`${styles.fieldIcon} ${
+                                isTextarea ? styles.textareaIcon : ""
+                              }`}
                               strokeWidth={1.8}
                             />
-                            <input
-                              autoComplete={field.autoComplete}
-                              id={field.id}
-                              name={field.name}
-                              placeholder={fieldLabel}
-                              required={field.required}
-                              type={field.type}
-                            />
+                            {isTextarea ? (
+                              <textarea
+                                id={field.id}
+                                name={field.name}
+                                placeholder={fieldLabel}
+                                required={field.required}
+                                rows={3}
+                              />
+                            ) : (
+                              <input
+                                autoComplete={field.autoComplete}
+                                id={field.id}
+                                name={field.name}
+                                placeholder={fieldLabel}
+                                required={field.required}
+                                type={field.type}
+                              />
+                            )}
                           </div>
                         </div>
                       );

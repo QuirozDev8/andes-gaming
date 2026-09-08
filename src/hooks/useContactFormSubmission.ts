@@ -29,6 +29,7 @@ function getContactFormFields(form: HTMLFormElement): ContactFormFields {
     email: readString(formData, "email"),
     whatsapp: readString(formData, "whatsapp"),
     website: readString(formData, "website"),
+    contactReason: readString(formData, "contactReason"),
     privacyConsent: formData.has("privacyConsent"),
   };
 }

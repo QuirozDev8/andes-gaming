@@ -5,6 +5,7 @@ import {
   Globe2,
   Mail,
   MapPin,
+  MessageSquare,
   Phone,
   UserRound,
 } from "lucide-react";
@@ -29,6 +30,7 @@ const contactFields = [
     autoComplete: "name",
     required: true,
     type: "text",
+    fullWidth: false,
   },
   {
     icon: BriefcaseBusiness,
@@ -38,6 +40,7 @@ const contactFields = [
     autoComplete: "organization-title",
     required: true,
     type: "text",
+    fullWidth: false,
   },
   {
     icon: Building2,
@@ -47,6 +50,7 @@ const contactFields = [
     autoComplete: "organization",
     required: true,
     type: "text",
+    fullWidth: false,
   },
   {
     icon: MapPin,
@@ -56,6 +60,7 @@ const contactFields = [
     autoComplete: "country-name",
     required: true,
     type: "text",
+    fullWidth: false,
   },
   {
     icon: Mail,
@@ -65,6 +70,7 @@ const contactFields = [
     autoComplete: "email",
     required: true,
     type: "email",
+    fullWidth: false,
   },
   {
     icon: Phone,
@@ -74,6 +80,7 @@ const contactFields = [
     autoComplete: "tel",
     required: true,
     type: "tel",
+    fullWidth: false,
   },
   {
     icon: Globe2,
@@ -83,6 +90,17 @@ const contactFields = [
     autoComplete: "url",
     required: false,
     type: "url",
+    fullWidth: true,
+  },
+  {
+    icon: MessageSquare,
+    id: "contact-reason",
+    translationKey: "contactReason",
+    name: "contactReason",
+    autoComplete: "off",
+    required: true,
+    type: "textarea",
+    fullWidth: true,
   },
 ] as const;
 
@@ -138,34 +156,57 @@ export function Contact({
               {contactFields.map((field) => {
                 const FieldIcon = field.icon;
                 const fieldText = t(`contact.fields.${field.translationKey}`);
+                const isTextarea = field.type === "textarea";
 
                 return (
-                  <div className={styles.field} key={field.id}>
+                  <div
+                    className={`${styles.field} ${
+                      field.fullWidth ? styles.fieldFullWidth : ""
+                    }`}
+                    key={field.id}
+                  >
                     <label className={styles.fieldLabel} htmlFor={field.id}>
                       {fieldText}
                       {field.required && (
                         <span className={styles.requiredMark}>*</span>
                       )}
                     </label>
-                    <div className={styles.inputShell}>
+                    <div
+                      className={`${styles.inputShell} ${
+                        isTextarea ? styles.textareaShell : ""
+                      }`}
+                    >
                       <FieldIcon
-                        className={styles.fieldIcon}
+                        className={`${styles.fieldIcon} ${
+                          isTextarea ? styles.textareaIcon : ""
+                        }`}
                         strokeWidth={1.8}
                       />
-                      <input
-                        autoComplete={field.autoComplete}
-                        className={styles.input}
-                        id={field.id}
-                        name={field.name}
-                        placeholder={fieldText}
-                        required={field.required}
-                        type={field.type}
-                      />
+                      {isTextarea ? (
+                        <textarea
+                          className={styles.textarea}
+                          id={field.id}
+                          name={field.name}
+                          placeholder={fieldText}
+                          required={field.required}
+                          rows={3}
+                        />
+                      ) : (
+                        <input
+                          autoComplete={field.autoComplete}
+                          className={styles.input}
+                          id={field.id}
+                          name={field.name}
+                          placeholder={fieldText}
+                          required={field.required}
+                          type={field.type}
+                        />
+                      )}
                     </div>
                   </div>
                 );
               })}
-            </div>
+            </div> 
 
             <label className={styles.consent} htmlFor="contact-consent">
               <input

@@ -10,6 +10,7 @@ export type ContactFormFields = {
   email: string;
   whatsapp: string;
   website: string;
+  contactReason: string;
   privacyConsent: boolean;
 };
 

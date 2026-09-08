@@ -301,6 +301,7 @@ const casinoAggregationEn = {
       email: "Email",
       whatsapp: "WhatsApp",
       website: "Website",
+      contactReason: "Reason for contact",
     },
     consent:
       "I authorize ANDES GAMING to process my personal data for commercial purposes, including information, contact, promotions, and offers, in accordance with its Privacy Policy.",
