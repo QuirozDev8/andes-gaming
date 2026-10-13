@@ -11,6 +11,7 @@ type BtnElegantBaseProps = {
   ariaLabel?: string;
   className?: string;
   disabled?: boolean;
+  showIcon?: boolean;
   text: string;
 };
 
@@ -52,20 +53,28 @@ function getClassName(className?: string) {
   return [styles.button, className].filter(Boolean).join(" ");
 }
 
-function BtnElegantContent({ text }: { text: string }) {
+function BtnElegantContent({
+  showIcon = true,
+  text,
+}: {
+  showIcon?: boolean;
+  text: string;
+}) {
   return (
     <span className={styles.inner}>
       <span className={styles.topWhite} aria-hidden="true" />
       <span className={styles.label}>{text}</span>
-      <span className={styles.icon} aria-hidden="true">
-        <Rocket strokeWidth={1.8} />
-      </span>
+      {showIcon ? (
+        <span className={styles.icon} aria-hidden="true">
+          <Rocket strokeWidth={1.8} />
+        </span>
+      ) : null}
     </span>
   );
 }
 
 function BtnElegant(props: BtnElegantProps) {
-  const { ariaLabel, className, disabled, text } = props;
+  const { ariaLabel, className, disabled, showIcon, text } = props;
 
   if (isLinkButton(props)) {
     const { onClick, to } = props;
@@ -88,7 +97,7 @@ function BtnElegant(props: BtnElegantProps) {
         tabIndex={disabled ? -1 : undefined}
         to={to}
       >
-        <BtnElegantContent text={text} />
+        <BtnElegantContent showIcon={showIcon} text={text} />
       </Link>
     );
   }
@@ -107,7 +116,7 @@ function BtnElegant(props: BtnElegantProps) {
         tabIndex={disabled ? -1 : undefined}
         target={target}
       >
-        <BtnElegantContent text={text} />
+        <BtnElegantContent showIcon={showIcon} text={text} />
       </a>
     );
   }
@@ -122,7 +131,7 @@ function BtnElegant(props: BtnElegantProps) {
       onClick={onClick}
       type={type}
     >
-      <BtnElegantContent text={text} />
+      <BtnElegantContent showIcon={showIcon} text={text} />
     </button>
   );
 }

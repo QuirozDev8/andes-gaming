@@ -153,14 +153,14 @@ function Footer() {
                 {t("footer.contact.title")}
               </h2>
 
-              <a className={styles.contactItem} href="mailto:hello@andesgaming.com">
+              <a className={styles.contactItem} href="mailto:sales@andesgaming.com">
                 <span className={styles.contactIcon} aria-hidden="true">
                   <svg viewBox="0 0 24 24" role="img">
                     <path d="M4 6h16v12H4z" />
                     <path d="m4 7 8 6 8-6" />
                   </svg>
                 </span>
-                correojemplo@andesgaming.com
+                sales@andesgaming.com
               </a>
 
               <p className={styles.contactItem}>

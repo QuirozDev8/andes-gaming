@@ -82,7 +82,7 @@
 
 .header {
   display: flex;
-  max-width: 54rem;
+  max-width: 62rem;
   align-items: center;
   margin: 0 auto;
   flex-direction: column;
@@ -139,7 +139,7 @@
 }
 
 .introduction {
-  max-width: 42rem;
+  max-width: 62rem;
   margin: var(--space-5) 0 0;
   color: var(--color-text-secondary);
   font-size: clamp(0.92rem, 1.4vw, var(--text-md));

@@ -131,7 +131,7 @@
 }
 
 .description {
-  width: min(100%, 44rem);
+  width: min(100%, 62rem);
   margin: clamp(0.5rem, 1vw, 1rem) 0 0;
   color: rgba(var(--andes-gray-tech-rgb), 0.8);
   font-size: clamp(0.92rem, 1.25vw, 1.12rem);

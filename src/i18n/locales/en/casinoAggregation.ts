@@ -1,40 +1,42 @@
 const casinoAggregationEn = {
   trustedBrands: {
-    title: "These brands already trust our technology",
+    title: "TRUSTED BY CASINO OPERATORS",
     ariaLabel: "Brands that trust Andes Gaming technology",
     cta: "Let's talk about your project",
   },
+
   hero: {
     eyebrow: "Casino Aggregation",
     title: {
-      primaryFirst: "One single",
-      primarySecond: "connection",
-      accentFirst: "A whole world",
+      primaryFirst: "ONE CONNECTION",
+      primarySecond: "",
+      accentFirst: "A WORLD OF GAMES",
       accentSecond: "of games.",
-    },
+    }, 
     description:
-      "Connect your operation with an ecosystem of engaging, flexible casino experiences ready to grow with your business.",
+      "Build the casino your players want to choose. Expand your offering with thousands of games and create new opportunities to attract, engage, and grow.",
     categories: {
       ariaLabel: "Game categories",
       slots: "Slots",
       liveCasino: "Live casino",
       instantGames: "Crash & instant games",
+      tableGames: "Tables Games",
     },
     metrics: {
       ariaLabel: "Casino Aggregation key figures",
       providers: {
-        value: "+200",
+        value: "+90",
         label: "Integrated providers",
       },
       games: {
-        value: "+15,000",
+        value: "+12,000",
         label: "Available games",
       },
     },
     actions: {
-      expert: "Talk to an expert",
+      expert: "LET’S TALK",
       expertLabel: "Talk to an Andes Gaming expert",
-      explore: "Explore the universe",
+      explore: "EXPLORE PROVIDERS",
     },
     world: {
       badgeTitle: "Explore without limits",
@@ -51,6 +53,7 @@ const casinoAggregationEn = {
       },
     },
   },
+
   benefits: {
     eyebrow: "Key benefits",
     title: {
@@ -58,40 +61,41 @@ const casinoAggregationEn = {
       accent: "More opportunities.",
     },
     description:
-      "Centralize your casino operation and move forward with a platform built to grow with you.",
+      "Reduce operational workload and spend more time on what truly moves your business forward: creating a better player experience and growing your casino.",
     ariaLabel: "Casino Aggregation benefits",
     swipeHint: "Swipe to explore",
     items: {
       faster: {
-        title: "Integrate faster",
+        title: "LAUNCH FASTER",
         description:
-          "Connect multiple providers through one technology layer and reduce implementation time.",
+          "Add new providers and content with greater agility to seize opportunities when they matter.",
       },
       relevant: {
-        title: "Keep your offering relevant",
+        title: "WIN OVER MORE PLAYERS",
         description:
-          "Expand your catalog with experiences for different markets and player profiles.",
+          "Build a diverse, engaging offering that connects with different player profiles and preferences.",
       },
       control: {
-        title: "Operate with greater control",
+        title: "STAY IN CONTROL",
         description:
-          "Manage content, availability, and visibility from one centralized environment.",
+          "Manage content and key information from one centralized environment and operate with greater clarity.",
       },
       scale: {
-        title: "Scale without friction",
+        title: "TAKE YOUR CASINO FURTHER",
         description:
-          "Expand brands and markets on infrastructure designed to support your operation.",
+          "Expand your offering on an infrastructure built to support your operation as it evolves.",
       },
     },
   },
+
   integration: {
-    eyebrow: "How integration works",
+    eyebrow: "HOW IT WORKS",
     title: {
-      primary: "One connection.",
-      accent: "Your entire casino ecosystem.",
+      primary: "YOUR CASINO, ",
+      accent: "READY FOR MORE.",
     },
     description:
-      "Connect your platform once and access providers, games, and operational tools through one unified integration layer.",
+      "Connect your operation with Andes and open the door to more content, new experiences, and more possibilities to keep evolving.",
     diagramLabel:
       "Interactive diagram showing the connection between your platform, Andes Gaming API, and the casino ecosystem",
     navigationLabel: "Explore the integration flow",
@@ -100,8 +104,8 @@ const casinoAggregationEn = {
     detailLabel: "Integration layer",
     nodes: {
       platform: {
-        title: "Your platform",
-        summary: "Your operation and player experience",
+        title: "YOUR CASINO",
+        summary: "Your brand, your players, your strategy.",
         description:
           "Your existing channels connect to Andes Gaming through a single, consistent integration point.",
         capabilities: {
@@ -112,8 +116,8 @@ const casinoAggregationEn = {
         },
       },
       andes: {
-        title: "Andes Gaming API",
-        summary: "One secure and scalable connection",
+        title: "ANDES GAMING",
+        summary: "The technology connecting your operation to new possibilities.",
         description:
           "A unified technology layer centralizes content, sessions, operations, and control so your team can move faster.",
         capabilities: {
@@ -124,8 +128,8 @@ const casinoAggregationEn = {
         },
       },
       ecosystem: {
-        title: "Casino ecosystem",
-        summary: "Content ready to grow with you",
+        title: "WHAT COMES NEXT",
+        summary: "More content and experiences to take your casino further.",
         description:
           "Expand your offering from one connection with a broad ecosystem of providers and experiences for every player profile.",
         capabilities: {
@@ -137,6 +141,7 @@ const casinoAggregationEn = {
       },
     },
   },
+
   successCases: {
     eyebrow: "Success stories",
     title: {
@@ -279,14 +284,16 @@ const casinoAggregationEn = {
       },
     },
   },
+
   providers: {
-    eyebrow: "Our partnerships",
-    title: "Providers we work with",
+    eyebrow: "OUR ECOSYSTEM",
+    title: "THE GAMES YOUR PLAYERS WANT, WITHIN REACH. ",
     description:
-      "We work with leading industry providers to deliver a diverse, competitive catalog ready to grow.",
+      "Connect your casino to an ecosystem of providers and build an offering that’s more diverse, engaging, and ready to compete for your players’ attention.",
     ariaLabel: "Featured casino providers",
     cta: "View all providers",
   },
+
   contact: {
     eyebrow: "CASINO AGGREGATION",
     title: "LET'S BUILD YOUR CASINO OFFERING",
@@ -305,7 +312,7 @@ const casinoAggregationEn = {
     },
     consent:
       "I authorize ANDES GAMING to process my personal data for commercial purposes, including information, contact, promotions, and offers, in accordance with its Privacy Policy.",
-    submit: "Let's talk",
+    submit: "CONNECT NOW ",
     submitLabel: "Talk to Andes Gaming about Casino Aggregation",
   },
 } as const;

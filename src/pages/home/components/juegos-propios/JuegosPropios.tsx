@@ -297,7 +297,7 @@ export function JuegosPropios() {
 
                   <div
                     className="juegos-propios__dots"
-                    aria-label={t("ownGames.select")}
+                  aria-label={t("ownGames.select")}
                   >
                     {games.map((game, index) => (
                       <button
@@ -324,7 +324,7 @@ export function JuegosPropios() {
               className="juegos-propios__link juegos-propios__link--mobile"
               to="/game-studio"
             >
-              {t("ownGames.cta")}
+                  {t("ownGames.cta")}
               <ArrowRight aria-hidden="true" strokeWidth={2} />
             </Link>
           </div>

@@ -22,6 +22,7 @@ export interface SliderMarcasProps {
   titulo?: string;
   ctaTexto?: string;
   ctaRuta?: string;
+  ctaShowIcon?: boolean;
   className?: string;
   ariaLabel?: string;
   duracionSegundos?: number;
@@ -75,6 +76,7 @@ export function SliderMarcas({
   titulo,
   ctaTexto,
   ctaRuta,
+  ctaShowIcon = true,
   className = "",
   ariaLabel = "Marcas que trabajan con nosotros",
   duracionSegundos = 28,
@@ -117,7 +119,7 @@ export function SliderMarcas({
       </div>
       {ctaTexto && ctaRuta ? (
         <div className={styles.cta}>
-          <BtnElegant text={ctaTexto} to={ctaRuta} />
+          <BtnElegant showIcon={ctaShowIcon} text={ctaTexto} to={ctaRuta} />
         </div>
       ) : null}
     </section>

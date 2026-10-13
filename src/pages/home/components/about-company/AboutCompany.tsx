@@ -12,10 +12,10 @@ import { ROUTES } from "../../../../routes/routePaths";
 import styles from "./AboutCompany.module.css";
 
 const benefits = [
-  { translationKey: "singleApi", icon: Network },
-  { translationKey: "providers", icon: UsersRound },
-  { translationKey: "scalable", icon: ChartNoAxesCombined },
-  { translationKey: "management", icon: ShieldCheck },
+  { translationKey: "connection", icon: Network },
+  { translationKey: "allInOne", icon: UsersRound },
+  { translationKey: "growingPortfolio", icon: ChartNoAxesCombined },
+  { translationKey: "operatorExpertise", icon: ShieldCheck },
 ] as const;
 
 export function AboutCompany() {

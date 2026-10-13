@@ -92,7 +92,7 @@
 }
 
 .panelHeader h2 {
-  max-width: 20ch;
+  max-width: 32ch;
   margin: var(--space-4) 0 0;
   color: var(--andes-blue-deep);
   font-family: var(--font-heading);
@@ -100,7 +100,7 @@
   font-style: italic;
   font-weight: var(--font-weight-black);
   letter-spacing: -0.035em;
-  line-height: 1;
+  line-height: 1.08;
   text-transform: uppercase;
   text-wrap: balance;
 }

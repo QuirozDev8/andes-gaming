@@ -22,11 +22,11 @@
   position: relative;
   z-index: 2;
   display: flex;
-  width: min(100%, 58rem);
+  width: min(100%, 88rem);
   flex-direction: column;
   align-items: center;
   margin-inline: auto;
-  padding: clamp(2rem, 2.8vw, 3.35rem) clamp(1.5rem, 4vw, 4rem) 0;
+  padding: clamp(2rem, 2.8vw, 3.35rem) clamp(1.5rem, 3vw, 3rem) 0;
   text-align: center;
 }
 
@@ -129,8 +129,8 @@
 }
 
 .title {
-  max-width: none;
-  margin: clamp(0.75rem, 1.1vw, 1.15rem) 0 0;
+  width: 100%;
+  margin: clamp(0.35rem, 0.55vw, 0.65rem) 0 0;
   background: linear-gradient(
     96deg,
     #15064c 0%,
@@ -140,25 +140,25 @@
   background-clip: text;
   color: transparent;
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 3.15vw, 3.8rem);
+  font-size: clamp(2rem, 3vw, 3.5rem);
   font-style: normal;
   font-weight: var(--font-weight-black);
-  letter-spacing: -0.035em;
-  line-height: 0.94;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
   text-wrap: balance;
 }
 
 .title span {
   display: block;
-  white-space: nowrap;
+  text-wrap: balance;
 }
 
 .description {
-  width: min(100%, 43rem);
-  margin: clamp(0.8rem, 1.2vw, 1.1rem) 0 0;
+  width: min(100%, 64rem);
+  margin: clamp(1rem, 1.5vw, 1.75rem) 0 0;
   color: rgba(var(--andes-blue-deep-rgb), 0.66);
   font-family: var(--font-body);
-  font-size: clamp(0.78rem, 0.9vw, 0.98rem);
+  font-size: clamp(0.95rem, 1.1vw, 1.125rem);
   font-weight: var(--font-weight-medium, 500);
   line-height: 1.52;
   text-wrap: balance;
@@ -197,12 +197,12 @@
   }
 
   .content {
-    width: min(100%, 50rem);
+    width: min(100%, 70rem);
     padding-top: clamp(2rem, 5vw, 3rem);
   }
 
   .title {
-    font-size: clamp(2.35rem, 5vw, 3.45rem);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
   }
 }
 
@@ -210,7 +210,7 @@
   .hero {
     width: calc(100% - 1rem);
     min-height: clamp(38rem, 177.68vw, 60rem);
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
     border-radius: clamp(1.25rem, 6vw, 2rem);
     background-image: url("../../../../assets/logos/bg-hero-movil-game-provider.webp");
     background-position: center bottom;
@@ -236,11 +236,11 @@
 
   .title {
     width: 100%;
-    max-width: 12ch;
-    margin-top: 0.75rem;
-    font-size: clamp(2rem, 10.5vw, 2.75rem);
-    letter-spacing: -0.04em;
-    line-height: 0.96;
+    max-width: 24ch;
+    margin-top: 0.3rem;
+    font-size: clamp(1.5rem, 6.5vw, 2.5rem);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
   }
 
   .title span {
@@ -250,7 +250,7 @@
   .description {
     width: min(100%, 32rem);
     margin-top: 0.8rem;
-    font-size: clamp(0.72rem, 3.15vw, 0.86rem);
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
     line-height: 1.48;
   }
 }
@@ -265,11 +265,11 @@
   }
 
   .title {
-    font-size: 1.95rem;
+    font-size: 1.4rem;
   }
 
   .description {
-    font-size: 0.72rem;
+    font-size: 0.8rem;
   }
 }
 

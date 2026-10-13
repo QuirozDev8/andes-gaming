@@ -116,9 +116,14 @@ export default function AllProviders() {
       <div className={styles.container}>
         <div className={styles.panel}>
           <header className={styles.header}>
-            <h2 className={styles.title} id="all-providers-title">
-              {t("catalog.title")}
-            </h2>
+            <div className={styles.titleGroup}>
+              <h2 className={styles.title} id="all-providers-title">
+                {t("catalog.title")}
+              </h2>
+              <span className={styles.providerBadge}>
+                {t("catalog.badge")}
+              </span>
+            </div>
 
             <div className={styles.search} role="search">
               <label className={styles.visuallyHidden} htmlFor={searchInputId}>

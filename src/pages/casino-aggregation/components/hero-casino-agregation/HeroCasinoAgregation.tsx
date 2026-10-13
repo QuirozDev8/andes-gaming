@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import adventuresBeyondImage from "../../../../assets/img/games-img/Adventures_Beyond.webp";
 import aviatorImage from "../../../../assets/img/games-img/Aviator.webp";
 import aviatrixImage from "../../../../assets/img/games-img/Aviatrix.webp";
@@ -68,6 +69,7 @@ export function HeroCasinoAgregation() {
     t("hero.categories.slots"),
     t("hero.categories.liveCasino"),
     t("hero.categories.instantGames"),
+    t("hero.categories.tableGames"),
   ];
   const metrics = [
     {
@@ -169,10 +171,10 @@ export function HeroCasinoAgregation() {
             text={t("hero.actions.expert")}
             to={ROUTES.contact}
           />
-          <a className={styles.secondaryAction} href="#game-world">
+          <Link className={styles.secondaryAction} to={ROUTES.gameProviders}>
             {t("hero.actions.explore")}
             <span aria-hidden="true">↗</span>
-          </a>
+          </Link>
         </div>
       </section>
     </div>

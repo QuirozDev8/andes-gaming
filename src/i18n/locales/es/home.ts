@@ -1,85 +1,70 @@
 const homeEs = {
   hero: {
-    eyebrow: "Plataforma iGaming B2B",
-    titleFirst: "Una sola API.",
-    titleSecond: "Un universo de juegos.",
+    eyebrow: " CREADO POR OPERADORES, PARA OPERADORES",
+    titleFirst: "UNA SOLA INTEGRACIÓN.",
+    titleSecond: "MÁS FORMAS DE CRECER",
     description:
-      "Conecta una sola vez y accede a un ecosistema global de juegos y proveedores. Es el momento de simplificar tu operación.",
-    primaryCta: "Conviértete en socio",
-    secondaryCta: "Explorar tecnología",
+      "Conecta tu casino a +90 proveedores y +12.000 juegos a través de una sola API. Simplifica tu operación y enfócate en lo que realmente importa: llevar tu negocio más lejos.",
+    primaryCta: " EMPIEZA HOY",
+    secondaryCta: " CONOCE ANDES",
     visualLabel: "Imagen principal de Andes Gaming",
     imageAlt: "Ecosistema tecnológico de Andes Gaming",
-  },
+  }, 
   metrics: {
     ariaLabel: "Métricas principales",
-    operators: "Operadores conectados",
-    games: "Juegos integrados",
-    markets: "Mercados en LATAM",
-    uptime: "Disponibilidad de la plataforma",
+    providers: "Proveedores",
+    games: "Juegos",
+    experience: "Experiencia en LATAM",
+    integration: "Una integración",
+    yearsSuffix: " años",
+    apiSuffix: " API",
   },
   about: {
     eyebrow: "Tecnología que conecta ecosistemas",
-    titleFirst: "¿Qué es",
-    titleSecond: "Andes Gaming?",
+    titleFirst: "MÁS QUE",
+    titleSecond: "UN AGREGADOR",
     description:
-      "Andes Gaming es una infraestructura tecnológica B2B para iGaming que centraliza integraciones, conecta proveedores y simplifica la operación de plataformas a través de una sola capa tecnológica.",
-    cta: "Conoce más sobre nosotros",
+      "Somos el agregador que impulsa el crecimiento de los casinos online, conectándolos con múltiples proveedores líderes a través de una sola integración. Simplificamos la gestión técnica, comercial y contractual para que accedas a un amplio catálogo de juegos y puedas enfocar tus recursos en lo que realmente importa: atraer jugadores y escalar tu negocio.",
+    cta: "Descubre más",
     imageAlt:
       "Infraestructura Andes Gaming conectando verticales de iGaming",
     benefits: {
-      singleApi: {
-        title: "Single API",
+      connection: {
+        title: "UNA SOLA CONEXIÓN",
         description:
-          "Conecta proveedores y servicios desde una sola integración.",
+          "Accede a todo el ecosistema en una API.",
       },
-      providers: {
-        title: "Ecosistema de proveedores",
-        description: "Casino, sportsbook, pagos, KYC y CRM en una misma capa.",
+      allInOne: {
+        title: "TODO CENTRALIZADO",
+        description: "Proveedores, contratos y pagos.",
       },
-      scalable: {
-        title: "Operación escalable",
-        description: "Escala por marca, país, vertical y volumen operativo.",
+      growingPortfolio: {
+        title: "CATÁLOGO QUE CRECE",
+        description: "Nuevo contenido, misma integración",
       },
-      management: {
-        title: "Gestión centralizada",
-        description: "Control y visibilidad para operar con más eficiencia.",
+      operatorExpertise: {
+        title: "EXPERIENCIA REAL",
+        description: "Conocemos el negocio desde dentro",
       },
     },
   },
   presence: {
-    eyebrow: "Presencia en LATAM",
-    titleFirst: "Nuestra tecnología",
-    titleSecond: "ya conecta la región",
+    eyebrow: "EXPERIENCIA EN LATAM",
+    titleFirst: "Conocer El Mercado",
+    titleSecond: "Cambia El Juego.",
     description:
-      "Infraestructura iGaming para integrar proveedores, abrir mercados y escalar marcas en Latinoamérica desde una sola capa tecnológica.",
+      "Entendemos las preferencias, tendencias y dinámicas que hacen único a cada mercado. Tenemos un profundo conocimiento de LATAM y una visión global para impulsar nuevas oportunidades de crecimiento para nuestros partners.",
     imageAlt: "Mapa de presencia de Andes Gaming en Latinoamérica",
-    highlights: {
-      regional: {
-        title: "Operación regional",
-        description: "Conexión lista para mercados clave de LATAM.",
-      },
-      integrations: {
-        title: "Integraciones activas",
-        description: "Proveedores y servicios en una sola arquitectura.",
-      },
-      adaptation: {
-        title: "Adaptación por mercado",
-        description: "Reglas, monedas y verticales ajustadas localmente.",
-      },
-      scale: {
-        title: "Escala confiable",
-        description: "Disponibilidad y control para crecer en la región.",
-      },
-    },
   },
+
   stack: {
-    eyebrow: "Stack iGaming B2B",
-    titleFirst: "Todo lo que necesitas",
-    titleSecond: "para escalar",
+    eyebrow: "TODO EN UN SOLO LUGAR",
+    titleFirst: "MENOS COMPLEJIDAD",
+    titleSecond: "MÁS ESPACIO PARA CRECER.",
     description:
-      "Integra proveedores, estudios y operadores en una infraestructura robusta, escalable y preparada para acelerar tu operación iGaming.",
+      "Una sola integración reúne la tecnología, el contenido y las herramientas que necesitas para simplificar tu operación, tomar mejores decisiones y crecer con mayor agilidad.",
     actionsLabel: "Acciones del stack iGaming",
-    salesCta: "Hablar con ventas",
+    salesCta: "Contáctanos",
     aboutCta: "Conoce Andes Gaming",
     viewDetail: "Ver detalle de {{title}}",
     closeDetail: "Cerrar detalle de {{title}}",
@@ -101,91 +86,96 @@ const homeEs = {
         outcome:
           "Una arquitectura más simple para operar, escalar y evolucionar el ecosistema iGaming.",
       },
-      providers: {
-        title: "Proveedores",
-        description: "Conecta con todos los proveedores de primer nivel.",
-        label: "Ecosistema",
+      dedicatedSupport: {
+        title: "Soporte dedicado",
+        description: "Acompañamiento técnico y comercial a tu lado.",
+        label: "Partnership",
         intro:
-          "Conecta estudios, agregadores y operadores dentro de un ecosistema administrado para ampliar tu oferta sin dispersar la operación.",
+          "Detrás de nuestra tecnología hay un equipo que entiende tu negocio y te acompaña durante la integración y el crecimiento de tu operación.",
         point1:
-          "Gestiona conexiones con estudios y agregadores desde flujos centralizados.",
-        point2: "Acelera el onboarding de nuevos proveedores y contenidos.",
+          "ACCOUNT MANAGER: Un contacto dedicado que conoce tu operación.",
+        point2: "SOPORTE TÉCNICO: Acompañamiento para resolver necesidades técnicas.",
         point3:
-          "Controla catálogo, disponibilidad y visibilidad de juegos por operación.",
+          "SOPORTE COMERCIAL: Orientación para aprovechar mejor nuestro ecosistema de contenido.",
         outcome:
-          "Mayor alcance comercial con una operación de proveedores más ordenada y controlable.",
+          "No solo conectamos plataformas. Construimos partnerships.",
       },
+
       scalable: {
-        title: "Operación escalable",
+        title: "Escalabilidad",
         description:
-          "Arquitectura preparada para crecer por marca, mercado y volumen operativo.",
-        label: "Escalabilidad",
+          "Una plataforma preparada para evolucionar contigo.",
+        label: "Crecimiento",
         intro:
-          "Diseñamos una base modular para crecer por marca, mercado y volumen sin comprometer la estabilidad operacional.",
-        point1: "Escala por marcas, jurisdicciones y necesidades comerciales.",
+          "Amplía tu oferta a medida que tu negocio evoluciona, incorporando nuevo contenido y proveedores sobre una integración ya existente.",
+        point1: "SUMA CONTENIDO: Amplía tu catálogo a medida que aparecen nuevas oportunidades.",
         point2:
-          "Organiza componentes modulares para crecer sin rehacer la plataforma.",
+          "ACTIVA PROVEEDORES: Incorpora nuevos proveedores sin desarrollar otra API.",
         point3:
-          "Mantiene estabilidad ante picos de demanda y mayor volumen operativo.",
+          "CRECE CON AGILIDAD: Expande tu oferta sin multiplicar la complejidad técnica.",
         outcome:
-          "Una operación preparada para crecer con control técnico y continuidad del negocio.",
+          "Tu catálogo crece. Tu complejidad no tiene por qué hacerlo.",
       },
+
       backoffice: {
         title: "Backoffice",
         description:
-          "Gestiona configuraciones, contenido y visibilidad operacional desde un panel.",
-        label: "Control",
+          "Administra tu operación desde un solo lugar.",
+        label: "Gestión",
         intro:
-          "Administra configuraciones, contenido y visibilidad operacional desde un panel pensado para equipos B2B.",
+          "Centraliza la gestión de tu operación en un entorno que te brinda mayor control y visibilidad sobre tu contenido y actividad.",
         point1:
-          "Centraliza configuraciones clave sin depender de procesos manuales dispersos.",
+          " TODO CENTRALIZADO: Gestiona tu operación desde un mismo entorno.",
         point2:
-          "Ajusta contenido, proveedores y reglas de visibilidad con mayor trazabilidad.",
+          " MAYOR VISIBILIDAD: Accede fácilmente a la información clave de tu operación.",
         point3:
-          "Entrega a los equipos operativos una herramienta clara para gestionar el día a día.",
+          " GESTIÓN ÁGIL: Simplifica las tareas del día a día desde un solo lugar.",
         outcome:
-          "Más autonomía operacional y menos fricción entre equipos técnicos y comerciales.",
+          "Más visibilidad. Más control. Menos complejidad.",
       },
+      
       analytics: {
         title: "Analítica",
         description:
-          "Monitorea actividad, rendimiento e integraciones con datos accionables.",
-        label: "Insights",
+          "Convierte tus datos en decisiones accionables.",
+        label: "Rendimiento",
         intro:
-          "Convierte actividad, rendimiento e integraciones en información útil para tomar mejores decisiones operativas.",
+          "Obtén una visión clara del desempeño de tu operación a través de reportes y estadísticas que facilitan el seguimiento y la toma de decisiones.",
         point1:
-          "Monitorea actividad de productos, proveedores e integraciones conectadas.",
+          "MIDE RESULTADOS: Monitorea el rendimiento de tu contenido.",
         point2:
-          "Identifica rendimiento, tendencias y puntos de atención con datos accionables.",
+          "ANALIZA DESEMPEÑO: Consulta información relevante de juegos y proveedores.",
         point3:
-          "Facilita el seguimiento operativo para priorizar mejoras y detectar oportunidades.",
+          "DECIDE CON DATOS: Utiliza tus resultados para orientar mejores decisiones.",
         outcome:
-          "Visibilidad clara para operar con datos y reaccionar con mayor velocidad.",
+          "Lo que puedes medir, lo puedes optimizar.",
       },
-      security: {
-        title: "Seguridad",
+      
+      promotion: {
+        title: "Free spins",
         description:
-          "Procesos robustos para operar integraciones B2B con mayor estabilidad.",
-        label: "Protección",
+          "Potencia la experiencia de tus jugadores con Free Spins que te permiten dinamizar el contenido y crear nuevas oportunidades de interacción.",
+        label: "Promoción",
         intro:
-          "Fortalece la operación B2B con controles, procesos y prácticas orientadas a la estabilidad y la confianza.",
-        point1: "Aplica controles para integraciones y flujos críticos del ecosistema.",
+          "Potencia la experiencia de tus jugadores con Free Spins que te permiten dinamizar el contenido y crear nuevas oportunidades de interacción.",
+        point1: "ACTIVA PROMOCIONES: Incorpora Free Spins en juegos compatibles.",
         point2:
-          "Reduce riesgos operativos con procesos más robustos y trazables.",
+          "IMPULSA CONTENIDO: Dale mayor visibilidad a juegos seleccionados.",
         point3:
-          "Prepara la plataforma para operar en entornos exigentes con mayor continuidad.",
+          " GENERA INTERACCIÓN: Crea nuevos motivos para que tus jugadores vuelvan a jugar.",
         outcome:
-          "Una base más confiable para proteger integraciones, datos y continuidad operativa.",
+          "Convierte el contenido en nuevas oportunidades de engagement.",
       },
     },
   },
+
   ownGames: {
-    eyebrow: "Game Studio",
-    titleFirst: "Creamos experiencias",
-    titleSecond: "que marcan la diferencia",
+    eyebrow: "ANDES GAMING STUDIO",
+    titleFirst: "NO SOLO CONECTAMOS JUEGOS",
+    titleSecond: "TAMBIÉN LOS CREAMOS.",
     description:
-      "En Andes Gaming Studio desarrollamos contenido propio innovador y de alto rendimiento.",
-    cta: "Conoce nuestros juegos",
+      "En Andes Gaming Studio desarrollamos juegos propios pensados para conectar con los jugadores, combinando creatividad, entretenimiento y conocimiento del mercado.",
+    cta: "Descubre nuestro juego Crash",
     carouselLabel: "Juegos desarrollados por Andes Gaming",
     closeVideo: "Cerrar video",
     videoTitle: "Video de {{title}}",
@@ -205,17 +195,19 @@ const homeEs = {
       },
     },
   },
+
   providers: {
-    eyebrow: "Ecosistema conectado",
-    titleFirst: "Conectamos marcas con",
-    titleSecond: "proveedores de primer nivel",
+    eyebrow: "PROVEEDORES DE CASINO",
+    titleFirst: "TODO EL CONTENIDO",
+    titleSecond: "QUE TU CASINO NECESITA.",
     description:
-      "Tu camino hacia una diversa colección de más de 200 proveedores de juegos premium para crear una experiencia personalizada para tus jugadores.",
+      "Dale a tus jugadores más razones para elegirte con una oferta diversa, atractiva y preparada para crecer al ritmo de tu operación.",
     carouselLabel: "Logos de proveedores integrados",
     cta: "Ver todos los proveedores",
   },
+
   slider: {
-    eyebrow: "// proveedores destacados",
+    eyebrow: "// LOS FAVORITOS DE LOS JUGADORES",
     titlePrefix: "Juegos",
     titleAccent: "destacados",
     titleSuffix: " de nuestros proveedores.",
@@ -255,81 +247,93 @@ const homeEs = {
       },
     },
   },
+
   flow: {
-    titleFirst: "Pasos para trabajar",
-    titleSecond: "con nosotros.",
+    titleFirst: "EMPEZAR CON ANDES",
+    titleSecond: "ES ASÍ DE SIMPLE",
     workflowLabel: "Pasos de integración",
     navigationLabel: "Navegación de pasos",
     viewStep: "Ver paso {{number}}: {{title}}",
     steps: {
       talk: {
         title: "Hablemos",
-        description: "Definimos objetivos, audiencia y necesidades clave.",
+        description:
+          "Cuéntanos sobre tu operación de casino, tus necesidades y tus objetivos.",
       },
       matching: {
-        title: "Coincidencia inteligente",
-        description: "Elegimos el contenido ideal y cerramos el trato.",
+        title: "Definamos tu oferta",
+        description:
+          "Seleccionamos contigo los proveedores y el contenido que mejor se adapten a tu negocio.",
       },
       plugAndPlay: {
-        title: "Plug and Play",
-        description: "Integramos proveedores y dejamos todo listo.",
+        title: "Integramos",
+        description:
+          "Conectamos tu operación con Andes Gaming a través de nuestra API.",
       },
       launch: {
-        title: "Prueba y lanzamiento",
-        description: "Probamos juntos, lanzamos y ajustamos.",
+        title: "Salimos en vivo",
+        description:
+          "Probamos la integración, validamos el contenido y dejamos todo listo para operar.",
       },
       support: {
-        title: "Siempre a tu lado",
-        description: "Soporte continuo, nuevos contenidos y mejoras.",
+        title: "Crecemos contigo",
+        description:
+          "Seguimos a tu lado con soporte técnico, comercial y nuevas oportunidades para tu operación.",
       },
     },
   },
+  
   infrastructure: {
-    eyebrow: "Agregador de primer nivel",
-    titleFirst: "Infraestructura",
-    titleSecond: "y tecnología",
+    eyebrow: "INTEGRACIÓN TÉCNICA",
+    titleFirst: "LA TECNOLOGÍA DETRÁS",
+    titleSecond: "DE TU CRECIMIENTO",
     description:
-      "Centralizamos integraciones, APIs, monitoreo, seguridad y escalabilidad en una infraestructura diseñada para potenciar operaciones iGaming de alto rendimiento.",
+      "Conecta tu operación con Andes Gaming a través de una sola integración API y accede a nuestro ecosistema de contenido sin multiplicar desarrollos ni integraciones.",
     explore: "Explorar tecnología",
     partner: "Conviértete en socio",
     imageAlt:
       "Arquitectura tecnológica Andes Gaming con API unificada, integraciones, seguridad y escalabilidad para operaciones iGaming",
     capabilities: {
       api: {
-        title: "API unificada",
-        description: "Una sola API para todos los módulos y proveedores.",
+        title: "UNA SOLA API",
+        description:
+          "Una integración para conectar tu operación con nuestro ecosistema de proveedores.",
       },
       integrations: {
-        title: "Integraciones",
-        description: "Conectores nativos con los mejores proveedores.",
+        title: "INTEGRACIÓN ACOMPAÑADA",
+        description:
+          "Nuestro equipo técnico trabaja contigo durante todo el proceso de implementación.",
       },
       security: {
-        title: "Seguridad",
+        title: "PRUEBAS Y VALIDACIÓN",
         description:
-          "Protección avanzada, cumplimiento y gestión de identidades.",
+          "Validamos la integración y el contenido antes de salir en vivo.",
       },
       scalability: {
-        title: "Escalabilidad",
+        title: "LISTA PARA CRECER",
         description:
-          "Infraestructura elástica para crecer sin límites ni fricciones.",
+          "Incorpora nuevos proveedores y contenido sobre tu integración existente, sin desarrollar una nueva API.",
       },
     },
     highlights: {
       global: {
-        title: "Infraestructura global",
-        description: "Regiones en América y Europa.",
+        title: "Integración Multipaís",
+        description:
+          "Centraliza la gestión & conexión de diferentes países y operaciones.",
       },
       availability: {
-        title: "Alta disponibilidad",
-        description: "SLA 99,9 % garantizado para tus operaciones.",
+        title: "Procesamiento de apuestas",
+        description:
+          "Gestiona el ciclo de cada transacción, desde su recepción hasta su resultado.",
       },
       compliance: {
-        title: "Cumplimiento",
-        description: "Estándares internacionales y regulaciones locales.",
+        title: "Operatividad",
+        description: "Permite supervisar usuarios, apuestas, ganancias y GGR",
       },
       performance: {
-        title: "Rendimiento extremo",
-        description: "Baja latencia y procesamiento en tiempo real.",
+        title: "Control y seguimiento",
+        description:
+          "Identificación y seguimiento de errores y escenarios operativos.",
       },
     },
   },
@@ -339,6 +343,16 @@ const homeEs = {
     description: "Completa el formulario y hablemos.",
     formLabel: "Formulario de contacto de Andes Gaming",
     fields: {
+      name: "Nombre completo",
+      role: "Cargo",
+      company: "Empresa/Operación",
+      country: "País",
+      email: "Correo electrónico",
+      whatsapp: "WhatsApp",
+      website: "Sitio web",
+      contactReason: "Motivo contacto",
+    },
+    placeholders: {
       name: "Nombre completo",
       role: "Cargo",
       company: "Empresa/Operación",

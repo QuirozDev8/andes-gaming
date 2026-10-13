@@ -1,13 +1,24 @@
 import { useEffect, useRef, useState } from "react";
-import { Clock3, Gamepad2, Globe2, UsersRound } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { Gamepad2, Globe2, Network, UsersRound } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import styles from "./Metrics.module.css";
 
-const metrics = [
+type Metric = {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  suffixKey?: string;
+  decimals?: number;
+  labelKey: string;
+  icon: LucideIcon;
+};
+
+const metrics: readonly Metric[] = [
   {
-    value: 150,
+    value: 90,
     prefix: "+",
-    labelKey: "metrics.operators",
+    labelKey: "metrics.providers",
     icon: UsersRound,
   },
   {
@@ -17,37 +28,34 @@ const metrics = [
     icon: Gamepad2,
   },
   {
-    value: 18,
-    labelKey: "metrics.markets",
+    value: 6,
+    prefix: "+",
+    labelKey: "metrics.experience",
+    suffixKey: "metrics.yearsSuffix",
     icon: Globe2,
   },
   {
-    value: 99.9,
-    suffix: "%",
-    decimals: 1,
-    labelKey: "metrics.uptime",
-    icon: Clock3,
+    value: 1,
+    labelKey: "metrics.integration",
+    suffixKey: "metrics.apiSuffix",
+    icon: Network,
   },
-] as const;
-
-type Metric = {
-  value: number;
-  prefix?: string;
-  suffix?: string;
-  decimals?: number;
-  labelKey: string;
-  icon: typeof UsersRound;
-};
+];
 
 const animationDurationMs = 1500;
 
-function formatMetricValue(metric: Metric, value: number, locale: string) {
+function formatMetricValue(
+  metric: Metric,
+  value: number,
+  locale: string,
+  suffixText = "",
+) {
   const formattedValue = value.toLocaleString(locale, {
     minimumFractionDigits: metric.decimals ?? 0,
     maximumFractionDigits: metric.decimals ?? 0,
   });
 
-  return `${metric.prefix ?? ""}${formattedValue}${metric.suffix ?? ""}`;
+  return `${metric.prefix ?? ""}${formattedValue}${suffixText}`;
 }
 
 function usePrefersReducedMotion() {
@@ -129,11 +137,13 @@ function AnimatedMetricValue({
   shouldStart,
   shouldReduceMotion,
   locale,
+  suffixText = "",
 }: {
   metric: Metric;
   shouldStart: boolean;
   shouldReduceMotion: boolean;
   locale: string;
+  suffixText?: string;
 }) {
   const value = useCountUp(
     metric.value,
@@ -141,8 +151,13 @@ function AnimatedMetricValue({
     shouldStart,
     shouldReduceMotion,
   );
-  const finalValue = formatMetricValue(metric, metric.value, locale);
-  const visualValue = formatMetricValue(metric, value, locale);
+  const finalValue = formatMetricValue(
+    metric,
+    metric.value,
+    locale,
+    suffixText,
+  );
+  const visualValue = formatMetricValue(metric, value, locale, suffixText);
 
   return (
     <strong className={styles.value} aria-label={finalValue}>
@@ -209,6 +224,9 @@ export function Metrics() {
         <ul className={styles.grid}>
           {metrics.map((metric) => {
             const MetricIcon = metric.icon;
+            const suffixText = metric.suffixKey
+              ? t(metric.suffixKey)
+              : (metric.suffix ?? "");
 
             return (
               <li className={styles.item} key={metric.labelKey}>
@@ -221,6 +239,7 @@ export function Metrics() {
                     shouldStart={shouldStartCounter}
                     shouldReduceMotion={prefersReducedMotion}
                     locale={numberLocale}
+                    suffixText={suffixText}
                   />
                   <span className={styles.label}>{t(metric.labelKey)}</span>
                 </div>

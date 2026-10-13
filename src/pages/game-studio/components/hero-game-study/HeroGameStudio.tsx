@@ -30,8 +30,8 @@ const randomBetween = (min: number, max: number) =>
   min + Math.random() * (max - min);
 
 export default function HeroGameStudio() {
-  const { t } = useTranslation("home");
-  const title = t("ownGames.eyebrow").toUpperCase();
+  const { t } = useTranslation("gameStudio");
+  const title = t("title").toUpperCase();
   const heroRef = useRef<HTMLElement | null>(null);
   const particleStageRef = useRef<HTMLDivElement | null>(null);
   const explosionLayerRef = useRef<HTMLDivElement | null>(null);
@@ -480,7 +480,7 @@ export default function HeroGameStudio() {
       <div className={styles.content}>
         <p className={styles.eyebrow}>
           <span aria-hidden="true" />
-          Andes Gaming Originals
+          {t("eyebrow")}
           <span aria-hidden="true" />
         </p>
 
@@ -514,7 +514,7 @@ export default function HeroGameStudio() {
           />
         </div>
 
-        <p className={styles.description}>{t("ownGames.description")}</p>
+        <p className={styles.description}>{t("description")}</p>
       </div>
 
       <div className={styles.orbit} aria-hidden="true">

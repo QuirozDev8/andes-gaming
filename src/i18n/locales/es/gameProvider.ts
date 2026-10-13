@@ -1,15 +1,16 @@
 const gameProviderEs = {
   hero: {
-    eyebrow: "ANDES GAMING PROVIDERS",
+    eyebrow: "Game Providers",
     title: {
-      firstLine: "Un hub de game providers",
-      secondLine: "listo para escalar",
+      firstLine: "LOS JUEGOS QUE TUS JUGADORES BUSCAN",
+      secondLine: "LOS PROVEEDORES QUE TU CASINO NECESITA.",
     },
     description:
-      "En Andes Gaming centralizamos integraciones y conectamos múltiples proveedores de juego, casino, live casino y servicios del ecosistema desde una sola infraestructura.",
+      "Dale a tus jugadores más razones para elegirte con acceso a un ecosistema de proveedores y contenido preparado para ampliar tu oferta, conectar con diferentes preferencias y mantener tu casino siempre relevante. ",
   },
   catalog: {
-    title: "Todos los proveedores",
+    title: "Explora nuestros proveedores",
+    badge: "+90 proveedores",
     searchLabel: "Buscar proveedor",
     searchPlaceholder: "Buscar proveedor",
     ariaLabel: "Catálogo de proveedores de juegos",
@@ -23,11 +24,12 @@ const gameProviderEs = {
     loadMoreLabel_other: "Mostrar {{count}} proveedores más",
   },
   partner: {
-    title: "¿Listo para crecer con Andes Gaming?",
+    title: "DALE A TUS JUGADORES MÁS RAZONES PARA ELEGIRTE",
     description:
-      "Conecta tu operación con una red de proveedores premium y una infraestructura preparada para escalar contigo.",
-    cta: "Conviértete en partner",
+      "Construye una oferta más atractiva con el ecosistema de proveedores de Andes Gaming y descubre nuevas oportunidades para hacer crecer tu casino.",
+    cta: "QUIERO EMPEZAR",
   },
 } as const;
 
 export default gameProviderEs;
+ 

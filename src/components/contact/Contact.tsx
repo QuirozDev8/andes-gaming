@@ -156,6 +156,10 @@ export function Contact({
               {contactFields.map((field) => {
                 const FieldIcon = field.icon;
                 const fieldText = t(`contact.fields.${field.translationKey}`);
+                const placeholderText = t(
+                  `contact.placeholders.${field.translationKey}`,
+                  { defaultValue: fieldText },
+                );
                 const isTextarea = field.type === "textarea";
 
                 return (
@@ -187,7 +191,7 @@ export function Contact({
                           className={styles.textarea}
                           id={field.id}
                           name={field.name}
-                          placeholder={fieldText}
+                          placeholder={placeholderText}
                           required={field.required}
                           rows={3}
                         />
@@ -197,7 +201,7 @@ export function Contact({
                           className={styles.input}
                           id={field.id}
                           name={field.name}
-                          placeholder={fieldText}
+                          placeholder={placeholderText}
                           required={field.required}
                           type={field.type}
                         />

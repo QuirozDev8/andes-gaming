@@ -22,6 +22,7 @@ export function CasinoAggregation() {
           ariaLabel={t("trustedBrands.ariaLabel")}
           ctaTexto={t("trustedBrands.cta")}
           ctaRuta={ROUTES.contact}
+          ctaShowIcon={false}
           duracionSegundos={30}
           pausarAlPasar
           transicionHero
@@ -37,9 +38,9 @@ export function CasinoAggregation() {
         <ProvidersCasinoAgregation />
       </RevealOnScroll>
 
-      <RevealOnScroll className={styles.revealBackdrop}>
+      {/* <RevealOnScroll className={styles.revealBackdrop}>
         <CasosExitos />
-      </RevealOnScroll>
+      </RevealOnScroll> */}
 
       <RevealOnScroll className={styles.revealBackdrop}>
         <Contact

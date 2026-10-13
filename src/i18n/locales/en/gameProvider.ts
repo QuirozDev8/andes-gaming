@@ -1,15 +1,16 @@
 const gameProviderEn = {
   hero: {
-    eyebrow: "ANDES GAMING PROVIDERS",
+    eyebrow: "GAME PROVIDERS",
     title: {
-      firstLine: "A game provider hub",
-      secondLine: "built to scale",
+      firstLine: "THE GAMES YOUR PLAYERS WANT",
+      secondLine: "THE PROVIDERS YOUR CASINO NEEDS.",
     },
     description:
-      "At Andes Gaming, we centralize integrations and connect multiple game, casino, live casino, and ecosystem service providers through a single infrastructure.",
+      "Give your players more reasons to choose you with access to an ecosystem of providers and content designed to expand your offering, connect with different player preferences, and keep your casino relevant.",
   },
   catalog: {
     title: "All providers",
+    badge: "90+ providers",
     searchLabel: "Search provider",
     searchPlaceholder: "Search provider",
     ariaLabel: "Game provider catalog",
@@ -31,3 +32,4 @@ const gameProviderEn = {
 } as const;
 
 export default gameProviderEn;
+ 

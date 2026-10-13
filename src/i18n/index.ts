@@ -6,6 +6,7 @@ import aboutPageEn from "./locales/en/aboutPage";
 import casinoAggregationEn from "./locales/en/casinoAggregation";
 import contactPageEn from "./locales/en/contactPage";
 import gameProviderEn from "./locales/en/gameProvider";
+import gameStudioEn from "./locales/en/gameStudio";
 import homeEn from "./locales/en/home";
 import blogEn from "./locales/en/blog";
 import commonEs from "./locales/es/common";
@@ -13,6 +14,7 @@ import aboutPageEs from "./locales/es/aboutPage";
 import casinoAggregationEs from "./locales/es/casinoAggregation";
 import contactPageEs from "./locales/es/contactPage";
 import gameProviderEs from "./locales/es/gameProvider";
+import gameStudioEs from "./locales/es/gameStudio";
 import homeEs from "./locales/es/home";
 import blogEs from "./locales/es/blog";
 
@@ -26,6 +28,7 @@ const resources = {
     casinoAggregation: casinoAggregationEs,
     contactPage: contactPageEs,
     gameProvider: gameProviderEs,
+    gameStudio: gameStudioEs,
     home: homeEs,
     blog: blogEs,
   },
@@ -35,6 +38,7 @@ const resources = {
     casinoAggregation: casinoAggregationEn,
     contactPage: contactPageEn,
     gameProvider: gameProviderEn,
+    gameStudio: gameStudioEn,
     home: homeEn,
     blog: blogEn,
   },

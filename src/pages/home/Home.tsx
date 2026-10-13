@@ -114,9 +114,13 @@ function Home() {
                     to={ROUTES.contact}
                     onClick={scrollToPageStart}
                   />
-                  <a className={styles.secondaryLink} href="#single-api">
+                  <Link
+                    className={styles.secondaryLink}
+                    to={ROUTES.about}
+                    onClick={scrollToPageStart}
+                  >
                     {t("hero.secondaryCta")}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

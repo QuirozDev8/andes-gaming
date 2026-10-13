@@ -2,9 +2,9 @@ import type { TFunction } from "i18next";
 import {
   ChartNoAxesCombined,
   Gamepad2,
+  Gift,
   Network,
   Settings2,
-  ShieldCheck,
   UsersRound,
 } from "lucide-react";
 import cardImgBo from "../../../assets/img/bg-card-bo.webp";
@@ -39,19 +39,19 @@ export function getProductCards(
     },
     {
       color: "#120F17",
-      title: t(`${card("providers")}.title`),
-      description: t(`${card("providers")}.description`),
-      label: t(`${card("providers")}.label`),
+      title: t(`${card("dedicatedSupport")}.title`),
+      description: t(`${card("dedicatedSupport")}.description`),
+      label: t(`${card("dedicatedSupport")}.label`),
       icon: UsersRound,
       backgroundImage: cardMundoImg,
       detail: {
-        intro: t(`${card("providers")}.intro`),
+        intro: t(`${card("dedicatedSupport")}.intro`),
         points: [
-          t(`${card("providers")}.point1`),
-          t(`${card("providers")}.point2`),
-          t(`${card("providers")}.point3`),
+          t(`${card("dedicatedSupport")}.point1`),
+          t(`${card("dedicatedSupport")}.point2`),
+          t(`${card("dedicatedSupport")}.point3`),
         ],
-        outcome: t(`${card("providers")}.outcome`),
+        outcome: t(`${card("dedicatedSupport")}.outcome`),
       },
     },
     {
@@ -107,19 +107,19 @@ export function getProductCards(
     },
     {
       color: "#120F17",
-      title: t(`${card("security")}.title`),
-      description: t(`${card("security")}.description`),
-      label: t(`${card("security")}.label`),
-      icon: ShieldCheck,
+      title: t(`${card("promotion")}.title`),
+      description: t(`${card("promotion")}.description`),
+      label: t(`${card("promotion")}.label`),
+      icon: Gift,
       backgroundImage: cardBackground,
       detail: {
-        intro: t(`${card("security")}.intro`),
+        intro: t(`${card("promotion")}.intro`),
         points: [
-          t(`${card("security")}.point1`),
-          t(`${card("security")}.point2`),
-          t(`${card("security")}.point3`),
+          t(`${card("promotion")}.point1`),
+          t(`${card("promotion")}.point2`),
+          t(`${card("promotion")}.point3`),
         ],
-        outcome: t(`${card("security")}.outcome`),
+        outcome: t(`${card("promotion")}.outcome`),
       },
     },
   ];

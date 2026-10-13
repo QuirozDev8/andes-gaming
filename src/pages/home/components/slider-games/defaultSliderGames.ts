@@ -58,15 +58,9 @@ export function getDefaultSliderGames(
       glowColor: "#8a7cff",
       particleType: "wizardMagic",
     },
-    {
-      id: "instant",
-      title: "INSTANT",
-      description: t("slider.slides.instant.description"),
-      imageSrc:
-        "https://d8j0ntlcm91z4.cloudfront.net/user_3DSFxZu8uDjHlOKZEo87WYHr2qH/hf_20260528_140046_6471b3dc-9da9-43e3-ba47-008e3a09d5d5.png",
-      imageAlt: t("slider.slides.instant.imageAlt"),
-      accent: "#34d399",
-      particleType: "dice",
-    },
+    
+    
+    /* pendiente demas juegos */
+
   ];
 }
