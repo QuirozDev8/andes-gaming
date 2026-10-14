@@ -30,25 +30,25 @@ const commonEn = {
     homeLabel: "Andes Gaming home",
     openMenu: "Open menu",
     closeMenu: "Close menu",
-    home: "Home",
-    products: "Products",
-    about: "About us",
-    blog: "Blog",
-    contact: "Contact",
-    sales: "Talk to sales",
+    home: "HOME",
+    products: "PRODUCTS",
+    about: "ABOUT US",
+    blog: "BLOG",
+    contact: "CONTACT",
+    sales: "TALK TO SALES",
     languageSelector: "Select language",
     productsList: {
       casinoAggregation: {
         label: "Casino Aggregation",
-        description: "B2B iGaming content aggregation.",
+        description: "Access multiple providers and thousands of games through a single integration.",
       },
       gameStudio: {
         label: "Game Studio",
-        description: "Development of innovative proprietary content.",
+        description: "Discover original content developed by Andes Gaming.",
       },
       gameProviders: {
         label: "Game Providers",
-        description: "Connected network of game providers.",
+        description: "Explore our ecosystem of game providers and content.",
       },
     },
   },
@@ -56,13 +56,13 @@ const commonEn = {
     navigationLabel: "Footer navigation",
     homeLabel: "Andes Gaming home",
     description:
-      "B2B technology platform for integration, operations, and growth in the iGaming ecosystem.",
+      "B2B iGaming technology connecting operators with content, providers, and new opportunities to grow.",
     columns: {
       platform: {
         title: "PLATFORM",
-        backoffice: "BackOffice",
+        backoffice: "Back Office",
         integrations: "Integrations",
-        reporting: "Reporting",
+        reporting: "Analytics",
         support: "Support",
       },
       products: {
@@ -73,23 +73,23 @@ const commonEn = {
       },
       company: {
         title: "COMPANY",
-        about: "About us",
+        about: "About Us",
         contact: "Contact",
-        legal: "Legal policies",
+        legal: "Legal Policies",
       },
     },
     contact: {
       sectionLabel: "Contact",
       title: "CONTACT",
       location: "Latin America",
-      talk: "Let's talk",
+      talk: "LET’S TALK",
     },
     social: {
       email: "Email",
     },
     copyright: "© {{year}} Andes Gaming. All rights reserved.",
-    terms: "Terms and conditions",
-    privacy: "Privacy policy",
+    terms: "Terms & Conditions",
+    privacy: "Privacy Policy",
   },
 } as const;
 

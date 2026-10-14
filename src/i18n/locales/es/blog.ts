@@ -1,23 +1,25 @@
 import type { BlogLocaleResource } from "../../../pages/blog/data-blog";
-
+ 
 const blogEs = {
   hero: {
-    eyebrow: "Andes Insights",
-    title: "Ideas que impulsan",
-    accent: "el futuro del iGaming",
+    eyebrow: "BLOG DE ANDES GAMING",
+    title: "ENTENDER EL JUEGO,",
+    accent: "ANTICIPAR LO QUE SIGUE.",
     description:
-      "Artículos, guías y experiencias para construir operaciones más ágiles, escalables y preparadas para crecer.",
+      "Ideas, tendencias y análisis sobre iGaming para entender mejor el mercado, tomar decisiones con más información y descubrir nuevas oportunidades de crecimiento.",
     topics: {
       strategy: "Estrategia",
-      integration: "Integración",
+      integration: "Mercados y contenido",
       operations: "Operación",
     },
     topicsLabel: "Temas principales",
   },
   featured: {
     eyebrow: "Lectura recomendada",
-    action: "Leer guía completa",
+    action: "LEER GUÍA COMPLETA",
     openLabel: "Abrir artículo destacado: {{title}}",
+    readingTime_one: "{{count}} MIN",
+    readingTime_other: "{{count}} MIN",
   },
   card: {
     openLabel: "Abrir artículo: {{title}}",
@@ -25,11 +27,13 @@ const blogEs = {
     readingTime_one: "{{count}} min",
     readingTime_other: "{{count}} min",
   },
+
+  /* biblioteca de blogs */
   catalog: {
-    eyebrow: "Centro de conocimiento",
-    title: "Explora nuestras publicaciones",
+    eyebrow: "Explora el blog",
+    title: "Ideas para tu próximo movimiento.",
     description:
-      "Encuentra análisis, recursos prácticos y aprendizajes para tomar decisiones con mayor contexto.",
+      "Análisis, guías y aprendizajes para entender mejor el iGaming, tomar decisiones con más contexto y descubrir nuevas oportunidades para tu operación.",
     filterLabel: "Filtrar publicaciones por categoría",
     loadMore: "Ver más publicaciones",
     postsLabel: "Publicaciones del blog",
@@ -68,381 +72,957 @@ const blogEs = {
     todos: "Todos",
     articulos: "Artículos",
     guias: "Guías",
-    actualizaciones: "Actualizaciones",
+    tendencias: "Tendencias",
     "casos-de-exito": "Casos de éxito",
   },
   posts: {
     "checklist-integracion-api": {
-      title: "Checklist para integrar múltiples proveedores mediante una sola API",
-      excerpt:
-        "Una ruta práctica para alinear producto, tecnología y operación antes de conectar un nuevo ecosistema de contenido.",
-      imageAlt:
-        "Núcleo tecnológico conectado con múltiples módulos mediante flujos de datos violetas y cian",
-      author: {
-        name: "Equipo Andes Gaming",
-        role: "Integraciones y producto",
-      },
-      tags: ["API", "Integración", "Operación", "Proveedores"],
-      sections: [
+      "title": "UNA API, MÚLTIPLES PROVEEDORES: QUÉ DEBE EVALUAR TU CASINO ANTES DE INTEGRAR UN AGREGADOR",
+      "articleTitle": "Una API, múltiples proveedores: qué debe evaluar tu casino antes de integrar un Agregador.",
+      "excerpt": "Integrar más contenido no debería significar multiplicar la complejidad. Descubre los puntos clave que debes evaluar para ampliar tu catálogo, simplificar tu operación y construir una integración preparada para crecer.",
+      "imageAlt": "Núcleo tecnológico conectado con múltiples módulos mediante flujos de datos violetas y cian",
+      "author": {"name":"Equipo Andes Gaming","role":"Integraciones y producto"},
+
+      "categoryLabel": "Tecnología",
+      "readingLabel": "8 MIN",
+      "cardAction": "LEER GUÍA COMPLETA",
+      "introduction": [
         {
-          title: "Antes de conectar: define el resultado esperado",
-          paragraphs: [
-            "Una integración sólida comienza antes de revisar endpoints. El primer paso es acordar qué mercados, monedas, dispositivos y tipos de contenido debe soportar la operación. Esa definición permite priorizar proveedores y evita convertir el catálogo en una suma de decisiones aisladas.",
-            "También conviene identificar desde el inicio a los responsables de producto, tecnología, cumplimiento y soporte. Cuando cada equipo conoce sus entregables y criterios de aceptación, la conexión avanza con menos bloqueos y con una visión compartida del lanzamiento.",
-          ],
-          bullets: [
-            "Mercados, monedas e idiomas de la primera etapa.",
-            "Proveedores y categorías de contenido prioritarios.",
-            "Flujos de autenticación, sesiones, apuestas y liquidación.",
-            "Responsables de pruebas, aprobación y salida a producción.",
-          ],
+          "type": "paragraph",
+          "text": "Ampliar el catálogo de juegos es una de las formas más directas de mantener una oferta atractiva para los jugadores. Más proveedores pueden significar más títulos, nuevas categorías y mayores posibilidades de adaptar el contenido a diferentes preferencias y mercados."
         },
         {
-          title: "Valida el flujo técnico de extremo a extremo",
-          paragraphs: [
-            "La documentación es solo el punto de partida. El entorno de pruebas debe reproducir el recorrido completo: creación de sesión, apertura de contenido, movimientos de saldo, rondas incompletas, reintentos y cierre. La meta no es comprobar únicamente el escenario ideal, sino entender cómo responde la operación ante latencia, duplicados o interrupciones.",
-          ],
-          bullets: [
-            "Idempotencia y trazabilidad de cada transacción.",
-            "Manejo consistente de errores y tiempos de espera.",
-            "Registro de eventos suficiente para soporte y conciliación.",
-            "Pruebas responsive y de rendimiento en dispositivos reales.",
-          ],
-          callout:
-            "Una API unificada aporta valor cuando reduce variaciones operativas, no solo cuando concentra endpoints.",
+          "type": "paragraph",
+          "text": "Pero hay una diferencia importante entre tener más contenido y gestionar mejor ese contenido."
         },
         {
-          title: "Prepara la operación, no solo el lanzamiento",
-          paragraphs: [
-            "Después de la certificación técnica comienza el trabajo cotidiano. Define cómo se activará o pausará contenido, quién recibirá alertas, cómo se escalarán incidentes y qué información necesitará el equipo para conciliar. Un catálogo que puede crecer necesita reglas claras de gobierno desde el primer día.",
-            "Cierra el proceso con una salida gradual. Empieza con un conjunto controlado de contenido, observa estabilidad y comportamiento operativo, y amplía el alcance con evidencia. Esta secuencia protege la experiencia del usuario final y da al equipo margen para ajustar sin fricción.",
-          ],
+          "type": "paragraph",
+          "text": "Cuando cada nuevo proveedor implica una integración independiente, nuevos procesos técnicos, relaciones comerciales separadas y más tareas operativas, el crecimiento del catálogo también puede aumentar la complejidad del casino."
         },
+        {
+          "type": "paragraph",
+          "text": "Por eso, antes de sumar proveedores, hay una pregunta más importante que simplemente “¿cuántos juegos podemos integrar?”:"
+        },
+        {
+          "type": "paragraph",
+          "text": "¿Está nuestra infraestructura preparada para crecer sin multiplicar la complejidad?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ahí es donde el modelo de agregación mediante una sola API cambia la conversación."
+        }
       ],
-      relatedProduct: {
-        label: "Casino Aggregation",
-        description: "Conecta múltiples proveedores desde una sola integración.",
-      },
+      "sections": [
+        {
+          "title": "1. No empieces por la cantidad de juegos. Empieza por tu estrategia",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Un catálogo más grande no necesariamente es un catálogo mejor."
+            },
+            {
+              "type": "paragraph",
+              "text": "Antes de integrar nuevos proveedores, el operador debería entender qué quiere conseguir con esa expansión. ¿Busca incorporar una categoría que hoy no tiene? ¿Llegar a un nuevo perfil de jugador? ¿Renovar su oferta? ¿Encontrar contenido más relevante para un mercado determinado?"
+            },
+            {
+              "type": "paragraph",
+              "text": "Responder estas preguntas permite pasar de acumular juegos a construir una oferta con intención."
+            },
+            {
+              "type": "paragraph",
+              "text": "El objetivo no debería ser tener miles de títulos simplemente porque están disponibles, sino contar con un ecosistema de contenido suficientemente amplio y flexible para evolucionar con el negocio y con las preferencias de los jugadores."
+            }
+          ]
+        },
+        {
+          "title": "2. Evalúa qué tan fácil será seguir creciendo",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Integrar un proveedor puede parecer manejable. Integrar diez, veinte o cincuenta de manera independiente es otra historia."
+            },
+            {
+              "type": "paragraph",
+              "text": "Cada conexión adicional puede implicar desarrollo, pruebas, mantenimiento y coordinación técnica. A medida que el ecosistema crece, también puede hacerlo la carga sobre los equipos internos."
+            },
+            {
+              "type": "paragraph",
+              "text": "Por eso, una de las preguntas fundamentales antes de elegir una solución de agregación es:"
+            },
+            {
+              "type": "paragraph",
+              "text": "¿Qué tendremos que hacer cuando queramos incorporar el próximo proveedor?"
+            },
+            {
+              "type": "paragraph",
+              "text": "Una arquitectura basada en una integración centralizada permite que el operador conecte su plataforma una vez y, a partir de esa conexión, pueda incorporar nuevos proveedores y contenido sin desarrollar una API diferente para cada uno."
+            },
+            {
+              "type": "paragraph",
+              "text": "La diferencia es estratégica: el crecimiento del catálogo deja de depender directamente del crecimiento de la complejidad técnica."
+            }
+          ]
+        },
+        {
+          "title": "3. Mira más allá de la integración técnica",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "La tecnología es solo una parte de la ecuación."
+            },
+            {
+              "type": "paragraph",
+              "text": "Trabajar directamente con múltiples proveedores también puede significar administrar diferentes relaciones comerciales, acuerdos, condiciones y procesos de pago."
+            },
+            {
+              "type": "paragraph",
+              "text": "Por eso, al evaluar un agregador, conviene entender qué ocurre después de conectar la API."
+            },
+            {
+              "type": "paragraph",
+              "text": "Un buen modelo de agregación debería ayudar a centralizar no solo el acceso al contenido, sino también una parte importante de la relación operativa y comercial asociada al ecosistema de proveedores."
+            },
+            {
+              "type": "paragraph",
+              "text": "Para el operador, esto puede significar menos interlocutores y una operación más fácil de gestionar."
+            }
+          ]
+        },
+        {
+          "title": "4. Pregunta cómo se gestiona el contenido",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Tener acceso a miles de juegos genera una nueva pregunta: ¿cómo los administramos?"
+            },
+            {
+              "type": "paragraph",
+              "text": "A medida que aumenta el catálogo, contar con visibilidad sobre proveedores, juegos y desempeño se vuelve cada vez más importante."
+            },
+            {
+              "type": "paragraph",
+              "text": "Antes de integrar, vale la pena revisar qué herramientas tendrá disponible el equipo para administrar la operación y consultar información relevante."
+            },
+            {
+              "type": "paragraph",
+              "text": "Back office, reportes y estadísticas dejan de ser funcionalidades secundarias cuando el catálogo empieza a crecer. Son parte de lo que permite convertir una gran biblioteca de contenido en una operación manejable."
+            }
+          ]
+        },
+        {
+          "title": "5. No todos los mercados juegan igual",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Uno de los errores más fáciles de cometer al expandir un casino es asumir que el contenido que funciona en un mercado tendrá exactamente el mismo desempeño en otro."
+            },
+            {
+              "type": "paragraph",
+              "text": "Las preferencias pueden variar según el país, el perfil del jugador, las tendencias locales y la madurez de cada mercado."
+            },
+            {
+              "type": "paragraph",
+              "text": "Por eso, al seleccionar proveedores y juegos, no basta con preguntar qué contenido está disponible. También conviene preguntarse qué contenido tiene sentido para mi operación y para el mercado al que quiero llegar."
+            },
+            {
+              "type": "paragraph",
+              "text": "Contar con un partner que conozca las dinámicas de diferentes mercados puede ayudar a orientar mejor estas decisiones y construir una oferta más relevante."
+            }
+          ]
+        },
+        {
+          "title": "6. Revisa cómo será el proceso antes de salir en vivo",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Una buena integración no termina cuando dos sistemas consiguen conectarse."
+            },
+            {
+              "type": "paragraph",
+              "text": "Antes del lanzamiento, es necesario probar y validar que la integración y el contenido funcionen correctamente dentro de la operación."
+            },
+            {
+              "type": "paragraph",
+              "text": "Por eso, el operador debería conocer desde el principio cómo será el proceso de implementación: qué acompañamiento tendrá, cómo se realizarán las pruebas y qué debe ocurrir antes del go-live."
+            },
+            {
+              "type": "paragraph",
+              "text": "La pregunta no es únicamente “¿podemos integrarnos?”, sino “¿cómo nos acompañarán hasta estar listos para operar?”"
+            }
+          ]
+        },
+        {
+          "title": "7. Piensa desde hoy en el proveedor que querrás mañana",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Las necesidades de un casino cambian."
+            },
+            {
+              "type": "paragraph",
+              "text": "Aparecen nuevos proveedores. Surgen nuevas categorías. Cambian las preferencias de los jugadores. Se abren oportunidades en otros mercados."
+            },
+            {
+              "type": "paragraph",
+              "text": "Una integración diseñada únicamente para resolver las necesidades actuales puede convertirse rápidamente en una limitación."
+            },
+            {
+              "type": "paragraph",
+              "text": "Por eso, una de las características más importantes de una estrategia de agregación es su capacidad para acompañar la evolución del operador."
+            },
+            {
+              "type": "paragraph",
+              "text": "La infraestructura adecuada no debería obligarte a comenzar desde cero cada vez que quieras ampliar tu oferta. Debería darte una base sobre la cual seguir incorporando contenido y nuevas oportunidades a medida que tu negocio crece."
+            }
+          ]
+        },
+        {
+          "title": "Checklist antes de elegir una integración",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Antes de tomar una decisión, tu equipo debería poder responder con claridad estas preguntas:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "¿Cuántos proveedores y juegos tendremos disponibles?",
+                "¿Qué categorías de contenido podremos incorporar?",
+                "¿Necesitaremos una nueva integración por cada proveedor?",
+                "¿Cómo se incorporan nuevos proveedores en el futuro?",
+                "¿Quién gestiona la relación comercial con los proveedores?",
+                "¿Cómo se administran contratos y pagos?",
+                "¿Qué herramientas tendremos para gestionar el contenido?",
+                "¿Contaremos con reportes y estadísticas?",
+                "¿Cómo funciona el proceso de pruebas y validación?",
+                "¿Qué soporte técnico y comercial tendremos?",
+                "¿Podremos adaptar nuestra oferta a diferentes mercados?",
+                "¿La infraestructura puede evolucionar junto con nuestra operación?"
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Si las respuestas son claras desde el principio, será mucho más fácil evaluar no solamente qué puedes integrar hoy, sino hasta dónde puede crecer tu operación mañana."
+            }
+          ]
+        },
+        {
+          "title": "Una integración debería abrir posibilidades, no sumar complejidad",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "El verdadero valor de la agregación no está únicamente en conectar muchos proveedores."
+            },
+            {
+              "type": "paragraph",
+              "text": "Está en hacer posible que un casino amplíe su oferta, experimente con nuevo contenido y responda más rápido a las oportunidades sin convertir cada paso de crecimiento en un nuevo proyecto técnico y operativo."
+            },
+            {
+              "type": "paragraph",
+              "text": "En Andes Gaming conectamos operadores con un ecosistema de más de 90 proveedores y más de 12.000 juegos a través de una sola integración, acompañando el proceso desde la implementación hasta la evolución de la operación."
+            },
+            {
+              "type": "paragraph",
+              "text": "Porque cuando la infraestructura deja de ser una barrera, el equipo puede dedicar más tiempo a lo que realmente importa: crear una mejor experiencia para sus jugadores y hacer crecer el casino."
+            }
+          ]
+        }
+      ],
+      "contactCta": {
+        "title": "¿LISTO PARA AMPLIAR TU OFERTA SIN MULTIPLICAR LA COMPLEJIDAD?",
+        "action": "HABLEMOS"
+      }
     },
     "agregacion-crecimiento-operadores": {
-      title: "Por qué la agregación de juegos acelera el crecimiento de un operador",
-      excerpt:
-        "Crecer no debería significar multiplicar integraciones, procesos y puntos de falla. Una capa de agregación ayuda a ordenar esa complejidad.",
-      imageAlt:
-        "Módulos tecnológicos dispersos que convergen en una plataforma escalable iluminada en violeta",
-      author: {
-        name: "Equipo Andes Gaming",
-        role: "Estrategia de producto",
-      },
-      tags: ["Agregación", "Escalabilidad", "Operadores"],
-      sections: [
+      "title": "POR QUÉ LA AGREGACIÓN DE JUEGOS ACELERA EL CRECIMIENTO DE UN CASINO",
+      "articleTitle": "Por qué la agregación de juegos acelera el crecimiento de un casino",
+      "excerpt": "Crecer no debería significar multiplicar integraciones, procesos y carga operativa. Descubre cómo la agregación puede convertir la tecnología en una base para ampliar tu oferta con mayor agilidad.",
+      "imageAlt": "Módulos tecnológicos dispersos que convergen en una plataforma escalable iluminada en violeta",
+      "author": {"name":"Equipo Andes Gaming","role":"Estrategia de producto"},
+
+      "categoryLabel": "ARTÍCULOS",
+      "readingLabel": "6 MIN",
+      "cardAction": "LEER ARTÍCULO",
+      "introduction": [
         {
-          title: "El costo oculto de crecer conexión por conexión",
-          paragraphs: [
-            "Cada proveedor directo puede sumar contenido valioso, pero también incorpora documentación, certificaciones, monitoreo y procesos de soporte propios. Cuando estas diferencias se acumulan, el equipo dedica una parte creciente de su tiempo a mantener conexiones en lugar de mejorar el producto.",
-            "La fragmentación también afecta la velocidad de decisión. Activar un mercado, revisar disponibilidad o resolver una incidencia exige consultar fuentes distintas. El problema deja de ser exclusivamente técnico y se convierte en una limitación operativa.",
-          ],
+          "type": "paragraph",
+          "text": "Crecer en iGaming implica tomar decisiones constantemente: incorporar nuevos proveedores, ampliar el catálogo, explorar categorías, responder a las preferencias de los jugadores y aprovechar oportunidades en diferentes mercados."
         },
         {
-          title: "Una capa común convierte variedad en capacidad",
-          paragraphs: [
-            "La agregación crea una interfaz compartida entre el operador y un conjunto amplio de proveedores. Esto permite repetir patrones de integración, normalizar información y administrar el catálogo desde un punto más predecible.",
-            "El beneficio real no está en acumular la mayor cantidad posible de juegos. Está en reducir el esfuerzo necesario para probar, seleccionar y activar el contenido correcto para cada audiencia.",
-          ],
-          bullets: [
-            "Menos variaciones técnicas que mantener.",
-            "Mayor velocidad para probar nuevo contenido.",
-            "Procesos de soporte y conciliación más consistentes.",
-            "Una base preparada para expansión regional.",
-          ],
+          "type": "paragraph",
+          "text": "El problema aparece cuando cada oportunidad de crecimiento trae consigo una nueva capa de complejidad."
         },
         {
-          title: "Escalar con criterio",
-          paragraphs: [
-            "La agregación no reemplaza la estrategia de catálogo. La fortalece. Con una base operativa ordenada, producto puede evaluar relevancia, desempeño y experiencia sin que cada decisión implique iniciar un proyecto técnico independiente.",
-            "Para un operador en crecimiento, esa capacidad de aprender y ajustar con rapidez suele ser más valiosa que cualquier lanzamiento aislado.",
-          ],
+          "type": "paragraph",
+          "text": "Una nueva integración. Otro proceso técnico. Una nueva relación comercial. Más coordinación. Más mantenimiento."
         },
+        {
+          "type": "paragraph",
+          "text": "Por eso, la agregación de juegos no debería entenderse únicamente como una forma de acceder a más contenido. Su verdadero valor está en crear una infraestructura que permita crecer sin multiplicar la complejidad al mismo ritmo."
+        }
       ],
-      relatedProduct: {
-        label: "Casino Aggregation",
-        description: "Descubre una forma más simple de ampliar tu oferta de juegos.",
-      },
+      "sections": [
+        {
+          "title": "Crecer con integraciones individuales tiene un costo",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Cuando un casino trabaja directamente con diferentes proveedores, cada incorporación puede convertirse en un proyecto independiente."
+            },
+            {
+              "type": "paragraph",
+              "text": "Integración, pruebas, contratos, condiciones comerciales, pagos, soporte y mantenimiento pueden multiplicarse a medida que aumenta el número de proveedores."
+            },
+            {
+              "type": "paragraph",
+              "text": "Con pocos proveedores puede ser manejable. Pero cuando el objetivo es construir un catálogo amplio y mantenerlo en constante evolución, esa estructura puede empezar a consumir recursos que podrían estar enfocados en otras áreas del negocio."
+            },
+            {
+              "type": "paragraph",
+              "text": "La pregunta deja de ser simplemente:"
+            },
+            {
+              "type": "paragraph",
+              "text": "¿Qué proveedor queremos integrar?"
+            },
+            {
+              "type": "paragraph",
+              "text": "Y pasa a ser:"
+            },
+            {
+              "type": "paragraph",
+              "text": "¿Cuánto esfuerzo requiere incorporar cada nueva oportunidad?"
+            }
+          ]
+        },
+        {
+          "title": "La agregación cambia la lógica",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Un modelo de agregación centraliza el acceso a múltiples proveedores a través de una sola integración."
+            },
+            {
+              "type": "paragraph",
+              "text": "En lugar de construir una conexión diferente para cada proveedor, el operador conecta su plataforma con el agregador y desde esa infraestructura puede ampliar progresivamente su ecosistema de contenido."
+            },
+            {
+              "type": "paragraph",
+              "text": "Esto cambia algo fundamental: incorporar más contenido deja de significar necesariamente desarrollar más integraciones."
+            },
+            {
+              "type": "paragraph",
+              "text": "El equipo tecnológico puede concentrarse en una infraestructura central mientras el catálogo continúa evolucionando."
+            }
+          ]
+        },
+        {
+          "title": "Más velocidad para responder al mercado",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "En iGaming, las preferencias de los jugadores cambian."
+            },
+            {
+              "type": "paragraph",
+              "text": "Surgen nuevos formatos. Algunos juegos ganan popularidad rápidamente. Aparecen proveedores, mecánicas y experiencias que pueden convertirse en oportunidades para diferenciar una operación."
+            },
+            {
+              "type": "paragraph",
+              "text": "Una infraestructura flexible permite reaccionar con mayor agilidad ante esos cambios."
+            },
+            {
+              "type": "paragraph",
+              "text": "Si incorporar contenido requiere comenzar un proyecto técnico desde cero cada vez, la velocidad de respuesta del operador puede verse limitada."
+            },
+            {
+              "type": "paragraph",
+              "text": "En cambio, cuando existe una capa de agregación, el catálogo puede evolucionar sobre una infraestructura que ya está conectada."
+            },
+            {
+              "type": "paragraph",
+              "text": "Eso permite dedicar más tiempo a decidir qué incorporar y menos a resolver cómo conectarlo."
+            }
+          ]
+        },
+        {
+          "title": "El crecimiento también es comercial y operativo",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "La integración técnica es solo una parte."
+            },
+            {
+              "type": "paragraph",
+              "text": "Trabajar con múltiples proveedores también implica administrar relaciones comerciales, contratos, condiciones y procesos de pago."
+            },
+            {
+              "type": "paragraph",
+              "text": "Un modelo de agregación puede centralizar una parte importante de estas relaciones, reduciendo el número de interlocutores que el operador debe gestionar directamente."
+            },
+            {
+              "type": "paragraph",
+              "text": "El beneficio no está solamente en tener una API."
+            },
+            {
+              "type": "paragraph",
+              "text": "Está en simplificar el ecosistema que existe alrededor de ella."
+            }
+          ]
+        },
+        {
+          "title": "Un catálogo que puede evolucionar contigo",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Ningún casino debería construir su oferta pensando únicamente en lo que sus jugadores quieren hoy."
+            },
+            {
+              "type": "paragraph",
+              "text": "Las preferencias evolucionan y las oportunidades cambian."
+            },
+            {
+              "type": "paragraph",
+              "text": "Por eso, una estrategia de contenido necesita espacio para experimentar: incorporar nuevos proveedores, probar categorías, renovar títulos y adaptar la oferta a diferentes perfiles de jugadores."
+            },
+            {
+              "type": "paragraph",
+              "text": "La infraestructura debe permitir esa evolución."
+            },
+            {
+              "type": "paragraph",
+              "text": "Una plataforma que facilita la incorporación de nuevo contenido convierte el catálogo en algo dinámico: una herramienta que puede acompañar la estrategia de crecimiento del casino."
+            }
+          ]
+        },
+        {
+          "title": "La tecnología debería liberar oportunidades",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "El objetivo de una buena infraestructura no es simplemente funcionar."
+            },
+            {
+              "type": "paragraph",
+              "text": "Es permitir que el negocio avance."
+            },
+            {
+              "type": "paragraph",
+              "text": "En Andes Gaming conectamos operadores con más de 90 proveedores y más de 12.000 juegos mediante una sola integración, creando una base desde la cual pueden ampliar su oferta sin desarrollar una API independiente para cada proveedor."
+            },
+            {
+              "type": "paragraph",
+              "text": "Porque crecer no debería significar sumar complejidad en cada paso."
+            },
+            {
+              "type": "paragraph",
+              "text": "Debería significar tener más posibilidades para construir el casino que tus jugadores quieren elegir."
+            }
+          ]
+        }
+      ],
+      "contactCta": {
+        "title": "¿QUIERES AMPLIAR TU OFERTA SOBRE UNA INTEGRACIÓN PREPARADA PARA CRECER?",
+        "action": "HABLEMOS"
+      }
     },
     "catalogo-juegos-latam": {
-      title: "Cómo construir un catálogo de juegos relevante para mercados LATAM",
-      excerpt:
-        "La disponibilidad global no garantiza relevancia local. Un catálogo efectivo combina contexto, variedad y capacidad de aprendizaje.",
-      imageAlt:
-        "Conjuntos de contenido regional conectados a un núcleo tecnológico central",
-      author: {
-        name: "Equipo Andes Gaming",
-        role: "Contenido y mercados",
-      },
-      tags: ["LATAM", "Catálogo", "Contenido", "Mercados"],
-      sections: [
+      "title": "CÓMO CONSTRUIR UN CATÁLOGO DE JUEGOS RELEVANTE PARA LATAM",
+      "articleTitle": "Cómo construir un catálogo de juegos relevante para LATAM",
+      "excerpt": "Más juegos no siempre significan una mejor oferta. Un catálogo relevante combina variedad, conocimiento del mercado y contenido capaz de conectar con diferentes perfiles de jugadores.",
+      "imageAlt": "Conjuntos de contenido regional conectados a un núcleo tecnológico central",
+      "author": {"name":"Equipo Andes Gaming","role":"Contenido y mercados"},
+
+      "categoryLabel": "ARTÍCULOS",
+      "readingLabel": "7 MIN",
+      "cardAction": "LEER ARTÍCULO",
+      "introduction": [
         {
-          title: "Relevancia local antes que volumen",
-          paragraphs: [
-            "Latinoamérica reúne mercados con hábitos, regulaciones, métodos de pago y niveles de madurez diferentes. Tratar la región como una sola audiencia suele producir catálogos extensos, pero difíciles de navegar y con poca intención editorial.",
-            "El punto de partida es entender qué experiencias resultan familiares para cada mercado: formatos, ritmos, temáticas, dispositivos y momentos de consumo. Esa lectura debe orientar la selección inicial y no limitarse a una traducción de interfaz.",
-          ],
+          "type": "paragraph",
+          "text": "LATAM no es un solo mercado."
         },
         {
-          title: "Diseña una mezcla que pueda evolucionar",
-          paragraphs: [
-            "Un catálogo sano combina títulos reconocibles, propuestas nuevas y suficiente diversidad para evitar que toda la experiencia dependa de unos pocos contenidos. También necesita reglas para incorporar novedades sin desplazar lo que ya funciona.",
-          ],
-          bullets: [
-            "Definir grupos de contenido según intención y audiencia.",
-            "Evitar duplicar experiencias que compiten por el mismo espacio.",
-            "Revisar compatibilidad, desempeño móvil y disponibilidad regional.",
-            "Reservar espacios controlados para descubrimiento y prueba.",
-          ],
+          "type": "paragraph",
+          "text": "Detrás de esa etiqueta conviven países, jugadores, hábitos y preferencias diferentes. Un juego que destaca en una operación no necesariamente tendrá el mismo comportamiento en otra."
         },
         {
-          title: "Aprende del comportamiento sin perder contexto",
-          paragraphs: [
-            "Los datos ayudan a observar qué se abre, qué se repite y qué se abandona, pero deben interpretarse junto con la ubicación del contenido, las campañas y la etapa del usuario. Una cifra aislada no explica por qué un juego funciona.",
-            "La ventaja de una operación flexible es poder ajustar la mezcla por mercado sin reconstruir la integración. Así, el catálogo se convierte en un sistema vivo y no en una lista estática.",
-          ],
+          "type": "paragraph",
+          "text": "Por eso, construir un catálogo competitivo para Latinoamérica requiere algo más que acceder a miles de títulos."
         },
+        {
+          "type": "paragraph",
+          "text": "Requiere entender qué ofrecer, para quién y en qué contexto."
+        }
       ],
-      relatedProduct: {
-        label: "Game Providers",
-        description: "Explora el ecosistema de proveedores conectado con Andes Gaming.",
-      },
+      "sections": [
+        {
+          "title": "El catálogo más grande no siempre gana",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Es fácil convertir el tamaño del catálogo en la principal métrica de una oferta de casino."
+            },
+            {
+              "type": "paragraph",
+              "text": "5.000 juegos. 10.000 juegos. 15.000 juegos."
+            },
+            {
+              "type": "paragraph",
+              "text": "Pero desde la perspectiva del jugador, el número total importa menos que encontrar experiencias que realmente quiera jugar."
+            },
+            {
+              "type": "paragraph",
+              "text": "Por eso, el desafío del operador no consiste únicamente en sumar títulos."
+            },
+            {
+              "type": "paragraph",
+              "text": "Consiste en transformar una biblioteca amplia en una oferta relevante."
+            },
+            {
+              "type": "paragraph",
+              "text": "La variedad sigue siendo importante, pero necesita estar acompañada de criterio."
+            }
+          ]
+        },
+        {
+          "title": "Empieza por entender a quién quieres atraer",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Antes de seleccionar contenido, conviene entender qué perfiles forman parte de tu operación."
+            },
+            {
+              "type": "paragraph",
+              "text": "¿Qué categorías prefieren? ¿Qué mecánicas generan mayor interés? ¿Qué proveedores reconocen? ¿Qué experiencias tienen mejor recepción?"
+            },
+            {
+              "type": "paragraph",
+              "text": "Las respuestas pueden variar entre mercados e incluso entre segmentos dentro de un mismo casino."
+            },
+            {
+              "type": "paragraph",
+              "text": "Analizar estas diferencias permite construir una estrategia de contenido mucho más intencional."
+            },
+            {
+              "type": "paragraph",
+              "text": "En lugar de preguntar solamente “¿qué juegos tenemos disponibles?”, el operador empieza a preguntarse:"
+            },
+            {
+              "type": "paragraph",
+              "text": "“¿Qué experiencias queremos ofrecerles a nuestros jugadores?”"
+            },
+            {
+              "type": "paragraph",
+              "text": "Y esa es una conversación mucho más valiosa."
+            }
+          ]
+        },
+        {
+          "title": "Construye variedad con propósito",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Un catálogo atractivo necesita diversidad."
+            },
+            {
+              "type": "paragraph",
+              "text": "Slots, casino en vivo, crash games, juegos instantáneos, juegos de mesa y otras categorías pueden responder a momentos y perfiles de juego diferentes."
+            },
+            {
+              "type": "paragraph",
+              "text": "Pero variedad no significa incorporar todo indiscriminadamente."
+            },
+            {
+              "type": "paragraph",
+              "text": "La oportunidad está en crear una combinación capaz de ofrecer descubrimiento sin convertir el catálogo en una colección difícil de navegar y gestionar."
+            },
+            {
+              "type": "paragraph",
+              "text": "Cada categoría debería cumplir un papel dentro de la experiencia general del casino."
+            }
+          ]
+        },
+        {
+          "title": "Combina marcas reconocidas con descubrimiento",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Los proveedores consolidados pueden aportar títulos que los jugadores ya conocen y buscan."
+            },
+            {
+              "type": "paragraph",
+              "text": "Pero limitarse únicamente a lo conocido también puede hacer que diferentes casinos terminen ofreciendo experiencias demasiado similares."
+            },
+            {
+              "type": "paragraph",
+              "text": "Incorporar nuevos proveedores, formatos y contenidos permite mantener la oferta fresca y generar oportunidades de descubrimiento."
+            },
+            {
+              "type": "paragraph",
+              "text": "El equilibrio está en combinar familiaridad y novedad."
+            },
+            {
+              "type": "paragraph",
+              "text": "Darles a los jugadores lo que ya disfrutan, mientras se les presentan nuevas razones para seguir explorando."
+            }
+          ]
+        },
+        {
+          "title": "Aprende de cada mercado",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Una estrategia de contenido nunca debería ser estática."
+            },
+            {
+              "type": "paragraph",
+              "text": "El desempeño de los juegos genera información que puede ayudar al operador a entender mejor las preferencias de su audiencia."
+            },
+            {
+              "type": "paragraph",
+              "text": "¿Qué categorías están ganando relevancia? ¿Qué proveedores funcionan mejor? ¿Qué contenido pierde tracción? ¿Dónde aparecen nuevas oportunidades?"
+            },
+            {
+              "type": "paragraph",
+              "text": "Reportes, estadísticas y conocimiento local permiten convertir esas señales en mejores decisiones."
+            },
+            {
+              "type": "paragraph",
+              "text": "El catálogo deja entonces de ser una lista de juegos para convertirse en un ecosistema que aprende y evoluciona."
+            }
+          ]
+        },
+        {
+          "title": "Mantén espacio para lo que viene",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "El contenido de iGaming cambia constantemente."
+            },
+            {
+              "type": "paragraph",
+              "text": "Nuevos títulos, proveedores y formatos aparecen todo el tiempo. Una oferta competitiva necesita capacidad para evolucionar con ellos."
+            },
+            {
+              "type": "paragraph",
+              "text": "Por eso, además de seleccionar correctamente el contenido actual, el operador necesita una infraestructura que le permita incorporar nuevas oportunidades sin convertir cada incorporación en un nuevo proyecto técnico."
+            },
+            {
+              "type": "paragraph",
+              "text": "La estrategia y la tecnología deben avanzar juntas."
+            }
+          ]
+        },
+        {
+          "title": "Un buen catálogo no se mide solo por cuántos juegos tiene",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Se mide por las posibilidades que crea."
+            },
+            {
+              "type": "paragraph",
+              "text": "Posibilidades de conectar con distintos jugadores. De experimentar con nuevas experiencias. De responder a tendencias. De adaptar la oferta a diferentes mercados."
+            },
+            {
+              "type": "paragraph",
+              "text": "En Andes Gaming reunimos más de 12.000 juegos de más de 90 proveedores, combinando acceso a contenido con conocimiento de las dinámicas de LATAM para acompañar a nuestros partners en la construcción de ofertas relevantes para sus operaciones."
+            },
+            {
+              "type": "paragraph",
+              "text": "Porque el objetivo no es llenar un casino de juegos."
+            },
+            {
+              "type": "paragraph",
+              "text": "Es darle a cada jugador más razones para encontrar algo que quiera jugar."
+            }
+          ]
+        }
+      ],
+      "contactCta": {
+        "title": "¿QUIERES CONSTRUIR UNA OFERTA MÁS RELEVANTE PARA TUS JUGADORES?",
+        "action": "HABLEMOS"
+      }
     },
     "evaluar-agregador-juegos": {
-      title: "Cómo evaluar un agregador de juegos antes de contratarlo",
-      excerpt:
-        "Una guía para comparar cobertura, tecnología y acompañamiento sin dejar que el tamaño del catálogo sea el único criterio.",
-      imageAlt:
-        "Plataforma tecnológica transparente analizada mediante anillos de verificación",
-      author: {
-        name: "Equipo Andes Gaming",
-        role: "Soluciones B2B",
-      },
-      tags: ["Evaluación", "Agregadores", "Tecnología", "Soporte"],
-      sections: [
+      "title": "CÓMO EVALUAR UN AGREGADOR DE JUEGOS ANTES DE CONTRATARLO",
+      "articleTitle": "Cómo evaluar un agregador de juegos antes de contratarlo",
+      "excerpt": "No evalúes únicamente cuántos juegos ofrece. Tecnología, proveedores, operación, soporte y capacidad de crecimiento pueden marcar una diferencia mucho mayor.",
+      "imageAlt": "Plataforma tecnológica transparente analizada mediante anillos de verificación",
+      "author": {"name":"Equipo Andes Gaming","role":"Soluciones B2B"},
+
+      "categoryLabel": "GUÍAS",
+      "readingLabel": "9 MIN",
+      "cardAction": "LEER GUÍA",
+      "introduction": [
         {
-          title: "Empieza por tu modelo operativo",
-          paragraphs: [
-            "No existe un agregador correcto para todos los operadores. La evaluación debe partir de tus mercados, capacidad técnica, estrategia de contenido y expectativas de soporte. Esa base permite convertir una demostración comercial en una comparación útil.",
-            "Antes de solicitar propuestas, documenta los requisitos que serían difíciles o costosos de cambiar después: monedas, jurisdicciones, modelo de billetera, reportes, certificaciones y proceso de incorporación de proveedores.",
-          ],
+          "type": "paragraph",
+          "text": "Elegir un agregador puede definir mucho más que la cantidad de juegos disponibles en un casino."
         },
         {
-          title: "Evalúa la plataforma detrás del catálogo",
-          paragraphs: [
-            "El número total de juegos es visible, pero no explica cómo se opera la solución. Pregunta cómo se normalizan los datos, cómo se comunican las incidencias y qué herramientas existen para observar transacciones, disponibilidad y cambios de contenido.",
-          ],
-          bullets: [
-            "Calidad y consistencia de la documentación técnica.",
-            "Trazabilidad de sesiones y transacciones.",
-            "Proceso para incorporar y certificar nuevos proveedores.",
-            "Canales de soporte, prioridades y escalamiento.",
-            "Controles para activar contenido por marca o mercado.",
-          ],
+          "type": "paragraph",
+          "text": "La decisión puede afectar la velocidad con la que incorporas contenido, la carga de tu equipo tecnológico, la gestión de proveedores y la capacidad de tu operación para evolucionar."
         },
         {
-          title: "Prueba la relación, no solo la API",
-          paragraphs: [
-            "Una prueba técnica también permite observar la forma de trabajo del proveedor. La velocidad, claridad y consistencia con que se resuelven preguntas durante esa etapa anticipan cómo podría sentirse la operación diaria.",
-            "Cierra la evaluación con una matriz breve y comparable. Prioriza los criterios que afectan continuidad y crecimiento, documenta los compromisos y evita decidir únicamente por una funcionalidad llamativa o por el tamaño declarado del portafolio.",
-          ],
-          callout:
-            "La mejor cobertura es la que tu equipo puede integrar, operar y hacer crecer con confianza.",
+          "type": "paragraph",
+          "text": "Por eso, comparar agregadores únicamente por el tamaño de su catálogo deja fuera una parte importante de la decisión."
         },
+        {
+          "type": "paragraph",
+          "text": "Antes de contratar, hay al menos siete áreas que vale la pena evaluar."
+        }
       ],
-      relatedProduct: {
-        label: "Game Providers",
-        description: "Conoce los proveedores disponibles en nuestro ecosistema.",
-      },
-    },
-    "catalogo-contenido-andes": {
-      title: "Actualización de producto: una forma más clara de organizar el catálogo",
-      excerpt:
-        "Presentamos la dirección de experiencia con la que buscamos convertir un portafolio amplio en una herramienta más operable.",
-      imageAlt:
-        "Módulos de contenido ordenados en capas conectadas a un control central",
-      author: {
-        name: "Equipo Andes Gaming",
-        role: "Producto",
-      },
-      tags: ["Producto", "Catálogo", "Operación"],
-      disclaimer:
-        "Contenido demostrativo: esta publicación presenta una dirección de producto y debe validarse antes de su publicación comercial.",
-      sections: [
+      "sections": [
         {
-          title: "Del inventario a una herramienta de trabajo",
-          paragraphs: [
-            "A medida que crece la oferta de proveedores, una lista plana deja de ser suficiente. La dirección propuesta organiza el contenido alrededor de decisiones operativas: disponibilidad, mercado, categoría y estado de activación.",
-            "El objetivo es que cada equipo encuentre el contexto necesario sin depender de búsquedas manuales o documentos paralelos.",
-          ],
+          "title": "1. Ecosistema de proveedores",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "La primera pregunta parece evidente:"
+            },
+            {
+              "type": "paragraph",
+              "text": "¿Con qué proveedores trabaja?"
+            },
+            {
+              "type": "paragraph",
+              "text": "Pero no te quedes únicamente con el número."
+            },
+            {
+              "type": "paragraph",
+              "text": "Revisa si el ecosistema incluye proveedores relevantes para tu estrategia, qué categorías están disponibles y qué posibilidades existen para seguir ampliando la oferta en el futuro."
+            },
+            {
+              "type": "paragraph",
+              "text": "Un catálogo amplio genera valor cuando contiene las experiencias que realmente tienen sentido para tus jugadores y tu operación."
+            }
+          ]
         },
         {
-          title: "Principios de la nueva organización",
-          paragraphs: [
-            "La experiencia prioriza información escaneable, filtros comprensibles y estados consistentes. Cada nivel debe responder una pregunta concreta antes de mostrar más detalle.",
-          ],
-          bullets: [
-            "Agrupar contenido mediante criterios reconocibles.",
-            "Mantener visible la relación entre proveedor, mercado y disponibilidad.",
-            "Reducir pasos para revisar y comparar opciones.",
-            "Diseñar la estructura para que pueda crecer sin perder claridad.",
-          ],
+          "title": "2. Modelo de integración",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Pregunta exactamente qué tendrá que desarrollar tu equipo."
+            },
+            {
+              "type": "paragraph",
+              "text": "¿Existe una integración central? ¿Cada proveedor requiere trabajo adicional? ¿Cómo se incorporan nuevos proveedores después del lanzamiento?"
+            },
+            {
+              "type": "paragraph",
+              "text": "Una arquitectura centralizada debería permitir que la conexión inicial se convierta en la puerta de entrada a un ecosistema más amplio."
+            },
+            {
+              "type": "paragraph",
+              "text": "La pregunta clave es:"
+            },
+            {
+              "type": "paragraph",
+              "text": "¿Qué tan fácil será crecer después de la primera integración?"
+            }
+          ]
         },
         {
-          title: "Qué buscamos validar",
-          paragraphs: [
-            "La siguiente etapa consiste en observar cómo los equipos usan esta organización en tareas reales. Más que medir clics aislados, interesa comprobar si disminuye el tiempo necesario para entender el catálogo y tomar una decisión.",
-          ],
+          "title": "3. Gestión comercial",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Más proveedores también pueden significar más negociaciones, contratos, condiciones y pagos."
+            },
+            {
+              "type": "paragraph",
+              "text": "Entender qué parte de esta gestión asume el agregador es fundamental."
+            },
+            {
+              "type": "paragraph",
+              "text": "Una solución que centraliza tanto la conexión tecnológica como parte de la relación comercial puede reducir considerablemente la carga operativa del casino."
+            },
+            {
+              "type": "paragraph",
+              "text": "No evalúes únicamente la API."
+            },
+            {
+              "type": "paragraph",
+              "text": "Evalúa todo lo que esa API te permite dejar de gestionar por separado."
+            }
+          ]
         },
+        {
+          "title": "4. Herramientas para operar",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Una vez que tienes miles de juegos disponibles, necesitas administrarlos."
+            },
+            {
+              "type": "paragraph",
+              "text": "Pregunta qué herramientas ofrece la plataforma para gestionar la operación, consultar información y hacer seguimiento al desempeño."
+            },
+            {
+              "type": "paragraph",
+              "text": "Un back office centralizado, acompañado de reportes y estadísticas, puede darle al equipo mayor visibilidad sobre un ecosistema que crecerá progresivamente."
+            },
+            {
+              "type": "paragraph",
+              "text": "Acceder a contenido es el primer paso."
+            },
+            {
+              "type": "paragraph",
+              "text": "Poder gestionarlo es igual de importante."
+            }
+          ]
+        },
+        {
+          "title": "5. Conocimiento de tus mercados",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Un proveedor puede tener una oferta global y aun así no comprender las particularidades de tu mercado."
+            },
+            {
+              "type": "paragraph",
+              "text": "Si tu operación tiene presencia o planes de crecimiento en LATAM, pregunta qué conocimiento tiene el partner sobre las dinámicas de la región."
+            },
+            {
+              "type": "paragraph",
+              "text": "¿Puede ayudarte a entender qué tipos de contenido pueden ser relevantes? ¿Conoce las diferencias entre mercados? ¿Puede acompañarte comercialmente en la construcción de tu oferta?"
+            },
+            {
+              "type": "paragraph",
+              "text": "La tecnología conecta el contenido."
+            },
+            {
+              "type": "paragraph",
+              "text": "El conocimiento del mercado ayuda a darle dirección."
+            }
+          ]
+        },
+        {
+          "title": "6. Implementación y soporte",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "La relación con un agregador no debería terminar cuando se firma el contrato."
+            },
+            {
+              "type": "paragraph",
+              "text": "Pregunta cómo será el proceso de integración, quién acompañará a tu equipo, cómo se realizarán las pruebas y qué soporte tendrás una vez que la operación esté en vivo."
+            },
+            {
+              "type": "paragraph",
+              "text": "También es importante entender si tendrás un contacto dedicado y cómo se gestionan las necesidades técnicas y comerciales."
+            },
+            {
+              "type": "paragraph",
+              "text": "Cuando aparece un problema o una oportunidad, saber quién está del otro lado importa."
+            }
+          ]
+        },
+        {
+          "title": "7. Capacidad para crecer contigo",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Finalmente, piensa más allá de tus necesidades actuales."
+            },
+            {
+              "type": "paragraph",
+              "text": "Quizás hoy necesitas incorporar slots de nuevos proveedores. Mañana podrías querer explorar otras categorías, ampliar tu oferta o responder a oportunidades en nuevos mercados."
+            },
+            {
+              "type": "paragraph",
+              "text": "La plataforma que elijas debería estar preparada para acompañar esa evolución."
+            },
+            {
+              "type": "paragraph",
+              "text": "Una buena pregunta para cerrar cualquier proceso de evaluación sería:"
+            },
+            {
+              "type": "paragraph",
+              "text": "“Si nuestra operación crece significativamente durante los próximos años, ¿esta infraestructura podrá crecer con nosotros?”"
+            }
+          ]
+        },
+        {
+          "title": "Checklist para comparar agregadores",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Antes de tomar una decisión, revisa:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Número y relevancia de proveedores.",
+                "Variedad de categorías y contenido.",
+                "Arquitectura y modelo de integración.",
+                "Proceso para incorporar nuevos proveedores.",
+                "Gestión de contratos y relaciones comerciales.",
+                "Gestión de pagos a proveedores.",
+                "Back office y herramientas operativas.",
+                "Reportes y estadísticas disponibles.",
+                "Proceso de implementación y validación.",
+                "Soporte técnico.",
+                "Acompañamiento comercial.",
+                "Conocimiento de los mercados relevantes para tu operación.",
+                "Capacidad para ampliar el ecosistema en el futuro."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Pero hay una recomendación adicional:"
+            },
+            {
+              "type": "paragraph",
+              "text": "no evalúes cada punto de manera aislada."
+            },
+            {
+              "type": "paragraph",
+              "text": "Un agregador puede tener miles de juegos y generar una operación compleja. Otro puede ofrecer buena tecnología pero poco acompañamiento. La decisión está en encontrar un ecosistema que funcione como un conjunto."
+            }
+          ]
+        },
+        {
+          "title": "El mejor punto de partida es pensar en dónde quieres estar mañana",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Elegir un agregador no consiste solamente en resolver una integración."
+            },
+            {
+              "type": "paragraph",
+              "text": "Consiste en elegir parte de la infraestructura sobre la que tu casino seguirá construyendo su oferta."
+            },
+            {
+              "type": "paragraph",
+              "text": "En Andes Gaming conectamos operadores con más de 90 proveedores y más de 12.000 juegos mediante una sola integración, centralizando tecnología, contenido y gestión para crear una base preparada para seguir evolucionando junto con cada operación."
+            },
+            {
+              "type": "paragraph",
+              "text": "La pregunta final, entonces, no debería ser solamente:"
+            },
+            {
+              "type": "paragraph",
+              "text": "“¿Qué me ofrece este agregador hoy?”"
+            },
+            {
+              "type": "paragraph",
+              "text": "También debería ser:"
+            },
+            {
+              "type": "paragraph",
+              "text": "“¿Qué me permitirá hacer mañana?”"
+            }
+          ]
+        }
       ],
-      relatedProduct: {
-        label: "Game Providers",
-        description: "Revisa la experiencia actual de exploración de proveedores.",
-      },
-    },
-    "descubrimiento-proveedores": {
-      title: "Actualización de experiencia: descubrir proveedores con mejor contexto",
-      excerpt:
-        "Una propuesta para facilitar la exploración de proveedores y comunicar mejor el valor de cada integración.",
-      imageAlt:
-        "Red de proveedores con un grupo de nodos destacados mediante una señal cian",
-      author: {
-        name: "Equipo Andes Gaming",
-        role: "Diseño de producto",
-      },
-      tags: ["Experiencia", "Proveedores", "Descubrimiento"],
-      disclaimer:
-        "Contenido demostrativo: esta publicación describe una propuesta de experiencia sujeta a revisión de producto.",
-      sections: [
-        {
-          title: "Explorar no es lo mismo que recorrer logos",
-          paragraphs: [
-            "Cuando cada proveedor aparece únicamente como una marca, el usuario debe conocerlo de antemano para entender su relevancia. La propuesta incorpora contexto sobre tipo de contenido, compatibilidad y enfoque, manteniendo una primera vista limpia.",
-            "La intención no es llenar cada card de información, sino mostrar la cantidad correcta en cada momento y permitir profundizar cuando exista interés.",
-          ],
-        },
-        {
-          title: "Una jerarquía pensada para decidir",
-          paragraphs: [
-            "La experiencia organiza la exploración en tres momentos: descubrir, comparar y contactar. Los filtros ayudan a reducir el universo; las fichas comunican diferencias; y el CTA conecta la selección con una conversación operativa.",
-          ],
-          bullets: [
-            "Categorías visibles y comprensibles.",
-            "Información breve que explique el enfoque del proveedor.",
-            "Estados de interacción claros en teclado y pantallas táctiles.",
-            "Continuidad natural hacia la conversación comercial.",
-          ],
-        },
-        {
-          title: "Diseñar para catálogos que cambian",
-          paragraphs: [
-            "Los proveedores y sus condiciones evolucionan. Por eso, la interfaz debe aceptar altas, cambios y nuevos criterios sin depender de composiciones manuales. Una estructura basada en datos permite mantener consistencia mientras el ecosistema crece.",
-          ],
-        },
-      ],
-      relatedProduct: {
-        label: "Game Providers",
-        description: "Explora nuestro catálogo actual de proveedores.",
-      },
-    },
-    "caso-expansion-regional": {
-      title: "Caso ilustrativo: expansión regional con una sola capa de integración",
-      excerpt:
-        "Cómo podría estructurarse la expansión de un operador hacia nuevos mercados sin replicar su arquitectura para cada lanzamiento.",
-      imageAlt:
-        "Plataforma central que distribuye conexiones hacia múltiples destinos regionales",
-      author: {
-        name: "Equipo Andes Gaming",
-        role: "Arquitectura de soluciones",
-      },
-      tags: ["Caso ilustrativo", "Expansión", "LATAM", "Integración"],
-      disclaimer:
-        "Caso ilustrativo: el operador, el contexto y los resultados descritos son hipotéticos y se incluyen únicamente para demostrar la experiencia editorial.",
-      sections: [
-        {
-          title: "El escenario",
-          paragraphs: [
-            "Un operador regional administra una marca estable y quiere entrar en dos mercados adicionales. Su integración actual fue diseñada alrededor de acuerdos directos, con flujos y procesos distintos para cada proveedor.",
-            "Replicar ese modelo ampliaría el tiempo de preparación y obligaría a mantener variaciones de la misma lógica. El reto consiste en conservar control local sin duplicar la base técnica.",
-          ],
-        },
-        {
-          title: "El enfoque propuesto",
-          paragraphs: [
-            "La solución hipotética introduce una capa común para sesiones, transacciones y catálogo. Las diferencias de cada mercado se gestionan como configuración: moneda, disponibilidad, selección de proveedores y reglas operativas.",
-          ],
-          bullets: [
-            "Definir un contrato técnico compartido.",
-            "Separar configuración regional de lógica transaccional.",
-            "Lanzar primero un catálogo controlado por mercado.",
-            "Centralizar trazabilidad y escalamiento de incidentes.",
-          ],
-        },
-        {
-          title: "El aprendizaje",
-          paragraphs: [
-            "En este escenario, la principal ganancia no es una cifra aislada, sino la repetibilidad. Cada nuevo mercado reutiliza una base conocida y concentra el esfuerzo en decisiones de producto, cumplimiento y contenido.",
-            "El caso muestra por qué una arquitectura de agregación debe evaluarse como capacidad operativa a largo plazo y no solo como una vía de acceso a juegos.",
-          ],
-        },
-      ],
-      relatedProduct: {
-        label: "Casino Aggregation",
-        description: "Conoce la arquitectura pensada para conectar y escalar.",
-      },
-    },
-    "caso-operacion-multimarca": {
-      title: "Caso ilustrativo: centralizar el catálogo de un operador multimarcas",
-      excerpt:
-        "Un escenario sobre cómo mantener identidades distintas mientras contenido y operación comparten una fuente confiable.",
-      imageAlt:
-        "Catálogo central sincronizado con varias superficies digitales independientes",
-      author: {
-        name: "Equipo Andes Gaming",
-        role: "Operaciones de contenido",
-      },
-      tags: ["Caso ilustrativo", "Multimarca", "Catálogo", "Operación"],
-      disclaimer:
-        "Caso ilustrativo: esta historia no representa a un cliente ni comunica resultados reales de Andes Gaming.",
-      sections: [
-        {
-          title: "El escenario",
-          paragraphs: [
-            "Un grupo hipotético opera varias marcas dirigidas a audiencias diferentes. Cada una mantiene su propia navegación y estrategia comercial, pero los equipos actualizan el contenido mediante archivos y procesos separados.",
-            "La falta de una fuente común genera diferencias de disponibilidad, esfuerzo duplicado y poca claridad sobre qué versión del catálogo está vigente.",
-          ],
-        },
-        {
-          title: "Una fuente común con decisiones por marca",
-          paragraphs: [
-            "El enfoque propuesto centraliza la información base de proveedores y contenidos, sin obligar a que todas las marcas presenten la misma selección. Cada equipo conserva reglas de publicación, orden y segmentación sobre un inventario compartido.",
-          ],
-          bullets: [
-            "Catálogo maestro con estados consistentes.",
-            "Selecciones independientes por marca y mercado.",
-            "Historial claro de cambios y responsables.",
-            "Un flujo común para altas, pausas y revisiones.",
-          ],
-        },
-        {
-          title: "El aprendizaje",
-          paragraphs: [
-            "Centralizar no significa uniformar la experiencia. Significa reducir trabajo repetido y ofrecer a cada marca una base confiable desde la cual diferenciarse.",
-            "En un entorno multimarcas, la calidad de la operación depende tanto del gobierno del catálogo como de la tecnología que lo distribuye.",
-          ],
-        },
-      ],
-      relatedProduct: {
-        label: "Game Providers",
-        description: "Conoce cómo organizamos el acceso a proveedores.",
-      },
-    },
-  },
+      "contactCta": {
+        "title": "¿ESTÁS EVALUANDO CÓMO AMPLIAR EL ECOSISTEMA DE TU CASINO?",
+        "action": "HABLEMOS"
+      }
+    }
+  }
 } satisfies BlogLocaleResource;
 
 export default blogEs;

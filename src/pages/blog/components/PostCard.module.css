@@ -57,6 +57,7 @@
 
 .media {
   position: relative;
+  flex-shrink: 0;
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -131,8 +132,7 @@
 }
 
 .title {
-  display: -webkit-box;
-  overflow: hidden;
+  display: block;
   margin-bottom: var(--space-3);
   color: var(--color-text-primary);
   font-family: var(--font-heading);
@@ -141,19 +141,18 @@
   font-weight: var(--font-weight-extrabold);
   line-height: 1.2;
   overflow-wrap: break-word;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+
+
 }
 
 .excerpt {
-  display: -webkit-box;
-  overflow: hidden;
+  display: block;
   color: var(--color-text-secondary);
   font-size: var(--text-sm);
   line-height: 1.65;
   overflow-wrap: break-word;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+
+
 }
 
 .action {

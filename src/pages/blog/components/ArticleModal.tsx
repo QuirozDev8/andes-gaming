@@ -1,17 +1,13 @@
 import { useEffect, useRef, type MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import {
-  ArrowUpRight,
-  CalendarDays,
-  Clock3,
-  UserRound,
-  X,
-} from "lucide-react";
+
+import { ArrowUpRight, CalendarDays, Clock3, UserRound, X } from "lucide-react";
 import BtnElegant from "../../../components/btn-elegant/BtnElegant";
 import { ROUTES } from "../../../routes/routePaths";
+
+import type { BlogArticleBlock, BlogPost } from "../data-blog";
 import { formatBlogDate } from "../blog-utils";
-import type { BlogPost } from "../data-blog";
 import styles from "./ArticleModal.module.css";
 
 type ArticleModalProps = {
@@ -26,10 +22,15 @@ export function ArticleModal({
   onRequestClose,
 }: ArticleModalProps) {
   const { t, i18n } = useTranslation("blog");
+  const language = i18n.resolvedLanguage ?? "es";
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = `article-title-${post.slug}`;
   const descriptionId = `article-description-${post.slug}`;
-  const language = i18n.resolvedLanguage ?? "es";
+  const panelRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    panelRef.current?.scrollTo({ top: 0, behavior: "instant" });
+  }, [post.slug]);
 
   // El mismo diálogo puede cambiar de artículo al navegar por el historial;
   // el foco y el bloqueo de scroll solo se gestionan al montar y desmontar.
@@ -80,7 +81,7 @@ export function ArticleModal({
       onClick={handleDialogClick}
       ref={dialogRef}
     >
-      <article className={styles.panel}>
+      <article className={styles.panel} ref={panelRef}>
         <button
           aria-label={t("modal.closeLabel")}
           className={styles.closeButton}
@@ -103,7 +104,7 @@ export function ArticleModal({
           <div className={styles.heroContent}>
             <span className={styles.category}>{categoryLabel}</span>
             <h2 className={styles.title} id={titleId}>
-              {post.title}
+              {post.articleTitle}
             </h2>
             <p className={styles.excerpt} id={descriptionId}>
               {post.excerpt}
@@ -117,13 +118,12 @@ export function ArticleModal({
               <span className={styles.authorIcon} aria-hidden="true">
                 <UserRound strokeWidth={1.8} />
               </span>
-              <span>
+              <div className={styles.authorDetails}>
                 <small>{t("modal.authorLabel")}</small>
                 <strong>{post.author.name}</strong>
                 <small>{post.author.role}</small>
-              </span>
+              </div>
             </div>
-
             <div className={styles.articleMeta}>
               <span>
                 <CalendarDays aria-hidden="true" strokeWidth={1.8} />
@@ -131,11 +131,6 @@ export function ArticleModal({
                   {formatBlogDate(post.publishedAt, language)}
                 </time>
               </span>
-              {post.updatedAt && (
-                <time dateTime={post.updatedAt}>
-                  {t("modal.updatedLabel")} {formatBlogDate(post.updatedAt, language)}
-                </time>
-              )}
               <span>
                 <Clock3 aria-hidden="true" strokeWidth={1.8} />
                 {t("modal.readingTime", { count: post.readingTime })}
@@ -143,64 +138,30 @@ export function ArticleModal({
             </div>
           </div>
 
-          {post.disclaimer && (
-            <aside className={styles.disclaimer}>{post.disclaimer}</aside>
-          )}
+          <div className={styles.section}>
+            <ArticleBlocks blocks={post.introduction} />
+          </div>
 
           <div className={styles.sections}>
             {post.sections.map((section) => (
               <section className={styles.section} key={section.title}>
                 <h3>{section.title}</h3>
-                {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-                {section.bullets && (
-                  <ul>
-                    {section.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
-                    ))}
-                  </ul>
-                )}
-                {section.callout && (
-                  <blockquote>{section.callout}</blockquote>
-                )}
+                <ArticleBlocks blocks={section.blocks} />
               </section>
             ))}
           </div>
 
-          <div
-            className={styles.tags}
-            aria-label={t("modal.tagsLabel")}
-          >
-            {post.tags.map((tag) => (
-              <span key={tag}>#{tag}</span>
-            ))}
-          </div>
-
           <aside className={styles.articleCta}>
-            <span className={styles.ctaEyebrow}>
-              {t("modal.contactEyebrow")}
-            </span>
-            <h3>{t("modal.contactTitle")}</h3>
-            <p>{t("modal.contactDescription")}</p>
+            <h3>{post.contactCta.title}</h3>
             <div className={styles.ctaActions}>
               <BtnElegant
-                ariaLabel={t("modal.contactAction")}
-                text={t("modal.contactAction")}
+                variant="blog"
+                ariaLabel={post.contactCta.action}
+                text={post.contactCta.action}
                 to={ROUTES.contact}
               />
-              <Link
-                aria-label={t("modal.relatedLabel", {
-                  label: post.relatedProduct.label,
-                  description: post.relatedProduct.description,
-                })}
-                className={styles.relatedLink}
-                to={post.relatedProduct.path}
-              >
-                <span>
-                  <small>{t("modal.relatedAction")}</small>
-                  <strong>{post.relatedProduct.label}</strong>
-                </span>
+              <Link className={styles.secondaryAction} to={ROUTES.casinoAggregation}>
+                <span>{t("cta.secondaryAction")}</span>
                 <ArrowUpRight aria-hidden="true" strokeWidth={1.8} />
               </Link>
             </div>
@@ -208,6 +169,18 @@ export function ArticleModal({
         </div>
       </article>
     </dialog>
+  );
+}
+
+function ArticleBlocks({ blocks }: { blocks: readonly BlogArticleBlock[] }) {
+  return blocks.map((block, index) =>
+    block.type === "paragraph" ? (
+      <p key={index}>{block.text}</p>
+    ) : (
+      <ul key={index}>
+        {block.items.map((item, itemIndex) => <li key={itemIndex}>{item}</li>)}
+      </ul>
+    ),
   );
 }
 

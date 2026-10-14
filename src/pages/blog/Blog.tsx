@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 import {
   ArrowUpRight,
   BookOpen,
-  CalendarDays,
   ChevronLeft,
   ChevronRight,
   Clock3,
@@ -26,7 +25,7 @@ import RevealOnScroll from "../../components/reveal-on-scroll/RevealOnScroll";
 import SectionTitle from "../../components/section-title/SectionTitle";
 import StrokeText from "../../components/stroke-text";
 import { ROUTES } from "../../routes/routePaths";
-import { formatBlogDate } from "./blog-utils";
+
 import ArticleModal from "./components/ArticleModal";
 import BlogHeroEffects from "./components/BlogHeroEffects";
 import PostCard from "./components/PostCard";
@@ -59,9 +58,7 @@ export function Blog() {
   const language = i18n.resolvedLanguage ?? "es";
   const sortedBlogPosts = useMemo(
     () =>
-      [...getBlogPosts(t)].sort((firstPost, secondPost) =>
-        secondPost.publishedAt.localeCompare(firstPost.publishedAt),
-      ),
+      getBlogPosts(t),
     [t],
   );
   const blogCategories = useMemo(
@@ -100,6 +97,8 @@ export function Blog() {
   );
   const getCategoryLabel = (category: BlogCategory) =>
     categoryLabels.get(category) ?? category;
+  const getPostCategoryLabel = (post: BlogPost) =>
+    post.categoryLabel ?? getCategoryLabel(post.category);
   const articleSlug = searchParams.get("articulo");
   const selectedPost = articleSlug ? postsBySlug.get(articleSlug) : undefined;
   const ctaTitle = t("cta.title");
@@ -352,20 +351,12 @@ export function Blog() {
                   </span>
                   <span className={styles.featuredMeta}>
                     <span>
-                      <CalendarDays aria-hidden="true" strokeWidth={1.8} />
-                      <time dateTime={featuredPost.publishedAt}>
-                        {formatBlogDate(featuredPost.publishedAt, language)}
-                      </time>
-                    </span>
-                    <span>
                       <Clock3 aria-hidden="true" strokeWidth={1.8} />
-                      {t("card.readingTime", {
-                        count: featuredPost.readingTime,
-                      })}
+                      {featuredPost.readingLabel}
                     </span>
                   </span>
                   <span className={styles.featuredAction} aria-hidden="true">
-                    {t("featured.action")}
+                    {featuredPost.cardAction}
                     <ArrowUpRight strokeWidth={1.8} />
                   </span>
                 </span>
@@ -403,6 +394,7 @@ export function Blog() {
                     className={`${styles.filterButton} ${
                       activeCategory === category.id ? styles.filterButtonActive : ""
                     }`}
+                    disabled={(categoryCounts.get(category.id) ?? 0) === 0}
                     key={category.id}
                     onClick={() => handleCategoryChange(category.id)}
                     type="button"
@@ -428,7 +420,7 @@ export function Blog() {
             >
               {visibleCatalogPosts.map((post) => (
                 <PostCard
-                  categoryLabel={getCategoryLabel(post.category)}
+                  categoryLabel={getPostCategoryLabel(post)}
                   key={post.slug}
                   onOpen={handleOpenPost}
                   post={post}
@@ -579,6 +571,7 @@ export function Blog() {
               <div className={styles.ctaActions}>
                 <div className={styles.primaryActionWrapper}>
                   <BtnElegant
+                    variant="blog"
                     ariaLabel={t("cta.primaryAction")}
                     text={t("cta.primaryAction")}
                     to={ROUTES.contact}
@@ -604,7 +597,7 @@ export function Blog() {
 
       {selectedPost && (
         <ArticleModal
-          categoryLabel={getCategoryLabel(selectedPost.category)}
+          categoryLabel={getPostCategoryLabel(selectedPost)}
           onRequestClose={handleClosePost}
           post={selectedPost}
         />

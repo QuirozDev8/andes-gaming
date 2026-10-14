@@ -1,12 +1,12 @@
 const aboutPageEs = {
-  hero: {
+  hero: { 
     eyebrow: "Conoce Andes Gaming",
     title: {
-      firstLine: "Construimos conexiones.",
-      secondLine: "Impulsamos el iGaming.",
+      firstLine: "DETRÁS DE LA TECNOLOGÍA,",
+      secondLine: "HAY PERSONAS QUE ENTIENDEN TU NEGOCIO. ",
     },
     description:
-      "Somos la infraestructura tecnológica B2B que conecta operadores, proveedores y mercados para crear ecosistemas iGaming más simples, escalables y preparados para crecer.",
+      "Conocemos este negocio desde dentro. Convertimos esa experiencia en tecnología, contenido y partnerships que ayudan a nuestros clientes a simplificar lo complejo y descubrir nuevas oportunidades de crecimiento.",
   },
   history: {
     eyebrow: "Nuestra historia",

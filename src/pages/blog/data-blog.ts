@@ -1,47 +1,42 @@
 import type { TFunction } from "i18next";
 import aggregationGrowthImage from "../../assets/img/blog/agregacion-crecimiento-operadores.webp";
-import regionalExpansionImage from "../../assets/img/blog/caso-expansion-regional.webp";
-import multiBrandImage from "../../assets/img/blog/caso-operacion-multimarca.webp";
-import catalogUpdateImage from "../../assets/img/blog/catalogo-contenido-andes.webp";
 import latamCatalogImage from "../../assets/img/blog/catalogo-juegos-latam.webp";
 import integrationChecklistImage from "../../assets/img/blog/checklist-integracion-api.webp";
-import providerDiscoveryImage from "../../assets/img/blog/descubrimiento-proveedores.webp";
 import aggregatorEvaluationImage from "../../assets/img/blog/evaluar-agregador-juegos.webp";
-import { ROUTES } from "../../routes/routePaths";
+
 
 export const blogCategoryIds = [
   "todos",
   "articulos",
   "guias",
-  "actualizaciones",
+  "tendencias",
   "casos-de-exito",
 ] as const;
 
 export type BlogCategoryFilter = (typeof blogCategoryIds)[number];
 export type BlogCategory = Exclude<BlogCategoryFilter, "todos">;
 
+export type BlogArticleBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "list"; items: readonly string[] };
+
 export type BlogArticleSection = {
   title: string;
-  paragraphs: readonly string[];
-  bullets?: readonly string[];
-  callout?: string;
+  blocks: readonly BlogArticleBlock[];
 };
 
 export type BlogPostTranslation = {
   title: string;
+  articleTitle: string;
   excerpt: string;
   imageAlt: string;
-  author: {
-    name: string;
-    role: string;
-  };
-  tags: readonly string[];
-  disclaimer?: string;
+  author: { name: string; role: string };
+  categoryLabel: string;
+  readingLabel: string;
+  cardAction: string;
+  introduction: readonly BlogArticleBlock[];
   sections: readonly BlogArticleSection[];
-  relatedProduct: {
-    label: string;
-    description: string;
-  };
+  contactCta: { title: string; action: string };
 };
 
 export type BlogPost = BlogPostTranslation & {
@@ -49,12 +44,8 @@ export type BlogPost = BlogPostTranslation & {
   category: BlogCategory;
   image: string;
   publishedAt: string;
-  updatedAt?: string;
   readingTime: number;
   featured?: boolean;
-  relatedProduct: BlogPostTranslation["relatedProduct"] & {
-    path: string;
-  };
 };
 
 export type BlogLocaleResource = {
@@ -70,6 +61,8 @@ export type BlogLocaleResource = {
     eyebrow: string;
     action: string;
     openLabel: string;
+    readingTime_one: string;
+    readingTime_other: string;
   };
   card: {
     openLabel: string;
@@ -124,7 +117,6 @@ const blogPostDefinitions = [
     publishedAt: "2026-08-04",
     readingTime: 8,
     featured: true,
-    relatedProductPath: ROUTES.casinoAggregation,
   },
   {
     slug: "agregacion-crecimiento-operadores",
@@ -132,7 +124,6 @@ const blogPostDefinitions = [
     image: aggregationGrowthImage,
     publishedAt: "2026-07-29",
     readingTime: 6,
-    relatedProductPath: ROUTES.casinoAggregation,
   },
   {
     slug: "catalogo-juegos-latam",
@@ -140,7 +131,6 @@ const blogPostDefinitions = [
     image: latamCatalogImage,
     publishedAt: "2026-07-22",
     readingTime: 7,
-    relatedProductPath: ROUTES.gameProviders,
   },
   {
     slug: "evaluar-agregador-juegos",
@@ -148,40 +138,6 @@ const blogPostDefinitions = [
     image: aggregatorEvaluationImage,
     publishedAt: "2026-07-15",
     readingTime: 9,
-    relatedProductPath: ROUTES.gameProviders,
-  },
-  {
-    slug: "catalogo-contenido-andes",
-    category: "actualizaciones",
-    image: catalogUpdateImage,
-    publishedAt: "2026-07-08",
-    updatedAt: "2026-07-11",
-    readingTime: 5,
-    relatedProductPath: ROUTES.gameProviders,
-  },
-  {
-    slug: "descubrimiento-proveedores",
-    category: "actualizaciones",
-    image: providerDiscoveryImage,
-    publishedAt: "2026-06-30",
-    readingTime: 5,
-    relatedProductPath: ROUTES.gameProviders,
-  },
-  {
-    slug: "caso-expansion-regional",
-    category: "casos-de-exito",
-    image: regionalExpansionImage,
-    publishedAt: "2026-06-18",
-    readingTime: 7,
-    relatedProductPath: ROUTES.casinoAggregation,
-  },
-  {
-    slug: "caso-operacion-multimarca",
-    category: "casos-de-exito",
-    image: multiBrandImage,
-    publishedAt: "2026-06-05",
-    readingTime: 6,
-    relatedProductPath: ROUTES.gameProviders,
   },
 ] as const satisfies readonly BlogPostDefinition[];
 
@@ -192,36 +148,13 @@ export type BlogPostDefinition = {
   category: BlogCategory;
   image: string;
   publishedAt: string;
-  updatedAt?: string;
   readingTime: number;
   featured?: boolean;
-  relatedProductPath: string;
 };
 
 export function getBlogPosts(t: TFunction<"blog">): readonly BlogPost[] {
-  return blogPostDefinitions.map((definition) => {
-    const translation = t(`posts.${definition.slug}`, {
-      returnObjects: true,
-    }) as BlogPostTranslation;
-
-    const updatedAt =
-      "updatedAt" in definition ? definition.updatedAt : undefined;
-    const featured =
-      "featured" in definition ? definition.featured : undefined;
-
-    return {
-      slug: definition.slug,
-      category: definition.category,
-      image: definition.image,
-      publishedAt: definition.publishedAt,
-      ...(updatedAt ? { updatedAt } : {}),
-      readingTime: definition.readingTime,
-      ...(featured ? { featured } : {}),
-      ...translation,
-      relatedProduct: {
-        ...translation.relatedProduct,
-        path: definition.relatedProductPath,
-      },
-    };
-  });
+  return blogPostDefinitions.map((definition) => ({
+    ...definition,
+    ...(t(`posts.${definition.slug}`, { returnObjects: true }) as BlogPostTranslation),
+  }));
 }

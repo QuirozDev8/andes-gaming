@@ -163,16 +163,6 @@ function Footer() {
                 sales@andesgaming.com
               </a>
 
-              <p className={styles.contactItem}>
-                <span className={styles.contactIcon} aria-hidden="true">
-                  <svg viewBox="0 0 24 24" role="img">
-                    <path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z" />
-                    <path d="M12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
-                  </svg>
-                </span>
-                {t("footer.contact.location")}
-              </p>
-
               <Link
                 className={styles.talkButton}
                 to={ROUTES.contact}

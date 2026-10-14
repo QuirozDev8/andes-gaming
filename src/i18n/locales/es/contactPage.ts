@@ -3,10 +3,10 @@ const contactPageEs = {
     alt: "Experiencias de casino digital conectadas por Andes Gaming",
   },
   form: {
-    eyebrow: "Cuéntanos sobre tu operación",
-    title: "Construyamos el siguiente paso",
+    eyebrow: "HABLEMOS DE TU OPERACIÓN",
+    title: "TU PRÓXIMA OPORTUNIDAD PUEDE EMPEZAR AQUÍ.",
     description:
-      "Comparte tus datos y prepara el inicio de una conversación estratégica con nuestro equipo.",
+      "Cuéntanos qué estás buscando y descubre cómo Andes Gaming puede ayudarte a ampliar tu oferta, simplificar tu operación y crear nuevas oportunidades de crecimiento.",
     ariaLabel: "Formulario de contacto de Andes Gaming",
     optional: "(opcional)",
     fields: {
@@ -17,7 +17,7 @@ const contactPageEs = {
       email: "Correo electrónico",
       whatsapp: "WhatsApp",
       website: "Sitio web",
-      contactReason: "Motivo contacto",
+      contactReason: "¿Cómo podemos ayudarte?", 
     },
     consent:
       "Autorizo a ANDES GAMING a tratar mis datos personales para fines comerciales, incluyendo información, contacto, promociones y ofertas, conforme a su Política de Privacidad.",

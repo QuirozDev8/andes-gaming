@@ -13,6 +13,7 @@ type BtnElegantBaseProps = {
   disabled?: boolean;
   showIcon?: boolean;
   text: string;
+  variant?: "default" | "blog";
 };
 
 type BtnElegantAsLinkProps = BtnElegantBaseProps & {
@@ -49,8 +50,8 @@ function isLinkButton(props: BtnElegantProps): props is BtnElegantAsLinkProps {
   return "to" in props;
 }
 
-function getClassName(className?: string) {
-  return [styles.button, className].filter(Boolean).join(" ");
+function getClassName(className?: string, variant: "default" | "blog" = "default") {
+  return [styles.button, variant === "blog" && styles.blog, className].filter(Boolean).join(" ");
 }
 
 function BtnElegantContent({
@@ -74,7 +75,7 @@ function BtnElegantContent({
 }
 
 function BtnElegant(props: BtnElegantProps) {
-  const { ariaLabel, className, disabled, showIcon, text } = props;
+  const { ariaLabel, className, disabled, showIcon, text, variant } = props;
 
   if (isLinkButton(props)) {
     const { onClick, to } = props;
@@ -92,7 +93,7 @@ function BtnElegant(props: BtnElegantProps) {
       <Link
         aria-disabled={disabled}
         aria-label={ariaLabel}
-        className={getClassName(className)}
+        className={getClassName(className, variant)}
         onClick={handleClick}
         tabIndex={disabled ? -1 : undefined}
         to={to}
@@ -109,7 +110,7 @@ function BtnElegant(props: BtnElegantProps) {
       <a
         aria-disabled={disabled}
         aria-label={ariaLabel}
-        className={getClassName(className)}
+        className={getClassName(className, variant)}
         href={disabled ? undefined : href}
         onClick={disabled ? undefined : onClick}
         rel={rel}
@@ -126,7 +127,7 @@ function BtnElegant(props: BtnElegantProps) {
   return (
     <button
       aria-label={ariaLabel}
-      className={getClassName(className)}
+      className={getClassName(className, variant)}
       disabled={disabled}
       onClick={onClick}
       type={type}
