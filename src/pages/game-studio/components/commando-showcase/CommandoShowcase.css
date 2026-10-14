@@ -1,0 +1,218 @@
+.commando-showcase {
+  padding-block: clamp(2rem, 3vw, 3rem);
+  color: var(--andes-white);
+  background:
+    linear-gradient(180deg, rgba(var(--andes-blue-deep-rgb), 0.05), rgba(var(--andes-blue-deep-rgb), 0.12) 65%, var(--andes-blue-deep)),
+    url("../../../../assets/img/img-commando-page/commando-demo-bg.png.webp") right top / 100% auto no-repeat,
+    var(--andes-blue-deep);
+}
+
+.commando-showcase-heading,
+.commando-showcase-cta {
+  text-align: center;
+}
+
+.commando-showcase-eyebrow,
+.commando-showcase-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.65rem, 2vw, 1.25rem);
+  margin: 0;
+}
+
+.commando-showcase-eyebrow::before,
+.commando-showcase-eyebrow::after,
+.commando-showcase-prompt::before,
+.commando-showcase-prompt::after {
+  width: clamp(1.25rem, 5vw, 4rem);
+  height: 1px;
+  flex-shrink: 0;
+  background: var(--andes-gradient-primary);
+  content: "";
+}
+
+.commando-showcase-title {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0.5rem auto;
+  padding-right: 0.12em;
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  font-style: italic;
+  line-height: 1.05;
+  background: linear-gradient(105deg, var(--andes-white) 22%, var(--andes-cyan) 85%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.commando-showcase-description {
+  margin: 0 auto 1.5rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  text-wrap: balance;
+}
+
+.commando-showcase-player {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(#030516, #030516) padding-box,
+    linear-gradient(110deg, var(--andes-violet), var(--andes-cyan)) border-box;
+  box-shadow: 0 0 30px rgba(var(--andes-violet-rgb), 0.12);
+}
+
+.commando-showcase-toolbar {
+  display: flex;
+  min-height: 3rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.25rem 0.75rem;
+}
+
+.commando-showcase-status {
+  font-size: var(--text-xs);
+  color: var(--andes-gray-tech);
+}
+
+.commando-showcase-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.25rem 0.75rem;
+  margin-left: auto;
+}
+
+.commando-showcase-fullscreen,
+.commando-showcase-exit {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: var(--radius-xs);
+  color: var(--andes-white);
+  background: transparent;
+  font-size: var(--text-xs);
+}
+
+.commando-showcase-fullscreen:hover,
+.commando-showcase-exit:hover {
+  background: rgba(var(--andes-cyan-rgb), 0.1);
+}
+
+.commando-showcase-stage {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  height: clamp(30rem, calc(100svh - var(--header-height) - 18rem), 30rem);
+  place-items: center;
+  background: radial-gradient(ellipse at center, rgba(var(--andes-violet-rgb), 0.1), transparent 70%);
+}
+
+.commando-showcase-start {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  color: var(--andes-white);
+  background: transparent;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: var(--font-weight-bold);
+}
+
+.commando-showcase-play-icon {
+  display: grid;
+  width: clamp(5rem, 8vw, 7rem);
+  aspect-ratio: 1;
+  padding-left: 0.3rem;
+  border: 2px solid var(--andes-cyan);
+  border-radius: 50%;
+  place-items: center;
+  background: rgba(var(--andes-cyan-rgb), 0.06);
+  box-shadow: 0 0 24px rgba(var(--andes-cyan-rgb), 0.12);
+}
+
+.commando-showcase-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+.commando-showcase-feedback {
+  margin: 0;
+  padding-inline: 1rem;
+  font-size: var(--text-sm);
+}
+
+.commando-showcase-feedback:not(:empty) {
+  padding-block: 0.75rem;
+}
+
+.commando-showcase-player:fullscreen {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+.commando-showcase-player:fullscreen .commando-showcase-stage {
+  flex: 1;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+
+.commando-showcase-cta {
+  margin-top: 1.75rem;
+}
+
+.commando-showcase-prompt {
+  margin-bottom: 1rem;
+  font-size: clamp(0.8rem, 1.5vw, 1.125rem);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: 0.08em;
+}
+
+.commando-showcase-contact {
+  width: min(100%, 19rem);
+  min-height: 3.25rem;
+}
+
+.commando-showcase button:focus-visible,
+.commando-showcase a:focus-visible,
+.commando-showcase iframe:focus-visible {
+  outline: 2px solid var(--andes-cyan);
+  outline-offset: -4px;
+}
+
+@media (max-width: 767.98px) {
+  .commando-showcase {
+    background-size: auto, auto 100%;
+    background-position: center, 75% top;
+  }
+
+  .commando-showcase-stage {
+    height: clamp(32rem, 72svh, 48rem);
+    aspect-ratio: auto;
+  }
+
+  .commando-showcase-player:fullscreen .commando-showcase-stage {
+    height: auto;
+  }
+
+  .commando-showcase-prompt {
+    letter-spacing: 0.02em;
+  }
+}

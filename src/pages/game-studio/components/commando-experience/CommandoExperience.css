@@ -1,0 +1,170 @@
+.commando-experience {
+  --commando-experience-background: url("../../../../assets/img/img-commando-page/commando-experience-bg.png.webp");
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(3rem, 5vw, 5rem) 1.5rem;
+  color: var(--andes-blue-deep);
+  background: var(--andes-white);
+}
+
+.commando-experience::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  background-image: var(--commando-experience-background);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: right top;
+  pointer-events: none;
+}
+
+.commando-experience-copy {
+  width: 51%;
+}
+
+.commando-experience-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1.5rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(var(--andes-cyan-rgb), 0.4);
+  border-radius: var(--radius-pill);
+  background: rgba(var(--andes-cyan-rgb), 0.09);
+  color: var(--andes-blue-deep);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.commando-experience-label::before {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--andes-cyan);
+  box-shadow: 0 0 0 4px rgba(var(--andes-cyan-rgb), 0.16);
+  content: "";
+}
+
+.commando-experience-title {
+  max-width: 11.5em;
+  margin: 0 0 1.4rem;
+  padding-right: 0.15em;
+  font-size: clamp(2rem, 3.7vw, 3.75rem);
+  font-style: italic;
+  font-weight: var(--font-weight-black);
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  background: linear-gradient(105deg, var(--andes-violet) 8%, #5940ef 48%, #00bcd4 96%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.commando-experience-title span {
+  display: block;
+}
+
+.commando-experience-description {
+  max-width: 34rem;
+  margin: 0;
+  font-size: clamp(0.95rem, 1.25vw, 1.125rem);
+  font-weight: 500;
+  line-height: 1.65;
+  color: rgba(var(--andes-blue-deep-rgb), 0.8);
+}
+
+.commando-experience-scene {
+  display: none;
+}
+
+.commando-experience .commando-experience-features {
+  margin-top: clamp(1.5rem, 3vw, 3rem);
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.commando-experience-card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.4rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(120deg, #ffffff, #f0fcfd) padding-box,
+    linear-gradient(110deg, rgba(var(--andes-violet-rgb), 0.6), rgba(var(--andes-cyan-rgb), 0.7)) border-box;
+  text-align: center;
+}
+
+.commando-experience-icon {
+  display: grid;
+  width: 3.75rem;
+  height: 3.75rem;
+  flex-shrink: 0;
+  place-items: center;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background:
+    linear-gradient(var(--andes-white), var(--andes-white)) padding-box,
+    var(--andes-gradient-primary) border-box;
+  color: var(--andes-violet);
+}
+
+.commando-experience-card-title {
+  max-width: 25ch;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.4;
+}
+
+@media (min-width: 992px) {
+  .commando-experience-copy {
+    /* Keep the cards below the helicopter as the full-width scene scales. */
+    min-height: 32vw;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .commando-experience {
+    padding-block: 2.5rem 2rem;
+  }
+
+  .commando-experience::before {
+    display: none;
+  }
+
+  .commando-experience-copy {
+    width: 100%;
+  }
+
+  .commando-experience-title {
+    font-size: clamp(2rem, 7.5vw, 3rem);
+  }
+
+  .commando-experience-scene {
+    display: block;
+    height: clamp(180px, 56vw, 240px);
+    margin-top: 1.25rem;
+    background-image: var(--commando-experience-background);
+    background-repeat: no-repeat;
+    background-size: auto 125%;
+    background-position: right 35%;
+  }
+
+  .commando-experience .commando-experience-features {
+    margin-top: 0;
+  }
+
+  .commando-experience-card-title {
+    font-size: var(--text-sm);
+  }
+}

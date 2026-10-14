@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
   BriefcaseBusiness,
   Building2,
@@ -101,6 +102,7 @@ const contactFields = [
 ] as const;
 
 export function ContactPage() {
+  const { hash } = useLocation();
   const { t } = useTranslation("contactPage");
   const { t: tCommon } = useTranslation("common");
   const {
@@ -112,8 +114,28 @@ export function ContactPage() {
   } = useContactFormSubmission("contact-page");
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, []);
+    if (hash !== "#contact-page-form") return;
+
+    // Runs after this page mounts, including when the route is loaded lazily.
+    let cancelled = false;
+    let frame = 0;
+    void document.fonts.ready.then(() => {
+      if (cancelled) return;
+      frame = window.requestAnimationFrame(() => {
+        const form = document.getElementById("contact-page-form");
+        if (!form) return;
+        const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 80;
+        form.style.scrollMarginTop = `${headerHeight + 24}px`;
+        form.scrollIntoView({ block: "start", behavior: "auto" });
+        form.focus({ preventScroll: true });
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(frame);
+    };
+  }, [hash]);
  
   return (
     <div className={styles.page}>
@@ -144,6 +166,7 @@ export function ContactPage() {
                   aria-label={t("form.ariaLabel")}
                   className={styles.form}
                   id="contact-page-form"
+                  tabIndex={-1}
                   onSubmit={handleSubmit}
                 >
                   <div className={styles.formGrid}>

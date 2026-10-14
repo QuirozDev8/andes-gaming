@@ -1,11 +1,13 @@
 import HeroGameStudio from "./components/hero-game-study/HeroGameStudio";
-import EnDesarrollo from "../../components/en-desarrollo/EnDesarrollo";
+import CommandoExperience from "./components/commando-experience/CommandoExperience";
+import CommandoShowcase from "./components/commando-showcase/CommandoShowcase";
 
 export function GameStudio() {
   return (
     <>
       <HeroGameStudio />
-      <EnDesarrollo />
+      <CommandoExperience />
+      <CommandoShowcase />
     </>
   );
 }
