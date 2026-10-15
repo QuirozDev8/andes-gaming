@@ -87,7 +87,7 @@ const commonEn = {
     social: {
       email: "Email",
     },
-    copyright: "© {{year}} Andes Gaming. All rights reserved.",
+    copyright: "© 2026 Andes Gaming. All rights reserved.",
     terms: "Terms & Conditions",
     privacy: "Privacy Policy",
   },

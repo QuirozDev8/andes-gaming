@@ -67,7 +67,7 @@
   position: relative;
   z-index: var(--z-raised);
   display: grid;
-  grid-template-columns: minmax(220px, 1.2fr) repeat(3, minmax(140px, 0.78fr)) minmax(220px, 1fr);
+  grid-template-columns: minmax(220px, 1.2fr) repeat(3, minmax(140px, 0.78fr)) minmax(280px, 1fr);
   gap: var(--space-8);
   padding: var(--space-10) var(--space-8) var(--space-12);
 }
@@ -79,7 +79,9 @@
 }
 
 .brandColumn {
-  padding-right: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logoLink {
@@ -97,11 +99,12 @@
 }
 
 .description {
-  max-width: 250px;
+  width: min(100%, 28rem);
   margin: var(--space-5) 0 var(--space-5);
   color: var(--color-text-secondary);
   font-size: var(--text-sm);
   line-height: var(--line-height-body);
+  text-align: center;
 }
 
 .socialList {
@@ -133,6 +136,19 @@
   color: var(--andes-cyan);
   box-shadow: 0 0 18px rgba(var(--andes-cyan-rgb), 0.16);
   transform: translateY(-2px);
+}
+
+.socialIcon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.socialIconDot {
+  fill: currentColor;
+  stroke: none;
 }
  
 .linkColumns {
@@ -185,7 +201,7 @@
   gap: var(--space-3);
   margin: 0;
   max-width: 100%;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 
 .contactIcon {
