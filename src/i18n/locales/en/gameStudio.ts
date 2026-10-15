@@ -1,4 +1,48 @@
 const gameStudioEn = {
+  originalGames: {
+    titleFirst: "COMMANDO IS JUST",
+    titleSecond: "THE BEGINNING.",
+    description:
+      "We are building our own universe of games to bring new experiences, new stories and new entertainment opportunities to our partners and their players.",
+    commando: {
+      name: "COMMANDO",
+      status: "AVAILABLE NOW",
+    },
+    classified: {
+      name: "CLASSIFIED",
+      status: "COMING SOON",
+    },
+    cta: "I WANT COMMANDO",
+  },
+  benefits: {
+    label: "FOR YOUR CASINO",
+    titleFirst: "DON’T JUST ADD ANOTHER GAME.",
+    titleSecond: "ADD SOMETHING DIFFERENT.",
+    description:
+      "In a market full of options, your catalogue also builds your identity. Commando adds original Andes Gaming content to help you keep your offering fresh, attractive and full of new experiences for your players.",
+    cards: {
+      exclusive: {
+        title: "EXCLUSIVE CONTENT",
+        description:
+          "Created by Andes Gaming to bring new experiences to our partners and their players.",
+      },
+      differentiate: {
+        title: "DIFFERENTIATE YOUR OFFERING",
+        description:
+          "Add original content that brings variety and personality to your catalogue.",
+      },
+      fresh: {
+        title: "KEEP YOUR CATALOGUE FRESH",
+        description:
+          "Give your players new experiences and more reasons to keep discovering your casino.",
+      },
+      entertainment: {
+        title: "ADD ENTERTAINMENT",
+        description:
+          "Expand your proposition with a dynamic format designed to complement your current offering.",
+      },
+    },
+  },
   showcase: {
     eyebrow: "We’re not going to tell you about it",
     title: "PLAY IT",
@@ -14,18 +58,17 @@ const gameStudioEn = {
     exitFullscreen: "Exit full screen",
     fullscreenError: "Full screen could not be changed. You can continue here.",
   },
-  // Keep the approved Spanish copy until an English translation is supplied.
   experience: {
-    language: "es",
+    language: "en",
     label: "CRASH GAME",
-    titleFirst: "UNA MISIÓN.",
-    titleSecond: "CADA RONDA, UNA NUEVA DECISIÓN.",
+    titleFirst: "ONE MISSION",
+    titleSecond: "EVERY ROUND, A NEW DECISION",
     description:
-      "Commando lleva la intensidad de un crash game a un universo cargado de acción y adrenalina, creando una experiencia dinámica en la que cada partida invita a volver por una misión más.",
+      "Commando brings crash game intensity into an action-packed, adrenaline-fueled universe, creating a dynamic experience that keeps players coming back for another mission.",
     features: {
-      action: "ACCIÓN INMEDIATA",
-      adrenaline: "ADRENALINA EN CADA RONDA",
-      replay: "UNA EXPERIENCIA QUE INVITA A VOLVER",
+      action: "INSTANT ACTION",
+      adrenaline: "ADRENALINE IN EVERY ROUND",
+      replay: "HIGH REPLAY VALUE",
     },
   },
   eyebrow: "ANDES GAMING ORIGINALS",

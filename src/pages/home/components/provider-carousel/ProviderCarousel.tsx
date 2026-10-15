@@ -20,6 +20,7 @@ export interface ProviderCarouselProps {
   gap?: number | string;
   durationSeconds?: number;
   pauseOnHover?: boolean;
+  maxItems?: number;
 }
 
 type CarouselStyle = CSSProperties & Record<`--${string}`, string | number>;
@@ -119,12 +120,23 @@ export function ProviderCarousel({
   gap,
   durationSeconds = 28,
   pauseOnHover = true,
+  maxItems = 30,
 }: ProviderCarouselProps) {
   if (!items.length) {
     return null;
   }
 
-  const lowerRowItems = secondRowItems?.length ? secondRowItems : [...items].reverse();
+  const effectiveItems =
+    typeof maxItems === "number" && maxItems > 0 && items.length > maxItems
+      ? items.slice(0, maxItems)
+      : items;
+
+  const lowerRowItems = secondRowItems?.length
+    ? typeof maxItems === "number" && maxItems > 0 && secondRowItems.length > maxItems
+      ? secondRowItems.slice(0, maxItems)
+      : secondRowItems
+    : [...effectiveItems].reverse();
+
   const style: CarouselStyle = {
     "--logo-width": toCssSize(logoWidth, "164px"),
     "--logo-height": toCssSize(logoHeight, "88px"),
@@ -140,7 +152,7 @@ export function ProviderCarousel({
       aria-label={ariaLabel}
       data-pause-on-hover={pauseOnHover}
     >
-      <CarouselRow items={items} direction="left" />
+      <CarouselRow items={effectiveItems} direction="left" />
       <CarouselRow items={lowerRowItems} direction="right" />
     </section>
   );

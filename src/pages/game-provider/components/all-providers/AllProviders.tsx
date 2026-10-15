@@ -5,11 +5,11 @@ import { useTranslation } from "react-i18next";
 import { gameProviders } from "../../data";
 import styles from "./AllProviders.module.css";
 
-const DESKTOP_INITIAL_PROVIDER_COUNT = 18;
+const DESKTOP_INITIAL_PROVIDER_COUNT = 20;
 const MOBILE_INITIAL_ROWS = 5;
 const MOBILE_COLUMNS = 3;
 const COMPACT_MOBILE_COLUMNS = 2;
-const PROVIDERS_PER_LOAD = 5;
+const PROVIDERS_PER_LOAD = 15;
 const MOBILE_MEDIA_QUERY = "(max-width: 767px)";
 const COMPACT_MOBILE_MEDIA_QUERY = "(max-width: 520px)";
 

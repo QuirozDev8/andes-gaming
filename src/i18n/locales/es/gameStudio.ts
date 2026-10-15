@@ -1,4 +1,48 @@
 const gameStudioEs = {
+  originalGames: {
+    titleFirst: "COMMANDO ES SOLO",
+    titleSecond: "EL COMIENZO.",
+    description:
+      "Estamos construyendo nuestro propio universo de juegos para llevar nuevas experiencias, nuevas historias y nuevas oportunidades de entretenimiento a nuestros partners y sus jugadores.",
+    commando: {
+      name: "COMMANDO",
+      status: "AVAILABLE NOW",
+    },
+    classified: {
+      name: "CLASSIFIED",
+      status: "COMING SOON",
+    },
+    cta: "QUIERO COMMANDO",
+  },
+  benefits: {
+    label: "PARA TU CASINO",
+    titleFirst: "NO SUMES SOLO OTRO JUEGO.",
+    titleSecond: "SUMA ALGO DIFERENTE.",
+    description:
+      "En un mercado lleno de opciones, tu catálogo también construye tu identidad. Commando suma contenido original de Andes Gaming para ayudarte a mantener tu oferta fresca, atractiva y con nuevas experiencias para tus jugadores.",
+    cards: {
+      exclusive: {
+        title: "CONTENIDO EXCLUSIVO",
+        description:
+          "Creado por Andes Gaming para llevar nuevas experiencias a nuestros partners y sus jugadores.",
+      },
+      differentiate: {
+        title: "DIFERENCIA TU OFERTA",
+        description:
+          "Incorpora contenido original que añade variedad y personalidad a tu catálogo.",
+      },
+      fresh: {
+        title: "MANTÉN TU CATÁLOGO FRESCO",
+        description:
+          "Dale a tus jugadores nuevas experiencias y más razones para seguir descubriendo tu casino.",
+      },
+      entertainment: {
+        title: "SUMA ENTRETENIMIENTO",
+        description:
+          "Amplía tu propuesta con un formato dinámico pensado para complementar tu oferta actual.",
+      },
+    },
+  },
   showcase: {
     eyebrow: "No te lo vamos a contar",
     title: "JUÉGALO",
@@ -17,7 +61,7 @@ const gameStudioEs = {
   experience: {
     language: "es",
     label: "CRASH GAME",
-    titleFirst: "UNA MISIÓN.",
+    titleFirst: "UNA MISIÓN",
     titleSecond: "CADA RONDA, UNA NUEVA DECISIÓN.",
     description:
       "Commando lleva la intensidad de un crash game a un universo cargado de acción y adrenalina, creando una experiencia dinámica en la que cada partida invita a volver por una misión más.",

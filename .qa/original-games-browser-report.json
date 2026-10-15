@@ -1,0 +1,115 @@
+{
+  "report": [
+    {
+      "width": 360,
+      "height": 1335.828125,
+      "x": 0,
+      "y": 3738.96875,
+      "viewportWidth": 360,
+      "documentClientWidth": 360,
+      "documentScrollWidth": 360,
+      "classifiedCount": 2,
+      "ctaPath": "/contacto#contact-page-form",
+      "orbitAlignment": [],
+      "screenshotPath": "C:\\APPS-REACT\\andes-gaming\\.qa\\original-games-360-section.png"
+    },
+    {
+      "width": 390,
+      "height": 1395.796875,
+      "x": 0,
+      "y": 3765.484375,
+      "viewportWidth": 390,
+      "documentClientWidth": 390,
+      "documentScrollWidth": 390,
+      "classifiedCount": 2,
+      "ctaPath": "/contacto#contact-page-form",
+      "orbitAlignment": [],
+      "screenshotPath": "C:\\APPS-REACT\\andes-gaming\\.qa\\original-games-390-section.png"
+    },
+    {
+      "width": 768,
+      "height": 1659.140625,
+      "x": 0,
+      "y": 3108.046875,
+      "viewportWidth": 768,
+      "documentClientWidth": 768,
+      "documentScrollWidth": 768,
+      "classifiedCount": 2,
+      "ctaPath": "/contacto#contact-page-form",
+      "orbitAlignment": [],
+      "screenshotPath": "C:\\APPS-REACT\\andes-gaming\\.qa\\original-games-768-section.png"
+    },
+    {
+      "width": 1024,
+      "height": 902.515625,
+      "x": 0,
+      "y": 3105.125,
+      "viewportWidth": 1024,
+      "documentClientWidth": 1024,
+      "documentScrollWidth": 1024,
+      "classifiedCount": 2,
+      "ctaPath": "/contacto#contact-page-form",
+      "orbitAlignment": [
+        {
+          "selector": ".original-games-preview-game-purple .original-games-preview-planet-wrap",
+          "centerX": 581.0390625,
+          "centerY": 199.6796875,
+          "nearestPathX": 582.7260131835938,
+          "nearestPathY": 223.207275390625,
+          "distance": 23.587988353396344
+        },
+        {
+          "selector": ".original-games-preview-game-cyan .original-games-preview-planet-wrap",
+          "centerX": 824.4921875,
+          "centerY": 247.6796875,
+          "nearestPathX": 818.8435668945312,
+          "nearestPathY": 273.274658203125,
+          "distance": 26.21086492350745
+        }
+      ],
+      "screenshotPath": "C:\\APPS-REACT\\andes-gaming\\.qa\\original-games-1024-section.png"
+    },
+    {
+      "width": 1440,
+      "height": 1148.546875,
+      "x": 0,
+      "y": 3489.71875,
+      "viewportWidth": 1440,
+      "documentClientWidth": 1440,
+      "documentScrollWidth": 1440,
+      "classifiedCount": 2,
+      "ctaPath": "/contacto#contact-page-form",
+      "orbitAlignment": [
+        {
+          "selector": ".original-games-preview-game-purple .original-games-preview-planet-wrap",
+          "centerX": 804.40625,
+          "centerY": 254.390625,
+          "nearestPathX": 804.2325439453125,
+          "nearestPathY": 261.0029296875,
+          "distance": 6.614585933659761
+        },
+        {
+          "selector": ".original-games-preview-game-cyan .original-games-preview-planet-wrap",
+          "centerX": 1141.734375,
+          "centerY": 312,
+          "nearestPathX": 1138.9132080078125,
+          "nearestPathY": 321.5234375,
+          "distance": 9.932514536320323
+        }
+      ],
+      "screenshotPath": "C:\\APPS-REACT\\andes-gaming\\.qa\\original-games-1440-section.png"
+    }
+  ],
+  "interaction": {
+    "destination": "/contacto#contact-page-form",
+    "contactFormPresent": true
+  },
+  "browserErrors": [
+    "Feature flags __VUE_OPTIONS_API__, __VUE_PROD_DEVTOOLS__, __VUE_PROD_HYDRATION_MISMATCH_DETAILS__ are not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.\n\nFor more details, see https://link.vuejs.org/feature-flags.",
+    "Feature flags __VUE_OPTIONS_API__, __VUE_PROD_DEVTOOLS__, __VUE_PROD_HYDRATION_MISMATCH_DETAILS__ are not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.\n\nFor more details, see https://link.vuejs.org/feature-flags.",
+    "Feature flags __VUE_OPTIONS_API__, __VUE_PROD_DEVTOOLS__, __VUE_PROD_HYDRATION_MISMATCH_DETAILS__ are not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.\n\nFor more details, see https://link.vuejs.org/feature-flags.",
+    "Feature flags __VUE_OPTIONS_API__, __VUE_PROD_DEVTOOLS__, __VUE_PROD_HYDRATION_MISMATCH_DETAILS__ are not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.\n\nFor more details, see https://link.vuejs.org/feature-flags.",
+    "Feature flags __VUE_OPTIONS_API__, __VUE_PROD_DEVTOOLS__, __VUE_PROD_HYDRATION_MISMATCH_DETAILS__ are not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.\n\nFor more details, see https://link.vuejs.org/feature-flags.",
+    "Feature flags __VUE_OPTIONS_API__, __VUE_PROD_DEVTOOLS__, __VUE_PROD_HYDRATION_MISMATCH_DETAILS__ are not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.\n\nFor more details, see https://link.vuejs.org/feature-flags."
+  ]
+}

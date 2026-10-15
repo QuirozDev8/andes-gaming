@@ -1,0 +1,438 @@
+.original-games-preview {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  overflow: clip;
+  padding-block: clamp(3.75rem, 4.8vw, 4.75rem) clamp(4.5rem, 6vw, 6rem);
+  color: var(--andes-white);
+  background:
+    linear-gradient(180deg, rgba(var(--andes-blue-deep-rgb), 0.16), rgba(var(--andes-blue-deep-rgb), 0.05) 58%, rgba(var(--andes-blue-deep-rgb), 0.5)),
+    url("../../../../assets/img/img-commando-page/Horizonte terrestre sobre fondo estelar-1.png") center bottom / cover no-repeat,
+    var(--andes-blue-deep);
+}
+
+.original-games-preview::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 54%, transparent 30%, rgba(var(--andes-blue-deep-rgb), 0.2) 100%);
+  content: "";
+  pointer-events: none;
+}
+
+.original-games-preview-container {
+  width: min(100%, 96rem);
+  max-width: none;
+  padding-inline: var(--container-padding);
+}
+
+.original-games-preview-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.original-games-preview-title {
+  width: fit-content;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding-right: 0.08em;
+  font-size: clamp(2.7rem, 5.8vw, 5.8rem);
+  font-style: italic;
+  font-weight: var(--font-weight-black);
+  line-height: 0.93;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  background: linear-gradient(105deg, #a200ff 7%, #7d50ff 38%, #00bfe8 70%, var(--andes-cyan) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(var(--andes-violet-rgb), 0.16));
+}
+
+.original-games-preview-title span {
+  display: block;
+}
+
+.original-games-preview-description {
+  max-width: 69rem;
+  margin: clamp(1rem, 1.8vw, 1.5rem) auto 0;
+  color: rgba(var(--andes-white-rgb), 0.9);
+  font-size: clamp(0.95rem, 1.45vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.55;
+  text-wrap: balance;
+  text-shadow: 0 2px 16px rgba(var(--andes-blue-deep-rgb), 0.9);
+}
+
+.original-games-preview-scene {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: clamp(29rem, 38vw, 35rem);
+  grid-template-columns: minmax(0, 1.45fr) minmax(9rem, 0.72fr) minmax(9rem, 0.72fr);
+  align-items: start;
+  gap: clamp(0.75rem, 2vw, 2rem);
+  margin-top: clamp(-2.75rem, -3vw, -2rem);
+}
+
+.original-games-preview-orbit {
+  position: absolute;
+  z-index: 0;
+  inset: 1.5rem 0 0;
+  width: 100%;
+  height: calc(100% - 1.5rem);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.original-games-preview-orbit-path {
+  fill: none;
+  stroke: url("#original-games-orbit-gradient");
+  stroke-linecap: round;
+  stroke-width: 2.2;
+  filter: url("#original-games-orbit-glow");
+  vector-effect: non-scaling-stroke;
+}
+
+.original-games-preview-orbit-path-mobile {
+  display: none;
+}
+
+.original-games-preview-orbit-points {
+  fill: var(--andes-white);
+  stroke: var(--andes-cyan);
+  stroke-width: 2;
+}
+
+.original-games-preview-game {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.original-games-preview-game-commando {
+  padding-top: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.original-games-preview-helicopter-wrap {
+  position: relative;
+  display: grid;
+  width: 100%;
+  place-items: center;
+}
+
+.original-games-preview-helicopter {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 42rem);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(var(--andes-cyan-rgb), 0.32));
+}
+
+.original-games-preview-landing-ring {
+  position: absolute;
+  z-index: 0;
+  bottom: 3%;
+  left: 50%;
+  width: 76%;
+  height: 21%;
+  border: 2px solid rgba(var(--andes-cyan-rgb), 0.88);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--andes-cyan-rgb), 0.18), transparent 68%);
+  box-shadow:
+    0 0 12px rgba(var(--andes-cyan-rgb), 0.72),
+    inset 0 0 15px rgba(var(--andes-cyan-rgb), 0.4);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.original-games-preview-wordmark {
+  display: block;
+  width: min(68%, 26rem);
+  height: auto;
+  margin-top: clamp(-0.65rem, -0.8vw, -0.2rem);
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(var(--andes-blue-deep-rgb), 0.75));
+}
+
+.original-games-preview-game-classified {
+  padding-top: clamp(8rem, 11vw, 10.5rem);
+}
+
+.original-games-preview-game-cyan {
+  padding-top: clamp(11rem, 15vw, 14rem);
+}
+
+.original-games-preview-planet-wrap {
+  position: relative;
+  display: grid;
+  width: clamp(7.5rem, 11vw, 9.75rem);
+  aspect-ratio: 1;
+  place-items: center;
+}
+
+.original-games-preview-planet-wrap::after {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 148%;
+  height: 34%;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+  content: "";
+  opacity: 0.8;
+  transform: translate(-50%, -50%) rotate(7deg);
+  pointer-events: none;
+}
+
+.original-games-preview-game-purple .original-games-preview-planet-wrap {
+  color: #a23cff;
+}
+
+.original-games-preview-game-cyan .original-games-preview-planet-wrap {
+  color: var(--andes-cyan);
+}
+
+.original-games-preview-game-cyan .original-games-preview-planet-wrap::after {
+  transform: translate(-50%, -50%) rotate(-7deg);
+}
+
+.original-games-preview-planet {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.original-games-preview-lock {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  width: clamp(2.8rem, 4vw, 3.7rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(var(--andes-white-rgb), 0.24);
+  border-radius: 50%;
+  color: var(--andes-white);
+  background: rgba(var(--andes-blue-deep-rgb), 0.62);
+  box-shadow: 0 0 20px rgba(var(--andes-blue-deep-rgb), 0.75);
+  backdrop-filter: blur(3px);
+}
+
+.original-games-preview-lock svg {
+  width: 52%;
+  height: 52%;
+  filter: drop-shadow(0 0 7px rgba(var(--andes-white-rgb), 0.36));
+}
+
+.original-games-preview-game-name {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.2;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(var(--andes-blue-deep-rgb), 0.9);
+}
+
+.original-games-preview-status {
+  margin: 0.55rem 0 0;
+  color: #c8bfff;
+  font-size: clamp(0.68rem, 1.1vw, 0.82rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(var(--andes-blue-deep-rgb), 0.94);
+}
+
+.original-games-preview-status-available {
+  margin-top: 0.1rem;
+  color: var(--andes-cyan);
+  font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+  font-weight: var(--font-weight-black);
+  letter-spacing: 0.12em;
+}
+
+.original-games-preview-cta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(0.5rem, 1.5vw, 1.5rem);
+}
+
+.original-games-preview-cta-link {
+  width: min(100%, 28rem);
+  min-height: clamp(4.25rem, 6vw, 5.25rem);
+}
+
+.original-games-preview-cta-link > span {
+  width: 100%;
+  min-height: inherit;
+  padding-inline: clamp(1.5rem, 4vw, 3rem);
+}
+
+.original-games-preview-cta-link > span > span:nth-child(2) {
+  font-size: clamp(0.9rem, 1.6vw, 1.25rem);
+  letter-spacing: 0.025em;
+}
+
+@media (max-width: 899.98px) {
+  .original-games-preview {
+    padding-block: clamp(3.5rem, 8vw, 5rem) clamp(4rem, 10vw, 6rem);
+    background-position: center bottom;
+  }
+
+  .original-games-preview-container {
+    padding-inline: clamp(1rem, 4vw, 2rem);
+  }
+
+  .original-games-preview-title {
+    max-width: 44rem;
+    font-size: clamp(2.3rem, 7.5vw, 4.4rem);
+  }
+
+  .original-games-preview-description {
+    max-width: 42rem;
+  }
+
+  .original-games-preview-scene {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(4rem, 10vw, 6rem);
+    margin-top: 2rem;
+  }
+
+  .original-games-preview-orbit {
+    inset: 2rem 8% 1rem;
+    width: 84%;
+    height: calc(100% - 3rem);
+  }
+
+  .original-games-preview-orbit-path-desktop {
+    display: none;
+  }
+
+  .original-games-preview-orbit-path-mobile {
+    display: block;
+  }
+
+  .original-games-preview-orbit-points circle:nth-child(1),
+  .original-games-preview-orbit-points circle:nth-child(4) {
+    display: none;
+  }
+
+  .original-games-preview-game-commando,
+  .original-games-preview-game-classified,
+  .original-games-preview-game-cyan {
+    padding-top: 0;
+  }
+
+  .original-games-preview-status-available {
+    margin-top: 0.45rem;
+  }
+
+  .original-games-preview-helicopter-wrap {
+    width: min(100%, 42rem);
+  }
+
+  .original-games-preview-planet-wrap {
+    width: clamp(9rem, 24vw, 11rem);
+  }
+
+  .original-games-preview-cta {
+    margin-top: clamp(3rem, 8vw, 5rem);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .original-games-preview {
+    padding-block: 3.25rem 4rem;
+    background-size: auto 100%;
+  }
+
+  .original-games-preview-title {
+    font-size: clamp(2rem, 10.4vw, 2.75rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+
+  .original-games-preview-description {
+    margin-top: 1rem;
+    font-size: 0.91rem;
+    line-height: 1.62;
+    text-wrap: pretty;
+  }
+
+  .original-games-preview-scene {
+    gap: 3.75rem;
+    margin-top: 2.25rem;
+  }
+
+  .original-games-preview-helicopter-wrap {
+    width: calc(100% + 0.5rem);
+  }
+
+  .original-games-preview-wordmark {
+    width: min(68%, 17rem);
+    margin-top: -0.2rem;
+  }
+
+  .original-games-preview-planet-wrap {
+    width: clamp(8.5rem, 42vw, 10.5rem);
+  }
+
+  .original-games-preview-game-name {
+    margin-top: 0.4rem;
+  }
+
+  .original-games-preview-status {
+    letter-spacing: 0.2em;
+  }
+
+  .original-games-preview-cta-link {
+    width: min(100%, 21rem);
+    min-height: 4rem;
+  }
+
+  .original-games-preview-cta-link > span > span:nth-child(2) {
+    font-size: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .original-games-preview-helicopter {
+    animation: original-games-preview-hover 6s ease-in-out infinite;
+  }
+}
+
+@keyframes original-games-preview-hover {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-0.4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .original-games-preview-helicopter {
+    animation: none;
+  }
+}

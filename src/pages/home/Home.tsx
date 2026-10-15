@@ -219,6 +219,7 @@ function Home() {
             <div className={styles.providerCarouselFrame}>
               <ProviderCarousel
                 items={providerLogos}
+                maxItems={30}
                 ariaLabel={t("providers.carouselLabel")}
                 logoWidth={180}
                 logoHeight={92}

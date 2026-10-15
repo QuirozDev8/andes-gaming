@@ -155,8 +155,8 @@ export default function CommandoShowcase() {
         <div className="commando-showcase-cta">
           <p className="commando-showcase-prompt">{t("showcase.prompt")}</p>
           <BtnElegant
-            variant="blog"
             className="commando-showcase-contact"
+            showIcon={false}
             to={COMMANDO_CONTACT_FORM_PATH}
             text={t("showcase.contact")}
           />

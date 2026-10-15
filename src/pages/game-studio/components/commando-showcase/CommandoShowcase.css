@@ -186,8 +186,17 @@
 }
 
 .commando-showcase-contact {
-  width: min(100%, 19rem);
+  width: min(100%, 17rem);
   min-height: 3.25rem;
+}
+
+.commando-showcase-contact > span {
+  width: 100%;
+  min-height: inherit;
+}
+
+.commando-showcase-contact > span > span:nth-child(2) {
+  font-size: 0.875rem;
 }
 
 .commando-showcase button:focus-visible,

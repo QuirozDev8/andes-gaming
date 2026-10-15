@@ -135,7 +135,11 @@
 
 @media (max-width: 767.98px) {
   .commando-experience {
-    padding-block: 2.5rem 2rem;
+    padding-block: 2rem 2rem;
+  }
+
+  .commando-experience-container {
+    --bs-gutter-x: 2.5rem;
   }
 
   .commando-experience::before {
@@ -144,27 +148,77 @@
 
   .commando-experience-copy {
     width: 100%;
+    text-align: center;
+  }
+
+  .commando-experience-label {
+    margin-bottom: 1.15rem;
+    font-size: 0.6875rem;
   }
 
   .commando-experience-title {
-    font-size: clamp(2rem, 7.5vw, 3rem);
+    max-width: none;
+    margin-bottom: 1rem;
+    font-size: clamp(1.875rem, 8.2vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .commando-experience-description {
+    max-width: 38rem;
+    margin-inline: auto;
+    font-size: 0.9375rem;
+    line-height: 1.7;
   }
 
   .commando-experience-scene {
     display: block;
-    height: clamp(180px, 56vw, 240px);
-    margin-top: 1.25rem;
+    height: clamp(190px, 54vw, 240px);
+    margin: 1rem calc(var(--bs-gutter-x) * -0.5) 0.25rem;
     background-image: var(--commando-experience-background);
     background-repeat: no-repeat;
-    background-size: auto 125%;
+    background-size: max(100%, 30rem) auto;
     background-position: right 35%;
+    mask-image: linear-gradient(transparent, #000 10%, #000 85%, transparent);
   }
 
   .commando-experience .commando-experience-features {
+    --bs-gutter-y: 0.75rem;
     margin-top: 0;
+    margin-inline: 0;
+  }
+
+  .commando-experience-feature {
+    min-width: 0;
+    padding-inline: 0;
+  }
+
+  .commando-experience-card {
+    min-height: 5.25rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .commando-experience-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .commando-experience-icon svg {
+    width: 1.65rem;
+    height: 1.65rem;
   }
 
   .commando-experience-card-title {
-    font-size: var(--text-sm);
+    min-width: 0;
+    max-width: none;
+    font-size: clamp(0.75rem, 3.1vw, 0.875rem);
+    line-height: 1.5;
+    text-wrap: balance;
+    overflow-wrap: break-word;
   }
 }

@@ -4,7 +4,7 @@ import RevealOnScroll from "../../components/reveal-on-scroll/RevealOnScroll";
 import SliderMarcas from "../../components/slider-marcas/SliderMarcas";
 import { ROUTES } from "../../routes/routePaths";
 import SectionBenefits from "./components/benefits/Benefits";
-import CasosExitos from "./components/casos-exitos/CasosExitos";
+// import CasosExitos from "./components/casos-exitos/CasosExitos";
 import HeroCasinoAgregation from "./components/hero-casino-agregation/HeroCasinoAgregation";
 import Integration from "./components/integration/Integration";
 import ProvidersCasinoAgregation from "./components/providers-casino/ProvidersCasinoAgregation";
